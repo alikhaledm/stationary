@@ -1,5 +1,13 @@
 .container-fluid {
-    width: 90%;
+    width: 92%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .container-fluid2 {
+    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -7,7 +15,7 @@
   }
   
   .my-container {
-    width: 90%;
+    width: 92%;
     padding-right: 15px;
     padding-left: 15px;
     position: relative;
@@ -17,13 +25,13 @@
   
   .my-container .cover-photo {
     background-image: url('images/school-supplies-list\ new.png');
-    background-size: contain;
-    background-position: center;
+    
+    background-position:center;
     position: static;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 60%;
+    width: 1900;
+    height: 55%;
     max-width: 100%;
   }
 
@@ -37,8 +45,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     z-index: -1;
   }
 
@@ -49,6 +55,10 @@
     font-size: 40;
   }
   
+  .salefont {
+    font-size: 80;
+  }
+
   .inner-container {
     
     position: absolute;
@@ -59,6 +69,41 @@
     transform: translateY(-50%);
     background-color: rgb(255, 255, 255, 0.94);
     /* Add any other styles you need for the inner container */
+  }
+
+
+  .inner-container3 {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    word-wrap: break-word;
+    background-color: rgb(255, 255, 255, 0.94);
+    width: 25%;
+    height: 10%;
+    font-size: 50px;
+    text-align: center; /* added text-align property to center the text */
+  }
+  
+
+  .inner-container4 {
+    
+    position: fixed;
+    width: 18%;
+    height: 5%;
+    font-size: 30;
+    color: white;
+    background-color: #FBD334;
+    /* Add any other styles you need for the inner container */
+  }
+
+
+
+  .inner-container3,
+  .inner-container4 {
+    max-width: 80%; /* adjust as needed */
+    word-wrap: break-word;
   }
 
   
