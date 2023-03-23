@@ -1,7 +1,0 @@
-<html>
-
-<body>
-    <p>123</p>
-</body>
-
-</html>
