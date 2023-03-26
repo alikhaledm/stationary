@@ -12,6 +12,7 @@
     include("navbar.php");
     ?>
 
+    <p>mayar</p>
 
     <?php
     include("footer.php");
