@@ -26,10 +26,6 @@ include("navbar.php")
   </div>
 
 
-
-
-
-
   <div class="container">
     <div class="row">
 
