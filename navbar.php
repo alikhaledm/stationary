@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white opacity-100 sticky-top">
     <div class="container-fluid" style="padding-bottom: 30px; padding-top: 30px;">
         <a class="navbar-brand" href="#">
@@ -15,7 +18,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.html">Shop</a>
+                    <a class="nav-link" href="shop.php">Shop</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Excess Supplies</a>
