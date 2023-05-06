@@ -27,6 +27,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+if (isset($_POST['submit'])) {
+
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT * FROM user WHERE name='$name'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+
+        if ($row["password"] == $password) {
+            $_SESSION['id'] = $row["id"];
+            $_SESSION['name'] = $row["name"];
+
+            if (isset($_SESSION['id'])) {
+                header('location: index.php');
+            }
+        } else {
+            echo "Incorrect password";
+        }
+    } else {
+        echo "Username not found. Please create an account.";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
