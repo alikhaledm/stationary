@@ -1,5 +1,8 @@
 <?php
-include("navbar.php")
+include("navbar.php");
+include("connect.php");
+
+
 ?>
 <html>
 <title>School Supplies List</title>
@@ -15,6 +18,8 @@ include("navbar.php")
 
 
 
-
+<?php
+include("footer.php")
+?>
 </body>
 </html>
