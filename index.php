@@ -1,9 +1,8 @@
 <?php
 include("navbar.php");
 include("connect.php");
-session_start();
 
-echo '$_SESSION["id"] $_SESSION["fname"]';
+
 ?>
 <html>
 <title>School Supplies List</title>
