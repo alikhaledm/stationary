@@ -16,14 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo '<script>alert ("Invalid Email Format, Please Try Again!")</script>';
     } elseif ($acctype == 0) {
-        $sql = "INSERT INTO parent (Email, Password, FName, LName, PhoneNum)
-                VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum')";
+        $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype)
+                VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Parent')";
     } elseif ($acctype == 1) {
-        $sql = "INSERT INTO student (Email, Password, FName, LName, PhoneNum)
-                VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum')";
+        $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype)
+                VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Student')";
     } elseif ($acctype == 2) {
-        $sql = "INSERT INTO user (Email, Password, FName, LName, PhoneNum)
-                VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum')";
+        $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype)
+                VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'User')";
     }
 
     if ($conn->query($sql) === TRUE) {
@@ -35,19 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <head>
-<<<<<<< HEAD
-    <title>School Supplies List</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-=======
     <title>Sign Up</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 
->>>>>>> f16849cce77adc69d2e098d1ca9b75b9ebea41d9
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />

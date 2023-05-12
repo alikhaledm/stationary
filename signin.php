@@ -2,20 +2,21 @@
 require_once("connect.php");
 include("navbar.php");
 session_start();
-if (isset($_POST['submit'])) {
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM user WHERE email ='$email'";
+    $sql = "SELECT * FROM usersclass WHERE email ='$email'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
         if ($row["password"] == $password) {
-            $_SESSION['UserId'] = $row["id"];
-            $_SESSION['Fname'] = $row["name"];
+            $_SESSION['id'] = $row["id"];
+            $_SESSION['fname'] = $row["fname"];
 
             if (isset($_SESSION['id'])) {
                 header('location: index.php');
