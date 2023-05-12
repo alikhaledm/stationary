@@ -1,5 +1,5 @@
 .container-fluid {
-    width: 92%;
+    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -7,7 +7,7 @@
   }
 
   .container-fluid2 {
-    width: 100%;
+    width: 60%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -99,12 +99,16 @@
   }
 
 
-
-  .inner-container3,
-  .inner-container4 {
-    max-width: 80%; /* adjust as needed */
-    word-wrap: break-word;
+  @media (max-width: 800px) 
+{
+    .inner-container3 {
+      font-size: 40px;
+    }
   }
+
+
+
+
 
   
   .inner-container-2 {
@@ -168,6 +172,16 @@ border: 0;
         margin-right: auto;
         margin-left: auto;
       }
+
+      
+   .lineshop{
+    border-top: 1px solid black; /* Sets the color and thickness of the line */
+    width: 98%; /* Sets the width of the line to fill the container */
+
+    
+  }
+
+   
 
 
 
