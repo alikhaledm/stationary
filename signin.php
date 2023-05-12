@@ -1,7 +1,6 @@
 <?php
 require_once("connect.php");
 include("navbar.php");
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

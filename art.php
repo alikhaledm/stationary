@@ -1,10 +1,10 @@
 <?php
+require_once("connect.php");
 include("navbar.php")
-    ?>
+?>
 <html>
 <title>School Supplies List</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -53,8 +53,7 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
                 <div class="bar">
                     <button onclick="decrease(0)">-</button>
@@ -66,8 +65,7 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
                 <div class="bar">
                     <button onclick="decrease(1)">-</button>
@@ -78,8 +76,7 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
                 <div class="bar">
                     <button onclick="decrease(2)">-</button>
@@ -90,10 +87,15 @@ include("navbar.php")
             </div>
 
             <script>
-                var barData = [
-                    { value: 0 },
-                    { value: 0 },
-                    { value: 0 }
+                var barData = [{
+                        value: 0
+                    },
+                    {
+                        value: 0
+                    },
+                    {
+                        value: 0
+                    }
                 ];
 
                 function increase(index) {
@@ -130,20 +132,17 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
@@ -160,20 +159,17 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
-                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
@@ -185,7 +181,33 @@ include("navbar.php")
     </div>
 
 
+    <script>
+        $(document).ready(function() {
 
+            load_data();
+
+            function load_data(query) {
+                $.ajax({
+                    url: "fetch.php",
+                    method: "POST",
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#result').html(data);
+                    }
+                });
+            }
+            $('#search_text').keyup(function() {
+                var search = $(this).val();
+                if (search != '') {
+                    load_data(search);
+                } else {
+                    load_data();
+                }
+            });
+        });
+    </script>
 
 
 </body>
@@ -195,4 +217,4 @@ include("navbar.php")
 
 <?php
 include("footer.php")
-    ?>
+?>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white opacity-100 sticky-top">
     <div class="container-fluid" style="padding-bottom: 30px; padding-top: 30px;">
@@ -19,19 +20,27 @@
                 <li class="nav-item">
                     <a class="nav-link" href="shop.php">Shop</a>
                 </li>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '
                 <li class="nav-item">
                     <a class="nav-link" href="#">Excess Supplies</a>
-                </li>
+                </li>';
+                }
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
                 </li>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        My Account
-                    </a>
+                    <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown">'
+                        . $_SESSION["fname"];
+                    echo '
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Option 1</a></li>
                         <li><a class="dropdown-item" href="#">Option 2</a></li>
@@ -39,7 +48,9 @@
                         <li><a class="dropdown-item" href="#">Option 4</a></li>
                         <li><a class="dropdown-item" href="#">Option 5</a></li>
                     </ul>
-                </li>
+                </li>';
+                }
+                ?>
             </ul>
         </div>
     </div>

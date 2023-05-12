@@ -22,32 +22,15 @@ include("navbar.php")
 
   <div class="container">
     <div class="row">
-
       <div class="col-md-12 text-center" style="padding-top: 50;">
         <h1>
           Lets Find What Your Looking For</h1>
       </div>
     </div>
-
-
-
-
-
     <div class="container-fluid" style="padding-bottom: 150px;">
-
-
-
-
-
-
-
-
       <div class="row g-1">
-
         <div class="col-md-6 text-center" style="padding-top: 50px; padding-left: 50px;"><img style="max-width: 100%;" width="430px" height="245px" src="images/supplies-list-1.jpg" alt="">
-          <button class="custombtn2" style="position: absolute; top: 55%; left: 55%; transform: translate(-50%, -50%);">Fulfill School
-            Supplies
-            List</button>
+          <button class="custombtn2" href="products.php" style="position: absolute; top: 55%; left: 55%; transform: translate(-50%, -50%);">Shop All Stationary Supplies</button>
         </div>
 
         <div class="col-md-6 text-center" style="padding-top: 50px; padding-right:50px;"><img style="max-width: 100%;" width="430px" height="245px" src="images/supplies-list-2.jpg" alt="">
