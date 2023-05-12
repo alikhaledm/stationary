@@ -8,8 +8,7 @@
         <a class="navbar-brand" href="#">
             <h1 class="d-inline-block align-text-top me-2">SUPPLY ROOM</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -30,12 +29,7 @@
                     <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item dropdown">
-<<<<<<< Updated upstream
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-=======
                     <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
->>>>>>> Stashed changes
                         My Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

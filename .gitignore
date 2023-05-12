@@ -2,3 +2,4 @@
 
 # Ignore launch.json file
 .vscode/launch.json
+*.json
