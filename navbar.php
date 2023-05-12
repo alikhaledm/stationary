@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white opacity-100 sticky-top">
     <div class="container-fluid" style="padding-bottom: 30px; padding-top: 30px;">
         <a class="navbar-brand" href="#">
@@ -22,10 +25,10 @@
                     <a class="nav-link" href="#">Excess Supplies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

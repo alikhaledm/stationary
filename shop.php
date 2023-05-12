@@ -23,6 +23,7 @@ include("navbar.php")
   </div>
 
 
+<<<<<<< HEAD
   <style>
     @media (max-width: 800px) {
 
@@ -36,6 +37,8 @@ include("navbar.php")
 
 
 
+=======
+>>>>>>> f16849cce77adc69d2e098d1ca9b75b9ebea41d9
   <div class="container">
     <div class="row">
 

@@ -1,3 +1,7 @@
+html {
+  font-family: "Inter", sans-serif;
+}
+
 .container-fluid {
     width: 100%;
     padding-right: 15px;
@@ -35,8 +39,6 @@
     max-width: 100%;
   }
 
-
-
  .parallax {
     background-attachment: fixed;
     background-position: center;
@@ -47,9 +49,6 @@
     left: 0;
     z-index: -1;
   }
-
-
-
 
   .mainfont {
     font-size: 40;
@@ -68,9 +67,7 @@
     left: 10%;
     transform: translateY(-50%);
     background-color: rgb(255, 255, 255, 0.94);
-    /* Add any other styles you need for the inner container */
   }
-
 
   .inner-container3 {
     position: absolute;
@@ -83,7 +80,7 @@
     width: 25%;
     height: 10%;
     font-size: 50px;
-    text-align: center; /* added text-align property to center the text */
+    text-align: center; 
   }
   
 
@@ -95,20 +92,15 @@
     font-size: 30;
     color: white;
     background-color: #FBD334;
-    /* Add any other styles you need for the inner container */
-  }
-
-
-  @media (max-width: 800px) 
-{
-    .inner-container3 {
-      font-size: 40px;
-    }
   }
 
 
 
-
+  .inner-container3,
+  .inner-container4 {
+    max-width: 80%; /* adjust as needed */
+    word-wrap: break-word;
+  }
 
   
   .inner-container-2 {
@@ -119,10 +111,7 @@
     left: 5%;
     transform: translateY(-50%);
     background-color: rgb(255, 255, 255, 0.70);
-    /* Add any other styles you need for the inner container */
   }
-
-
 
   .custombtn {
 
@@ -139,49 +128,31 @@ border: 0;
     color: black;
   }
 
-
-
-
-
   .custombtn2 {
   background-color: rgb(255, 255, 255, 0.80);
   border-radius: 8px;
   width: 35%;
   height: 25%;
   border: 0;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3); /* Adds a shadow effect */
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3); 
 }
 
-    
+
       .custombtn2:hover {
     
         background-color:rgb(255, 255, 255, 1);
         
       }
 
-
-
-
-
    .line {
-        border-top: 1px solid black; /* Sets the color and thickness of the line */
-        width: 98%; /* Sets the width of the line to fill the container */
+        border-top: 1px solid black; 
+        width: 98%; 
 
         padding-right: 15px;
         padding-left: 15px;
         margin-right: auto;
         margin-left: auto;
       }
-
-      
-   .lineshop{
-    border-top: 1px solid black; /* Sets the color and thickness of the line */
-    width: 98%; /* Sets the width of the line to fill the container */
-
-    
-  }
-
-   
 
 
 
@@ -191,17 +162,16 @@ border: 0;
 
 
       .bordered-row {
-        border-bottom: 1px solid #ccc; /* add a bottom border to each row */
+        border-bottom: 1px solid #ccc; 
       }
       
       .bordered-row .col-md-3 {
-        border-right: 1px solid #ccc; /* add a right border to each column */
+        border-right: 1px solid #ccc; 
       }
       
       .bordered-row .col-md-3:last-child {
-        border-right: none; /* remove the border from the last column in each row */
+        border-right: none; 
       }
-
 
       .bordered-row {
         opacity: 0;
@@ -211,11 +181,6 @@ border: 0;
     .bordered-row.fade-in {
         opacity: 1;
     }
-    
-      
-
-      
-
 
       .zoom-in-container {
         
@@ -247,4 +212,4 @@ border: 0;
       .zoom-in-container2.zoom-in img {
         transform: scale(1.2);
       }
-      
+    

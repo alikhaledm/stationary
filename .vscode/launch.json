@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 "version": "0.2.0",
 "configurations": [
 
@@ -8,6 +9,18 @@
 "name": "Launch Chrome against localhost",
 "url": "http://localhost/stationary/index.php",
 "webRoot": "${workspaceFolder}"
+=======
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost/stationary/signup.php",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+>>>>>>> f16849cce77adc69d2e098d1ca9b75b9ebea41d9
 }
 ]
 }

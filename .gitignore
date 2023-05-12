@@ -1,0 +1,4 @@
+# .gitignore
+
+# Ignore launch.json file
+.vscode/launch.json
