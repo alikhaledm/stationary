@@ -1,5 +1,4 @@
 <?php
-session_start();
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white opacity-100 sticky-top">
     <div class="container-fluid" style="padding-bottom: 30px; padding-top: 30px;">
@@ -31,8 +30,12 @@ session_start();
                     <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item dropdown">
+<<<<<<< Updated upstream
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
+=======
+                    <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+>>>>>>> Stashed changes
                         My Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
