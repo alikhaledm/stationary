@@ -8,22 +8,7 @@ include("navbar.php")
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<style>
-    .bar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 200px;
-        height: 40px;
-        border: 1px solid #000;
-    }
 
-    .number {
-        font-size: 18px;
-        font-weight: bold;
-        margin: 0 10px;
-    }
-</style>
 
 <body>
 
@@ -60,8 +45,6 @@ include("navbar.php")
                     <span class="number" id="value-0">0</span>
                     <button onclick="increase(0)">+</button>
                 </div>
-
-
 
             </div>
 

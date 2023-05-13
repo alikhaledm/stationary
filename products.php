@@ -60,17 +60,20 @@ $result = mysqli_query($conn, $query);
         <?php while ($row = mysqli_fetch_assoc($result)) : ?>
           <div class="col">
             <div>
-              <img src="images\Shop\products\<?php echo $row['photo']; ?>" style="width:200px" alt="Product Image">
+              <img src="images/Shop/products/<?php echo $row['photo']; ?>" style="width:200px" alt="Product Image">
               <h5><?php echo $row['pname']; ?></h5>
               <p><?php echo $row['pdesc']; ?></p>
               <p>$ <?php echo $row['price']; ?></p>
-              <a href="cart.php?id=<?php echo $row['id']; ?>">Add to Cart</a>
-              <br><a href="product.php?id=<?php echo $row['id']; ?>">More</a>
+              <form action="cart.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <button type="submit" name="addToCart">Add to Cart</button>
+              </form>
+              <br>
+              <a href="productdetails.php?id=<?php echo $row['id']; ?>">More</a>
             </div>
           </div>
         <?php endwhile; ?>
       </div>
-
 
 
 </body>
