@@ -2,11 +2,12 @@
 require_once("connect.php");
 session_start();
 $userId = $_SESSION['id'];
-$query = "DELETE FROM cart WHERE userid= $userId";
+$query = "DELETE FROM cart WHERE userID= $userId";
 $result = mysqli_query($conn, $query);
 if ($result) {
-    echo "<script> alert('You succesfully checked out!')</script>";
+    header("location: cart.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
