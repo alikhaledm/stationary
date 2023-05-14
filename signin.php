@@ -3,36 +3,11 @@ require_once("connect.php");
 include("navbar.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["pwd"];
-
-    $sql_parent = "SELECT * FROM parent WHERE Email = '$email' AND Password = '$password'";
-    $result_parent = $conn->query($sql_parent);
-
-    $sql_student = "SELECT * FROM student WHERE Email = '$email' AND Password = '$password'";
-    $result_student = $conn->query($sql_student);
-
-    $sql_user = "SELECT * FROM user WHERE Email = '$email' AND Password = '$password'";
-    $result_user = $conn->query($sql_user);
-
-    if ($result_parent->num_rows > 0 || $result_student->num_rows > 0 || $result_user->num_rows > 0) {
-        $_SESSION['id'] = $row["id"];
-        $_SESSION['fname'] = $row["fname"];
-
-        if (isset($_SESSION['id'])) {
-            header('location: index.php');
-        } else {
-            echo "<script>Invalid email or password. </script>";
-        }
-    }
-}
-
-if (isset($_POST['submit'])) {
 
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM user WHERE name='$name'";
+    $sql = "SELECT * FROM usersclass WHERE email ='$email'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -40,21 +15,18 @@ if (isset($_POST['submit'])) {
 
         if ($row["password"] == $password) {
             $_SESSION['id'] = $row["id"];
-            $_SESSION['name'] = $row["name"];
+            $_SESSION['fname'] = $row["fname"];
 
             if (isset($_SESSION['id'])) {
                 header('location: index.php');
+            } else {
+                echo "<script>alert('Invalid email or password')</script>";
             }
-        } else {
-            echo "Incorrect password";
         }
-    } else {
-        echo "Username not found. Please create an account.";
     }
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,17 +79,13 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="mx-auto max-w-xs">
                                 <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" name="email" placeholder="Email" required />
-                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4" name="pwd" placeholder="Password" required />
+                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4" name="password" placeholder="Password" required />
                                 <input type="submit" value="Sign In" class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     </form>
                     <p class="mt-6 text-xs text-gray-600 text-center">
-                        I agree to abide by Supply Room's
-                        <a href="#" class="border-b border-gray-500 border-dotted">
-                            Terms of Service
-                        </a>
-                        and its
-                        <a href="#" class="border-b border-gray-500 border-dotted">
-                            Privacy Policy
+                        Don't have an account?
+                        <a href="Signup.php" class="border-b border-gray-500 border-dotted">
+                            Signup
                         </a>
                     </p>
                 </div>

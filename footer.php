@@ -14,10 +14,7 @@
             <div class="col-md-3 mb-4">
                 <h5>QUICK LINKS</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">Shipping & Returns</a></li>
                     <li><a href="#">Store Policy</a></li>
-                    <li><a href="#">Payment Methods</a></li>
-                    <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
             <div class="col-md-3 mb-4">

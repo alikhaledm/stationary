@@ -3,7 +3,7 @@ html {
 }
 
 .container-fluid {
-    width: 92%;
+    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -11,7 +11,7 @@ html {
   }
 
   .container-fluid2 {
-    width: 100%;
+    width: 60%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -98,9 +98,10 @@ html {
 
   .inner-container3,
   .inner-container4 {
-    max-width: 80%;
+    max-width: 80%; /* adjust as needed */
     word-wrap: break-word;
   }
+
   
   .inner-container-2 {
     position: absolute;
@@ -136,6 +137,7 @@ border: 0;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3); 
 }
 
+
       .custombtn2:hover {
     
         background-color:rgb(255, 255, 255, 1);
@@ -151,6 +153,13 @@ border: 0;
         margin-right: auto;
         margin-left: auto;
       }
+
+
+
+
+
+
+
 
       .bordered-row {
         border-bottom: 1px solid #ccc; 

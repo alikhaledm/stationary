@@ -1,9 +1,5 @@
 <?php
-include("navbar.php");
-include("connect.php");
-session_start();
-
-echo '$_SESSION["id"] $_SESSION["fname"]';
+include("navbar.php")
 ?>
 <html>
 <title>School Supplies List</title>
@@ -12,28 +8,16 @@ echo '$_SESSION["id"] $_SESSION["fname"]';
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <body>
-
-
   <div class="my-container">
-
     <div class="cover-photo parallax">
-
       <div class="inner-container" style="padding-left: 40; padding-top: 10;">
-
         <div class="mainfont" style="padding-bottom: 15;">Fulfill Your School<br> Supply List Demands</div>
-
         <input type="submit" value="Start now" class="custombtn text-center">
       </div>
     </div>
   </div>
 
   </div>
-
-
-
-
-
-
   <div class="container-fluid" style="padding-top: 50;">
     <div class="row">
       <div class="line" style="padding-top: 50;"></div>
@@ -55,23 +39,18 @@ echo '$_SESSION["id"] $_SESSION["fname"]';
           <div class="zoom-in-container">
             <img width="900" height="450px" style="max-width: 100%; padding-bottom:50; padding-right:20;" src="images/supplies-list-1.jpg" alt="">
 
-            <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Shop Stationery</button> <!-- Adds a button with absolute position and centers it -->
+            <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Shop
+              Stationery</button> <!-- Adds a button with absolute position and centers it -->
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
 
       <div class="col-md-6">
         <div style="position: relative;">
           <div class="zoom-in-container2">
             <img width="900" height="450px" style="max-width: 100%; padding-bottom:50; padding-left:20;" src="images/supplies-list-2.jpg" alt="">
-            <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Fulfill School Supplies List</button>
+            <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Fulfill School Supplies
+              List</button>
           </div>
         </div>
       </div>

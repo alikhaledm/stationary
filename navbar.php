@@ -13,26 +13,34 @@ session_start();
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" style="font-size:20px;">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shop.php">Shop</a>
                 </li>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '
                 <li class="nav-item">
                     <a class="nav-link" href="#">Excess Supplies</a>
+                </li>';
+                }
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        My Account
-                    </a>
+                    <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown">'
+                        . $_SESSION["fname"];
+                    echo '
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Option 1</a></li>
                         <li><a class="dropdown-item" href="#">Option 2</a></li>
@@ -40,7 +48,9 @@ session_start();
                         <li><a class="dropdown-item" href="#">Option 4</a></li>
                         <li><a class="dropdown-item" href="#">Option 5</a></li>
                     </ul>
-                </li>
+                </li>';
+                }
+                ?>
             </ul>
         </div>
     </div>
