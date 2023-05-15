@@ -1,37 +1,24 @@
 <?php
 require_once("connect.php");
 include("navbar.php");
-
-$query = "SELECT * FROM products";
-$result = mysqli_query($conn, $query);
-
 ?>
-
+<!DOCTYPE html>
 <html>
-<title>School Supplies List</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<link rel="stylesheet" href="styles.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<style>
-  .bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 40px;
-    border: 1px solid #000;
-  }
-
-  .number {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 10px;
-  }
-</style>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" />
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</head>
 
 <body>
-
   <div class="container-fluid">
     <div class="row">
       <div class="lineshop" style="padding-top:30;"></div>
@@ -42,9 +29,9 @@ $result = mysqli_query($conn, $query);
     </div>
   </div>
 
-  <div class=container-fluid>
-    <div class=row>
-      <div class=col-md-2>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1">
         <div style="font-size:30;">FILTER BY<br></div>
         <hr>
         <div style="font-size:15;">CATEGORY</div><br>
@@ -55,27 +42,48 @@ $result = mysqli_query($conn, $query);
         <hr><a href="">LEAST PRICE</a></b>
         <HR>
       </div>
-
-      <div class="row">
-        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-          <div class="col">
-            <div>
-              <img src="images/Shop/products/<?php echo $row['photo']; ?>" style="width:200px" alt="Product Image">
-              <h5><?php echo $row['pname']; ?></h5>
-              <p><?php echo $row['pdesc']; ?></p>
-              <p>$ <?php echo $row['price']; ?></p>
-              <form action="cart.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                <button type="submit" name="addToCart">Add to Cart</button>
-              </form>
-              <br>
-              <a href="productdetails.php?id=<?php echo $row['id']; ?>">More</a>
-            </div>
+      <div class="container">
+        <br>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon">Search :</span>
+            <input type="text" name="search_text" id="search_text" placeholder="Search for Product" class="form-control" />
           </div>
-        <?php endwhile; ?>
+        </div>
+        <br />
+        <div id="result"></div>
+
       </div>
 
-
 </body>
+<?php
+include("footer.php");
+?>
 
 </html>
+<script>
+  $(document).ready(function() {
+    load_data();
+
+    function load_data(query) {
+      $.ajax({
+        url: "fetch.php",
+        method: "POST",
+        data: {
+          query: query
+        },
+        success: function(data) {
+          $('#result').html(data);
+        }
+      });
+    }
+    $('#search_text').keyup(function() {
+      var search = $(this).val();
+      if (search != '') {
+        load_data(search);
+      } else {
+        load_data();
+      }
+    });
+  });
+</script>

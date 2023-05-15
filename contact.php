@@ -4,9 +4,7 @@ include("navbar.php");
 ?>
 
 <head>
-  <link rel="stylesheet" href="contactassets/css/all.min.css">
-  <link rel="stylesheet" href="contactassets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="contactassets/css/stylesheet.css">
+
 </head>
 
 <body>

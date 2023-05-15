@@ -1,19 +1,6 @@
 <?php
-session_start();
-
-if (isset($_POST['id']) && !empty($_POST['id'])) {
-  $productId = $_POST['id'];
-
-  // Check if the product is already in the cart
-  if (isset($_SESSION['cart'][$productId])) {
-    // Increment the quantity if the product is already in the cart
-    $_SESSION['cart'][$productId]['quantity']++;
-  } else {
-    // Add the product to the cart with quantity = 1
-    $_SESSION['cart'][$productId]['quantity'] = 1;
-    // Store other product details in the cart, e.g., name, price, etc.
-  }
-}
+require_once("connect.php");
+include("navbar.php");
 
 ?>
 
@@ -25,39 +12,58 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <h1>Cart</h1>
+  <?php
+  $userid = $_SESSION['id'];
+  if (isset($_POST["query"]))
+    $userid = $_SESSION['id'];
 
-  <div>
-    <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) : ?>
-      <table>
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($_SESSION['cart'] as $productId => $product) : ?>
-            <tr>
-              <td><?php echo $product['name']; ?></td>
-              <td><?php echo $product['quantity']; ?></td>
-              <td><?php echo $product['price']; ?></td>
-              <td><?php echo $product['price'] * $product['quantity']; ?></td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+  $total = 0;
 
-      <a href="checkout.php">Proceed to Checkout</a>
-    <?php else : ?>
-      <p>Your cart is empty.</p>
-    <?php endif; ?>
+  $getotal = "SELECT SUM(products.price) from products inner join cart on productid WHERE products.id = cart.productid;";
+  $result =  mysqli_query($conn, $getotal);
+  $tagID = mysqli_fetch_assoc($result);
+
+  if ($result) {
+    $total = implode($tagID);
+  }
+
+  echo ' <div class="container"><div class="row myprods">';
+
+  $getProducts = "SELECT * from cart  WHERE userid = $userid";
+  $result2 =  mysqli_query($conn, $getProducts);
+  if ($result2) {
+    while ($rowData = mysqli_fetch_assoc($result2)) {
+      $selectProducts = "SELECT * from products where id = $rowData[productid]";
+      $result3 =  mysqli_query($conn, $selectProducts);
+      if ($selectProducts) {
+        while ($rowData2 = mysqli_fetch_assoc($result3)) {
+          echo "<div style='margin-top: 3%' class='col-lg'>";
+          echo    "<div class='card' style='width: 18rem;'>";
+          echo        "<img src='" . $rowData2['photo'] . " ' class='card-img-top' alt='...'>";
+          echo        "<div class='card-body'>";
+          echo          "<h5 class='card-title'>"  . $rowData2['pname'] . "</h5>";
+          echo          "<p class='card-text'>" . $rowData2['price'] . "</p>";
+          echo          "<a href='removeCart.php?varname=$rowData2[id]' class='btn btn-primary'>Remove From Cart</a>";
+          echo        "</div>";
+          echo      "</div>";
+          echo      "</div>";
+        }
+      }
+    }
+  }
+  ?>
   </div>
+  <?php
+  if (isset($_SESSION['id']))
+    echo '<a href="checkout.php" class="btn btn-primary" style="margin-top: 3%;">Checkout'( . php echo $total . )'</a>';
+  ?>
 
 </body>
 
