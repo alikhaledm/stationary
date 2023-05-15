@@ -20,7 +20,7 @@ include("navbar.php")
     
     .center-align {
       text-align: center;
-      font-size:130%;
+      font-size:120%;
     }
     
     .paragraph-container {
@@ -29,7 +29,7 @@ include("navbar.php")
     }
     
     p {
-      max-width: 600px;
+      max-width: 700px;
      
     }
     
@@ -41,8 +41,9 @@ include("navbar.php")
   
   <div class="center-align paragraph-container">
     <p>
-    At Supply Room, we are passionate about education and believe that every child deserves access to the tools they need to succeed in school. That's why we collaborate with schools and educational institutions to support underprivileged students through donation programs and initiatives
-    </p>
+    Welcome to our online stationery shop! <br>
+    We are not your typical store for school supplies; we are a platform that believes in sustainability and giving back to the community.
+    <br> Our Company is committed to reducing waste and promoting reuse. At the end of each school year, we collect used items from parents, carefully inspecting, cleaning, and reselling them. Any unsold items are donated to charitable organizations, ensuring a positive impact. Join us in making education sustainable and accessible for all." </p>
   </div>
   
   <div style="text-align: center;">
@@ -53,8 +54,9 @@ include("navbar.php")
   
   <div class="center-align paragraph-container">
     <p>
-    Our story began with a shared passion for creating innovative solutions. We embarked on this journey with a vision to make a positive impact in the world. Through perseverance, dedication, and a strong belief in our mission, Today, our goal is to support parents by providing a convenient and hassle-free way to purchase school supplies. We understand the challenges parents face when it comes to preparing their children for school. We believe in simplifying the back-to-school shopping experience, saving parents valuable time and effort. With our user-friendly online platform and reliable delivery service, parents can shop with confidence, knowing that they are getting top-notch products for their children's education. We are committed to making the process seamless, so parents can focus on what matters most  supporting their children's learning journey
-    </p>
+    Our story began with a shared passion for creating innovative solutions.<br>
+     We embarked on this journey with a vision to make a positive impact in the world. Through perseverance, dedication, and a strong belief in our mission, Today, our goal is to support parents by providing a convenient and hassle-free way to purchase school supplies. We understand the challenges parents face when it comes to preparing their children for school. We believe in simplifying the back-to-school shopping experience, saving parents valuable time and effort.
+</p>
   </div> <br> <br>
   </body>
 <?php
