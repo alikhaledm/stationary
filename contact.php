@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <?php
 include("navbar.php");
@@ -14,11 +15,11 @@ include("navbar.php");
     <div id="contact">
 
       <div id="contactImage">
-        <img src="images/project-8.jpg">
+        <img src="images/canvas.png" width=70%>
 
         <div id="contContent">
           <h1 class="">Contact</h1>
-          <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus!<br>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p class=""> Contact Our Team!<br> Email address:supplyroom@gmail.com.</p>
           <div id="icons">
             <i class="fa-brands fa-facebook-f"></i>
             <i class="fa-brands fa-instagram"></i>
@@ -54,25 +55,26 @@ include("navbar.php");
           <form>
             <div id="formcont" class="d-flex justify-content-between align-items-center ">
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">first name</label>
+                <label for="exampleInputEmail1" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">second name</label>
+                <label for="exampleInputEmail1" class="form-label">Second Name</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <label for="exampleInputEmail1" class="form-label">Email Address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">massege</label>
+              <label for="exampleFormControlTextarea1" class="form-label">Message</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
+           <div> <button class="btn btn-style btn-primary">  Send Message <button> </div>
           </form>
 
         </div>
