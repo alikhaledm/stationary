@@ -4,10 +4,10 @@
 
 .card {
   margin: auto;
+  margin-top: 20px;
   max-width: 950px;
   width: 90%;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 1rem;
   border: transparent;
 }
 
@@ -20,31 +20,18 @@
 .cart {
   background-color: #fff;
   padding: 4vh 5vh;
-  border-bottom-left-radius: 1rem;
-  border-top-left-radius: 1rem;
 }
 
 @media (max-width: 767px) {
   .cart {
     padding: 4vh;
-    border-bottom-left-radius: unset;
-    border-top-right-radius: 1rem;
   }
 }
 
 .summary {
   background-color: #ddd;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
   padding: 4vh;
   color: rgb(65, 65, 65);
-}
-
-@media (max-width: 767px) {
-  .summary {
-    border-top-right-radius: unset;
-    border-bottom-left-radius: 1rem;
-  }
 }
 
 .summary .col-2 {
@@ -100,6 +87,7 @@ form {
 
 select {
   border: 1px solid rgba(0, 0, 0, 0.137);
+  border-radius: 5px;
   padding: 1.5vh 1vh;
   margin-bottom: 4vh;
   outline: none;
@@ -121,14 +109,12 @@ input:focus::-webkit-input-placeholder {
 }
 
 .btn {
-  background-color: #000;
-  border-color: #000;
+  background-color: yellow;
   color: white;
   width: 100%;
   font-size: 0.7rem;
   margin-top: 4vh;
   padding: 1vh;
-  border-radius: 0;
 }
 
 .btn:focus {
@@ -155,6 +141,7 @@ a:hover {
 }
 
 #code {
+  border-radius: 5px;
   background-image: linear-gradient(
       to left,
       rgba(255, 255, 255, 0.253),

@@ -20,9 +20,6 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" href="shop.php">Shop</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="excess.php">Excess Supplies</a>
-                </li>
                 <?php
                 if (isset($_SESSION['id'])) {
                     echo '
@@ -42,7 +39,7 @@ session_start();
                 if (isset($_SESSION['id'])) {
                     echo '
                     <li class="nav-item">
-                    <a class="nav-link" href="cartfiky.php">Cart</a>
+                    <a class="nav-link" href="cart.php">My Cart</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown">'

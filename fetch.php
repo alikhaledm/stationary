@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -70,8 +69,6 @@ $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
   echo "<div class='row myprods'>";
   $result->data_seek(0);
-
-
   while ($row = $result->fetch_assoc()) {
     $imageURL = 'images/Shop/products/' . $row["photo"];
     echo "<div style='margin-top: 3%' class='col-lg-4'>";
@@ -107,14 +104,14 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 <script>
   var barData = [{
-    value: 0
-  },
-  {
-    value: 0
-  },
-  {
-    value: 0
-  }
+      value: 0
+    },
+    {
+      value: 0
+    },
+    {
+      value: 0
+    }
   ];
 
   function increase(index) {

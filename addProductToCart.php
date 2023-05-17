@@ -1,30 +1,37 @@
 <?php
 require_once("connect.php");
 session_start();
+
 $var_value = $_GET['varname'];
+$productid = $var_value;
 $userid = $_SESSION['id'];
 
-$query = "INSERT into cart (userid, productid) values ('$userid','$var_value')";
-$result =  mysqli_query($conn, $query);
-if ($result) {
-    header('location:cart.php');
+// Check if the product already exists in the cart for the current user
+$queryCart = "SELECT * FROM cart WHERE userid = $userid AND productid = $var_value";
+$resultCart = mysqli_query($conn, $queryCart);
+
+if (mysqli_num_rows($resultCart) > 0) {
+    // Product already exists in the cart, update the quantity
+    $queryUpdate = "UPDATE cart SET quantity = quantity + 1 WHERE userid = $userid AND productid = $var_value";
+    $resultUpdate = mysqli_query($conn, $queryUpdate);
+
+    if ($resultUpdate) {
+        header('location: cart.php');
+        exit();
+    } else {
+        echo "Failed to update the quantity in the cart.";
+        exit();
+    }
 } else {
-    echo "Product not added to cart";
+    // Product does not exist in the cart, add a new entry
+    $queryInsert = "INSERT INTO cart (userid, productid, quantity) VALUES ('$userid', '$var_value', 1)";
+    $resultInsert = mysqli_query($conn, $queryInsert);
+
+    if ($resultInsert) {
+        header('location: cart.php');
+        exit();
+    } else {
+        echo "Failed to add the product to the cart.";
+        exit();
+    }
 }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add to cart</title>
-</head>
-
-<body>
-
-</body>
-
-</html>
