@@ -28,6 +28,8 @@ $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
   echo "<div class='row myprods'>";
   $result->data_seek(0);
+
+
   while ($row = $result->fetch_assoc()) {
     $imageURL = 'images/Shop/products/' . $row["photo"];
     echo "<div style='margin-top: 3%' class='col-lg'>";

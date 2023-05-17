@@ -1,10 +1,12 @@
 <?php
-require_once "connect.php";
+require_once("connect.php");
 session_start();
-$userID = $_SESSION['id'];
 $var_name = $_GET['varname'];
-$remQ = "DELETE from cart WHERE userid=$userID AND productid=19 ; ";
-$rem = mysqli_query($conn, $remQ);
-if ($rem) {
-    echo  "<script> alert('Item Succefully Removed!') ";
+$userid = $_SESSION['id'];
+$query = "DELETE FROM cart WHERE userid= $userid AND productid= $var_name;";
+$result = mysqli_query($conn, $query);
+if ($result) {
+    header("location: cart.php");
+} else {
+    echo "<script> alert('Item not removed') </script>";
 }
