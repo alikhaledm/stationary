@@ -23,6 +23,44 @@ include("navbar.php")
         align-items: center;
         justify-content: center;
     }
+
+    .discard {
+        width: 100;
+        height: 35;
+        background-color: white;
+        color: black;
+        border: none;
+    }
+
+    .discard:hover {
+        background-color: black;
+        color: white;
+        border: none;
+
+    }
+
+    .update {
+        width: 115;
+        height: 35;
+        background-color: black;
+        color: white;
+        opacity: 0.6;
+        border: none;
+    }
+
+    .update:hover {
+        background-color: black;
+        color: white;
+        border: none;
+        opacity: 1;
+
+    }
+
+    .input {
+        width: 70%;
+        height: 35;
+
+    }
 </style>
 
 <body>
@@ -41,31 +79,86 @@ include("navbar.php")
 
         </div>
     </div>
+    <a href="">
+        <div class="container-account">
+            <div class="row">
+                <div class="col-md-2"><b style="font-size:14;">My
+                        Orders</b></div>
+                <div class="col-md-2"><b style="font-size:14;">My
+                        Addresses</b></div>
+                <div class="col-md-2"><b style="font-size:14;">My
+                        Wallet</b></div>
+                <div class="col-md-2"><b style="font-size:14;">My
+                        Wishlist</b></div>
+                <div class="col-md-2"><b style="font-size:14;">My
+                        Subscription</b></div>
+                <div class="col-md-2"><b style="font-size:14;">My
+                        Account</b></div>
+            </div>
+        </div>
+    </a>
 
-    <div class="container-account">
-        <div class="row" style="padding-left:35;">
-            <div class="col-md-2"><b style="font-size:17;">My
-                    Orders</b></div>
-            <div class="col-md-2"><b style="font-size:17;">My
-                    Addresses</b></div>
-            <div class="col-md-2"><b style="font-size:17;">My
-                    Wallet</b></div>
-            <div class="col-md-2"><b style="font-size:17;">My
-                    Wishlist</b></div>
-            <div class="col-md-2"><b style="font-size:17;">My
-                    Subscription</b></div>
-            <div class="col-md-2"><b style="font-size:17;">My
-                    Account</b></div>
+    <div class="container-account" style="padding-top:50;">
+        <div class="row">
+            <div class="col-md-6"><b style="font-size:20;">My Account</b></div>
+
+            <div class="col-md-6"><button class="discard">Discard</button> <button class="update">Update Info</button>
+            </div>
+
+
+
         </div>
     </div>
+    <div class="container-account" style="padding-top:30; padding-bottom:100;">
+        <div class="row">
+            <div class="col-md-12">View and edit your personal info below.</div>
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <div style="font-size:20;"><b>Account</b></div>
+            </div>
+            <div style="padding-top:10;" class="col-md-12">
+                <div style="font-size:15;">Update your personal information.</div>
+            </div>
+            <div style="padding-top:10;" class="col-md-12">
+                <div style="font-size:15;"><b>Login Email:</b></div>
+            </div>
+            <div class="col-md-12">
+                <div style="font-size:15;">Yousefelfiky@gmail.com</div>
+            </div>
+            <div class="col-md-12">
+                <div style="font-size:13;">Your Login email can't be changed</div>
+            </div>
 
-    <div class="container-account" style="padding-top:50; padding-bottom:50;">
-        <div class="row" style="padding-left:35;">
-            <div class="col-md-4"><b style="font-size:20;">My Account</b></div>
-
-            <div style="padding-left:280;" class="col-md-4"><button>Discard</button></div>
-            <div class="col-md-4"><button>Update Info</button></div>
-
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;">First Name</div>
+            </div>
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;">Last Name</div>
+            </div>
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;"><input class="input" type="text"></div>
+            </div>
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;"><input class="input" type="text"></div>
+            </div>
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;">Email *</div>
+            </div>
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;">Phone</div>
+            </div>
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;"><input class="input" type="text"></div>
+            </div>
+            <div style="padding-top:20;" class="col-md-6">
+                <div style="font-size:20;"><input class="input" type="text"></div>
+            </div>
+            <div class="col-md-6"></div>
+            <div style="padding-top:70;" class="col-md-6"><button class="discard">Discard</button> <button
+                    class="update">Update Info</button>
+            </div>
 
         </div>
     </div>
