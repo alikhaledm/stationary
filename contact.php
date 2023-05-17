@@ -45,8 +45,8 @@ include("navbar.php");
       <div class="row">
         <div class="col-md-6">
           <h2>Contact details</h2>
-          <p>500 terry francie St</p>
-          <p>San Fransisco, CA94158</p>
+          <p>Sheraton Heliopolis </p>
+          <p>Cairo, Egypt</p>
           <p>123-456-7890</p>
           <p>INFO@mysite.com</p>
         </div>
