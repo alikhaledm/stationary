@@ -20,6 +20,9 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" href="shop.php">Shop</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="excess.php">Excess Supplies</a>
+                </li>
                 <?php
                 if (isset($_SESSION['id'])) {
                     echo '

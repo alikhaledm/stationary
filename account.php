@@ -1,44 +1,82 @@
 <?php
-require_once("connect.php");
-include("navbar.php");
-?>
+include("navbar.php")
+    ?>
 <html>
-<head>
-    <title>Sign Up</title>
+<title>School Supplies List</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<style>
+    .container-account {
+        padding-left: 50;
+        padding-right: 50;
+        width: 60%;
+        margin-right: auto;
+        margin-left: auto;
+    }
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-</head>
-
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-</head>
+    .smallimage {
+        align-items: center;
+        justify-content: center;
+    }
+</style>
 
 <body>
 
+    <div class="container-account">
+        <div class="row">
+            <div class="col-md-12">
+                <img width="100%" height="300" src="images/account/background.jpg" alt="">
+                <div class="small-image" style="position: absolute; top: 60%; left: 5%;">
+
+                    <img class="smallimage" width="100" height="100" src="images/account/profile.png" alt="">
+                    <b style="padding-left:10; font-size:23;">Ali Khaled</b>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-account">
+        <div class="row" style="padding-left:35;">
+            <div class="col-md-2"><b style="font-size:17;">My
+                    Orders</b></div>
+            <div class="col-md-2"><b style="font-size:17;">My
+                    Addresses</b></div>
+            <div class="col-md-2"><b style="font-size:17;">My
+                    Wallet</b></div>
+            <div class="col-md-2"><b style="font-size:17;">My
+                    Wishlist</b></div>
+            <div class="col-md-2"><b style="font-size:17;">My
+                    Subscription</b></div>
+            <div class="col-md-2"><b style="font-size:17;">My
+                    Account</b></div>
+        </div>
+    </div>
+
+    <div class="container-account" style="padding-top:50; padding-bottom:50;">
+        <div class="row" style="padding-left:35;">
+            <div class="col-md-4"><b style="font-size:20;">My Account</b></div>
+
+            <div style="padding-left:280;" class="col-md-4"><button>Discard</button></div>
+            <div class="col-md-4"><button>Update Info</button></div>
+
+
+        </div>
+    </div>
+
+
+
 
 </body>
-<?php
-include("footer.php");
-?>
 
 </html>
+
+<?php
+include("footer.php")
+    ?>
