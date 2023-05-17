@@ -3,14 +3,13 @@ session_start();
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white opacity-100 sticky-top">
     <div class="container-fluid" style="padding-bottom: 30px; padding-top: 30px;">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php">
             <img src="images/logo.jpg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top me-2">
         </a>
         <a class="navbar-brand" href="#">
             <h1 class="d-inline-block align-text-top me-2">SUPPLY ROOM</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -20,6 +19,9 @@ session_start();
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shop.php">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="excess.php">Excess Supplies</a>
                 </li>
                 <?php
                 if (isset($_SESSION['id'])) {
@@ -35,18 +37,13 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cartfiky.php">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="signin.php">Sign In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Sign Up</a>
-                </li>
+
                 <?php
                 if (isset($_SESSION['id'])) {
                     echo '
+                    <li class="nav-item">
+                    <a class="nav-link" href="cartfiky.php">Cart</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown">'
                         . $_SESSION["fname"];
@@ -59,7 +56,9 @@ session_start();
                         <li><a class="dropdown-item" href="#">Option 5</a></li>
                     </ul>
                 </li>';
-                }
+                } else echo '<li class="nav-item">
+                <a class="nav-link" href="signin.php">Sign In</a>
+            </li>';
                 ?>
             </ul>
         </div>
