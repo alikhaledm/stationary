@@ -7,22 +7,40 @@ if (isset($_POST["query"])) {
     $userid = $_SESSION['id'];
 }
 
+// Function to update cart quantity
+function updateCartQuantity($cartId, $quantity)
+{
+    global $conn;
+    $updateQuery = "UPDATE cart SET quantity = $quantity WHERE id = $cartId";
+    mysqli_query($conn, $updateQuery);
+}
+
+// Remove item from cart
+if (isset($_GET['remove'])) {
+    $cartId = $_GET['remove'];
+    $deleteQuery = "DELETE FROM cart WHERE id = $cartId";
+    mysqli_query($conn, $deleteQuery);
+    header("Location: cart.php");
+    exit();
+}
+
 $total = 0;
 
-$getotal = "SELECT SUM(products.price) AS total_price FROM products INNER JOIN cart ON products.id = cart.productid WHERE cart.userid = $userid";
-$result =  mysqli_query($conn, $getotal);
+$getotal = "SELECT SUM(products.price * cart.quantity) AS total_price FROM products INNER JOIN cart ON products.id = cart.productid WHERE cart.userid = $userid";
+$result = mysqli_query($conn, $getotal);
 $tagID = mysqli_fetch_assoc($result);
 
 if ($result) {
     $total = $tagID['total_price'];
 }
+
 ?>
 
 <head>
     <title>Shopping Cart</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheer" href="cartstyles.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
@@ -30,160 +48,6 @@ if ($result) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
-<style>
-    .title {
-        margin-bottom: 5vh;
-    }
-
-    .card {
-        margin: auto;
-        margin-top: 20px;
-        max-width: 950px;
-        width: 90%;
-        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        border: transparent;
-    }
-
-    @media(max-width:767px) {
-        .card {
-            margin: 3vh auto;
-        }
-    }
-
-    .cart {
-        background-color: #fff;
-        padding: 4vh 5vh;
-    }
-
-    @media(max-width:767px) {
-        .cart {
-            padding: 4vh;
-        }
-    }
-
-    .summary {
-        background-color: #ddd;
-        padding: 4vh;
-        color: rgb(65, 65, 65);
-    }
-
-
-    .summary .col-2 {
-        padding: 0;
-    }
-
-    .summary .col-10 {
-        padding: 0;
-    }
-
-    .row {
-        margin: 0;
-    }
-
-    .title b {
-        font-size: 1.5rem;
-    }
-
-    .main {
-        margin: 0;
-        padding: 2vh 0;
-        width: 100%;
-    }
-
-
-    a {
-        padding: 0 1vh;
-    }
-
-    .close {
-        margin-left: auto;
-        font-size: 0.7rem;
-    }
-
-    img {
-        width: 3.5rem;
-    }
-
-    .back-to-shop {
-        margin-top: 4.5rem;
-    }
-
-    h5 {
-        margin-top: 4vh;
-    }
-
-    hr {
-        margin-top: 1.25rem;
-    }
-
-    form {
-        padding: 2vh 0;
-    }
-
-    select {
-        border: 1px solid rgba(0, 0, 0, 0.137);
-        border-radius: 5px;
-        padding: 1.5vh 1vh;
-        margin-bottom: 4vh;
-        outline: none;
-        width: 100%;
-        background-color: rgb(247, 247, 247);
-    }
-
-    input {
-        border: 1px solid rgba(0, 0, 0, 0.137);
-        padding: 1vh;
-        margin-bottom: 4vh;
-        outline: none;
-        width: 100%;
-        background-color: rgb(247, 247, 247);
-    }
-
-    input:focus::-webkit-input-placeholder {
-        color: transparent;
-    }
-
-    .btn {
-        background-color: yellow;
-        color: white;
-        width: 100%;
-        font-size: 0.7rem;
-        margin-top: 4vh;
-        padding: 1vh;
-    }
-
-    .btn:focus {
-        box-shadow: none;
-        outline: none;
-        box-shadow: none;
-        color: white;
-        -webkit-box-shadow: none;
-        -webkit-user-select: none;
-        transition: none;
-    }
-
-    .btn:hover {
-        color: white;
-    }
-
-    a {
-        color: black;
-    }
-
-    a:hover {
-        color: black;
-        text-decoration: none;
-    }
-
-    #code {
-        border-radius: 5px;
-        background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
-        background-repeat: no-repeat;
-        background-position-x: 95%;
-        background-position-y: center;
-    }
-</style>
 
 <body>
     <div class="card">
@@ -203,27 +67,69 @@ if ($result) {
                 $result2 = mysqli_query($conn, $getProducts);
                 if ($result2) {
                     while ($rowData = mysqli_fetch_assoc($result2)) {
-                        $selectProducts = "SELECT p.*, c.quantity FROM products p INNER JOIN cart c ON p.id = c.productid WHERE p.id = $rowData[productid]";
+                        $productId = $rowData['productid'];
+                        $selectProducts = "SELECT * FROM products WHERE id = $productId";
                         $result3 = mysqli_query($conn, $selectProducts);
                         if ($result3) {
                             while ($rowData2 = mysqli_fetch_assoc($result3)) {
+                                $cartId = $rowData['id'];
+                                $quantity = $rowData['quantity'];
+                                $productPrice = $rowData2['price'];
+
                                 echo '
-                                <div class="row border-top border-bottom">
-                                    <div class="row main align-items-center">
-                                        <div class="col-2"><img class="img-fluid" src="images/Shop/products/' . $rowData2['photo'] . '"></div>
-                                        <div class="col">
-                                            <div class="row text-muted">' . $rowData2['category'] . '</div>
-                                            <div class="row">' . $rowData2['pname'] . '</div>
-                                        </div>
-                                        <div class="col">Quantity: ' . $rowData2['quantity'] . '</div>
-                                        <div class="col">$' . $rowData2['price'] . '<a href="removeCart.php?varname=' . $rowData2['id'] . '"><span class="close">&#10005;</span></a></div>
-                                    </div>
-                                </div>';
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center" style="padding:0;">
+                        <div class="col-2"><img class="img-fluid" src="images/Shop/products/' . $rowData2['photo'] . '"></div>
+                        <div class="col">
+                            <div class="row text-muted">' . $rowData2['category'] . '</div>
+                            <div class="row">' . $rowData2['pname'] . '</div>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <form action="" method="POST" class="update-form">
+                                <input type="hidden" name="cartId" value="' . $cartId . '">
+                                <div class="quantity-input">
+                                    <input type="number" id="quantity" name="quantity" min="1" value="' . $quantity . '">
+                                    <button type="submit" name="updateQuantity" class="update-button"><i class="fa fa-check-circle"  id="checker" style="color:green;"></i></button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col">$' . ($productPrice * $quantity) . '</div>
+                        <div class="col"><a href="cart.php?remove=' . $cartId . '"><span class="close">&#10005;</span></a></div>
+                    </div>
+                </div>';
                             }
                         }
                     }
                 }
+
                 ?>
+                <script>
+                    const checker = document.getElementById("checker");
+                    checker.addEventListener("click", function() {
+                        if (checker.checked) {
+                            console.log("Checker is checked");
+
+                            // Retrieve the quantity input value
+                            const quantityInput = document.getElementById("quantity");
+                            const newQuantity = quantityInput.value;
+
+                            // Send the new quantity to the server using AJAX
+                            const xhr = new XMLHttpRequest();
+                            xhr.open("POST", "update_quantity.php", true);
+                            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                                    // Handle the response from the server
+                                    console.log(xhr.responseText);
+                                }
+                            };
+                            xhr.send("newQuantity=" + encodeURIComponent(newQuantity));
+                        }
+                    });
+                </script>
+
 
                 <div class="back-to-shop"><a href="products.php">&leftarrow;<span class="text-muted">Back to shop</span></a></div>
             </div>
@@ -243,7 +149,7 @@ if ($result) {
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">TOTAL PRICE</div>
-                    <div class="col text-right"><?php echo $total; ?></div>
+                    <div class="col text-right">$<?php echo number_format($total, 2); ?></div>
                 </div>
                 <button class="btn" href="checkout.php">CHECKOUT</button>
             </div>

@@ -7,7 +7,7 @@ session_start();
             <img src="images/logo.jpg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top me-2">
         </a>
         <a class="navbar-brand" href="#">
-            <h1 class="d-inline-block align-text-top me-2">SUPPLY ROOM</h1>
+            <h1 class="d-inline-block align-text-top me-2">SUPPLIES HUB</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@ session_start();
                 if (isset($_SESSION['id'])) {
                     echo '
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Excess Supplies</a>
+                    <a class="nav-link" href="excess.php">Excess Supplies</a>
                 </li>';
                 }
                 ?>
@@ -34,7 +34,6 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
                 </li>
-
                 <?php
                 if (isset($_SESSION['id'])) {
                     echo '
