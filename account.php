@@ -65,7 +65,7 @@ include("navbar.php")
 
 <body>
 
-    <div class="container-account">
+    <div class="container-account" id="fade-container">
         <div class="row">
             <div class="col-md-12">
                 <img width="100%" height="300" src="images/account/background.jpg" alt="">
@@ -79,24 +79,37 @@ include("navbar.php")
 
         </div>
     </div>
-    <a href="">
-        <div class="container-account">
-            <div class="row">
-                <div class="col-md-2"><b style="font-size:14;">My
-                        Orders</b></div>
-                <div class="col-md-2"><b style="font-size:14;">My
-                        Addresses</b></div>
-                <div class="col-md-2"><b style="font-size:14;">My
-                        Wallet</b></div>
-                <div class="col-md-2"><b style="font-size:14;">My
-                        Wishlist</b></div>
-                <div class="col-md-2"><b style="font-size:14;">My
-                        Subscription</b></div>
-                <div class="col-md-2"><b style="font-size:14;">My
-                        Account</b></div>
-            </div>
+
+
+
+
+    <div class="container-account" id="fade-container2">
+        <div class="row">
+            <div class="col-md-2"><b style="font-size:18;">My
+                    Orders</b></div>
+            <div class="col-md-2"><b style="font-size:18;">My
+                    Addresses</b></div>
+            <div class="col-md-2"><b style="font-size:18;">My
+                    Wallet</b></div>
+            <div class="col-md-2"><b style="font-size:18;">My
+                    Wishlist</b></div>
+            <div class="col-md-2"><b style="font-size:18;">My
+                    Subscription</b></div>
+            <div class="col-md-2"><b style="font-size:16;">My
+                    Account</b></div>
         </div>
-    </a>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#fade-container').hide().fadeIn(4000); // Change the duration (in milliseconds) as desired
+        });
+
+        $(document).ready(function () {
+            $('#fade-container2').hide().fadeIn(4000); // Change the duration (in milliseconds) as desired
+        });
+    </script>
+
 
     <div class="container-account" style="padding-top:50;">
         <div class="row">

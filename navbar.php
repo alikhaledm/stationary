@@ -52,7 +52,8 @@ session_start();
                         <li><a class="dropdown-item" href="#">Option 5</a></li>
                     </ul>
                 </li>';
-                } else echo '<li class="nav-item">
+                } else
+                    echo '<li class="nav-item">
                 <a class="nav-link" href="signin.php">Sign In</a>
             </li>';
                 ?>
