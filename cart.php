@@ -7,23 +7,6 @@ if (isset($_POST["query"])) {
     $userid = $_SESSION['id'];
 }
 
-// Function to update cart quantity
-function updateCartQuantity($cartId, $quantity)
-{
-    global $conn;
-    $updateQuery = "UPDATE cart SET quantity = $quantity WHERE id = $cartId";
-    mysqli_query($conn, $updateQuery);
-}
-
-// Remove item from cart
-if (isset($_GET['remove'])) {
-    $cartId = $_GET['remove'];
-    $deleteQuery = "DELETE FROM cart WHERE id = $cartId";
-    mysqli_query($conn, $deleteQuery);
-    header("Location: cart.php");
-    exit();
-}
-
 $total = 0;
 
 $getotal = "SELECT SUM(products.price * cart.quantity) AS total_price FROM products INNER JOIN cart ON products.id = cart.productid WHERE cart.userid = $userid";
@@ -34,19 +17,62 @@ if ($result) {
     $total = $tagID['total_price'];
 }
 
+// Update quantity if the checker is checked
+if (isset($_POST['update_quantity'])) {
+    $productId = $_POST['product_id'];
+    $newQuantity = $_POST['quantity'];
+
+    $updateQuery = "UPDATE cart SET quantity = $newQuantity WHERE userid = $userid AND productid = $productId";
+    $updateResult = mysqli_query($conn, $updateQuery);
+
+    if ($updateResult) {
+        echo "Quantity updated successfully.";
+    } else {
+        echo "Error updating quantity: " . mysqli_error($conn);
+    }
+}
 ?>
+
+<html>
 
 <head>
     <title>Shopping Cart</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheer" href="cartstyles.css">
+    <link rel="stylesheet" href="cartstyles.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // AJAX request to update quantity
+        function updateQuantity(productId, newQuantity) {
+            $.ajax({
+                type: "POST",
+                url: "update_quantity.php",
+                data: {
+                    update_quantity: true,
+                    product_id: productId,
+                    quantity: newQuantity
+                },
+                success: function(response) {
+                    console.log(response);
+                    // You can update the UI here if needed
+                }
+            });
+        }
+
+        // Event listener for the checkbox
+        const checker = document.getElementById('checker');
+        const quantityInput = document.getElementById('quantity');
+
+        checker.addEventListener('change', function() {
+            const productId = quantityInput.dataset.productId;
+            const newQuantity = this.checked ? quantityInput.value : 1;
+            updateQuantity(productId, newQuantity);
+        });
+    </script>
 </head>
 
 <body>
@@ -85,14 +111,14 @@ if ($result) {
                             <div class="row">' . $rowData2['pname'] . '</div>
                         </div>
                         <div class="row">
-                        <div class="col">
-                            <form action="" method="POST" class="update-form">
-                                <input type="hidden" name="cartId" value="' . $cartId . '">
-                                <div class="quantity-input">
-                                    <input type="number" id="quantity" name="quantity" min="1" value="' . $quantity . '">
-                                    <button type="submit" name="updateQuantity" class="update-button"><i class="fa fa-check-circle"  id="checker" style="color:green;"></i></button>
-                                </div>
-                            </form>
+                            <div class="col">
+                                <form action="" method="POST" class="update-form">
+                                    <input type="hidden" name="product_id" value="' . $productId . '">
+                                    <div class="quantity-input">
+                                        <input type="number" name="quantity" id="quantity" min="1" value="' . $quantity . '" data-product-id="' . $productId . '">
+                                        <button type="submit" name="update_quantity" class="update-button"><i class="fa fa-check-circle" id="checker" style="color:green;"></i></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="col">$' . ($productPrice * $quantity) . '</div>
@@ -103,33 +129,7 @@ if ($result) {
                         }
                     }
                 }
-
                 ?>
-                <script>
-                    const checker = document.getElementById("checker");
-                    checker.addEventListener("click", function() {
-                        if (checker.checked) {
-                            console.log("Checker is checked");
-
-                            // Retrieve the quantity input value
-                            const quantityInput = document.getElementById("quantity");
-                            const newQuantity = quantityInput.value;
-
-                            // Send the new quantity to the server using AJAX
-                            const xhr = new XMLHttpRequest();
-                            xhr.open("POST", "update_quantity.php", true);
-                            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                            xhr.onreadystatechange = function() {
-                                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                                    // Handle the response from the server
-                                    console.log(xhr.responseText);
-                                }
-                            };
-                            xhr.send("newQuantity=" + encodeURIComponent(newQuantity));
-                        }
-                    });
-                </script>
-
 
                 <div class="back-to-shop"><a href="products.php">&leftarrow;<span class="text-muted">Back to shop</span></a></div>
             </div>
