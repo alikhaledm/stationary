@@ -14,7 +14,7 @@ include("navbar.php")
       <div class="inner-container" style="padding-left: 40; padding-top: 10;">
         <div class="mainfont" style="padding-bottom: 15;">Fulfill Your School<br> Supply List Demands</div>
 
-        <a href="packages.php"><input type="submit" value="Start now" class="custombtn text-center"></a>
+        <a href="startnowintro.php"><input type="submit" value="Start now" class="custombtn text-center"></a>
       </div>
     </div>
   </div>
