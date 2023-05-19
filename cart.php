@@ -140,57 +140,30 @@ if (isset($_POST['update_quantity'])) {
                     <h5><b>Summary</b></h5>
                 </div>
                 <hr>
-                <<<<<<< HEAD <div class="row" style="margin: 0; padding:0%;">
-                    <div class="col" style="margin: 0; padding:0%;">
-                        <form id="update-form">
-                            <b>
-                                <p>Shipping</p>
-                            </b>
-                            <select name="shipping" class="shipping" style="margin: 0;" id="shipping">
-                                <option class="text-muted" value="1">In Egypt Delivery - EGP50.00</option>
-                                <option class="text-muted" value="2">International Shipping - EGP350.00</option>
-                            </select>
-                            <button type="submit" name="updatetotal" class="update-button"><i class="fa fa-check checker" style="color:black; width:0"></i></button>
-                        </form>
-                    </div>
-                    <div class="row" style="margin: 0; padding:0%;">
-                        <b>
-                            <p>Discount Code</p>
-                        </b>
-                        <input name="code" placeholder="Enter your code" class="shipping">
-                    </div>
-            </div>
+                <div class="row" style="margin: 0; padding:0%;">
 
-            <div class=" row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE (including shipping)</div>
-                <div class="col" id="total-price" data-total="<?php echo $total; ?>">$<?php echo number_format($total, 2); ?></div>
-                =======
-                <form>
-                    <p>SHIPPING</p>
-                    <select>
-                        <option class="text-muted">In Egypt Delivery - EGP50.00</option>
-                        <option class="text-muted">International Shipping - EGP350.00</option>
-                    </select>
-                    <p>GIVE CODE</p>
-                    <input id="code" placeholder="Enter your code">
-                </form>
-                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                    <div class="col">TOTAL PRICE</div>
-                    <<<<<<< Updated upstream <div class="col text-right">$<?php echo number_format($total, 2); ?>
+
+                    <form>
+                        <p>SHIPPING</p>
+                        <select>
+                            <option class="text-muted">In Egypt Delivery - EGP50.00</option>
+                            <option class="text-muted">International Shipping - EGP350.00</option>
+                        </select>
+                        <p>GIVE CODE</p>
+                        <input id="code" placeholder="Enter your code">
+                    </form>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right">$<?php echo number_format($total, 2); ?>
+                        </div>
+
+                    </div>
+                    <button class="btn" href="checkout.php">CHECKOUT</button>
                 </div>
-                =======
-                <div class="col text-right">
-                    <?php echo $total; ?>
-                </div>
-                >>>>>>> Stashed changes
-                >>>>>>> 6f302f90fc43fa11e3710e57c10473ebf2fd9244
             </div>
-            <button class="btn" href="checkout.php">CHECKOUT</button>
         </div>
-    </div>
-    </div>
 
-    <?php include("footer.php"); ?>
+        <?php include("footer.php"); ?>
 </body>
 
 </html>
