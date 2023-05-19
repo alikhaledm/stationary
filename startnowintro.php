@@ -85,7 +85,7 @@
         text-decoration: none;
         display: inline-block;
         font-size: 20px;
-        transition-duration: 0.4s;
+        transition-duration: 0.5s;
         cursor: pointer;
         border-radius: 10px;
         outline: none;
@@ -129,7 +129,7 @@
     }
 
     .animated-button {
-        animation: flipButton 2s;
+        animation: flipButton 1.5s;
     }
 
     #firstContent {
@@ -154,7 +154,7 @@
     }
 </style>
 
-<body class="bg">
+<body>
     <div class="video-container fade-in">
         <video autoplay loop muted preload="auto" controlsList="nodownload">
             <source src="images/intro/intro3.mp4" type="video/mp4">
