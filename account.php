@@ -2,107 +2,92 @@
 require_once("connect.php");
 include("navbar.php");
 
-// Check if user is signed in and if not redirect to signin.php
-if (!isset($_SESSION['id'])) {
-    header("Location: signin.php");
-    exit;
-}
-
-// Fetch user data from the database
-$sql = "SELECT * FROM usersclass WHERE email = '{$_SESSION['email']}'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-
-// Update user data in the database
+// Assuming the form data is submitted via POST and the input fields have the same names as the column names in the table
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate and sanitize input fields
-    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
-    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-    $dob = mysqli_real_escape_string($conn, $_POST['dob']);
+    // Retrieve the form data
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $phone = $_POST['phone'];
+    $dob = $_POST['dob'];
 
-    // Check if the email field is empty or unchanged
-    if (!empty($email) && $email != $row['email']) {
-        // Validate the email format
+    // Construct the SQL query
+    $sql = "UPDATE usersclass SET";
+
+    // Add each column update based on the input values
+    $updates = array();
+
+    if (!empty($fname)) {
+        $updates[] = "fname = '$fname'";
+    }
+    if (!empty($lname)) {
+        $updates[] = "lname = '$lname'";
+    }
+    if (!empty($email)) {
+        // Validate email format
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Invalid email format.";
             exit;
         }
 
-        // Check if the email address already exists in the database
-        $emailCheckSql = "SELECT * FROM usersclass WHERE email = '$email' LIMIT 1";
-        $emailCheckResult = mysqli_query($conn, $emailCheckSql);
-        if (mysqli_num_rows($emailCheckResult) > 0) {
+        // Check if the email already exists in the database
+        $checkEmailQuery = "SELECT * FROM usersclass WHERE email = '$email'";
+        $emailResult = mysqli_query($conn, $checkEmailQuery);
+
+        if (mysqli_num_rows($emailResult) > 0) {
             echo "This email address is already associated with an account.";
             exit;
         }
 
-        // Update the email field in the database
-        $sql .= " email = '$email'";
-        $_SESSION['email'] = $email; // Update the email in the session
-    }
-
-    // Check if other fields are not empty and update the corresponding columns in the database
-    if (!empty($fname)) {
-        $sql .= " fname = '$fname',";
-        $_SESSION['fname'] = $fname; // Update the first name in the session
-    }
-    if (!empty($lname)) {
-        $sql .= " lname = '$lname',";
-        $_SESSION['lname'] = $lname; // Update the last name in the session
+        $updates[] = "email = '$email'";
     }
     if (!empty($password)) {
         // You should hash the password before storing it in the database
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $sql .= " password = '$hashedPassword',";
+        $updates[] = "password = '$hashedPassword'";
     }
     if (!empty($phone)) {
-        $sql .= " phone = '$phone',";
-        $_SESSION['phone'] = $phone; // Update the phone number in the session
+        $updates[] = "phone = '$phone'";
     }
     if (!empty($dob)) {
-        $sql .= " dob = '$dob',";
-        $_SESSION['dob'] = $dob; // Update the date of birth in the session
+        $updates[] = "dob = '$dob'";
     }
 
-    // Handle the uploaded small image
-    $smallImage = $_FILES['smallimage'];
+    // Check if any updates are available
+    if (count($updates) > 0) {
+        $sql .= " " . implode(", ", $updates);
+        $sql .= " WHERE email = '{$_SESSION['email']}'";
 
-    // Handle the uploaded small image
-    if (isset($_FILES['smallimage']) && $_FILES['smallimage']['size'] > 0) {
-        $smallImage = $_FILES['smallimage'];
+        // Execute the query
+        if (mysqli_query($conn, $sql)) {
+            // Update successful
 
-        // Generate a unique filename for the image
-        $filename = uniqid() . '_' . $smallImage['name'];
+            // Fetch the updated user data from the database
+            $selectQuery = "SELECT * FROM usersclass WHERE email = '{$_SESSION['email']}'";
+            $result = mysqli_query($conn, $selectQuery);
+            $user = mysqli_fetch_assoc($result);
 
-        // Specify the directory to save the uploaded image
-        $uploadDir = 'images/account/';
+            // Update the session variables with the new values
+            $_SESSION['fname'] = $user['fname'];
+            $_SESSION['lname'] = $user['lname'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['phone'] = $user['phone'];
+            $_SESSION['dob'] = $user['dob'];
+            $_SESSION['photo'] = $user['photo'];
 
-        // Move the uploaded image to the specified directory
-        $uploadPath = $uploadDir . $filename;
-        if (move_uploaded_file($smallImage['tmp_name'], $uploadPath)) {
-            $sql .= " small_image = '$uploadPath',";
-            $_SESSION['small_image'] = $uploadPath; // Update the small image path in the session
+            echo "User information updated successfully.";
         } else {
-            echo "Failed to upload the small image.";
-            exit;
+            // Error occurred during update
+            echo "Error updating user information: " . mysqli_error($conn);
         }
-    }
-
-
-    // Remove the trailing comma from the SQL update query
-    $sql = rtrim($sql, ", ");
-
-    // Update the user data in the database
-    $updateSql = "UPDATE usersclass SET " . substr($sql, 1) . " WHERE id = '{$_SESSION['id']}'";
-    if (mysqli_query($conn, $updateSql)) {
-        echo "Account information updated successfully.";
     } else {
-        echo "Error updating account information: " . mysqli_error($conn);
+        echo "No fields were provided for update.";
     }
 }
+
+// Close the database connection
+mysqli_close($conn);
 ?>
 
 <html>
@@ -113,22 +98,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
-<body>
+<form method="post">
+
     <div class="container-account" id="fade-container">
         <div class="row">
             <div class="col-md-12">
                 <img width="100%" height="300" src="images/account/background.jpg" alt="">
                 <div class="small-image" style="position: absolute; top: 60%; left: 5%;">
 
-                    <!-- add the ability for user to insert image -->
-                    <div class="image-container">
-                        <img id="image-preview" class="smallimage" src="images/account/profile.png" width="200" height="200" alt="Preview Image" />
-                        <div class="image-upload">
-                            <label for="smallimage" id="smallimage">Upload Image</label>
-                            <input type="file" name="smallimage" accept="image/*" />
-                        </div>
-                    </div>
-
+                    <?php
+                    // Check if the user has uploaded a profile picture
+                    if (!empty($_SESSION['photo'])) {
+                        echo '<img class="smallimage" width="100" height="100" src="images/account/' . $_SESSION['photo'] . '" alt="">';
+                    } else {
+                        echo '<form method="post">
+                        <input type="image"
+                        <img class="smallimage" width="100" height="100" src="images/account/profile.png" alt="">';
+                    }
+                    ?>
 
                     <b style="padding-left:10; font-size:23;">
                         <?php
@@ -140,6 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+
 
     <div class="container-account" id="fade-container2">
         <div class="row">
@@ -176,69 +164,68 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <div class="container-account" style="padding-top:30px; padding-bottom:100px;">
-        <form method="post">
-            <div class="row">
-                <div class="col-md-12">View and edit your personal info below.</div>
-                <div class="col-md-12">
-                    <hr>
-                </div>
-                <div style="padding-top:10px;" class="col-md-12">
-                </div>
-                <div style="padding-top:10px;" class="col-md-12">
-                    <div style="font-size:15px;"><b>Email:</b></div>
-                </div>
-                <div class="col-md-12">
-                    <div style="font-size:15px;"><?php echo $_SESSION['email'] ?></div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;">First Name</div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;">Last Name</div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;"><input class="input" type="text" name="fname" placeholder="<?php echo $_SESSION['fname'] ?>"></div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;"><input class="input" type="text" name="lname" placeholder="<?php echo $_SESSION['lname'] ?>"></div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;">Email</div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;">Password</div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;"><input class="input" type="text" name="email" placeholder="<?php echo $_SESSION['email'] ?>"></div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;"><input class="input" type="password" name="password" placeholder="********"></div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;">Phone No.</div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;">Date Of Birth</div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;"><input class="input" type="text" name="phone" placeholder="<?php echo $_SESSION['phone'] ?>"></div>
-                </div>
-                <div style="padding-top:10px;" class="col-md-6">
-                    <div style="font-size:20px;"><input class="input" type="date" name="dob" placeholder="<?php echo $_SESSION['dob'] ?>"></div>
-                </div>
-                <div class="col-md-6"></div>
-                <div style="padding-top:70px;" class="col-md-6">
-                    <input type="submit" class="update" value="update info">
-                </div>
+        <div class="row">
+            <div class="col-md-12">View and edit your personal info below.</div>
+            <div class="col-md-12">
+                <hr>
             </div>
-        </form>
-    </div>
+            <div style="padding-top:10px;" class="col-md-12">
+            </div>
+            <div style="padding-top:10px;" class="col-md-12">
+                <div style="font-size:15px;"><b>Email:</b></div>
+            </div>
+            <div class="col-md-12">
+                <div style="font-size:15px;"><?php echo $_SESSION['email'] ?></div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;">First Name</div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;">Last Name</div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;"><input class="input" type="text" name="fname" placeholder="<?php echo $_SESSION['fname'] ?>"></div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;"><input class="input" type="text" name="lname" placeholder="<?php echo $_SESSION['lname'] ?>"></div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;">Email</div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;">Password</div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;"><input class="input" type="text" name="email" placeholder="<?php echo $_SESSION['email'] ?>"></div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;"><input class="input" type="password" name="password" placeholder="********"></div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;">Phone No.</div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;">Date Of Birth</div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;"><input class="input" type="text" name="phone" placeholder="<?php echo $_SESSION['phone'] ?>"></div>
+            </div>
+            <div style="padding-top:10px;" class="col-md-6">
+                <div style="font-size:20px;"><input class="input" type="date" name="dob" placeholder="<?php echo $_SESSION['dob'] ?>"></div>
+            </div>
+            <div class="col-md-6"></div>
+            <div style="padding-top:70px;" class="col-md-6">
+                <input type="submit" class="update" value="update info">
+            </div>
+        </div>
+</form>
+</div>
 
 
-    </div>
-    </div>
+</div>
+</div>
 
-    </form>
+</form>
 
 
 </body>
