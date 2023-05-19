@@ -69,7 +69,7 @@ include("navbar.php")
       left: 10%;
       top: 40%;
       width: 35%;
-      height: 55%;
+
     }
   }
 
@@ -80,7 +80,7 @@ include("navbar.php")
       left: 10%;
       top: 40%;
       width: 30%;
-      height: 55%;
+
     }
   }
 
@@ -91,7 +91,7 @@ include("navbar.php")
       left: 10%;
       top: 40%;
       width: 40%;
-      height: 55%;
+
     }
   }
 
@@ -102,9 +102,106 @@ include("navbar.php")
       left: 10%;
       top: 40%;
       width: 46%;
+
+    }
+  }
+
+  @media (max-width:1132px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 40%;
+      width: 50%;
+
+    }
+  }
+
+
+
+
+
+  @media (min-height:1200px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 40%;
+
+      height: 40%;
+    }
+  }
+
+
+  @media (max-height:1201px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 30%;
+
+      height: 45%;
+    }
+  }
+
+  @media (max-height:1015px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 30%;
+
       height: 55%;
     }
   }
+
+  @media (max-height:830px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 20%;
+
+      height: 60%;
+    }
+  }
+
+  @media (max-height:740px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 20%;
+      height: 65%;
+    }
+  }
+
+  @media (max-height:700px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 20%;
+      height: 70%;
+    }
+  }
+
+  @media (max-height:650px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 20%;
+      height: 75%;
+    }
+  }
+
+
+
+
+
+
+
 
   .cardmobile {
     display: flex;
@@ -245,7 +342,7 @@ include("navbar.php")
         <div class="mainfont" style="padding-bottom:20;"><b>Fulfill Your School<br> Supply List Demands</b></div>
 
         <a href="startnowintro.php"><button class="btnstart">Start Now</button></a>
-        <div style="padding-bottom:20;"></div>
+        <div style="padding-bottom:5 ;"></div>
       </div>
     </div>
   </div>
