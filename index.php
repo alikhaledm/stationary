@@ -61,13 +61,48 @@ include("navbar.php")
 
 
 
-  @media (min-width:1000px) {
+
+  @media (max-width:1640px) {
     .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 40%;
+      width: 35%;
+      height: 55%;
+    }
+  }
+
+  @media (min-width:1550px) {
+    .card {
+      opacity: 90%;
       background-color: white;
       left: 10%;
       top: 40%;
       width: 30%;
-      height: 50%;
+      height: 55%;
+    }
+  }
+
+  @media (max-width:1379px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 40%;
+      width: 40%;
+      height: 55%;
+    }
+  }
+
+  @media (max-width:1208px) {
+    .card {
+      opacity: 90%;
+      background-color: white;
+      left: 10%;
+      top: 40%;
+      width: 46%;
+      height: 55%;
     }
   }
 
@@ -81,8 +116,8 @@ include("navbar.php")
   .btnstart {
     background-color: #FBD53E;
     border: none;
-    width: 200px;
-    height: 50px;
+    width: 400px;
+    height: 60px;
   }
 
   .btnstartmobile {
@@ -207,9 +242,10 @@ include("navbar.php")
   <div class="my-container">
     <div class="cover-photo parallax">
       <div class="card centered">
-        <div class="mainfont">Fulfill Your School<br> Supply List Demands</div>
+        <div class="mainfont" style="padding-bottom:20;"><b>Fulfill Your School<br> Supply List Demands</b></div>
 
         <a href="startnowintro.php"><button class="btnstart">Start Now</button></a>
+        <div style="padding-bottom:20;"></div>
       </div>
     </div>
   </div>
@@ -218,8 +254,8 @@ include("navbar.php")
   </div>
   <div class="container-fluid" style="padding-top: 100;">
     <div class="row">
-      <div class="col-md-12" style="padding-bottom: 100;">
-        <div class="mobile hidden">
+      <div class="col-md-12">
+        <div class="mobile hidden" style="padding-bottom: 200;">
           <div class="cardmobile">
             <div class="mainfontmobile">Fulfill Your School Supplies List Demands</div>
           </div>
