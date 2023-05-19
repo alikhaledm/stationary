@@ -45,54 +45,226 @@ include("navbar.php")
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
   }
+
+
+  @media (max-width:999px) {
+    .my-container {
+      width: 100%;
+    }
+  }
+
+  @media (max-width:999px) {
+    .card {
+      display: none;
+    }
+  }
+
+
+
+  @media (min-width:1000px) {
+    .card {
+      background-color: white;
+      left: 10%;
+      top: 40%;
+      width: 30%;
+      height: 50%;
+    }
+  }
+
+  .cardmobile {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btnstart {
+    background-color: #FBD53E;
+    border: none;
+    width: 200px;
+    height: 50px;
+  }
+
+  .btnstartmobile {
+    background-color: #FBD53E;
+    border: none;
+    width: 450px;
+    height: 100px;
+    font-size: 30;
+  }
+
+  .btnstartmobile:hover {
+    background-color: orange;
+    border: none;
+    width: 300px;
+    height: 100px;
+    font-size: 40;
+  }
+
+  .btnstart:hover {
+    background-color: orange;
+    border: none;
+  }
+
+  .centered {
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .centeredmobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile {
+    display: none;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+    /* Initially hide the div on all devices */
+  }
+
+  .mobile.visible {
+    opacity: 1;
+  }
+
+  @media (max-width: 999px) {
+    .mobile {
+      display: block;
+      /* Show the div only on mobile devices */
+    }
+  }
+
+  @media (max-width:999px) {
+    .my-container {
+      display: none;
+    }
+  }
+
+  .mainfontmobile {
+    margin-top: 4;
+    justify-content: center;
+    align-items: center;
+    font-size: 50;
+  }
+
+  .paddingmobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .bordered-row {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .bordered-row .col-lg-3 {
+    border-right: 1px solid #ccc;
+  }
+
+  .bordered-row .col-lg-3:last-child {
+    border-right: none;
+  }
+
+  .bordered-row {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .bordered-row.fade-in {
+    opacity: 1;
+  }
+
+
+
+
+
+  .bordered-row {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .bordered-row .col-sm-6 {
+    border-right: 1px solid #ccc;
+  }
+
+  .bordered-row .col-sm-6:last-child {
+    border-right: 1px;
+  }
+
+  .bordered-row {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .bordered-row.fade-in {
+    opacity: 1;
+  }
 </style>
 
 <body>
   <div class="my-container">
     <div class="cover-photo parallax">
-      <div class="inner-container" style="padding-left: 40; padding-top: 10;">
-        <div class="mainfont" style="padding-bottom: 15;">Fulfill Your School<br> Supply List Demands</div>
+      <div class="card centered">
+        <div class="mainfont">Fulfill Your School<br> Supply List Demands</div>
 
-        <a href="startnowintro.php"><input type="submit" value="Start now" class="custombtn text-center"></a>
+        <a href="startnowintro.php"><button class="btnstart">Start Now</button></a>
       </div>
     </div>
   </div>
 
+
   </div>
-  <div class="container-fluid" style="padding-top: 50;">
+  <div class="container-fluid" style="padding-top: 100;">
     <div class="row">
-      <div class="line" style="padding-top: 50;"></div>
-      <div class="col-md-12 text-center" style="padding-bottom: 50;">
-        <h2>SHOP BY CATEGORIES</h2>
+      <div class="col-md-12" style="padding-bottom: 100;">
+        <div class="mobile hidden">
+          <div class="cardmobile">
+            <div class="mainfontmobile">Fulfill Your School Supplies List Demands</div>
+          </div>
+          <div class="col-md-12 centeredmobile" style="padding-top: 20;">
+            <a href="startnowintro.php"><button class="btnstartmobile">Start Now</button></a>
+            <script>$(document).ready(function () {
+                if ($(window).width() <= 999) {
+                  $('.mobile').removeClass('hidden').addClass('visible');
+                }
+              });
+            </script>
+          </div>
+        </div>
+
+
+
       </div>
-      <div class="line" style="padding-top: 50;"></div>
     </div>
+    <div class="line" style="padding-top: 50;"></div>
+    <div class="col-md-12 text-center" style="padding-bottom: 50;">
+      <h2>SHOP BY CATEGORIES</h2>
+    </div>
+    <div class="line" style="padding-top: 50; padding-bottom:50;"></div>
+  </div>
   </div>
 
   <div class="container-fluid" style="padding-bottom: 150px;">
-
-
-
-
     <div class="row">
-      <div class="col-md-6">
-        <div style="position: relative;"> <!-- Adds a relative position to the div -->
+      <div class="col-md-6 col1">
+        <div style="position: relative;">
           <div class="zoom-in-container">
-            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50; padding-right:20;"
-              src="images/supplies-list-1.jpg" alt="">
-
+            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-1.jpg"
+              alt="">
             <button class="custombtn2"
               style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Shop
-              Stationery</button> <!-- Adds a button with absolute position and centers it -->
+              Stationery</button>
           </div>
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 col2">
         <div style="position: relative;">
           <div class="zoom-in-container2">
-            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50; padding-left:20;"
-              src="images/supplies-list-2.jpg" alt="">
+            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-2.jpg"
+              alt="">
             <button class="custombtn2"
               style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Fulfill School Supplies
               List</button>
@@ -101,6 +273,24 @@ include("navbar.php")
       </div>
     </div>
   </div>
+  <script>$(document).ready(function () {
+      function adjustColumnWidth() {
+        if ($(window).width() <= 999) {
+          $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
+        } else {
+          $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
+        }
+      }
+
+      // Adjust column width on initial page load
+      adjustColumnWidth();
+
+      // Adjust column width on window resize
+      $(window).resize(function () {
+        adjustColumnWidth();
+      });
+    });
+  </script>
 
   <div class="container">
     <div class="row">
@@ -113,17 +303,17 @@ include("navbar.php")
 
   <div class="container-fluid" style="padding-bottom: 100px;">
 
-    <div class="row bordered-row">
-      <div class="col-md-3 text-center"><img src="images/Schools/school1.jpg" alt=""></div>
-      <div class="col-md-3 text-center"><img src="images/Schools/school2.jpg" alt=""></div>
-      <div class="col-md-3 text-center"><img src="images/Schools/school3.jpg" alt=""></div>
-      <div class="col-md-3 text-center"><img src="images/Schools/school4.jpg" alt=""></div>
+    <div class="row bordered-row centered">
+      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school1.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school2.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-6 text-center"><img width="80" src="images/Schools/school3.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school4.jpg" alt=""></div>
     </div>
-    <div class="row bordered-row">
-      <div class="col-md-3 text-center"><img src="images/Schools/school5.jpg" alt=""></div>
-      <div class="col-md-3 text-center"><img src="images/Schools/school6.jpg" alt=""></div>
-      <div class="col-md-3 text-center"><img src="images/Schools/school7.jpg" alt=""></div>
-      <div class="col-md-3 text-center"><img src="images/Schools/school8.jpg" alt=""></div>
+    <div class="row bordered-row centered">
+      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school5.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-6 text-center"><img width="80" src="images/Schools/school6.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school7.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school8.jpg" alt=""></div>
     </div>
   </div>
 
