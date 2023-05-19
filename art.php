@@ -1,13 +1,52 @@
 <?php
 require_once("connect.php");
 include("navbar.php")
-?>
+    ?>
 <html>
 <title>School Supplies List</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 
 
+<style>
+    /* For WebKit browsers (Chrome, Safari) */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: gray;
+    }
+
+    /* For Firefox */
+    ::-moz-scrollbar {
+        width: 10px;
+    }
+
+    ::-moz-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    ::-moz-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    /* For Internet Explorer and Microsoft Edge */
+    /* Note: Microsoft Edge supports the -ms-overflow-style property */
+    /* to customize the scroll bar, but it's not widely supported */
+    /* in other versions of IE. */
+    /* Therefore, this code may not work in all IE versions. */
+    /* It's recommended to test it in your target browsers. */
+    .scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
+</style>
 
 <body>
 
@@ -37,7 +76,8 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
                 <div class="bar">
                     <button onclick="decrease(0)">-</button>
@@ -47,7 +87,8 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
                 <div class="bar">
                     <button onclick="decrease(1)">-</button>
@@ -58,7 +99,8 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
                 <div class="bar">
                     <button onclick="decrease(2)">-</button>
@@ -70,14 +112,14 @@ include("navbar.php")
 
             <script>
                 var barData = [{
-                        value: 0
-                    },
-                    {
-                        value: 0
-                    },
-                    {
-                        value: 0
-                    }
+                    value: 0
+                },
+                {
+                    value: 0
+                },
+                {
+                    value: 0
+                }
                 ];
 
                 function increase(index) {
@@ -114,17 +156,20 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
@@ -141,17 +186,20 @@ include("navbar.php")
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
 
-            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
+            <div class="col-md-3 text-center" style="padding-top: 50px; padding-left:250px;"><img
+                    style="max-width: 100%;" width="330px" height="200px" src="images/supplies-list-1.jpg" alt="">
                 <BR><a href="cart.php"><button>Add to Cart</button></a>
 
             </div>
@@ -164,7 +212,7 @@ include("navbar.php")
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             load_data();
 
@@ -175,12 +223,12 @@ include("navbar.php")
                     data: {
                         query: query
                     },
-                    success: function(data) {
+                    success: function (data) {
                         $('#result').html(data);
                     }
                 });
             }
-            $('#search_text').keyup(function() {
+            $('#search_text').keyup(function () {
                 var search = $(this).val();
                 if (search != '') {
                     load_data(search);
@@ -199,4 +247,4 @@ include("navbar.php")
 
 <?php
 include("footer.php")
-?>
+    ?>

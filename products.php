@@ -14,14 +14,53 @@ include("navbar.php");
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" />
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
     crossorigin="anonymous"></script>
+  </script>
 </head>
+<style>
+  /* For WebKit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: white;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;
+  }
+
+  /* For Firefox */
+  ::-moz-scrollbar {
+    width: 10px;
+  }
+
+  ::-moz-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  ::-moz-scrollbar-thumb {
+    background-color: #888;
+  }
+
+  /* For Internet Explorer and Microsoft Edge */
+  /* Note: Microsoft Edge supports the -ms-overflow-style property */
+  /* to customize the scroll bar, but it's not widely supported */
+  /* in other versions of IE. */
+  /* Therefore, this code may not work in all IE versions. */
+  /* It's recommended to test it in your target browsers. */
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
+</style>
 
 <body>
   <div class="container-fluid">
@@ -66,22 +105,22 @@ include("navbar.php");
 
 </html>
 <script>
-  $(document).ready(function () {
-    load_data();
+      $(document).ready(function () {
+        load_data();
 
-    function load_data(query) {
-      $.ajax({
-        url: "fetch.php",
-        method: "POST",
-        data: {
-          query: query
-        },
-        success: function (data) {
-          $('#result').html(data);
-        }
-      });
+      function load_data(query) {
+        $.ajax({
+          url: "fetch.php",
+          method: "POST",
+          data: {
+            query: query
+          },
+          success: function (data) {
+            $('#result').html(data);
+          }
+        });
     }
-    $('#search_text').keyup(function () {
+      $('#search_text').keyup(function () {
       var search = $(this).val();
       if (search != '') {
         load_data(search);

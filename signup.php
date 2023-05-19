@@ -9,6 +9,49 @@
     .fade-in {
         opacity: 1;
     }
+
+    .centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* For WebKit browsers (Chrome, Safari) */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: gray;
+    }
+
+    /* For Firefox */
+    ::-moz-scrollbar {
+        width: 10px;
+    }
+
+    ::-moz-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    ::-moz-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    /* For Internet Explorer and Microsoft Edge */
+    /* Note: Microsoft Edge supports the -ms-overflow-style property */
+    /* to customize the scroll bar, but it's not widely supported */
+    /* in other versions of IE. */
+    /* Therefore, this code may not work in all IE versions. */
+    /* It's recommended to test it in your target browsers. */
+    .scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
 </style>
 
 <?php
@@ -88,10 +131,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </div>
                         <form method="POST">
-                            <div class="container mx-auto ">
+                            <div class="container mx-auto">
                                 <div class="mx-auto max-w-xs">
                                     <div class="row">
-                                        <div class="col">
+                                        <div class="col centered">
                                             <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                                                 <label
                                                     class="btn btn-warning px-8 py-2 border border-gray-200 bg-gray-200 font-semibold hover:bg-warning transition-all duration-300 ease-in-out">

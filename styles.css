@@ -53,6 +53,7 @@ html {
   }
 
   .mainfont {
+    display: flex;
     font-size: 40;
   }
   
@@ -60,16 +61,6 @@ html {
     font-size: 80;
   }
 
-  .inner-container {
-    
-    position: absolute;
-    width: 28%;
-    height: 45%;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    background-color: rgb(255, 255, 255, 0.94);
-  }
 
   .inner-container3 {
     position: absolute;
@@ -308,4 +299,6 @@ border: 0;
            top: 0;
            position: absolute;
        }
+
+       
        /*END map*/

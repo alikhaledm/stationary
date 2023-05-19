@@ -9,7 +9,11 @@ if (isset($_POST["query"])) {
 
 $total = 0;
 
+<<<<<<< Updated upstream
 $getotal = "SELECT SUM(products.price * cart.quantity) AS total_price FROM products INNER JOIN cart ON products.id = cart.productid WHERE cart.userid = $userid";
+=======
+$getotal = "SELECT SUM(products.price) AS total_price FROM products INNER JOIN cart ON products.id = cart.productid WHERE cart.userid = $userid";
+>>>>>>> Stashed changes
 $result = mysqli_query($conn, $getotal);
 $tagID = mysqli_fetch_assoc($result);
 
@@ -38,8 +42,14 @@ if (isset($_POST['update_quantity'])) {
 <head>
     <title>Shopping Cart</title>
 
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="cartstyles.css">
+=======
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+>>>>>>> Stashed changes
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -75,6 +85,200 @@ if (isset($_POST['update_quantity'])) {
     </script>
 </head>
 
+<<<<<<< Updated upstream
+=======
+<style>
+    .title {
+        margin-bottom: 5vh;
+    }
+
+    .card {
+        margin: auto;
+        margin-top: 20px;
+        max-width: 950px;
+        width: 90%;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border: transparent;
+    }
+
+    @media(max-width:767px) {
+        .card {
+            margin: 3vh auto;
+        }
+    }
+
+    .cart {
+        background-color: #fff;
+        padding: 4vh 5vh;
+    }
+
+    @media(max-width:767px) {
+        .cart {
+            padding: 4vh;
+        }
+    }
+
+    .summary {
+        background-color: #ddd;
+        padding: 4vh;
+        color: rgb(65, 65, 65);
+    }
+
+
+    .summary .col-2 {
+        padding: 0;
+    }
+
+    .summary .col-10 {
+        padding: 0;
+    }
+
+    .row {
+        margin: 0;
+    }
+
+    .title b {
+        font-size: 1.5rem;
+    }
+
+    .main {
+        margin: 0;
+        padding: 2vh 0;
+        width: 100%;
+    }
+
+
+    a {
+        padding: 0 1vh;
+    }
+
+    .close {
+        margin-left: auto;
+        font-size: 0.7rem;
+    }
+
+    img {
+        width: 3.5rem;
+    }
+
+    .back-to-shop {
+        margin-top: 4.5rem;
+    }
+
+    h5 {
+        margin-top: 4vh;
+    }
+
+    hr {
+        margin-top: 1.25rem;
+    }
+
+    form {
+        padding: 2vh 0;
+    }
+
+    select {
+        border: 1px solid rgba(0, 0, 0, 0.137);
+        border-radius: 5px;
+        padding: 1.5vh 1vh;
+        margin-bottom: 4vh;
+        outline: none;
+        width: 100%;
+        background-color: rgb(247, 247, 247);
+    }
+
+    input {
+        border: 1px solid rgba(0, 0, 0, 0.137);
+        padding: 1vh;
+        margin-bottom: 4vh;
+        outline: none;
+        width: 100%;
+        background-color: rgb(247, 247, 247);
+    }
+
+    input:focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    .btn {
+        background-color: yellow;
+        color: white;
+        width: 100%;
+        font-size: 0.7rem;
+        margin-top: 4vh;
+        padding: 1vh;
+    }
+
+    .btn:focus {
+        box-shadow: none;
+        outline: none;
+        box-shadow: none;
+        color: white;
+        -webkit-box-shadow: none;
+        -webkit-user-select: none;
+        transition: none;
+    }
+
+    .btn:hover {
+        color: white;
+    }
+
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    #code {
+        border-radius: 5px;
+        background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+        background-repeat: no-repeat;
+        background-position-x: 95%;
+        background-position-y: center;
+    }
+
+    /* For WebKit browsers (Chrome, Safari) */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: gray;
+    }
+
+    /* For Firefox */
+    ::-moz-scrollbar {
+        width: 10px;
+    }
+
+    ::-moz-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    ::-moz-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    /* For Internet Explorer and Microsoft Edge */
+    /* Note: Microsoft Edge supports the -ms-overflow-style property */
+    /* to customize the scroll bar, but it's not widely supported */
+    /* in other versions of IE. */
+    /* Therefore, this code may not work in all IE versions. */
+    /* It's recommended to test it in your target browsers. */
+    .scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
+</style>
+
+>>>>>>> Stashed changes
 <body>
     <div class="card">
         <div class="row">
@@ -131,7 +335,8 @@ if (isset($_POST['update_quantity'])) {
                 }
                 ?>
 
-                <div class="back-to-shop"><a href="products.php">&leftarrow;<span class="text-muted">Back to shop</span></a></div>
+                <div class="back-to-shop"><a href="products.php">&leftarrow;<span class="text-muted">Back to
+                            shop</span></a></div>
             </div>
             <div class="col-md-4 summary">
                 <div>
@@ -149,7 +354,13 @@ if (isset($_POST['update_quantity'])) {
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">TOTAL PRICE</div>
+<<<<<<< Updated upstream
                     <div class="col text-right">$<?php echo number_format($total, 2); ?></div>
+=======
+                    <div class="col text-right">
+                        <?php echo $total; ?>
+                    </div>
+>>>>>>> Stashed changes
                 </div>
                 <button class="btn" href="checkout.php">CHECKOUT</button>
             </div>
