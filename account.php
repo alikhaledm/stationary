@@ -2,175 +2,116 @@
 require_once("connect.php");
 include("navbar.php");
 
-//check is user is signed in and if not redirect to signin.php
+// Check if user is signed in and if not redirect to signin.php
 if (!isset($_SESSION['id'])) {
     header("Location: signin.php");
+    exit;
 }
 
-$sql = "SELECT * FROM usersclass WHERE email ='$_SESSION[email]'";
+// Fetch user data from the database
+$sql = "SELECT * FROM usersclass WHERE email = '{$_SESSION['email']}'";
 $result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
-// Assuming the form data is submitted via POST and the input fields have the same names as the column names in the table
+// Update user data in the database
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve the form data
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $phone = $_POST['phone'];
-    $dob = $_POST['dob'];
+    // Validate and sanitize input fields
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $dob = mysqli_real_escape_string($conn, $_POST['dob']);
 
-    // Construct the SQL query
-    $sql = "UPDATE usersclass SET";
+    // Check if the email field is empty or unchanged
+    if (!empty($email) && $email != $row['email']) {
+        // Validate the email format
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Invalid email format.";
+            exit;
+        }
 
-    // Add each column update based on the input values
+        // Check if the email address already exists in the database
+        $emailCheckSql = "SELECT * FROM usersclass WHERE email = '$email' LIMIT 1";
+        $emailCheckResult = mysqli_query($conn, $emailCheckSql);
+        if (mysqli_num_rows($emailCheckResult) > 0) {
+            echo "This email address is already associated with an account.";
+            exit;
+        }
+
+        // Update the email field in the database
+        $sql .= " email = '$email'";
+        $_SESSION['email'] = $email; // Update the email in the session
+    }
+
+    // Check if other fields are not empty and update the corresponding columns in the database
     if (!empty($fname)) {
         $sql .= " fname = '$fname',";
+        $_SESSION['fname'] = $fname; // Update the first name in the session
     }
     if (!empty($lname)) {
         $sql .= " lname = '$lname',";
-    }
-    if (!empty($email)) {
-        $sql .= " email = '$email',";
+        $_SESSION['lname'] = $lname; // Update the last name in the session
     }
     if (!empty($password)) {
-        $sql .= " password = '$password',";
+        // You should hash the password before storing it in the database
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql .= " password = '$hashedPassword',";
     }
     if (!empty($phone)) {
         $sql .= " phone = '$phone',";
+        $_SESSION['phone'] = $phone; // Update the phone number in the session
     }
     if (!empty($dob)) {
         $sql .= " dob = '$dob',";
+        $_SESSION['dob'] = $dob; // Update the date of birth in the session
     }
 
-    // Remove the trailing comma
-    $sql = rtrim($sql, ",");
+    // Handle the uploaded small image
+    $smallImage = $_FILES['smallimage'];
 
-    // Add the WHERE clause to update the specific user based on the email
-    $sql .= " WHERE email = '$_SESSION[email]'";
+    // Handle the uploaded small image
+    if (isset($_FILES['smallimage']) && $_FILES['smallimage']['size'] > 0) {
+        $smallImage = $_FILES['smallimage'];
 
-    // Execute the query
-    if (mysqli_query($conn, $sql)) {
-        // Update successful
+        // Generate a unique filename for the image
+        $filename = uniqid() . '_' . $smallImage['name'];
 
-        // Fetch the updated user data from the database
-        $selectQuery = "SELECT * FROM usersclass WHERE email ='$_SESSION[email]'";
-        $result = mysqli_query($conn, $selectQuery);
-        $user = mysqli_fetch_assoc($result);
+        // Specify the directory to save the uploaded image
+        $uploadDir = 'images/account/';
 
-        // Update the session variables with the new values
-        $_SESSION['fname'] = $user['fname'];
-        $_SESSION['lname'] = $user['lname'];
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['phone'] = $user['phone'];
-        $_SESSION['dob'] = $user['dob'];
+        // Move the uploaded image to the specified directory
+        $uploadPath = $uploadDir . $filename;
+        if (move_uploaded_file($smallImage['tmp_name'], $uploadPath)) {
+            $sql .= " small_image = '$uploadPath',";
+            $_SESSION['small_image'] = $uploadPath; // Update the small image path in the session
+        } else {
+            echo "Failed to upload the small image.";
+            exit;
+        }
+    }
+
+
+    // Remove the trailing comma from the SQL update query
+    $sql = rtrim($sql, ", ");
+
+    // Update the user data in the database
+    $updateSql = "UPDATE usersclass SET " . substr($sql, 1) . " WHERE id = '{$_SESSION['id']}'";
+    if (mysqli_query($conn, $updateSql)) {
+        echo "Account information updated successfully.";
     } else {
-        // Error occurred during update
-        echo "Error updating user information: " . mysqli_error($conn);
+        echo "Error updating account information: " . mysqli_error($conn);
     }
 }
-
-// Close the database connection
-mysqli_close($conn);
 ?>
 
 <html>
 <title>School Supplies List</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="stylesacc.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
-<style>
-    .container-account {
-        padding-left: 50;
-        padding-right: 50;
-        width: 60%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .smallimage {
-        align-items: center;
-        justify-content: center;
-    }
-
-    .discard {
-        width: 100;
-        height: 35;
-        background-color: white;
-        color: black;
-        border: none;
-    }
-
-    .discard:hover {
-        background-color: black;
-        color: white;
-        border: none;
-
-    }
-
-    .update {
-        width: 115;
-        height: 35;
-        background-color: black;
-        color: white;
-        opacity: 0.6;
-        border: none;
-    }
-
-    .update:hover {
-        background-color: black;
-        color: white;
-        border: none;
-        opacity: 1;
-
-    }
-
-    .input {
-        width: 70%;
-        height: 35;
-
-    }
-
-    /* For WebKit browsers (Chrome, Safari) */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: white;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: gray;
-    }
-
-    /* For Firefox */
-    ::-moz-scrollbar {
-        width: 10px;
-    }
-
-    ::-moz-scrollbar-track {
-        background-color: #f1f1f1;
-    }
-
-    ::-moz-scrollbar-thumb {
-        background-color: #888;
-    }
-
-    /* For Internet Explorer and Microsoft Edge */
-    /* Note: Microsoft Edge supports the -ms-overflow-style property */
-    /* to customize the scroll bar, but it's not widely supported */
-    /* in other versions of IE. */
-    /* Therefore, this code may not work in all IE versions. */
-    /* It's recommended to test it in your target browsers. */
-    .scrollbar {
-        scrollbar-width: thin;
-        scrollbar-color: #888 #f1f1f1;
-    }
-</style>
 
 <body>
     <div class="container-account" id="fade-container">
@@ -179,7 +120,16 @@ mysqli_close($conn);
                 <img width="100%" height="300" src="images/account/background.jpg" alt="">
                 <div class="small-image" style="position: absolute; top: 60%; left: 5%;">
 
-                    <img class="smallimage" width="100" height="100" src="images/account/profile.png" alt="">
+                    <!-- add the ability for user to insert image -->
+                    <div class="image-container">
+                        <img id="image-preview" class="smallimage" src="images/account/profile.png" width="200" height="200" alt="Preview Image" />
+                        <div class="image-upload">
+                            <label for="smallimage" id="smallimage">Upload Image</label>
+                            <input type="file" name="smallimage" accept="image/*" />
+                        </div>
+                    </div>
+
+
                     <b style="padding-left:10; font-size:23;">
                         <?php
                         echo ucfirst($_SESSION['fname']);

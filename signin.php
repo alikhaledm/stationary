@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
             $_SESSION['dob'] = $row["dob"];
+            $_SESSION['smallimage'] = $row["photo"];
 
             if (isset($_SESSION['id'])) {
                 header('location: index.php');
