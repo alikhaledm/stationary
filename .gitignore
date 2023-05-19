@@ -1,6 +1,11 @@
-# .gitignore
+# Ignore .vscode folder
+.vscode
 
 # Ignore launch.json file
-.vscode/launch.json
+launch.json
+
+# Ignore bs-config.js file
+bs-config.js
 *.json
+.vscode/launch.json
 .vscode/launch.json
