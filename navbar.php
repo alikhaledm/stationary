@@ -1,6 +1,19 @@
 <?php
 session_start();
 ?>
+<!-- CSS file -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    // Initialize Bootstrap dropdown
+    $(document).ready(function() {
+        $('.dropdown-toggle').dropdown();
+    });
+</script>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white opacity-100 sticky-top">
     <div class="container-fluid" style="padding-bottom: 30px; padding-top: 30px;">
         <a class="navbar-brand" href="index.php">
@@ -38,24 +51,28 @@ session_start();
                 if (isset($_SESSION['id'])) {
                     echo '
                     <li class="nav-item">
-                    <a class="nav-link" href="cart.php">My Cart</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="logout.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown">'
-                        . $_SESSION["fname"];
+                        <a class="nav-link" href="cart.php">My Cart</a>
+                    </li>
+                    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    ' . $_SESSION["fname"] . '
+    </a>
+    </li>
+<li>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="account.php">My Account</a></li>
+        <li><a class="dropdown-item" href="orders.php">My Orders</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+    </ul>
+</li> ';
+                } else {
                     echo '
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                        <li><a class="dropdown-item" href="#">Option 2</a></li>
-                        <li><a class="dropdown-item" href="#">Option 3</a></li>
-                        <li><a class="dropdown-item" href="#">Option 4</a></li>
-                        <li><a class="dropdown-item" href="#">Option 5</a></li>
-                    </ul>
-                </li>';
-                } else
-                    echo '<li class="nav-item">
-                <a class="nav-link" href="signin.php">Sign In</a>
-            </li>';
+                    <li class="nav-item">
+                        <a class="nav-link" href="signin.php">Sign In</a>
+                    </li>
+                    ';
+                }
                 ?>
             </ul>
         </div>

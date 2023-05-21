@@ -215,18 +215,13 @@ mysqli_close($conn);
             </div>
             <div class="col-md-6"></div>
             <div style="padding-top:70px;" class="col-md-6">
-                <input type="submit" class="update" value="update info">
+                <input type="submit" class="update" value="UPDATE">
             </div>
         </div>
 </form>
 </div>
-
-
 </div>
 </div>
-
-</form>
-
 
 </body>
 
