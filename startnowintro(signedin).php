@@ -198,6 +198,7 @@
         <div class="container centered">
             <div class="row">
                 <div id="firstContent" class="col-md-12 content">
+                    <h1>Welcome Yousef!</h1>
                     <b>Say goodbye to School Supplies shopping headaches with our hassle-free solution!</b><br>
                     <b>Experience the convenience of Supply Hub: Choose your student's School, Grade, and let the School
                         Supplies List come knocking at your door, just go to the next steps!</b>
