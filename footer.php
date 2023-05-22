@@ -1,3 +1,10 @@
+<style>
+    #hr-1 {
+  border: 1px solid black;
+  font-weight: ;
+}
+</style>
+<hr id="hr-1">
 <footer class="bg-white text-black">
     <div class="container py-5">
         <div class="row">

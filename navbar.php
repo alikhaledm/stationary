@@ -17,7 +17,7 @@ session_start();
 <nav class="navbar navbar-expand-lg navbar-light bg-white opacity-100 sticky-top">
     <div class="container-fluid" style="padding-bottom: 30px; padding-top: 30px;">
         <a class="navbar-brand" href="index.php">
-            <img src="images/logo.jpg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top me-2">
+            <img src="images/logo.jpg" alt="Logo" width="75" height="75" class="d-inline-block align-text-top me-2">
         </a>
         <a class="navbar-brand" href="#">
             <h1 class="d-inline-block align-text-top me-2">SUPPLIES HUB</h1>
