@@ -35,7 +35,8 @@ if (isset($_POST['update_quantity'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="cartstyles.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -111,7 +112,7 @@ if (isset($_POST['update_quantity'])) {
         <div class="row main align-items-center" style="padding: 0;">
             <div class="col-2"><img class="img-fluid" src="images/Shop/products/' . $rowData2['photo'] . '"></div>
             <div class="col-4" >
-                <div class="row product-name"><b>' . $productName . '</b></div>
+                <div class="row product-name">' . $productName . '</div>
             </div>
                 <div class="col-2">
                     <form action="" method="POST" class="update-form" style="margin-bottom:0;">
@@ -162,8 +163,9 @@ if (isset($_POST['update_quantity'])) {
                 </div>
             </div>
         </div>
+    </div>
 
-        <?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>
 </body>
 
 </html>

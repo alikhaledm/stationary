@@ -15,6 +15,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 /* move $productPrice to the right */
 .quantity-input {
   display: flex;
@@ -119,10 +120,6 @@
 
 a {
   padding: 0 1vh;
-}
-
-img {
-  width: 3.5rem;
 }
 
 .back-to-shop {

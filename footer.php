@@ -1,8 +1,7 @@
 <style>
     #hr-1 {
-  border: 1px solid black;
-  font-weight: ;
-}
+        border: 1px solid black;
+    }
 </style>
 <hr id="hr-1">
 <footer class="bg-white text-black">

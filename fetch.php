@@ -59,6 +59,7 @@
 <?php
 session_start();
 require_once("connect.php");
+
 if (isset($_POST["query"])) {
   $search = mysqli_real_escape_string($conn, $_POST["query"]);
   $query = "SELECT * FROM products WHERE pname LIKE '%" . $search . "%'";
