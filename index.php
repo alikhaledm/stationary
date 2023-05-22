@@ -1,10 +1,9 @@
 <?php
 include("navbar.php")
-  ?>
+?>
 <html>
 <title>School Supplies List</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -340,8 +339,12 @@ include("navbar.php")
     <div class="cover-photo parallax">
       <div class="card centered">
         <div class="mainfont" style="padding-bottom:20;"><b>Fulfill Your School<br> Supply List Demands</b></div>
-
-        <a href="startnowintro.php"><button class="btnstart">Start Now</button></a>
+        <?php if (!isset($_SESSION['id'])) {
+          echo '<a href="startnowintro.php"><button class="btnstart">Start Now</button></a>';
+        } else {
+          echo '<a href="startnowintro(signedin).php"><button class="btnstart">Start Now</button></a>';
+        }
+        ?>
         <div style="padding-bottom:5 ;"></div>
       </div>
     </div>
@@ -358,7 +361,8 @@ include("navbar.php")
           </div>
           <div class="col-md-12 centeredmobile" style="padding-top: 20;">
             <a href="startnowintro.php"><button class="btnstartmobile">Start Now</button></a>
-            <script>$(document).ready(function () {
+            <script>
+              $(document).ready(function() {
                 if ($(window).width() <= 999) {
                   $('.mobile').removeClass('hidden').addClass('visible');
                 }
@@ -384,10 +388,8 @@ include("navbar.php")
       <div class="col-md-6 col1">
         <div style="position: relative;">
           <div class="zoom-in-container">
-            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-1.jpg"
-              alt="">
-            <button class="custombtn2"
-              style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Shop
+            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-1.jpg" alt="">
+            <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Shop
               Stationery</button>
           </div>
         </div>
@@ -396,17 +398,16 @@ include("navbar.php")
       <div class="col-md-6 col2">
         <div style="position: relative;">
           <div class="zoom-in-container2">
-            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-2.jpg"
-              alt="">
-            <button class="custombtn2"
-              style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Fulfill School Supplies
+            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-2.jpg" alt="">
+            <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Fulfill School Supplies
               List</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script>$(document).ready(function () {
+  <script>
+    $(document).ready(function() {
       function adjustColumnWidth() {
         if ($(window).width() <= 999) {
           $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
@@ -419,7 +420,7 @@ include("navbar.php")
       adjustColumnWidth();
 
       // Adjust column width on window resize
-      $(window).resize(function () {
+      $(window).resize(function() {
         adjustColumnWidth();
       });
     });
@@ -454,8 +455,8 @@ include("navbar.php")
 
 
   <script>
-    $(window).scroll(function () {
-      $('.bordered-row').each(function () {
+    $(window).scroll(function() {
+      $('.bordered-row').each(function() {
         var bottom_of_object = $(this).offset().top + $(this).outerHeight();
         var bottom_of_window = $(window).scrollTop() + $(window).height();
         if (bottom_of_window > bottom_of_object) {
@@ -479,10 +480,10 @@ include("navbar.php")
 
 <?php
 include("footer.php")
-  ?>
+?>
 
 <script>
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", function() {
     var element = document.querySelector(".zoom-in-container");
     var position = element.getBoundingClientRect().top;
     var windowHeight = window.innerHeight;
@@ -496,7 +497,7 @@ include("footer.php")
 </script>
 
 <script>
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", function() {
     var element = document.querySelector(".zoom-in-container2");
     var position = element.getBoundingClientRect().top;
     var windowHeight = window.innerHeight;

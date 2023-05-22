@@ -2,303 +2,289 @@ html {
   font-family: "Inter", sans-serif;
 }
 
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+  width: 10px;
+}
+
+::-moz-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* For Internet Explorer and Microsoft Edge */
+/* Note: Microsoft Edge supports the -ms-overflow-style property */
+/* to customize the scroll bar, but it's not widely supported */
+/* in other versions of IE. */
+/* Therefore, this code may not work in all IE versions. */
+/* It's recommended to test it in your target browsers. */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
 .container-fluid {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-  }
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
+.container-fluid2 {
+  width: 60%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
+.my-container {
+  width: 92%;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+}
 
-  .container-fluid2 {
-    width: 60%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  
-  .my-container {
-    width: 92%;
-    padding-right: 15px;
-    padding-left: 15px;
-    position: relative;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  
-  .my-container .cover-photo {
-    background-image: url('images/school-supplies-list\ new.png');
-    
-    background-position:center;
-    position: static;
-    top: 0;
-    left: 0;
-    width: 1900;
-    height: 55%;
-    max-width: 100%;
-  }
+.my-container .cover-photo {
+  background-image: url("images/school-supplies-list\ new.png");
 
- .parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+  background-position: center;
+  position: static;
+  top: 0;
+  left: 0;
+  width: 1900;
+  height: 55%;
+  max-width: 100%;
+}
 
-  .mainfont {
-    display: flex;
-    font-size: 40;
-  }
-  
-  .salefont {
-    font-size: 80;
-  }
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
+.mainfont {
+  display: flex;
+  font-size: 40;
+}
 
-  .inner-container3 {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 80%;
-    word-wrap: break-word;
-    background-color: rgb(255, 255, 255, 0.94);
-    width: 25%;
-    height: 10%;
-    font-size: 50px;
-    text-align: center; 
-  }
-  
+.salefont {
+  font-size: 80;
+}
 
-  .inner-container4 {
-    
-    position: fixed;
-    width: 18%;
-    height: 5%;
-    font-size: 30;
-    color: white;
-    background-color: #FBD334;
-  }
+.inner-container3 {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  word-wrap: break-word;
+  background-color: rgb(255, 255, 255, 0.94);
+  width: 25%;
+  height: 10%;
+  font-size: 50px;
+  text-align: center;
+}
 
+.inner-container4 {
+  position: fixed;
+  width: 18%;
+  height: 5%;
+  font-size: 30;
+  color: white;
+  background-color: #fbd334;
+}
 
+.inner-container3,
+.inner-container4 {
+  max-width: 80%; /* adjust as needed */
+  word-wrap: break-word;
+}
 
-  .inner-container3,
-  .inner-container4 {
-    max-width: 80%; /* adjust as needed */
-    word-wrap: break-word;
-  }
+.inner-container-2 {
+  position: absolute;
+  width: 28%;
+  height: 50%;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  background-color: rgb(255, 255, 255, 0.7);
+}
 
+.custombtn {
+  background-color: #fad43d;
+  color: black;
+  width: 90%;
+  height: 30%;
+  border: 0;
+}
 
-  
-  
-  .inner-container-2 {
-    position: absolute;
-    width: 28%;
-    height: 50%;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    background-color: rgb(255, 255, 255, 0.70);
-  }
+.custombtn:hover {
+  background-color: orange;
+  color: black;
+}
 
-  .custombtn {
-
-background-color:#FAD43D;
-color: black;
-width: 90%;
-height: 30%;
-border: 0;
-  }
-
-  .custombtn:hover {
-
-    background-color: orange;
-    color: black;
-  }
-
-  .custombtn2 {
-  background-color: rgb(255, 255, 255, 0.80);
+.custombtn2 {
+  background-color: rgb(255, 255, 255, 0.8);
   border-radius: 8px;
   width: 35%;
   height: 25%;
   border: 0;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3); 
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+.custombtn2:hover {
+  background-color: rgb(255, 255, 255, 1);
+}
 
-      .custombtn2:hover {
-    
-        background-color:rgb(255, 255, 255, 1);
-        
-      }
+.line {
+  border-top: 1px solid black;
+  width: 98%;
 
-   .line {
-        border-top: 1px solid black; 
-        width: 98%; 
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-      }
+.bordered-row {
+  border-bottom: 1px solid #ccc;
+}
 
+.bordered-row .col-md-3 {
+  border-right: 1px solid #ccc;
+}
 
+.bordered-row .col-md-3:last-child {
+  border-right: none;
+}
 
+.bordered-row {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
+.bordered-row.fade-in {
+  opacity: 1;
+}
 
+.zoom-in-container {
+  overflow: hidden;
+}
 
+.zoom-in-container img {
+  transition: transform 0.5s ease-in-out;
+}
 
+.zoom-in-container.zoom-in img {
+  transform: scale(1.2);
+}
 
-      .bordered-row {
-        border-bottom: 1px solid #ccc; 
-      }
-      
-      .bordered-row .col-md-3 {
-        border-right: 1px solid #ccc; 
-      }
-      
-      .bordered-row .col-md-3:last-child {
-        border-right: none; 
-      }
+.zoom-in-container2 {
+  overflow: hidden;
+}
 
-      .bordered-row {
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-    }
-    
-    .bordered-row.fade-in {
-        opacity: 1;
-    }
+.zoom-in-container2 img {
+  transition: transform 0.5s ease-in-out;
+}
 
-      .zoom-in-container {
-        
-        overflow: hidden;
-      }
-      
-      .zoom-in-container img {
-        
-        
-        transition: transform 0.5s ease-in-out;
-      }
-      
-      .zoom-in-container.zoom-in img {
-        transform: scale(1.2);
-      }
-      
+.zoom-in-container2.zoom-in img {
+  transform: scale(1.2);
+}
 
-      .zoom-in-container2 {
-        
-        overflow: hidden;
-      }
-      
-      .zoom-in-container2 img {
-        
-        
-        transition: transform 0.5s ease-in-out;
-      }
-      
-      .zoom-in-container2.zoom-in img {
-        transform: scale(1.2);
-      }
+/*start contact*/
+#contact #contactImage img {
+  background-size: cover;
 
+  position: relative;
+}
+#contact {
+  margin-top: 5%;
+}
+#contactImage {
+  position: relative;
+  width: 90%;
+  margin-left: 5%;
+}
+#contactImage img {
+  width: 60%;
+  height: 50%;
+}
+#contact #contContent {
+  background-color: #fad43d;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  width: 60%;
+  height: 100%;
+}
+#contContent {
+  text-align: left;
+}
 
+#contContent h1 {
+  margin-top: 5%;
+  margin-left: 15%;
+}
+#contContent p {
+  margin-left: 15%;
+  margin-top: 5%;
+}
+#icons {
+  margin-left: 15%;
+  margin-top: 10%;
+}
+/*end contact*/
 
+/*STAR contact FORM*/
 
+#contactForm {
+  padding-top: 5%;
+  background-color: lightgray;
+  margin-top: 15%;
+  padding-bottom: 5%;
+}
 
-       /*start contact*/
-       #contact #contactImage img
-       {
-          
-           background-size: cover;
-           
-           position: relative;
-       }
-       #contact
-       {
-           margin-top: 5%;
-       }
-       #contactImage 
-       {
-           position: relative;
-           width: 90%;
-           margin-left: 5%;
-           
-           
-       }
-       #contactImage img
-       {
-           width: 60%;
-           height: 50%;
-           
-           
-       }
-       #contact #contContent 
-       {
-           background-color: #FAD43D;
-           position: absolute;
-           top: 30%;
-           left: 35%;
-           width: 60%;
-           height: 100%;
-          
-       }
-       #contContent
-       {
-           text-align: left;
-       }
-       
-       #contContent h1
-       {
-         margin-top: 5%;
-         margin-left: 15%;
-       }
-       #contContent p
-       {
-         margin-left: 15%;
-         margin-top: 5%;
-       }
-       #icons 
-       {
-       margin-left: 15%;
-       margin-top: 10%;
-       }
-       /*end contact*/
-       
-       /*STAR contact FORM*/
-       
-       #contactForm
-       {
-           padding-top:5% ;
-           background-color: lightgray;
-           margin-top: 15%;
-           padding-bottom:5% ;
-       }
-       
-       /*END contact FORM*/
-       
-       
-       /*start map*/
-       .google-map {
-           padding-bottom: 50%;
-           position: relative;
-       }
-       
-       .google-map iframe {
-           margin-top: 10%;
-           margin-bottom: 10%;
-           height: 80%;
-           width: 100%;
-           left: 0;
-           top: 0;
-           position: absolute;
-       }
+/*END contact FORM*/
 
-       
-       /*END map*/
+/*start map*/
+.google-map {
+  padding-bottom: 50%;
+  position: relative;
+}
+
+.google-map iframe {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  height: 80%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+/*END map*/
