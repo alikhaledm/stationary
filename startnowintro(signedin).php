@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -151,6 +152,26 @@
     .fade-in {
         opacity: 1;
     }
+
+    input {
+        background-color: white;
+        height: 12%;
+        width: 50%;
+    }
+
+    input:hover {
+        border: none;
+        height: 12%;
+        width: 50%;
+    }
+
+    select {
+        width: 20%;
+    }
+
+    option:hover {
+        background-color: orange;
+    }
 </style>
 
 <body>
@@ -164,7 +185,7 @@
 
     <script>
         // Add the fade-in class to the video container after a delay
-        setTimeout(function() {
+        setTimeout(function () {
             var videoContainer = document.querySelector('.video-container');
             videoContainer.classList.add('fade-in');
         }, 6000); // Delay in milliseconds before adding the fade-in class
@@ -177,11 +198,54 @@
         <div class="container centered">
             <div class="row">
                 <div id="firstContent" class="col-md-12 content">
-                    <b>Say goodbye to School Supplies shopping headaches with our hassle-free solution!</b>
+                    <b>Say goodbye to School Supplies shopping headaches with our hassle-free solution!</b><br>
+                    <b>Experience the convenience of Supply Hub: Choose your student's School, Grade, and let the School
+                        Supplies List come knocking at your door, just go to the next steps!</b>
                 </div>
                 <div id="secondContent" class="col-md-12 content" style="display: none;">
-                    <b>Experience the convenience of Supply Hub: Choose your student's School, Grade, and let the School
-                        Supplies List come knocking at your door!</b>
+                    <div>
+                        Enter Student's name &nbsp; <input type="text"><br><br>
+                        Select your Student's School &nbsp;<select name="Grade" id="">
+                            <option value="error">Click Me</option>
+                            <option>New Generation</option>
+                            <option>Sheraton Heliopolis</option>
+                            <option>Nefertari</option>
+                            <option>Saint Fatima</option>
+                            <option>Saint Joseph</option>
+                            <option>Saint Peter</option>
+                            <option>Rajac</option>
+                            <option>Brilliance</option>
+                        </select>
+                        <br><br>
+
+                        Select your Student's Education System &nbsp;<select name="Grade" id="">
+                            <option value="error">Click Me</option>
+                            <option>National</option>
+                            <option>American</option>
+                            <option>Le Bac</option>
+                            <option>IG</option>
+                            <option>IB</option>
+                        </select>
+                        <br><br>
+                        Select Your Student's Grade:
+                        <select name="Grade" id="">
+                            <option value="error">Click Me</option>
+                            <option>KG1</option>
+                            <option>KG2</option>
+                            <option>Grade 1</option>
+                            <option>Grade 2</option>
+                            <option>Grade 3</option>
+                            <option>Grade 4</option>
+                            <option>Grade 5</option>
+                            <option>Grade 6</option>
+                            <option>Grade 7</option>
+                            <option>Grade 8</option>
+                            <option>Grade 9</option>
+                            <option>Grade 10</option>
+                            <option>Grade 11</option>
+                            <option>Grade 12</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-12" style="padding-top:50;">
                     <button id="nextButton" class="introbutton">Next Step</button>
@@ -192,7 +256,7 @@
 
         <script>
             // Wait for 4 seconds before showing the container
-            setTimeout(function() {
+            setTimeout(function () {
                 // Hide the spinner
                 document.querySelector('.spinner').style.display = 'none';
 
@@ -221,10 +285,10 @@
                 }
 
                 fade(); // Start the fade-in effect
-            }, 3000);
+            }, 1000);
         </script>
         <script>
-            document.getElementById("nextButton").addEventListener("click", function(event) {
+            document.getElementById("nextButton").addEventListener("click", function (event) {
                 event.preventDefault();
 
                 var firstContent = document.getElementById("firstContent");
@@ -235,11 +299,11 @@
                 secondContent.style.display = "block";
                 secondContent.classList.add("centered-content");
                 nextButton.classList.add("animated-button");
-                nextButton.textContent = "Start Now!";
+                nextButton.textContent = "Fulfilled Supplies List";
                 nextButton.removeAttribute("href");
                 nextButton.removeAttribute("target");
-                nextButton.addEventListener("click", function() {
-                    window.location.href = "signup.php";
+                nextButton.addEventListener("click", function () {
+                    window.location.href = "packages.php";
                 });
 
                 nextButton.blur();
