@@ -10,7 +10,6 @@ include("navbar.php")
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-
 </head>
 <style>
   body {
@@ -171,7 +170,6 @@ include("navbar.php")
     transform: rotateY(180deg);
   }
 
-
   /* For Internet Explorer and Microsoft Edge */
   /* Note: Microsoft Edge supports the -ms-overflow-style property */
   /* to customize the scroll bar, but it's not widely supported */
@@ -185,12 +183,12 @@ include("navbar.php")
 </style>
 
 <body>
-  <img width="100%" height="350" src="images/Shop/hugesale.png" alt="">
+  <img width="100%" height="300" src="images/Shop/hugesale.png" alt="">
   <hr id="hr-banner">
   <div class="banner-container">
     <div class="moving-text">
       <h3>
-        <p>Free shipping on all <span style="color: yellow;">Cairo</span> orders over <span style="color: red;">1000 EGP</span></p>
+        <p>Free Shipping On All <span style="color: yellow;">Cairo</span> Orders Over <span style="color: red;">1000 EGP</span></p>
       </h3>
     </div>
   </div>
@@ -232,7 +230,7 @@ include("navbar.php")
           <div class="flip-card-front">
             <img src="images/shop/shop2.jpg" alt="" width=100%; height=100%;>
           </div>
-          <div class="flip-card-back" style="text-algin:center;">
+          <div class="flip-card-back" style="text-align:center;">
             <br><br><br><br><br><br>
             <button class=" btn-lg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SHOP ALL STATIONERY </button>
             <br><br><br><br><br>
@@ -261,7 +259,7 @@ include("navbar.php")
             <img src="images/shop/note.jpg" class="card-img-top" alt="..." height="350">
             <div class="card-body">
               <h5 class="card-title">Notebooks & Paper</h5>
-              <p class="card-text"> Notebooks, Graph Papers, Sticky Notes, Printer Papers and Construction Papers</p>
+              <p class="card-text">Notebooks, Graph Papers, Sticky Notes, Printer Papers and Construction Papers</p>
             </div>
           </div>
           <br><br><br><br>
