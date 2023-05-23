@@ -316,6 +316,10 @@ include("navbar.php")
 </body>
 <?php
 include("footer.php")
+<<<<<<< Updated upstream
 ?>
 
+=======
+  ?>
+>>>>>>> Stashed changes
 </html>
