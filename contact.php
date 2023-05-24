@@ -86,8 +86,8 @@ include("navbar.php");
           <h2>Contact details</h2>
           <p>Sheraton Heliopolis </p>
           <p>Cairo, Egypt</p>
-          <p>123-456-7890</p>
-          <p>INFO@mysite.com</p>
+          <p>01288998854</p>
+          <p>supplieshub@gmail.com</p>
         </div>
 
         <div class="col-md-6">
