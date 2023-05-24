@@ -159,7 +159,7 @@ if (isset($_POST['update_quantity'])) {
                         </div>
 
                     </div>
-                    <button class="btn" href="checkout.php">CHECKOUT</button>
+                    <a href="checkout.php"><button class="btn">CHECKOUT</button></a>
                 </div>
             </div>
         </div>
