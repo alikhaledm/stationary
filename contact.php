@@ -58,7 +58,7 @@ include("navbar.php");
 
         <div id="contContent">
           <h1 class="">Contact</h1>
-          <p class=""> Contact Our Team!<br> Email address:supplyroom@gmail.com.</p>
+          <p class=""> Contact Our Team!<br> Email Address: supplieshub@gmail.com</p>
           <div id="icons">
             <i class="fa-brands fa-facebook-f"></i>
             <i class="fa-brands fa-instagram"></i>
