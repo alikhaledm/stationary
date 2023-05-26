@@ -22,25 +22,50 @@ if ($result) {
 $getAddress = "SELECT * FROM address WHERE userid = $userid";
 $result4 = mysqli_query($conn, $getAddress);
 
+//get creditcard
+$getCreditCard = "SELECT * FROM creditcard WHERE userid = $userid";
+$result5 = mysqli_query($conn, $getCreditCard);
+
+// insert credit card
+if (isset($_POST['submit'])) {
+  $ccn = $_POST['ccn'];
+  $chn = $_POST['chn'];
+  $month = $_POST['month'];
+  $year = $_POST['year'];
+  $expdate = $month . "/" . $year;
+
+  // Insert the credit card details into the creditcard table
+  $insertCardQuery = "INSERT INTO creditcard (userid, cardnumber, cardholdername, expirydate) VALUES ('$userid', '$ccn', '$chn', '$expdate')";
+  $insertCardResult = mysqli_query($conn, $insertCardQuery);
+
+  if ($insertCardResult) {
+    header("location: checkout.php");
+  } else {
+    echo "Error: Unable to save credit card details.";
+    // Handle the error appropriately
+  }
+}
 
 ?>
 
 <head>
   <title>Checkout</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="checkoutstyles.css">
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   <style>
     @media (min-width: 1025px) {
       .h-custom {
         height: 100vh !important;
       }
+    }
+
+    hr {
+      background-color: black;
     }
   </style>
 </head>
@@ -125,35 +150,82 @@ $result4 = mysqli_query($conn, $getAddress);
       <div class="payment__info">
         <div class="payment__cc">
           <div class="payment__title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" style="margin-right:4px" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-            </svg>Personal Information
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" style="padding-bottom: 7px; padding-right: 7px;" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+              <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+            </svg>
+            <h4><b> My Saved Cards</b></h4>
+          </div>
+          <div class="container" style="width: 82.5%; margin-left:0; padding-left:0;">
+            <?php
+            if ($result5) {
+              while ($rowData4 = mysqli_fetch_assoc($result5)) {
+                $cardholdername = $rowData4['cardholdername'];
+                $cardnumber = $rowData4['cardnumber'];
+                $expiry = $rowData4['expirydate'];
+
+                // replace the first 12 characters of $cardnumber with X and also - between every 4 characters
+                $cardnumber = substr_replace($cardnumber, str_repeat("X", 12), 0, 12);
+                $cardnumber = substr_replace($cardnumber, " ", 4, 0);
+                $cardnumber = substr_replace($cardnumber, " ", 9, 0);
+                $cardnumber = substr_replace($cardnumber, " ", 14, 0);
+
+                // remove the last 2 characters from expiry
+                $expiry = substr($expiry, 0, -3);
+
+                echo '<div class="details__user">
+            <div class="row">
+              <div class="col-1">
+                <input type="radio" name="card" style="margin-top: 2px;" oninput="validateInput(this)">
+              </div>
+              <div class="col-9">
+                <h6><b>Card Number: ' . $cardnumber . '</b></h6>
+              </div>
+              <div class="col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg>
+              </div>
+            </div>
+            <div id="myDIV">
+              <h6><b>Card Holder Name: </b>' . $cardholdername . '</h6>
+              <h6><b>Expiry Date: </b>' . $expiry . '</h6>
+              <h6><b>CVV: </b><input style="border:1px solid black;" size="1" height="10px" maxlength="3" type="text" name="cvv" oninput="validateInput(this)"></h6>
+              </div>
+              </div>
+            <br>';
+              }
+            }
+            ?>
+            <hr>
+            <h4><svg xmlns="http://www.w3.org/2000/svg" width="25" style="margin-right: 8px; margin-bottom:5px;" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg><b>Add New Card</b> </h4>
           </div>
           <form>
-            <div class="form__cc">
+            <div class="form__cc" id="new-credit-card-container">
               <div class="row">
-                <div class="field">
-                  <div class="title">Credit Card Number
-                  </div>
-                  <input type="text" class="input txt text-validated" value="4542 9931 9292 2293" />
+                <div class="field ">
+                  <div class="title">Credit Card Number</div>
+                  <input type="text" name="ccn" size="23" maxlength="16" class="input txt text-validated" placeholder="1234 1234 1234 1234" oninput="validateInput(this)" />
                 </div>
-                <div class="field small">
+                <div class="field ">
                   <div class="title">CVV Code
-                    <span class="numberCircle">?</span>
                   </div>
-                  <input type="text" class="input txt" size="11" />
+                  <input type="text" class="input txt" size="13" maxlength="3" placeholder="123" oninput="validateInput(this)" />
                 </div>
               </div>
               <div class="row">
-                <div class="field">
+                <div class="field ">
                   <div class="title">Name on Card
                   </div>
-                  <input type="text" class="input txt" />
+                  <input type="text" name="chn" size="23" class="input txt" placeholder="John Doe" />
                 </div>
-                <div class="field small">
+                <div class="field ">
                   <div class="title">Expiry Date
                   </div>
-                  <select class="input ddl">
+                  <select class="input ddl" name="month">
                     <option disabled selected hidden>mm</option>
                     <option>01</option>
                     <option>02</option>
@@ -168,7 +240,7 @@ $result4 = mysqli_query($conn, $getAddress);
                     <option>11</option>
                     <option>12</option>
                   </select>
-                  <select class="input ddl">
+                  <select class="input ddl" name="year">
                     <option disabled selected hidden>yy</option>
                     <option>23</option>
                     <option>24</option>
@@ -187,13 +259,17 @@ $result4 = mysqli_query($conn, $getAddress);
                 </div>
               </div>
             </div>
+            <br>
+            <input type="submit" name="save_card" value="Save Card" class="btn" style="background:black;">
           </form>
         </div>
         <div class="payment__shipping">
           <div class="payment__title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" style="margin-right: 8px;" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
-              <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-            </svg> Shipping Information
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" style="padding-bottom: 7px; padding-right: 7px;" fill="currentColor" class="bi bi-pin-map-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z" />
+              <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z" />
+            </svg>
+            <h4><B>My Saved Addresses</B></h4>
           </div>
           <?php
           if ($result4) {
@@ -203,6 +279,7 @@ $result4 = mysqli_query($conn, $getAddress);
               $area = $rowData3['area'];
               $zip = $rowData3['zip'];
               $street = $rowData3['street'];
+              $i = 1;
 
               echo '<div class="details__user">
             <div class="row">
@@ -213,7 +290,7 @@ $result4 = mysqli_query($conn, $getAddress);
                 <h6><b>' . $title . '</b></h6>
               </div>
               <div class="col">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" onclick="myFunction()" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                 </svg>
               </div>
@@ -233,11 +310,12 @@ $result4 = mysqli_query($conn, $getAddress);
           <a href="">
             <div class="details__user">
               <div class="user__name">
-                <input type="radio" name="address" style="margin-top: 2px; margin-right:5px;">
-                Add New Shipping Address <svg xmlns="http://www.w3.org/2000/svg" width="18" style="margin-left:10" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" style="padding-right: 8px;" fill="currentColor" class="bi bi-building-add" viewBox="0 0 16 16">
+                  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Z" />
+                  <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1V1Z" />
+                  <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z" />
                 </svg>
+                Add New Shipping Address
               </div>
             </div>
           </a>
@@ -254,7 +332,7 @@ $result4 = mysqli_query($conn, $getAddress);
           </svg>
           <span>Secure Checkout</span>
         </div>
-        <a href="thankyou.php" class="btn action__submit">Place your Order
+        <a href="thankyou.php" class="btn action__submit" style="background-color: #fbd334;">Place your Order
         </a>
 
         <a href="cart.php" class="backBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" style="margin-right: 5px;" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -266,13 +344,33 @@ $result4 = mysqli_query($conn, $getAddress);
     </div>
   </div>
   <script>
-    function myFunction() {
-      var x = document.getElementById("myDIV");
-      if (x.style.display === "none") {
-        x.style.display = "block";
+    function toggleNewCreditCard() {
+      var container = document.getElementById("new-credit-card-container");
+      var inputs = container.getElementsByTagName("input");
+      var texts = container.getElementsByTagName("h6");
+
+      if (inputs[0].checked) {
+        // Enable inputs and remove grayed out style
+        for (var i = 0; i < inputs.length; i++) {
+          inputs[i].disabled = false;
+        }
+        for (var i = 0; i < texts.length; i++) {
+          texts[i].classList.remove("grayed-out");
+        }
       } else {
-        x.style.display = "none";
+        // Disable inputs and add grayed out style
+        for (var i = 0; i < inputs.length; i++) {
+          inputs[i].disabled = true;
+        }
+        for (var i = 0; i < texts.length; i++) {
+          texts[i].classList.add("grayed-out");
+        }
       }
+    }
+
+    function validateInput(input) {
+      // Remove any non-digit characters
+      input.value = input.value.replace(/\D/g, '');
     }
   </script>
 </body>

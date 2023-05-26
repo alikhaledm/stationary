@@ -142,8 +142,6 @@ if (isset($_POST['update_quantity'])) {
                 </div>
                 <hr>
                 <div class="row" style="margin: 0; padding:0%;">
-
-
                     <form>
                         <p>SHIPPING</p>
                         <select>
@@ -157,7 +155,6 @@ if (isset($_POST['update_quantity'])) {
                         <div class="col">TOTAL PRICE</div>
                         <div class="col text-right">$<?php echo number_format($total, 2); ?>
                         </div>
-
                     </div>
                     <a href="checkout.php"><button class="btn">CHECKOUT</button></a>
                 </div>
