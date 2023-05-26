@@ -116,11 +116,6 @@ img {
   font-weight: 600;
 }
 
-.item__price {
-  font-size: 22px;
-  color: #bec3cb;
-}
-
 .icon {
   font-size: 16px;
   vertical-align: middle;
@@ -129,18 +124,6 @@ img {
 header {
   min-height: 500px;
   background-image: url("../images/pattern.png");
-}
-
-.navigation {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px 0 80px 0;
-  color: #246eea;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
 }
 
 .container {
@@ -158,7 +141,6 @@ header {
 
 .txt {
   border-color: #e1e8ee;
-  width: 100%;
 }
 
 .input {
@@ -174,7 +156,6 @@ header {
 
 input[type="text"] {
   display: initial;
-  padding: 15px;
 }
 
 .text-validated {
@@ -187,7 +168,7 @@ input[type="text"] {
 .ddl {
   border-color: #f0f4f7;
   background-color: #f0f4f7;
-  width: 69px;
+  width: 70px;
   margin-right: 10px;
 }
 
@@ -250,7 +231,7 @@ input[type="text"] {
   border: 0;
   letter-spacing: 1px;
   color: #fff;
-  background: #246eea;
+  background: #fbd334;
   padding: 20px 60px;
   white-space: nowrap;
   font-size: 16px;
@@ -268,7 +249,7 @@ input[type="text"] {
 .btn:hover {
   -webkit-transform: translateY(-1px);
   transform: translateY(-1px);
-  background: #4984ea;
+  background: #fbd334;
 }
 
 .btn.action__back {
