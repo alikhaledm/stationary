@@ -315,6 +315,5 @@ include("navbar.php")
 </body>
 <?php
 include("footer.php")
-?>
-
+  ?>
 </html>
