@@ -17,24 +17,22 @@
         height: 100vh;
     }
 
-    .container.centered {
-        display: none;
-        justify-content: center;
-        text-align: center;
-        font-size: 30px;
-    }
+    .centered2 {
+        font-size: 23;
 
-    .spinner {
         display: flex;
-        width: 50px;
-        height: 50px;
-        border: 3px solid #ccc;
-        border-radius: 50%;
-        border-top-color: #66a2fe;
-        animation: spin 2s ease-in-out infinite;
-
-
+        justify-content: center;
     }
+
+    .centeredheader {
+        bottom: 50;
+        font-size: 50;
+        display: flex;
+        justify-content: center;
+    }
+
+
+
 
     @keyframes spin {
         0% {
@@ -68,10 +66,7 @@
         object-fit: cover;
     }
 
-    .content {
-        position: relative;
-        z-index: 1;
-    }
+
 
     .introbutton {
         border: none;
@@ -111,9 +106,7 @@
         }
     }
 
-    .centered-content {
-        animation: flipIn 1s;
-    }
+
 
     @keyframes flipButton {
         0% {
@@ -152,17 +145,6 @@
         opacity: 1;
     }
 
-    input {
-        background-color: white;
-        height: 12%;
-        width: 50%;
-    }
-
-    input:hover {
-        border: none;
-        height: 12%;
-        width: 50%;
-    }
 
     select {
         width: 20%;
@@ -170,6 +152,28 @@
 
     option:hover {
         background-color: orange;
+    }
+
+    body {
+        overflow-y: hidden;
+    }
+
+    .btncustom3 {
+        background: #FBD334;
+        height: 50;
+        width: 200;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        opacity: 0.7;
+    }
+
+    .btncustom3:hover {
+        opacity: 1;
+        transition: 2s;
+        background: orange;
+        border-radius: 10px;
+        color: black;
     }
 </style>
 
@@ -189,110 +193,101 @@
         }, 6000); // Delay in milliseconds before adding the fade-in class
     </script>
 
+<<<<<<< Updated upstream
     <div class="centered content">
         <div class="spinner"></div>
 
         <div class="container centered">
-            <div class="row">
-                <div id="firstContent" class="col-md-12 content">
-                    <h1>Welcome Yousef!</h1>
-                    <b>Say goodbye to School Supplies shopping headaches with our hassle-free solution!</b><br>
-                    <b>Experience the convenience of Supply Hub: Choose your student's School, Grade, and let the School
-                        Supplies List come knocking at your door, just go to the next steps!</b>
-                </div>
-                <div id="secondContent" class="col-md-12 content" style="display: none;">
-                    <div>
-                        Enter Student's name &nbsp; <input type="text"><br><br>
-                        Select your Student's School &nbsp;<select name="Grade" id="">
-                            <option value="error">Click Me</option>
-                            <option>New Generation</option>
-                            <option>Sheraton Heliopolis</option>
-                            <option>Nefertari</option>
-                            <option>Saint Fatima</option>
-                            <option>Saint Joseph</option>
-                            <option>Saint Peter</option>
-                            <option>Rajac</option>
-                            <option>Brilliance</option>
-                        </select>
-                        <br><br>
+=======
 
-                        Select your Student's Education System &nbsp;<select name="Grade" id="">
-                            <option value="error">Click Me</option>
-                            <option>National</option>
-                            <option>American</option>
-                            <option>Le Bac</option>
-                            <option>IG</option>
-                            <option>IB</option>
-                        </select>
-                        <br><br>
-                        Select Your Student's Grade:
-                        <select name="Grade" id="">
-                            <option value="error">Click Me</option>
-                            <option>KG1</option>
-                            <option>KG2</option>
-                            <option>Grade 1</option>
-                            <option>Grade 2</option>
-                            <option>Grade 3</option>
-                            <option>Grade 4</option>
-                            <option>Grade 5</option>
-                            <option>Grade 6</option>
-                            <option>Grade 7</option>
-                            <option>Grade 8</option>
-                            <option>Grade 9</option>
-                            <option>Grade 10</option>
-                            <option>Grade 11</option>
-                            <option>Grade 12</option>
-                        </select>
-                    </div>
+    <body class="centered">
+        <div class="container">
+>>>>>>> Stashed changes
+            <div class="row">
+                <div class="col-md-12 centeredheader">
+
+
                 </div>
-                <div class="col-md-12" style="padding-top:50;">
-                    <button id="nextButton" class="introbutton">Next Step</button>
+
+                <div class="col-md-12 centered2">
+
+                    <div id="content1" class="content">
+                        <center style="padding-bottom:50;">
+                            <h1>Welcome to Supplies Station!</h1>
+                        </center>
+                        <center>
+                            Say goodbye to School Supplies shopping headaches with our hassle-free solution!<br>
+                            Experience the convenience of Supply Hub: Choose your student's School, Grade,<br> and let
+                            the
+                            School
+                            Supplies List come knocking at your door!
+                        </center>
+                    </div>
+                    <div id="content2" class="content"></div>
+                    <div id="content3" class="content"></div>
+                    <div id="content4" class="content"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-3 centered2">
+                    <button id="nextBtn" class="btncustom3">Next Step</button>
                 </div>
             </div>
         </div>
 
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
+<<<<<<< Updated upstream
             // Wait for 4 seconds before showing the container
             setTimeout(function() {
                 // Hide the spinner
                 document.querySelector('.spinner').style.display = 'none';
+=======
+            $(document).ready(function () {
+                var currentPage = 1;
+>>>>>>> Stashed changes
 
-                // Show the centered container with fade-in effect
-                var container = document.querySelector('.container.centered');
-                container.style.opacity = '0'; // Set initial opacity to 0
-                container.style.display = 'flex'; // Make the container visible
+                function showCurrentPage() {
+                    $('.content').hide(); // Hide all content
 
-                // Gradually increase the opacity over 5 seconds
-                var startTime = Date.now(); // Get the current time
-                var duration = 5000; // 5 seconds duration for the fade-in effect
-
-                function fade() {
-                    var currentTime = Date.now(); // Get the current time
-                    var elapsed = currentTime - startTime; // Calculate the elapsed time
-
-                    // Calculate the opacity based on the elapsed time
-                    var opacity = Math.min(1, elapsed / duration);
-
-                    container.style.opacity = opacity; // Set the opacity
-
-                    // Check if the fade-in effect is complete
-                    if (opacity < 1) {
-                        requestAnimationFrame(fade); // Continue fading recursively
+                    if (currentPage === 1) {
+                        $('#content1').fadeIn();
+                    } else {
+                        var contentId = "#content" + currentPage;
+                        $(contentId).load(getPageURL(currentPage), function () {
+                            $(contentId).fadeIn();
+                        });
                     }
                 }
 
+<<<<<<< Updated upstream
                 fade(); // Start the fade-in effect
             }, 1000);
         </script>
         <script>
             document.getElementById("nextButton").addEventListener("click", function(event) {
                 event.preventDefault();
+=======
+                function getPageURL(page) {
+                    // Return the appropriate URL for each page
+                    if (page === 2) {
+                        return "schoolgrade.php";
+                    } else if (page === 3) {
+                        return "schoolgrade1.php";
+                    } else if (page === 4) {
+                        return "schoolgrade2.php";
+                    }
+                }
+>>>>>>> Stashed changes
 
-                var firstContent = document.getElementById("firstContent");
-                var secondContent = document.getElementById("secondContent");
-                var nextButton = document.getElementById("nextButton");
+                function showNextPage() {
+                    if (currentPage < 4) {
+                        currentPage++;
+                        showCurrentPage();
+                    }
+                }
 
+<<<<<<< Updated upstream
                 firstContent.style.display = "none";
                 secondContent.style.display = "block";
                 secondContent.classList.add("centered-content");
@@ -302,13 +297,20 @@
                 nextButton.removeAttribute("target");
                 nextButton.addEventListener("click", function() {
                     window.location.href = "packages.php";
+=======
+                $('#nextBtn').click(function () {
+                    showNextPage();
+>>>>>>> Stashed changes
                 });
 
-                nextButton.blur();
+                // Show the first page initially
+                showCurrentPage();
             });
         </script>
 
-    </div>
-</body>
+
+
+        </div>
+    </body>
 
 </html>

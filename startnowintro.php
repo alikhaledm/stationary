@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -164,7 +165,7 @@
 
     <script>
         // Add the fade-in class to the video container after a delay
-        setTimeout(function() {
+        setTimeout(function () {
             var videoContainer = document.querySelector('.video-container');
             videoContainer.classList.add('fade-in');
         }, 6000); // Delay in milliseconds before adding the fade-in class
@@ -192,7 +193,7 @@
 
         <script>
             // Wait for 4 seconds before showing the container
-            setTimeout(function() {
+            setTimeout(function () {
                 // Hide the spinner
                 document.querySelector('.spinner').style.display = 'none';
 
@@ -224,7 +225,7 @@
             }, 3000);
         </script>
         <script>
-            document.getElementById("nextButton").addEventListener("click", function(event) {
+            document.getElementById("nextButton").addEventListener("click", function (event) {
                 event.preventDefault();
 
                 var firstContent = document.getElementById("firstContent");
@@ -238,7 +239,7 @@
                 nextButton.textContent = "Start Now!";
                 nextButton.removeAttribute("href");
                 nextButton.removeAttribute("target");
-                nextButton.addEventListener("click", function() {
+                nextButton.addEventListener("click", function () {
                     window.location.href = "signup.php";
                 });
 
