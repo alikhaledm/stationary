@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -187,22 +188,15 @@
 
     <script>
         // Add the fade-in class to the video container after a delay
-        setTimeout(function() {
+        setTimeout(function () {
             var videoContainer = document.querySelector('.video-container');
             videoContainer.classList.add('fade-in');
         }, 6000); // Delay in milliseconds before adding the fade-in class
     </script>
 
-<<<<<<< Updated upstream
-    <div class="centered content">
-        <div class="spinner"></div>
-
-        <div class="container centered">
-=======
 
     <body class="centered">
         <div class="container">
->>>>>>> Stashed changes
             <div class="row">
                 <div class="col-md-12 centeredheader">
 
@@ -237,15 +231,8 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-<<<<<<< Updated upstream
-            // Wait for 4 seconds before showing the container
-            setTimeout(function() {
-                // Hide the spinner
-                document.querySelector('.spinner').style.display = 'none';
-=======
             $(document).ready(function () {
                 var currentPage = 1;
->>>>>>> Stashed changes
 
                 function showCurrentPage() {
                     $('.content').hide(); // Hide all content
@@ -260,14 +247,6 @@
                     }
                 }
 
-<<<<<<< Updated upstream
-                fade(); // Start the fade-in effect
-            }, 1000);
-        </script>
-        <script>
-            document.getElementById("nextButton").addEventListener("click", function(event) {
-                event.preventDefault();
-=======
                 function getPageURL(page) {
                     // Return the appropriate URL for each page
                     if (page === 2) {
@@ -278,7 +257,6 @@
                         return "schoolgrade2.php";
                     }
                 }
->>>>>>> Stashed changes
 
                 function showNextPage() {
                     if (currentPage < 4) {
@@ -287,20 +265,8 @@
                     }
                 }
 
-<<<<<<< Updated upstream
-                firstContent.style.display = "none";
-                secondContent.style.display = "block";
-                secondContent.classList.add("centered-content");
-                nextButton.classList.add("animated-button");
-                nextButton.textContent = "Fulfilled Supplies List";
-                nextButton.removeAttribute("href");
-                nextButton.removeAttribute("target");
-                nextButton.addEventListener("click", function() {
-                    window.location.href = "packages.php";
-=======
                 $('#nextBtn').click(function () {
                     showNextPage();
->>>>>>> Stashed changes
                 });
 
                 // Show the first page initially
