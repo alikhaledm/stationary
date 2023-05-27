@@ -55,15 +55,8 @@ html {
   margin-left: auto;
 }
 
-.my-container {
-  width: 92%;
-  padding-right: 15px;
-  padding-left: 15px;
-  position: relative;
-  margin-right: auto;
-  margin-left: auto;
-}
 
+<<<<<<< Updated upstream
 .my-container .cover-photo {
   background-image: url("images/no3.jpg");
 
@@ -75,6 +68,8 @@ html {
   height: 55%;
   max-width: 100%;
 }
+=======
+>>>>>>> Stashed changes
 
 .parallax {
   background-attachment: fixed;
