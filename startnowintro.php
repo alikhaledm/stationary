@@ -240,7 +240,7 @@
                 nextButton.removeAttribute("href");
                 nextButton.removeAttribute("target");
                 nextButton.addEventListener("click", function () {
-                    window.location.href = "signup.php";
+                    window.location.href = "packages.php";
                 });
 
                 nextButton.blur();
