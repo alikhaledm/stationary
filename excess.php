@@ -1,208 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
-include("navbar.php")
-    ?>
-<title>School Supplies List</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<link rel="stylesheet" href="styles.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="path/to/bradley-hand-itc.ttf" rel="stylesheet">
+require_once("connect.php");
+include("navbar.php");
+?>
 
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Services - Brand</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
 
-<style>
-    p {
-
-        font-size: 150px;
-        color: black;
+  <style>
+    .btn {
+      background-color: #fbd334;
+      border-radius: 0;
+      border: 1px solid black;
     }
 
-    .card {
-        perspective: 800px;
-        width: 550px;
-        height: 600px;
-        position: relative;
-        border: none;
+    .btn:hover {
+      background-color: #fbd334;
+      border-radius: 0;
+      border: 1px solid black;
+      color: black;
+      opacity: 80%;
     }
+  </style>
 
-    .front,
-    .back {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        backface-visibility: hidden;
-        transition: transform 0.6s;
-    }
-
-    .front {
-        background-color: #f2f2f2;
-        display: flex;
-        justify-content: center;
-
-        cursor: pointer;
-    }
-
-    .back {
-        background-color: #faf0e6;
-        transform: rotateY(180deg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    .card:hover .front {
-        transform: rotateY(180deg);
-    }
-
-    .card:hover .back {
-        transform: rotateY(0deg);
-    }
-
-    .container-excess {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80vh;
-    }
-
-    h2 {
-        font-size: 20px;
-        font-weight: bold;
-        color: #000000;
-    }
-
-    p {
-        font-size: 16px;
-        line-height: 1.5;
-        color: #000000;
-    }
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    ul li {
-        margin-bottom: 10px;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #000000;
-    }
-
-    .custombutton {
-
-        background-color: black;
-        border: 1;
-        opacity: 0.6;
-
-    }
-
-    .custombutton:hover {
-        color: white;
-        background-color: black;
-        opacity: 1;
-    }
-
-    .cardbutton {
-        border: none;
-    }
-
-    /* For WebKit browsers (Chrome, Safari) */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: white;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: gray;
-    }
-
-    /* For Firefox */
-    ::-moz-scrollbar {
-        width: 10px;
-    }
-
-    ::-moz-scrollbar-track {
-        background-color: #f1f1f1;
-    }
-
-    ::-moz-scrollbar-thumb {
-        background-color: #888;
-    }
-
-    /* For Internet Explorer and Microsoft Edge */
-    /* Note: Microsoft Edge supports the -ms-overflow-style property */
-    /* to customize the scroll bar, but it's not widely supported */
-    /* in other versions of IE. */
-    /* Therefore, this code may not work in all IE versions. */
-    /* It's recommended to test it in your target browsers. */
-    .scrollbar {
-        scrollbar-width: thin;
-        scrollbar-color: #888 #f1f1f1;
-    }
-</style>
+</head>
 
 <body>
-
-
-    <div class="container-excess">
-        <div class="row">
-            <div class="col-md-6" style="padding-right:200;">
-                <div class="card">
-                    <div class="front">
-                        <img width="550px" height="600px" src="images/excess/sell.jpg" alt="">
-
-                    </div>
-                    <div class="back">
-                        <b>
-
-                            <p style="font-size:40;">SELL YOUR SUPPLIES</p>
-
-                        </b>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6" style="padding-left:200;">
-
-                <div class="card">
-
-
-                    <div class="front">
-                        <img width="550px" height="600px" src="images/excess/donate.jpg" alt="">
-
-                    </div>
-
-
-                    <div class="back cardbutton">
-
-                        <a href="donate.php">
-                            <button class="custombutton">
-                        </a>
-
-                        <p style="font-size:40; padding-top: 10; color: white;"><b>DONATE YOUR SUPPLIES</b></p>
-                        </button>
-
-
-
-
-
-
-
-                    </div>
-                </div>
-
-            </div>
+  <section class="py-5">
+    <div class="container py-5">
+      <div class="row mb-4 mb-lg-5">
+        <div class="col-md-8 col-xl-6 text-center mx-auto">
+          <p class="fw-bold text-success mb-2">A Greener Future</p>
+          <h3 class="fw-bold">Join us in promoting sustanibility</h3>
         </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px">
+        <div class="col mb-5">
+          <img class="rounded img-fluid shadow" src="images/excess/donate.svg" />
+        </div>
+        <div class="col d-md-flex align-items-md-end align-items-lg-center mb-5">
+          <div>
+            <h5 class="fw-bold">Donate Supplies&nbsp;</h5>
+            <p class="text-muted mb-4">
+              By donating your used stationary supplies, you empower education and inspire creativity. Every item you give helps students in need and promotes sustainable practices. Join the movement, make a positive impact.
+            </p>
+            <button class="btn shadow" type="button">
+              Donate Here
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px">
+        <div class="col order-md-last mb-5">
+          <img class="rounded img-fluid shadow" src="images/excess/sell.svg" />
+        </div>
+        <div class="col d-md-flex align-items-md-end align-items-lg-center mb-5">
+          <div>
+            <h5 class="fw-bold">Sell Supplies&nbsp;</h5>
+            <p class="text-muted mb-4">
+              Do you have supplies you bought but never used? don't waste them! Sell them to us. Your supplies can find new owners who will benefit from them while allowing you to recoup your investment. It's a win-win reducing waste and helping others. Join us in creating a sustainable future and makeing a difference. </p>
+            <button class="btn shadow" type="button">
+              Start Selling
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-
-
+  </section>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/bold-and-bright.js"></script>
 </body>
-
 <?php
-include("footer.php")
-    ?>
+include("footer.php");
+?>
+
+</html>

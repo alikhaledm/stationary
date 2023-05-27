@@ -216,7 +216,7 @@ include("navbar.php")
           <div class="flip-card-back">
             <h1></h1>
             <br><br><br><br><br><br>
-            <button class=" btn-lg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SCHOOL SUPPLY LIST </button>
+            <a href="products.php"><button class=" btn-lg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SCHOOL SUPPLY LIST </button></a>
             <br><br><br><br><br>
             <p>We are here to help you</p>
           </div>
@@ -315,5 +315,6 @@ include("navbar.php")
 </body>
 <?php
 include("footer.php")
-  ?>
+?>
+
 </html>
