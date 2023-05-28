@@ -339,12 +339,7 @@ include("navbar.php")
     <div class="cover-photo parallax">
       <div class="card centered">
         <div class="mainfont" style="padding-bottom:20;"><b>Fulfill Your School<br> Supply List Demands</b></div>
-        <?php if (!isset($_SESSION['id'])) {
-          echo '<a href="startnowintro.php"><button class="btnstart">Start Now</button></a>';
-        } else {
-          echo '<a href="startnowintro(signedin).php"><button class="btnstart">Start Now</button></a>';
-        }
-        ?>
+        <a href="startnowintro.php"><button class="btnstart">Start Now</button></a>
         <div style="padding-bottom:5 ;"></div>
       </div>
     </div>
