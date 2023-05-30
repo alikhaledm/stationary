@@ -9,12 +9,6 @@ include("navbar.php")
 
 <head>
   <style>
-    h1 {
-      font-family: "Avenir Light", sans-serif;
-      font-size: 60px;
-      text-align: center;
-    }
-
     h2 {
       text-align: center;
       font-size: 55px;
@@ -75,7 +69,7 @@ include("navbar.php")
 </head>
 
 <body>
-  <h1>About Us</h1>
+  <h1 style="text-align:center;">About Us</h1>
 
   <div class="center-align paragraph-container">
     <p>

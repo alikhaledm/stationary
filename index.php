@@ -1,12 +1,17 @@
-<?php
-include("navbar.php")
-  ?>
 <html>
+
 <title>School Supplies List</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
 <style>
   /* For WebKit browsers (Chrome, Safari) */
@@ -64,7 +69,7 @@ include("navbar.php")
 
   @media (max-width:1640px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 40%;
@@ -75,7 +80,7 @@ include("navbar.php")
 
   @media (min-width:1550px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 40%;
@@ -86,7 +91,7 @@ include("navbar.php")
 
   @media (max-width:1379px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 40%;
@@ -97,7 +102,7 @@ include("navbar.php")
 
   @media (max-width:1208px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 40%;
@@ -108,7 +113,7 @@ include("navbar.php")
 
   @media (max-width:1132px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 40%;
@@ -123,7 +128,7 @@ include("navbar.php")
 
   @media (min-height:1200px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 40%;
@@ -135,29 +140,29 @@ include("navbar.php")
 
   @media (max-height:1201px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 30%;
-
+      width: 50%;
       height: 45%;
     }
   }
 
   @media (max-height:1015px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 30%;
-
-      height: 55%;
+      width: 30%;
+      height: 50%;
     }
   }
 
   @media (max-height:830px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 20%;
@@ -168,7 +173,7 @@ include("navbar.php")
 
   @media (max-height:740px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 20%;
@@ -178,7 +183,7 @@ include("navbar.php")
 
   @media (max-height:700px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 20%;
@@ -188,7 +193,7 @@ include("navbar.php")
 
   @media (max-height:650px) {
     .card {
-      opacity: 90%;
+      opacity: 95%;
       background-color: white;
       left: 10%;
       top: 20%;
@@ -204,42 +209,51 @@ include("navbar.php")
 
 
   .cardmobile {
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     background-color: white;
     justify-content: center;
     align-items: center;
   }
 
+  .cardmobile2 {
+    opacity: 95%;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    height: 30%;
+    width: 65%;
+  }
+
+
   .btnstart {
     background-color: #FBD53E;
-    border: none;
     width: 400px;
     height: 60px;
   }
 
   .btnstartmobile {
     background-color: #FBD53E;
-    border: none;
-    width: 450px;
+    width: 400px;
     height: 100px;
     font-size: 30;
+    border-radius: 5px;
   }
 
   .btnstartmobile:hover {
     background-color: orange;
     border: none;
-    width: 300px;
-    height: 100px;
-    font-size: 40;
   }
 
   .btnstart:hover {
     background-color: orange;
-    border: none;
   }
 
   .centered {
-
+    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -275,10 +289,11 @@ include("navbar.php")
   }
 
   .mainfontmobile {
-    margin-top: 4;
+    padding-top: 50;
     justify-content: center;
     align-items: center;
     font-size: 50;
+    font-weight: bolder;
   }
 
   .paddingmobile {
@@ -336,14 +351,34 @@ include("navbar.php")
 
 
 
+  .parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 
   .my-container {
-    width: 90%;
+    width: 91.7%;
 
     position: relative;
     margin-right: auto;
     margin-left: auto;
   }
+
+  .containernew {
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    display: flex;
+    margin: 0 auto;
+    /* Add this line to center the container horizontally */
+  }
+
 
   .my-container .cover-photo {
     background-image: url("images/school-supplies-list\ new.png");
@@ -354,114 +389,300 @@ include("navbar.php")
     height: 570px;
     max-width: 100%;
   }
+
+  .servicebody {
+    width: 75%;
+    background-color: #F9F9FF;
+    box-shadow: 1px;
+    border-radius: 1px;
+  }
+
+  .servicecard {
+
+    margin: 0 auto;
+    /* Add this line to center the container horizontally */
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .servicecard:hover {
+    background-color: #FBDF73;
+    transition: 2s;
+  }
+
+  .slide-container {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slide-in 1.5s ease forwards;
+  }
+
+  @keyframes slide-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-30000px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
+  .containerfluidcustom {
+    width: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .carouselbtn {
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+    top: ;
+  }
+
+  .carouselfont1 {
+    font-size: 40px;
+    color: #2F4668;
+    font-weight: bolder;
+  }
+
+  .carouselfont2 {
+    font-size: 25px;
+    color: #2F4668;
+    font-weight: bold;
+  }
+
+  .carouselfont3 {
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+  }
 </style>
 
 <body>
-  <div class="my-container">
-    <div class="cover-photo parallax">
-      <div class="card centered">
-        <div class="mainfont" style="padding-bottom:20;"><b>Fulfill Your School<br> Supply List Demands</b></div>
-        <?php if (!isset($_SESSION['id'])) {
-          echo '<a href="startnowintro.php"><button class="btnstart">Start Now</button></a>';
-        } else {
-          echo '<a href="startnowintro(signedin).php"><button class="btnstart">Start Now</button></a>';
-        }
-        ?>
-        <div style="padding-bottom:5 ;"></div>
-      </div>
-    </div>
-  </div>
+  <?php
+  include("navbar.php")
+    ?>
 
 
-  </div>
-  <div class="container-fluid" style="padding-top: 100;">
+  <div class="containerfluidcustom">
     <div class="row">
-      <div class="col-md-12">
-        <div class="mobile hidden" style="padding-bottom: 200;">
-          <div class="cardmobile">
-            <div class="mainfontmobile">Fulfill Your School Supplies List Demands</div>
+      <div class="col-lg-12">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" style="width:100%; height:100%;"
+          data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
           </div>
-          <div class="col-md-12 centeredmobile" style="padding-top: 20;">
-            <a href="startnowintro.php"><button class="btnstartmobile">Start Now</button></a>
-            <script>
-              $(document).ready(function () {
-                if ($(window).width() <= 999) {
-                  $('.mobile').removeClass('hidden').addClass('visible');
-                }
-              });
-            </script>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+              <div class="carousel-background" style="background-color:orange;">
+                <img width="100%" height="500px" src="images/supplieslist1.jpg" alt="">
+              </div>
+              <div class="carousel-caption d-md-block" style="top: 41%;">
+                <div class="carouselfont1">Select School, Get Supplies</div>
+                <div class="carouselfont2">
+                  Explore our One-Click Solution for All Your School Supply Needs</div><br>
+                <button class="carouselbtn carouselfont3">Start Now <img width="20" height="20"
+                    src="images/forward.svg"> </button>
+              </div>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="5000">
+              <div class="carousel-background" style="background-color:black;">
+                <img width="100%" height="500px" src="images/test.jpg" alt="">
+              </div>
+              <div class="carousel-caption d-md-block" style="top: 41%;">
+                <div class="carouselfont1">School Supplies Made Easy</div>
+                <div class="carouselfont2">Get Your School Supplies in Minutes: Select, Order, and Relax</div>
+                <br><button class="carouselbtn carouselfont3">
+                  Start Now <img width="20" height="20" src="images/forward.svg"></button>
+              </div>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="5000">
+              <div class="carousel-background" style="background-color:black;">
+                <img width="100%" height="500px" src="images/sup.jpg" alt="">
+              </div>
+              <div class="carousel-caption d-md-block" style="top: 41%;">
+                <div class="carouselfont1">Wide Range Of Products</div>
+                <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div><br>
+                <button class="carouselbtn carouselfont3">Start Now<img width="20" height="20"
+                    src="images/forward.svg"></button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <center>
+    <div class="containernew" style="padding-top:20;">
+      <div class="row">
+        <div class="col-lg-6 col-sm-12">
+          <div style="position:relative;">
+            <div class="zoom-in-container">
+              <img width="640" height="300px" style="max-width: 100%; padding-bottom:20;"
+                src="images/supplies-list-1.jpg" alt="">
+              <button class="custombtn2"
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size:25;">Shop
+                Stationery</button>
+            </div>
           </div>
         </div>
 
-
-
-      </div>
-    </div>
-    <div class="line" style="padding-top: 50;"></div>
-    <div class="col-md-12 text-center" style="padding-bottom: 50;">
-      <h2>SHOP BY CATEGORIES</h2>
-    </div>
-    <div class="line" style="padding-top: 50; padding-bottom:50;"></div>
-  </div>
-  </div>
-
-  <div class="container-fluid" style="padding-bottom: 150px;">
-    <div class="row">
-      <div class="col-md-6 col1">
-        <div style="position: relative;">
-          <div class="zoom-in-container">
-            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-1.jpg"
-              alt="">
-            <button class="custombtn2"
-              style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Shop
-              Stationery</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col2">
-        <div style="position: relative;">
-          <div class="zoom-in-container2">
-            <img width="900" height="450px" style="max-width: 100%; padding-bottom:50;" src="images/supplies-list-2.jpg"
-              alt="">
-            <button class="custombtn2"
-              style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Fulfill School Supplies
-              List</button>
+        <div class="col-lg-6 col-sm-12">
+          <div style="position: relative;">
+            <div class="zoom-in-container2">
+              <img width="638" height="300px" style="max-width:100%; padding-bottom:20; "
+                src="images/supplies-list-2.jpg" alt="">
+              <button class="custombtn2"
+                style="position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); font-size:25;">Fulfill
+                School
+                Supplies
+                List</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </center>
+
   <script>
     $(document).ready(function () {
       function adjustColumnWidth() {
-        if ($(window).width() <= 999) {
-          $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
-        } else {
-          $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
-        }
-      }
-
-      // Adjust column width on initial page load
+        if ($(window).width() <= 999) { $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile'); } else { $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile'); }
+      } // Adjust column width on
+    initial page load adjustColumnWidth(); // Adjust column width on window resize $(window).resize(function () {
       adjustColumnWidth();
+    }); }); </script>
 
-      // Adjust column width on window resize
-      $(window).resize(function () {
-        adjustColumnWidth();
-      });
-    });
-  </script>
+  <div class="containernew servicebody" style="padding-top:20;">
+    <div class="row" style=" padding-bottom:100px;">
+      <div class="col-md-12" style="font-size:40px; color:#FBD53E;">
+        <center>OUR SERVICES</center><br>
+      </div>
+      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h1>OUR PARTNERED SCHOOLS</h1>
-        <hr><br>
+        <div class="servicecard" style="font-size:32;">
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
+              src="images/services/supplies.svg" alt=""></div><br>
+          <div
+            style="display:flex; justify-content:center; align-items:center; padding-left:20; font-size: 32; color: #2F4668;">
+            Supplies List
+          </div>
+
+          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+            Select Your School<br> And Grade With<br> Few Clicks Now! <br>
+
+          </div>
+          <div class="centered" style="padding-top:20;"><button class="carouselbtn">Learn
+              More</button></div>
+
+
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+
+        <div class="servicecard" style="font-size:32;">
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
+              src="images/services/stationery.svg" alt=""></div><br>
+          <div style="display:flex; justify-content:center; align-items:center; font-size: 35; color: #2F4668;">
+            Excess Selling
+          </div>
+          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+            Sell Your Excess<br> Supplies Easily!<br>
+          </div>
+
+          <div class="centered" style="padding-top:45;"><button class="carouselbtn">Learn
+              More</button></div>
+
+
+
+
+
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+
+        <div class="servicecard" style="font-size:32;">
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
+              src="images/services/donate.svg" alt=""></div><br>
+          <div style="display:flex; justify-content:center; align-items:center; font-size: 32; color: #2F4668;">
+            Donations
+          </div>
+          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+            Conveniently browse and shop for<br> stationery essentials<br>
+          </div>
+          <div class="centered" style="padding-top:50;"><button class="carouselbtn">Learn
+              More</button></div>
+
+
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+
+        <div class="servicecard" style="font-size:32;">
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
+              src="images/services/shop.svg" alt=""></div><br>
+          <div style="display:flex; justify-content:center; align-items:center; font-size: 32; color: #2F4668;">
+            Stationery Shop
+          </div>
+          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+            Conveniently browse and shop<br> for stationery essentials<br> effortlessly.<br>
+          </div>
+          <div class="centered" style="padding-top:20;"><button class="carouselbtn">Learn
+              More</button></div>
+
+
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid" style="padding-bottom: 100px;">
+  <center>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1>OUR PARTNERED SCHOOLS</h1>
+          <hr><br>
+        </div>
+      </div>
+    </div>
+
+  </center>
+
+  <div class="containerfluid" style="padding-bottom: 100px;">
 
     <div class="row bordered-row centered">
       <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school1.jpg" alt=""></div>
@@ -537,3 +758,16 @@ include("footer.php")
 </script>
 
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+  // Initialize Bootstrap dropdown
+  $(document).ready(function () {
+    $('.dropdown-toggle').dropdown();
+  });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
