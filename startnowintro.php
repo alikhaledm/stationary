@@ -206,11 +206,11 @@
 
                     <div id="content1" class="content">
                         <center style="padding-bottom:50;">
-                            <h1>Welcome to Supplies Station!</h1>
+                            <h1>Welcome to Supplies Hub!</h1>
                         </center>
                         <center>
                             Say goodbye to School Supplies shopping headaches with our hassle-free solution!<br>
-                            Experience the convenience of Supply Hub: Choose your student's School, Grade,<br> and let
+                            Experience the convenience of Supplies Hub: Choose your student's School, Grade,<br> and let
                             the
                             School
                             Supplies List come knocking at your door!

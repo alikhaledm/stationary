@@ -224,9 +224,10 @@ include("navbar.php")
       </div>
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
-      <div class="flip-card">
+      <div class="flip-card" style="position: relative">
         <div class="flip-card-inner">
           <div class="flip-card-front">
+            <div class="flip-card-text" style="position: absolute; top:50%; left:50%; background-color:white">School supply list</div>
             <img src="images/shop/shop2.jpg" alt="" width=100%; height=100%;>
           </div>
           <div class="flip-card-back" style="text-align:center;">
@@ -245,7 +246,7 @@ include("navbar.php")
         <div class="col-md-12 text-center" style="padding-bottom: 30;">
           <hr id="hr-2" style="width:80%;text-align:left;margin-center:0">
           <h2>SHOP BY CATEGORIES</h2>
-          <hr id="hr-2" style="width:80%;text-align:left;margin-center:0">
+          <hr id="hr-2" style="width:100%;text-align:left;margin-center:0">
         </div>
         <div class="lineshop"></div>
       </div>

@@ -56,31 +56,7 @@ html {
 }
 
 
-<<<<<<< Updated upstream
-.my-container .cover-photo {
-  background-image: url("images/no3.jpg");
 
-  background-position: center;
-  position: static;
-  top: 0;
-  left: 0;
-  width: 1900;
-  height: 55%;
-  max-width: 100%;
-}
-=======
->>>>>>> Stashed changes
-
-.parallax {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
 
 .mainfont {
   display: flex;
