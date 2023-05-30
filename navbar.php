@@ -24,46 +24,46 @@
         font-size: 18;
     }
 
-        .nav-link {
-            color: black;
-        }
+    .nav-link {
+        color: black;
+    }
 
-        .navbar-brand {
-            color: black;
-        }
+    .navbar-brand {
+        color: black;
+    }
 
-        .navbar-brand:hover {
-            color: gold;
-        }
+    .navbar-brand:hover {
+        color: gold;
+    }
 
-        .nav-link:hover {
-            color: gold;
-        }
+    .nav-link:hover {
+        color: gold;
+    }
 
-        .btncustom {
-            border-color: black;
-            border: 0.5px solid #000;
-            background-color: white;
-            height: 40px;
-            width: 120px;
-        }
+    .btncustom {
+        border-color: black;
+        border: 0.5px solid #000;
+        background-color: white;
+        height: 40px;
+        width: 120px;
+    }
 
 
-        .btncustom:hover {
-            border-color: gold;
-        }
+    .btncustom:hover {
+        border-color: gold;
+    }
 
-        .cartcount {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            border-radius: 50%;
-            padding: 3px 6px;
-            font-size: 12px;
-        }
-    </style>
+    .cartcount {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        border-radius: 50%;
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+</style>
 </head>
 
 <nav class="customnav navbar navbar-expand-lg opacity-100 sticky-top">
@@ -76,8 +76,7 @@
             </h1>
         </a>
 
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-3"><span
-                class="navbar-toggler-icon text-left"></span><span class="sr-only"></span></button>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-3"><span class="navbar-toggler-icon text-left"></span><span class="sr-only"></span></button>
 
 
 
@@ -95,16 +94,17 @@
                     echo '
                     <li class="nav-item">
                         <a class="nav-link" href="excess.php">Excess Supplies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
-                    </li>
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        echo '<li class="nav-item">
+                    </li>';
+                } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About</a>
+                </li>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '<li class="nav-item">
                     <a class="nav-link" href="cart.php">
                         <div class="position-relative">
                             <div class="cartcount">25</div>
@@ -114,9 +114,9 @@
                         </div>
                     </a>
                 </li>';
-                    } ?>
-                    <?php if (isset($_SESSION['id'])) {
-                        echo '
+                } ?>
+                <?php if (isset($_SESSION['id'])) {
+                    echo '
                 <li id="dropdown" class="nav-item">
                     <div class="dropdown">
                         <button class="btncustom dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -131,24 +131,23 @@
                         </div>
                     </div>
                 </li>';
-                    } else {
-                        echo '<li class="nav-item">
+                } else {
+                    echo '<li class="nav-item">
                     <a href="signup.php">
                         <button class="btncustom" type="button">
                             Sign Up
                         </button>
                     </a>';
-                    } ?>
-                </ul>
-            </div>
+                } ?>
+            </ul>
         </div>
-    </nav>
-
-</body>
-
-</html>
+    </div>
+</nav>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
