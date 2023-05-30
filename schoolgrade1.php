@@ -1,144 +1,179 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<link rel="stylesheet" href="styles.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <html>
+    <?php
+    require_once("connect.php");
+    session_start();
 
-<html>
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $school = $_POST['schools'];
+        $grade = $_POST['grades'];
+        $studentid = $_SESSION['id'];
 
+        // Update the student table with the school ID and grade
+        $sql = "UPDATE student SET school_id='$school', grade='$grade' WHERE studentid='$studentid'";
+        $resultstudent = mysqli_query($conn, $sql);
 
-<style>
-    .centered {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
-
-    .centered2 {
-        display: flex;
-        justify-content: center;
-    }
-
-    input {
-        background-color: white;
-        height: 50%;
-        width: 40%;
-    }
-
-
-    .introbutton {
-        border: none;
-        width: 250;
-        opacity: 0.7;
-        background-color: #FBD334;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 20px;
-        transition-duration: 0.5s;
-        cursor: pointer;
-        border-radius: 10px;
-        outline: none;
-        /* Remove outline on button click */
-    }
-
-    .introbutton:hover {
-        outline: none;
-        /* Remove outline on button click */
-        opacity: 1;
-        background-color: orange;
-        border: none;
-    }
-
-    @keyframes flipIn {
-        0% {
-            opacity: 0;
-            transform: translateX(-100%);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateX(0);
+        if ($resultstudent) {
+            // Redirect to packages.php
+            header("Location: packages.php");
+            exit(); // Make sure to exit after redirecting
+        } else {
+            // Print error message
+            echo "Error: " . mysqli_error($conn);
         }
     }
+    ?>
 
-    .centeredtop {
-        justify-content: center;
-    }
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    .centered-content {
-        animation: flipIn 1s;
-    }
+        <style>
+            .centered {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
 
-    @keyframes flipButton {
-        0% {
-            opacity: 0;
-            transform: translateX(-100%);
-        }
+            .centered2 {
+                display: flex;
+                justify-content: center;
+            }
 
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-</style>
-
-<body>
-
-    <script>
-        // Add the fade-in class to the video container after a delay
-        setTimeout(function () {
-            var videoContainer = document.querySelector('.video-container');
-            videoContainer.classList.add('fade-in');
-        }, 6000); // Delay in milliseconds before adding the fade-in class
-    </script>
+            input {
+                background-color: white;
+                height: 50%;
+                width: 40%;
+            }
 
 
+            .introbutton {
+                border: none;
+                width: 250;
+                opacity: 0.7;
+                background-color: #FBD334;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 20px;
+                transition-duration: 0.5s;
+                cursor: pointer;
+                border-radius: 10px;
+                outline: none;
+                /* Remove outline on button click */
+            }
 
+            .introbutton:hover {
+                outline: none;
+                /* Remove outline on button click */
+                opacity: 1;
+                background-color: orange;
+                border: none;
+            }
 
-    <center>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <img src="images/account/profile.png" alt="">
-                    <h1 style="padding-top:50;">Step 1: Tell us who you arhsabfuess?</h1>
+            @keyframes flipIn {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-100%);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            .centeredtop {
+                justify-content: center;
+            }
+
+            .centered-content {
+                animation: flipIn 1s;
+            }
+
+            @keyframes flipButton {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-100%);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        </style>
+        <script>
+            // Add the fade-in class to the video container after a delay
+            setTimeout(function() {
+                var videoContainer = document.querySelector('.video-container');
+                videoContainer.classList.add('fade-in');
+            }, 6000); // Delay in milliseconds before adding the fade-in class
+        </script>
+    </head>
+
+    <body>
+        <center>
+            <form method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 style="padding-top:50px;">Step 1: What School Do You Attend?</h1>
+                            <img src="images/account/profile.png" alt="">
+                        </div>
+                        <div class="col-md-12" style="padding-top:20px;">
+                            Select Student's School
+                            <select name="schools">
+                                <?php
+                                $query = "SELECT * FROM school";
+                                $result = mysqli_query($conn, $query);
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $id = $row['id'];
+                                        $name = $row['name'];
+
+                                        echo '<option value="' . $id . '">' . $name . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-12" style="padding-top:20px;">
+                            Select Student's Grade
+                            <select name="grades">
+                                <?php
+                                $sqlgrade = "SELECT * FROM grade";
+                                $resultgrade = mysqli_query($conn, $sqlgrade);
+
+                                if (mysqli_num_rows($resultgrade) > 0) {
+                                    while ($row = mysqli_fetch_assoc($resultgrade)) {
+                                        $gradeid = $row['id'];
+                                        $gradename = $row['name'];
+                                        echo '<option value="' . $gradeid . '">' . $gradename . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-0" style="padding-top:20px; height:150px;">
+                            <input type="submit" value="Save" class="mb-0">
+                        </div>
+                    </div>
                 </div>
+            </form>
+        </center>
 
-                <div class="col-md-12" style="padding-top:50;">
-                    Select Student's School <select name="schools" id="">
-                        <option value="">New Generation</option>
-                        <option value="">Sheraton Heliopolis</option>
-                        <option value="">Nefertari</option>
-                    </select>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </body>
 
-                </div>
-
-                <div class="col-md-12" style="padding-top:50;">
-                    Select Student's Grade <select name="grades" id="">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-
-                </div>
-
-
-    </center>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    </div>
-    </div>
-
-
-
-
-
-    </div>
-</body>
-
-</html>
+    </html>

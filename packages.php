@@ -1,10 +1,63 @@
 <?php
-include("navbar.php")
-    ?>
+require_once("connect.php");
+include("navbar.php");
+
+if ($_SESSION['acctype'] == "Student") {
+    $sql = "SELECT name FROM userclass WHERE id = " . $_SESSION['id'];
+    $result = mysqli_query($conn, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $name = $row['name'];
+
+        $sql = "SELECT * FROM student";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $age = $row['dob'];
+                $photo = $row['photo'];
+                $studentemail = $row['studentemail'];
+                $school = $row['school_id'];
+                $grade = $row['grade'];
+            }
+        }
+    }
+} elseif ($_SESSION['acctype'] == "Parent") {
+    $sql = "SELECT * FROM student";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $studentname = $row['studentname'];
+            $age = $row['dob'];
+            $photo = $row['photo'];
+            $studentemail = $row['studentemail'];
+            $school = $row['school_id'];
+            $grade = $row['grade'];
+        }
+    }
+}
+$sql = "SELECT name FROM school WHERE id = $school";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $schoolname = $row['name'];
+}
+
+$sql = "SELECT name FROM grade WHERE id = $grade";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $gradename = $row['name'];
+}
+?>
+
 <html>
 <title>School Supplies List</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
@@ -161,133 +214,148 @@ include("navbar.php")
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
-                <img src="images/profile.png" alt="">
-                <div class="row left-row">
-                    <!-- Content for left-side column -->
+
+                <!-- Content for left-side column -->
+                <?php
+                echo '<img src="images/account/' . $photo . '" alt="">
+                    <div class="row left-row">';
+                if ($_SESSION['acctype'] == "Student") {
+                    echo '
                     <div class="col-lg-12">
-                        <b>Student Name: </b>Yousef El Fiky
+                        <b>Student Name: </b>' . $name . '
+                    </div>
+                    ';
+                } else {
+                    echo '
+                        <div class="col-lg-12">
+                        <b>Student Name: </b>' . $studentname . '
                     </div>
                     <div class="col-lg-12">
-                        <b>School: </b>New Generation
+                        <b>Age: </b>' . floor((time() - strtotime($age)) / 31556926) . '
                     </div>
                     <div class="col-lg-12">
-                        <b>Grade: </b>12
+                        <b>Student Email: </b>' . $studentemail . '
+                    </div>
+                    <div class="col-lg-12">
+                        <b>School: </b>' . $schoolname . '
+                    </div>
+                    <div class="col-lg-12">
+                        <b>Grade: </b>' . $gradename . '
                     </div>
                     <div class="col-lg-12">
                         <b>Supplies Availability: </b>Yes
                     </div>
-                </div>
+                    ';
+                } ?>
             </div>
+        </div>
 
-            <div class="col-lg-9">
-                <!-- Right-side columns -->
-                <div class="row">
-                    <div class="col-lg-12 card mt-3">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                                <div class="text-left">
-                                    Notebooks
-                                </div>
-                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
+        <div class="col-lg-9">
+            <!-- Right-side columns -->
+            <div class="row">
+                <div class="col-lg-12 card mt-3">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div class="text-left">
+                                Notebooks
                             </div>
-                        </div>
-                        <div class="card-body expandable-content">
-
-
-                            <div class="checkbox-container">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="black-notebook" name="notebook"
-                                        value="black" checked>
-                                    <label class="form-check-label" for="black-notebook">
-                                        Black Notebook
-                                    </label>
-                                </div>
+                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                <i class="fas fa-chevron-right"></i>
                             </div>
-
-                            <div class="checkbox-container">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="white-notebook" name="notebook"
-                                        value="white" checked>
-                                    <label class="form-check-label" for="white-notebook">
-                                        White Notebook
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="checkbox-container">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="red-notebook" name="notebook"
-                                        value="red" checked>
-                                    <label class="form-check-label" for="red-notebook">
-                                        Red Notebook
-                                    </label>
-                                </div>
-                            </div>
-
-
-
-
                         </div>
                     </div>
+                    <div class="card-body expandable-content">
 
-                    <div class="col-lg-12 card mt-3">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                                <div class="text-left">
-                                    This card can be expanded
-                                </div>
-                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
+
+                        <div class="checkbox-container">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="black-notebook" name="notebook" value="black" checked>
+                                <label class="form-check-label" for="black-notebook">
+                                    Black Notebook
+                                </label>
                             </div>
                         </div>
-                        <div class="card-body expandable-content">
-                            Right-side Content 1
-                        </div>
-                    </div>
-                    <div class="col-lg-12 card mt-3">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                                <div class="text-left">
-                                    This card can be expanded
-                                </div>
-                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
+
+                        <div class="checkbox-container">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="white-notebook" name="notebook" value="white" checked>
+                                <label class="form-check-label" for="white-notebook">
+                                    White Notebook
+                                </label>
                             </div>
                         </div>
-                        <div class="card-body expandable-content">
-                            Right-side Content 1
-                        </div>
-                    </div>
-                    <div class="col-lg-12 card mt-3">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                                <div class="text-left">
-                                    This card can be expanded
-                                </div>
-                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
+
+                        <div class="checkbox-container">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="red-notebook" name="notebook" value="red" checked>
+                                <label class="form-check-label" for="red-notebook">
+                                    Red Notebook
+                                </label>
                             </div>
                         </div>
-                        <div class="card-body expandable-content">
-                            Right-side Content 1
-                        </div>
+
+
 
 
                     </div>
+                </div>
 
-                    <div class="col-lg-12 mt-3">
-
-                        <a href="signup2.php"> <button class="btn">ADD TO CART</button></a>
-
+                <div class="col-lg-12 card mt-3">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div class="text-left">
+                                This card can be expanded
+                            </div>
+                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
                     </div>
+                    <div class="card-body expandable-content">
+                        Right-side Content 1
+                    </div>
+                </div>
+                <div class="col-lg-12 card mt-3">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div class="text-left">
+                                This card can be expanded
+                            </div>
+                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body expandable-content">
+                        Right-side Content 1
+                    </div>
+                </div>
+                <div class="col-lg-12 card mt-3">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div class="text-left">
+                                This card can be expanded
+                            </div>
+                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body expandable-content">
+                        Right-side Content 1
+                    </div>
+
+
+                </div>
+
+                <div class="col-lg-12 mt-3">
+
+                    <a href="signup2.php"> <button class="btn">ADD TO CART</button></a>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
     </div>
@@ -314,4 +382,4 @@ include("navbar.php")
 
 <?php
 include("footer.php")
-    ?>
+?>

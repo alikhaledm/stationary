@@ -3,6 +3,9 @@ require_once("connect.php");
 include("navbar.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_SESSION['id'])) {
+        header("location:logout.php");
+    }
 
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -21,9 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['phone'] = $row["phone"];
             $_SESSION['dob'] = $row["dob"];
             $_SESSION['photo'] = $row["photo"];
+            $_SESSION['acctype'] = $row["acctype"];
 
-            if (isset($_SESSION['id'])) {
-                header('location: index.php');
+            if ($_SESSION['acctype'] == "admin") {
+                header("Location: admin-panel.php");
+            } elseif ($_SESSION['acctype'] == "Student" || $_SESSION['acctype'] == "Parent" || $_SESSION['acctype'] == "User") {
+                echo '<script>window.location.href = "index.php";</script>';
             } else {
                 echo "<script>alert('Invalid email or password')</script>";
             }
@@ -53,6 +59,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 </head>
 <style>
+    .password-input-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .password-input-container .show-password-icon {
+        position: absolute;
+        left: 280px;
+        transform: translateY(-230%);
+        cursor: pointer;
+        user-select: none;
+
+    }
+
+    .password-input-container .show-password-icon.visible {
+        color: #fbd334;
+        /* Change the color to your preferred icon state */
+    }
+
     /* For WebKit browsers (Chrome, Safari) */
     ::-webkit-scrollbar {
         width: 10px;
@@ -126,7 +151,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <div class="mx-auto max-w-xs">
                                 <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" name="email" placeholder="Email" required />
-                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4" name="password" placeholder="Password" required />
+                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4" id="passwordInput" type="password" name="password" placeholder="Password" required />
+                                <div class="password-input-container">
+                                    <div class="show-password-icon" onclick="togglePasswordVisibility()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                                            <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
+                                            <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
+                                            <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
+                                        </svg>
+                                    </div>
+                                </div>
                                 <input type="submit" value="Sign In" class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     </form>
                     <p class="mt-6 text-xs text-gray-600 text-center">
@@ -145,6 +179,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     </div>
 
+    <script>
+        var passwordInput = document.getElementById("passwordInput");
+        var showPasswordIcon = document.querySelector(".show-password-icon");
+
+        function togglePasswordVisibility() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                showPasswordIcon.classList.add("visible");
+            } else {
+                passwordInput.type = "password";
+                showPasswordIcon.classList.remove("visible");
+            }
+        }
+    </script>
     <?php
     include 'footer.php';
     ?>

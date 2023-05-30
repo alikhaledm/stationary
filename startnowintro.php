@@ -214,6 +214,7 @@
                             the
                             School
                             Supplies List come knocking at your door!
+
                         </center>
                     </div>
                     <div id="content2" class="content"></div>
@@ -223,7 +224,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mt-3 centered2">
-                    <button id="nextBtn" class="btncustom3">Next Step</button>
+                    <a href="schoolgrade.php"><button id="nextBtn" class="btncustom3">Next Step</button></a>
                 </div>
             </div>
         </div>
@@ -264,7 +265,7 @@
                     }
                 }
 
-                $('#nextBtn').click(function() {
+                $('').click(function() {
                     showNextPage();
                 });
 
