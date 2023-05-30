@@ -48,6 +48,11 @@ include("navbar.php");
     background-color: #888;
   }
 
+  #hr-3 {
+    border: 1px solid black;
+    font-weight: bold;
+  }
+
   /* For Internet Explorer and Microsoft Edge */
   /* Note: Microsoft Edge supports the -ms-overflow-style property */
   /* to customize the scroll bar, but it's not widely supported */
@@ -58,6 +63,29 @@ include("navbar.php");
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
   }
+  .h2{
+    color: black;
+  }
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  a:hover{
+    color: #f1ff2d;
+    text-decoration: none;
+  }
+
+  .h2{
+    color: blue;
+  }
+
+  .col-md-3
+  {
+    left:70px;
+    }
+
 </style>
 
 <body>
@@ -65,41 +93,37 @@ include("navbar.php");
     <div class="row">
       <div class="lineshop" style="padding-top:30;"></div>
       <div class="col-md-12 text-center" style="padding-bottom: 30;">
+      <hr id="hr-3" style="width:90%;text-align:left;margin-center:0">
         <h2>SHOP</h2>
+        <hr id="hr-3" style="width:90%;text-align:left;margin-center:0">
       </div>
       <div class="lineshop"></div>
     </div>
   </div>
-
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-1">
-        <div style="font-size:30;">FILTER BY<br></div>
-        <hr>
-        <div style="font-size:15;">CATEGORY</div><br>
-        <div><B><a href="">ALL</a></div>
-        <div><a href="">Best Sellers</a></div>
-        <div><a href="">KIDS ART</a></div>
-        <div><a href="">SALE</a></div>
-        <hr><a href="">LEAST PRICE</a></b>
-        <HR>
+      <div class="col-md-3">
+        <div> <h2 class="h2">FILTER BY</h2></div>
+        <hr style="width:70%; margin-left:0">
+        <div> <h5> CATEGORY</h5></div>
+        <hr style="width:70%; margin-left:0">
+        <div><a href="">ALL</a></div>
+        <div><a href="">Notebooks & Paper</a></div>
+        <div><a href="">Art Supplies</a></div>
+        <div><a href="">Writing Tools</a></div>
+        <div><a href="">Binders & Folders</a></div>
+        <div><a href="">Math & Scientific Tools</a></div>
+        <div><a href="">Pencil Cases & Bags</a></div>
+        <hr style="width:70%; margin-left:0">
+        <div> <h5> LEAST PRICE</h5></div>
+        <hr style="width:70%; margin-left:0">
       </div>
       <div class="container">
-        <br>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon">Search :</span>
-            <input type="text" name="search_text" id="search_text" placeholder="Search for Product" class="form-control" />
-          </div>
-        </div>
-        <br />
         <div id="result"></div>
 
       </div>
 
 </body>
-
-
 </html>
 <script>
   $(document).ready(function() {
