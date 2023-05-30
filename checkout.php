@@ -1,5 +1,6 @@
 <html>
 <?php
+// ini_set('display_errors', 'Off');
 require_once("connect.php");
 include("navbar.php");
 
@@ -26,16 +27,33 @@ $result4 = mysqli_query($conn, $getAddress);
 $getCreditCard = "SELECT * FROM creditcard WHERE userid = $userid";
 $result5 = mysqli_query($conn, $getCreditCard);
 
+// if user has more than 3 cards stored in db then dont allow him to save more
+if (isset($_POST['savecard'])) {
+  if (mysqli_num_rows($result5) >= 3) {
+    echo '<script>alert("You can only save 3 cards.")</script>';
+    echo '<script>window.location.href = "checkout.php";</script>';
+    exit();
+  }
+}
+
 // insert credit card
-if (isset($_POST['submit'])) {
+if (isset($_POST['savecard'])) {
   $ccn = $_POST['ccn'];
   $chn = $_POST['chn'];
+  $cvv = $_POST['cvv'];
   $month = $_POST['month'];
   $year = $_POST['year'];
   $expdate = $month . "/" . $year;
 
+  //if $expdate is not numbers then ask user to enter valid expiry date and exit and refresh page
+  if (!is_numeric($month) || !is_numeric($year)) {
+    echo '<script>alert("Please enter a valid expiry date.")</script>';
+    echo '<script>window.location.href = "checkout.php";</script>';
+    exit();
+  }
+
   // Insert the credit card details into the creditcard table
-  $insertCardQuery = "INSERT INTO creditcard (userid, cardnumber, cardholdername, expirydate) VALUES ('$userid', '$ccn', '$chn', '$expdate')";
+  $insertCardQuery = "INSERT INTO creditcard (userid, cardnumber, cardholdername, expirydate, cvv) VALUES ('$userid', '$ccn', '$chn', '$expdate', '$cvv')";
   $insertCardResult = mysqli_query($conn, $insertCardQuery);
 
   if ($insertCardResult) {
@@ -44,6 +62,9 @@ if (isset($_POST['submit'])) {
     echo "Error: Unable to save credit card details.";
     // Handle the error appropriately
   }
+}
+
+if (isset($_POST['placeorder'])) {
 }
 
 ?>
@@ -66,6 +87,18 @@ if (isset($_POST['submit'])) {
 
     hr {
       background-color: black;
+    }
+
+    /* Parent Container */
+    .content_img {
+      position: absolute;
+      height: 200px;
+      float: left;
+    }
+
+    .echo {
+      font-weight: lighter;
+      color: grey;
     }
   </style>
 </head>
@@ -159,10 +192,15 @@ if (isset($_POST['submit'])) {
           <div class="container" style="width: 82.5%; margin-left:0; padding-left:0;">
             <?php
             if ($result5) {
+              // check if creditcard table in db is empty
+              if (mysqli_num_rows($result5) == 0) {
+                echo '<div class="echo">You have no saved cards.</div>';
+              }
               while ($rowData4 = mysqli_fetch_assoc($result5)) {
                 $cardholdername = $rowData4['cardholdername'];
                 $cardnumber = $rowData4['cardnumber'];
                 $expiry = $rowData4['expirydate'];
+                $code = $rowData4['cvv'];
 
                 // replace the first 12 characters of $cardnumber with X and also - between every 4 characters
                 $cardnumber = substr_replace($cardnumber, str_repeat("X", 12), 0, 12);
@@ -190,7 +228,7 @@ if (isset($_POST['submit'])) {
             <div id="myDIV">
               <h6><b>Card Holder Name: </b>' . $cardholdername . '</h6>
               <h6><b>Expiry Date: </b>' . $expiry . '</h6>
-              <h6><b>CVV: </b><input style="border:1px solid black;" size="1" height="10px" maxlength="3" type="text" name="cvv" oninput="validateInput(this)"></h6>
+              <h6><b>CVV: </b>' . $code . '</h6>
               </div>
               </div>
             <br>';
@@ -203,29 +241,30 @@ if (isset($_POST['submit'])) {
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg><b>Add New Card</b> </h4>
           </div>
-          <form>
+          <form method="POST">
             <div class="form__cc" id="new-credit-card-container">
               <div class="row">
                 <div class="field ">
                   <div class="title">Credit Card Number</div>
-                  <input type="text" name="ccn" size="23" maxlength="16" class="input txt text-validated" placeholder="1234 1234 1234 1234" oninput="validateInput(this)" />
+                  <input type="text" name="ccn" size="23" minlength="16" maxlength="16" class="input txt text-validated" placeholder="1234 1234 1234 1234" oninput="validateInput(this)" required />
                 </div>
                 <div class="field ">
                   <div class="title">CVV Code
                   </div>
-                  <input type="text" class="input txt" size="13" maxlength="3" placeholder="123" oninput="validateInput(this)" />
+                  <input type="text" name="cvv" class="input txt" size="13" min="3" maxlength="3" placeholder="123" oninput="validateInput(this)" required />
                 </div>
               </div>
               <div class="row">
                 <div class="field ">
                   <div class="title">Name on Card
                   </div>
-                  <input type="text" name="chn" size="23" class="input txt" placeholder="John Doe" />
+                  <!-- dont allow number to inputed on chn -->
+                  <input type="text" oninput="validatetext(event)" name="chn" size="23" maxlength="35" class="input txt" placeholder="John Doe" required />
                 </div>
                 <div class="field ">
                   <div class="title">Expiry Date
                   </div>
-                  <select class="input ddl" name="month">
+                  <select class="input ddl" name="month" required="required">
                     <option disabled selected hidden>mm</option>
                     <option>01</option>
                     <option>02</option>
@@ -240,7 +279,7 @@ if (isset($_POST['submit'])) {
                     <option>11</option>
                     <option>12</option>
                   </select>
-                  <select class="input ddl" name="year">
+                  <select class="input ddl" name="year" required>
                     <option disabled selected hidden>yy</option>
                     <option>23</option>
                     <option>24</option>
@@ -260,7 +299,7 @@ if (isset($_POST['submit'])) {
               </div>
             </div>
             <br>
-            <input type="submit" name="save_card" value="Save Card" class="btn" style="background:black;">
+            <input type="submit" class="btn action__submit" name="savecard" value="Save Card" style="background:black;">
           </form>
         </div>
         <div class="payment__shipping">
@@ -332,7 +371,7 @@ if (isset($_POST['submit'])) {
           </svg>
           <span>Secure Checkout</span>
         </div>
-        <a href="thankyou.php" class="btn action__submit" style="background-color: #fbd334;">Place your Order
+        <a href="thankyou.php"><button class="btn action__submit" style="background-color: #fbd334;" name="placeorder"> Place your Order</button>
         </a>
 
         <a href="cart.php" class="backBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" style="margin-right: 5px;" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -371,6 +410,19 @@ if (isset($_POST['submit'])) {
     function validateInput(input) {
       // Remove any non-digit characters
       input.value = input.value.replace(/\D/g, '');
+    }
+
+    // Function to validate input and allow only text
+    function validatetext(event) {
+      var input = event.target;
+
+      // Remove any non-alphabetic characters
+      input.value = input.value.replace(/[^a-zA-Z]/g, '');
+
+      // Prevent the input of numbers
+      if (!isNaN(input.value)) {
+        input.value = '';
+      }
     }
   </script>
 </body>

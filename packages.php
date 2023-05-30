@@ -282,7 +282,7 @@ include("navbar.php")
 
                     <div class="col-lg-12 mt-3">
 
-                        <a href="cartfiky.php"> <button class="btn">ADD TO CART</button></a>
+                        <a href="signup2.php"> <button class="btn">ADD TO CART</button></a>
 
                     </div>
                 </div>

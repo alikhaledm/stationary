@@ -23,6 +23,8 @@ if (isset($_POST['update_quantity'])) {
 
     $updateQuery = "UPDATE cart SET quantity = $newQuantity WHERE userid = $userid AND productid = $productId";
     $updateResult = mysqli_query($conn, $updateQuery);
+
+    header("location: cart.php");
 }
 
 ?>
