@@ -115,7 +115,7 @@ include("navbar.php");
               <label for="exampleFormControlTextarea1" class="form-label">Message</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <div> <button class="btn btn-style btn-primary"> Send Message <button> </div>
+            <div> <button class="btn btn-warning w-100">Send Message</button></div>
           </form>
 
         </div>
