@@ -1,8 +1,13 @@
-<style>
+<html>
+    <head>
+    <style>
     #hr-1 {
-        border: 0px solid lightgrey;
-    }
+    border: 1px solid black;
+    font-weight: bold;
+  }
 </style>
+</head>
+<body>
 <hr id="hr-1">
 <footer class="bg-white text-black">
 <div class="container py-5">
@@ -35,7 +40,7 @@
         <div class="col-md-3 mb-4">
             <h5>CONTACT</h5>
             <p>Sheraton Heliopolis
-<br>Cairo, Egypt<br>01288998854</p>
+            <br>Cairo, Egypt<br>01288998854</p>
             <p>supplieshub@gmail.com</p>
         </div>
     </div>
@@ -69,3 +74,5 @@
         </div>
 </div>
 </footer>
+</body>
+</html>
