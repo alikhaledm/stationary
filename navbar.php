@@ -64,6 +64,7 @@
         font-size: 12px;
     }
 </style>
+</head>
 
 <nav class="customnav navbar navbar-expand-lg opacity-100 sticky-top">
 
@@ -75,8 +76,7 @@
             </h1>
         </a>
 
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-3"><span
-                class="navbar-toggler-icon text-left"></span><span class="sr-only"></span></button>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-3"><span class="navbar-toggler-icon text-left"></span><span class="sr-only"></span></button>
 
 
 
@@ -95,62 +95,59 @@
                     <li class="nav-item">
                         <a class="nav-link" href="excess.php">Excess Supplies</a>
                     </li>';
-                }
-                ?>
+                } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="about.php">
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '<li class="nav-item">
+                    <a class="nav-link" href="cart.php">
                         <div class="position-relative">
                             <div class="cartcount">25</div>
-                            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor"
-                                class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
                             </svg>
                         </div>
                     </a>
-                </li>
-
-
+                </li>';
+                } ?>
+                <?php if (isset($_SESSION['id'])) {
+                    echo '
                 <li id="dropdown" class="nav-item">
                     <div class="dropdown">
                         <button class="btncustom dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            Ali Khaled
+                            ' . $_SESSION['fname'] . '
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="page1.html">Account</a>
+                            <a class="dropdown-item" href="account.php">My Account</a>
                             <a class="dropdown-item" href="page2.html">Page 2</a>
                             <a class="dropdown-item" href="page3.html">Page 3</a>
                             <hr style="width:75%">
-                            <a class="dropdown-item" href="page4.html">Logout</a>
+                            <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
                     </div>
-                </li>
-
-
-
+                </li>';
+                } else {
+                    echo '<li class="nav-item">
+                    <a href="signup.php">
+                        <button class="btncustom" type="button">
+                            Sign Up
+                        </button>
+                    </a>';
+                } ?>
             </ul>
         </div>
     </div>
 </nav>
-
-
-
-
-
-
-
-
-
-</html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

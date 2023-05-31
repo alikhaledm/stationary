@@ -469,21 +469,17 @@
 <body>
   <?php
   include("navbar.php")
-    ?>
+  ?>
 
 
   <div class="containerfluidcustom">
     <div class="row">
       <div class="col-lg-12">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" style="width:100%; height:100%;"
-          data-bs-ride="carousel">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" style="width:100%; height:100%;" data-bs-ride="carousel">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="5000">
@@ -494,8 +490,7 @@
                 <div class="carouselfont1">Select School, Get Supplies</div>
                 <div class="carouselfont2">
                   Explore our One-Click Solution for All Your School Supply Needs</div><br>
-                <button class="carouselbtn carouselfont3">Start Now <img width="20" height="20"
-                    src="images/forward.svg"> </button>
+                <button class="carouselbtn carouselfont3">Start Now <img width="20" height="20" src="images/forward.svg"> </button>
               </div>
             </div>
 
@@ -518,18 +513,15 @@
               <div class="carousel-caption d-md-block" style="top: 41%;">
                 <div class="carouselfont1">Wide Range Of Products</div>
                 <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div><br>
-                <button class="carouselbtn carouselfont3">Start Now<img width="20" height="20"
-                    src="images/forward.svg"></button>
+                <button class="carouselbtn carouselfont3">Start Now<img width="20" height="20" src="images/forward.svg"></button>
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-            data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-            data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -552,10 +544,8 @@
         <div class="col-lg-6 col-sm-12">
           <div style="position:relative;">
             <div class="zoom-in-container">
-              <img width="640" height="300px" style="max-width: 100%; padding-bottom:20;"
-                src="images/supplies-list-1.jpg" alt="">
-              <button class="custombtn2"
-                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size:25;">Shop
+              <img width="640" height="300px" style="max-width: 100%; padding-bottom:20;" src="images/supplies-list-1.jpg" alt="">
+              <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size:25;">Shop
                 Stationery</button>
             </div>
           </div>
@@ -564,10 +554,8 @@
         <div class="col-lg-6 col-sm-12">
           <div style="position: relative;">
             <div class="zoom-in-container2">
-              <img width="638" height="300px" style="max-width:100%; padding-bottom:20; "
-                src="images/supplies-list-2.jpg" alt="">
-              <button class="custombtn2"
-                style="position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); font-size:25;">Fulfill
+              <img width="638" height="300px" style="max-width:100%; padding-bottom:20; " src="images/supplies-list-2.jpg" alt="">
+              <button class="custombtn2" style="position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); font-size:25;">Fulfill
                 School
                 Supplies
                 List</button>
@@ -579,13 +567,19 @@
   </center>
 
   <script>
-    $(document).ready(function () {
-      function adjustColumnWidth() {
-        if ($(window).width() <= 999) { $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile'); } else { $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile'); }
-      } // Adjust column width on
+    $(document).ready(function() {
+    function adjustColumnWidth() {
+      if ($(window).width() <= 999) {
+        $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
+      } else {
+        $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
+      }
+    } // Adjust column width on
     initial page load adjustColumnWidth(); // Adjust column width on window resize $(window).resize(function () {
-      adjustColumnWidth();
-    }); }); </script>
+    adjustColumnWidth();
+    });
+    });
+  </script>
 
   <div class="containernew servicebody" style="padding-top:20;">
     <div class="row" style=" padding-bottom:100px;">
@@ -595,10 +589,8 @@
       <div class="col-lg-3 col-sm-12" style="padding-top:50;">
 
         <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
-              src="images/services/supplies.svg" alt=""></div><br>
-          <div
-            style="display:flex; justify-content:center; align-items:center; padding-left:20; font-size: 32; color: #2F4668;">
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/supplies.svg" alt=""></div><br>
+          <div style="display:flex; justify-content:center; align-items:center; padding-left:20; font-size: 32; color: #2F4668;">
             Supplies List
           </div>
 
@@ -615,8 +607,7 @@
       <div class="col-lg-3 col-sm-12" style="padding-top:50;">
 
         <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
-              src="images/services/stationery.svg" alt=""></div><br>
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/stationery.svg" alt=""></div><br>
           <div style="display:flex; justify-content:center; align-items:center; font-size: 35; color: #2F4668;">
             Excess Selling
           </div>
@@ -636,8 +627,7 @@
       <div class="col-lg-3 col-sm-12" style="padding-top:50;">
 
         <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
-              src="images/services/donate.svg" alt=""></div><br>
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/donate.svg" alt=""></div><br>
           <div style="display:flex; justify-content:center; align-items:center; font-size: 32; color: #2F4668;">
             Donations
           </div>
@@ -653,8 +643,7 @@
       <div class="col-lg-3 col-sm-12" style="padding-top:50;">
 
         <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80"
-              src="images/services/shop.svg" alt=""></div><br>
+          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/shop.svg" alt=""></div><br>
           <div style="display:flex; justify-content:center; align-items:center; font-size: 32; color: #2F4668;">
             Stationery Shop
           </div>
@@ -699,11 +688,33 @@
   </div>
 
 
-
-
   <script>
-    $(window).scroll(function () {
-      $('.bordered-row').each(function () {
+    $(document).ready(function() {
+      if ($(window).width() <= 999) {
+        $('.mobile').removeClass('hidden').addClass('visible');
+      }
+    });
+
+    $(document).ready(function() {
+      function adjustColumnWidth() {
+        if ($(window).width() <= 999) {
+          $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
+        } else {
+          $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
+        }
+      }
+
+      // Adjust column width on initial page load
+      adjustColumnWidth();
+
+      // Adjust column width on window resize
+      $(window).resize(function() {
+        adjustColumnWidth();
+      });
+    });
+
+    $(window).scroll(function() {
+      $('.bordered-row').each(function() {
         var bottom_of_object = $(this).offset().top + $(this).outerHeight();
         var bottom_of_window = $(window).scrollTop() + $(window).height();
         if (bottom_of_window > bottom_of_object) {
@@ -713,49 +724,37 @@
         }
       });
     });
+
+    window.addEventListener("scroll", function() {
+      var element = document.querySelector(".zoom-in-container");
+      var position = element.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
+
+      if (position < windowHeight * 0.3) {
+        element.classList.add("zoom-in");
+      } else {
+        element.classList.remove("zoom-in");
+      }
+    });
+
+    window.addEventListener("scroll", function() {
+      var element = document.querySelector(".zoom-in-container2");
+      var position = element.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
+
+      if (position < windowHeight * 0.3) {
+        element.classList.add("zoom-in");
+      } else {
+        element.classList.remove("zoom-in");
+      }
+    });
   </script>
 
-
-
-
-
-
-
-
-</body>
-<hr>
-
-<?php
-include("footer.php")
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <?php
+  include("footer.php")
   ?>
-
-<script>
-  window.addEventListener("scroll", function () {
-    var element = document.querySelector(".zoom-in-container");
-    var position = element.getBoundingClientRect().top;
-    var windowHeight = window.innerHeight;
-
-    if (position < windowHeight * 0.3) {
-      element.classList.add("zoom-in");
-    } else {
-      element.classList.remove("zoom-in");
-    }
-  });
-</script>
-
-<script>
-  window.addEventListener("scroll", function () {
-    var element = document.querySelector(".zoom-in-container2");
-    var position = element.getBoundingClientRect().top;
-    var windowHeight = window.innerHeight;
-
-    if (position < windowHeight * 0.3) {
-      element.classList.add("zoom-in");
-    } else {
-      element.classList.remove("zoom-in");
-    }
-  });
-</script>
+</body>
 
 </html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -765,7 +764,7 @@ include("footer.php")
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script>
   // Initialize Bootstrap dropdown
-  $(document).ready(function () {
+  $(document).ready(function() {
     $('.dropdown-toggle').dropdown();
   });
 </script>
