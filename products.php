@@ -56,6 +56,28 @@ include("navbar.php");
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
   }
+
+  .h2 {
+    color: black;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    color: #f1ff2d;
+    text-decoration: none;
+  }
+
+  .h2 {
+    color: yellow;
+  }
+
+  .col-md-3 {
+    left: 70px;
+  }
 </style>
 
 <body>
@@ -63,7 +85,11 @@ include("navbar.php");
     <div class="row">
       <div class="lineshop" style="padding-top:30;"></div>
       <div class="col-md-12 text-center" style="padding-bottom: 30;">
-        <h2>SHOP</h2>
+        <hr id="hr-3" style="width:90%;text-align:left;">
+        <h2 style="color: #1f3b2c; width:50px; height:100px; text-align:left; background-color: #f5f3f5; text-align: center; border: 0px ; padding: 30px;">
+          <img src="images/shop/products/pro.JPG" class="card-img-top" alt="..."> PRODUCTS
+        </h2>
+        <hr id="hr-3" style="width:90%;text-align:left;">
       </div>
       <div class="lineshop"></div>
     </div>
