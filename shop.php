@@ -170,6 +170,25 @@ include("navbar.php")
     transform: rotateY(180deg);
   }
 
+  .blurry-container {
+  background-image: url('your-image-url.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(10px);
+  position: relative;
+  height: 100vh; /* Set the height of the container to the height of the viewport */
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
   /* For Internet Explorer and Microsoft Edge */
   /* Note: Microsoft Edge supports the -ms-overflow-style property */
   /* to customize the scroll bar, but it's not widely supported */
@@ -207,6 +226,7 @@ include("navbar.php")
     </div>
     <br>
 
+    
     <center>
       <div class="flip-card">
         <div class="flip-card-inner">
@@ -244,7 +264,7 @@ include("navbar.php")
       <div class="row">
         <div class="lineshop"></div>
         <div class="col-md-12 text-center" style="padding-bottom: 30;">
-          <hr id="hr-2" style="width:80%;text-align:left;margin-center:0">
+          <hr id="hr-2" style="width:100%;text-align:left;margin-center:0">
           <h2>SHOP BY CATEGORIES</h2>
           <hr id="hr-2" style="width:100%;text-align:left;margin-center:0">
         </div>
@@ -259,6 +279,7 @@ include("navbar.php")
             <img src="images/shop/note.jpg" class="card-img-top" alt="..." height="350">
             <div class="card-body">
               <h5 class="card-title">Notebooks & Paper</h5>
+              <hr>
               <p class="card-text">Notebooks, Graph Papers, Sticky Notes, Printer Papers and Construction Papers</p>
             </div>
           </div>
@@ -269,6 +290,7 @@ include("navbar.php")
             <img src="images/shop/arts.jpg" class="card-img-top" alt="..." height="350">
             <div class="card-body">
               <h5 class="card-title">Art Supplies</h5>
+              <hr>
               <p class="card-text">Colored Pencils, Crayons, Paints, Paintbrushes, Sketches, Scissors and Glue</p>
             </div>
 
@@ -279,6 +301,7 @@ include("navbar.php")
             <img src="images/shop/Writing Tools.jpg" class="card-img-top" alt="..." height="350">
             <div class="card-body">
               <h5 class="card-title">Writing Tools</h5>
+              <hr>
               <p class="card-text">Pens, Pencils, Highlighters, Markers, and Erasers</p>
             </div>
           </div>
@@ -288,6 +311,7 @@ include("navbar.php")
             <img src="images/shop/folders.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Binders & Folders</h5>
+              <hr>
               <p class="card-text">Binders, Folders, Dividers, and Sheet Protectors for organizing and Storing Papers.s</p>
             </div>
           </div>
@@ -297,6 +321,7 @@ include("navbar.php")
             <img src="images/shop/math.png" class="card-img-top" alt="..." height="350">
             <div class="card-body">
               <h5 class="card-title">Math & Scientific Tools</h5>
+              <hr>
               <p class="card-text">Geometry Tools, compass, protractor, ruler, math workbooks and worksheets and scientific calculators</p>
             </div>
           </div>
@@ -306,6 +331,7 @@ include("navbar.php")
             <img src="images/shop/cases.jpg" class="card-img-top" alt="..." height="350">
             <div class="card-body">
               <h5 class="card-title">Pencil Cases & Bags</h5>
+              <hr>
               <p class="card-text">Pens, Pencils, Highlighters, Markers, and Erasers </p>&nbsp; &nbsp; &nbsp; &nbsp;
             </div>
           </div>

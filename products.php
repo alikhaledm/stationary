@@ -78,7 +78,7 @@ include("navbar.php");
   }
 
   .h2{
-    color: blue;
+    color: yellow;
   }
 
   .col-md-3
@@ -94,7 +94,9 @@ include("navbar.php");
       <div class="lineshop" style="padding-top:30;"></div>
       <div class="col-md-12 text-center" style="padding-bottom: 30;">
       <hr id="hr-3" style="width:90%;text-align:left;margin-center:0">
-        <h2>SHOP</h2>
+      <div style="color: #1f3b2c width:500% height=100%; text-align:left;margin-center:0"; background-color: #f5f3f5; text-align: center; border: 0px ; padding: 30px;">
+             <img src="images/shop/products/pro.JPG" class="card-img-top" alt="..."> 
+      </div>
         <hr id="hr-3" style="width:90%;text-align:left;margin-center:0">
       </div>
       <div class="lineshop"></div>

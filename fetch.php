@@ -13,7 +13,7 @@
     .rectangular-bar {
       display: flex;
       align-items: center;
-      width: 200px;
+      width: 80%;
       height: 40px;
       border: 2px solid black;
     }
@@ -49,10 +49,21 @@
     .plus-sign:hover {
       background-color: gray;
     }
+
+    #btnn
+    {
+      background-color:white;
+      border: 3px solid black;
+      width: 80%;
+      
+    }
+    .card-img-top
+    {
+      height: 300px;
+    }
   </style>
 
 </body>
-
 </html>
 
 
@@ -69,40 +80,38 @@ if (isset($_POST["query"])) {
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
   echo "<div class='row myprods'>";
-  $result->data_seek(0);
   while ($row = $result->fetch_assoc()) {
     $imageURL = 'images/Shop/products/' . $row["photo"];
-    echo "<div style='margin-top: 3%' class='col-lg-4'>";
-    echo "<div class='card' style='width: 18rem;'>";
-    echo "<a href='productdetails.php'><img src='" . $imageURL . " ' class='card-img-top' alt='...'><a/>";
-    echo "</div>";
+    echo "<div class='col-md-4'>";
+    echo "<div class='card mb-4' style='height: 100%;'>";
+    echo "<a href='productdetails.php'><img src='" . $imageURL . " ' class='card-img-top' style='height: 200px; object-fit: cover;' alt='...'><a/>";
     echo "<div class='card-body'>";
-    echo "<h5 class='card-title'>" . $row['pname'] . "</h5>";
-    echo "<p class='card-text'>$ " . $row['price'] . "</p>";
-    echo "<div class='rectangular-bar'>
-    <div class='left-side'>
-      <span class='minus-sign' onclick='decrease(0)'>-</span>
-    </div>
-    <div class='middle-section'>
-      <span id='value-0' class='number'>1</span>
-    </div>
-    <div class='right-side'>
-      <span class='plus-sign' onclick='increase(0)'>+</span>
-    </div>
-  </div>
-  <br>";
+    echo "<center><h5 class='card-title'>" . $row['pname'] . "</h5></center>";
+    echo "<center><p class='card-text'>$ " . $row['price'] . "</p></center>";
+    echo "<div class='rectangular-bar' style='width:100%;'>
+              <div class='left-side'>
+                <span class='minus-sign' onclick='decrease(0)'>-</span>
+              </div>
+              <div class='middle-section'>
+                <span id='value-0' class='number'>1</span>
+              </div>
+              <div class='right-side'>
+                <span class='plus-sign' onclick='increase(0)'>+</span>
+              </div>
+            </div>
+            <br>";
+            echo "<a href='addProductToCart.php?varname=$row[id]' class='btn' style='width:100%;' id='btnn'>Add to cart</a>";
+            echo "<br><br><a href='productdetails.php'>Details</a>";
+      echo "</div>";
+      echo "</div>";
+      echo "</div>";
 
-    echo "<a href='addProductToCart.php?varname=$row[id]' class='btn btn-primary'>Add to cart</a>";
-    echo "<br><br><a href='productdetails.php'>Details</a>";
+    }
     echo "</div>";
-    echo "</div>";
+  } else {
+    echo 'Data Not Found';
   }
-  echo "</div>";
-} else {
-  echo 'Data Not Found';
-}
-
-?>
+  ?>
 <script>
   var barData = [{
       value: 0
