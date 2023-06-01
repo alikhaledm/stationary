@@ -95,7 +95,7 @@ include("navbar.php");
       <div class="col-md-12 text-center" style="padding-bottom: 30;">
       <hr id="hr-3" style="width:90%;text-align:left;margin-center:0">
       <h2 style="color: #1f3b2c width:50px height=100px; text-align:left;margin-center:0 background-color: #f5f3f5; text-align: center; border: 0px ; padding: 30px;">
-             <img src="images/shop/products/pro.JPG" class="card-img-top" alt="..."> 
+             <img src="images/shop/products/pro.JPG" class="card-img-top" alt="..."> PRODUCTS
       </h2>
         <hr id="hr-3" style="width:90%;text-align:left;margin-center:0">
       </div>
