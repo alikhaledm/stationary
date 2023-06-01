@@ -1,5 +1,7 @@
 <html>
-
+<?php
+require_once("connect.php");
+?>
 <title>School Supplies List</title>
 
 <link rel="stylesheet" href="styles.css">
@@ -444,7 +446,6 @@
     font-size: 20px;
     border: none;
     background-color: transparent;
-    top: ;
   }
 
   .carouselfont1 {
@@ -468,9 +469,8 @@
 
 <body>
   <?php
-  include("navbar.php")
+  include("navbar.php");
   ?>
-
 
   <div class="containerfluidcustom">
     <div class="row">
@@ -529,15 +529,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
   <center>
     <div class="containernew" style="padding-top:20;">
       <div class="row">
@@ -568,18 +559,24 @@
 
   <script>
     $(document).ready(function() {
-    function adjustColumnWidth() {
-      if ($(window).width() <= 999) {
-        $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
-      } else {
-        $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
+      function adjustColumnWidth() {
+        if ($(window).width() <= 999) {
+          $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
+        } else {
+          $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
+        }
       }
-    } // Adjust column width on
-    initial page load adjustColumnWidth(); // Adjust column width on window resize $(window).resize(function () {
-    adjustColumnWidth();
-    });
+
+      // Adjust column width on initial page load
+      adjustColumnWidth();
+
+      // Adjust column width on window resize
+      $(window).resize(function() {
+        adjustColumnWidth();
+      });
     });
   </script>
+
 
   <div class="containernew servicebody" style="padding-top:20;">
     <div class="row" style=" padding-bottom:100px;">

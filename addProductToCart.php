@@ -1,6 +1,5 @@
 <?php
 require_once("connect.php");
-session_start();
 
 $var_value = $_GET['varname'];
 $productid = $var_value;
