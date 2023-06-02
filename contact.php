@@ -60,7 +60,7 @@ include("navbar.php");
     <div id="contact">
 
       <div id="contactImage">
-        <img src="images/canvas.png" >
+        <img src="images/123.jpg" >
 
         <div id="contContent">
           <h1 class="">Contact</h1>

@@ -613,7 +613,7 @@ require_once("connect.php");
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <h1>OUR PARTNERED SCHOOLS</h1>
+          <h1>OUR PARTNERS</h1>
           <hr><br>
         </div>
       </div>
