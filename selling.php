@@ -14,12 +14,7 @@ include("navbar.php")
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <title>Sell Excess Supplies</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: white;
-    }
+  
     .cr {
       max-width: 500px;
       margin: 0 auto;
@@ -29,17 +24,14 @@ include("navbar.php")
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
-    label {
+    .sell {
       display: block;
       margin-top: 10px;
       font-weight: bold;
       color: #333;
     }
     
-    input[type="text"],
-    input[type="em"],
-    input[type="tel"],
-    textarea {
+    .a {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
@@ -50,16 +42,14 @@ include("navbar.php")
       
     }
     
-    input[type="file"] {
-      margin-top: 5px;
-    }
+   
     
-    .terms {
+    .termss {
       margin-top: 15px;
     }
     
   
-    .terms p {
+    .termss p {
       margin-bottom: 10px;
       color: #555;
     }
@@ -68,17 +58,14 @@ include("navbar.php")
       margin-top: 10px;
     }
     
-    input[type="submit"] {
-      background-color: black;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+ 
   </style>
 </head>
-<body>
+<body style="  font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+    ">
   <h1 style=" text-align: center;
       margin-top: 50px;
       font-weight: bold;
@@ -96,25 +83,25 @@ include("navbar.php")
     <form>
       <h2>Fill This Form</h2>
       
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+      <label for="name"class="sell">Name:</label>
+      <input class="a" type="text" id="name" name="name" required>
       
-      <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" name="phone" required>
+      <label for="phone"class="sell">Phone Number:</label>
+      <input  class="a" type="tel" id="phone" name="phone" required>
       
-      <label for="email">Email:</label>
-      <input type="email" id="em" name="email" required>
+      <label for="email" class="sell">Email:</label>
+      <input  class="a" type="email" id="email" name="email" required >
       
-      <label for="address">Address:</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
+      <label for="address" class="sell">Address:</label>
+      <textarea class="a" id="address" name="address" rows="3" required></textarea>
       
-      <label for="product">Product Name & Price:</label>
-      <textarea id="product" name="product" rows="3" required></textarea>
+      <label for="product" class="sell">Product Name & Price:</label>
+      <textarea  class="a" id="product" name="product" rows="3" required></textarea>
       
-      <label for="images">Add Images Here:</label>
-      <input type="file" id="images" name="images" accept="image/*">
+      <label for="images" class="sell">Add Images Here:</label>
+      <input type="file" id="images" name="images" accept="image/*" style=" margin-top: 5px;">
       
-      <div class="terms">
+      <div class="termss">
         <h3 style=" margin-bottom: 10px;
       font-weight: bold;
       color: #333;">Terms and Conditions:</h3>
@@ -134,12 +121,17 @@ include("navbar.php")
 </ul>  
     </div>
       
-      <label>
+      <label class="sell">
         <input type="checkbox" required>
         I agree to the terms and conditions
       </label>
       
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" style=" background-color: black;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;">
     </form>
   </div>
   <script src="contactassets/java script/bootstrap.bundle.min.js"></script>
@@ -154,4 +146,4 @@ include("navbar.php")
 <?php
 include("footer.php")
   ?>
-</html>
+
