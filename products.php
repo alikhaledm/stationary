@@ -141,6 +141,7 @@ include("navbar.php");
         }
       });
     }
+
     $('#search_text').keyup(function() {
       var search = $(this).val();
       if (search != '') {

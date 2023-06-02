@@ -37,24 +37,49 @@ if (isset($_POST['user'])) {
     // Insert into users table
     $query = "INSERT INTO usersclass (fname, lname, email, password, phone, acctype) VALUES ('$fnameparent', '$lnameparent', '$emailparent', '$pwdparent', '$phoneparent', 'Parent')";
     $result = mysqli_query($conn, $query);
-    if ($result) {
-        // Retrieve the parent ID
-        $parentID = mysqli_insert_id($conn);
 
-        // Insert into students table
-        $query = "INSERT INTO students (dob, email, school, grade, parentid) VALUES ('$namechild', '$dobchild', '$emailchild', '$schoolchild', '$gradechild', '$parentID')";
+    if ($result) {
+        // Retrieve the parent ID based on the inserted email
+        $query = "SELECT id FROM usersclass WHERE email = '$emailparent'";
         $result = mysqli_query($conn, $query);
 
-        // Insert into addresses table
-        $query2 = "INSERT INTO addresses (title, area, street, city, zip, userid) VALUES ('$titleparent', '$areaparent', '$streetparent', '$cityparent', '$zipparent', '$parentID')";
-        $result2 = mysqli_query($conn, $query2);
-        if ($result2) {
-            echo "<script> alert('Parent Added') </script>";
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $parentID = $row['id']; // Retrieve the parent ID
+
+            $parent = "INSERT INTO parent (ParentId) VALUES ('$parentID')";
+            $resultparent = mysqli_query($conn, $parent);
+
+            // Insert into students table
+            $query = "INSERT INTO student (studentname, dob, studentemail, school_id, grade, ParentID) VALUES ('$namechild', '$dobchild', '$emailchild', '$schoolchild', '$gradechild', '$parentID')";
+            $result = mysqli_query($conn, $query);
+
+            if ($result) {
+                $studentid = "SELECT studentid FROM student WHERE Parentid = $parentID";
+                $resultstudentid = mysqli_query($conn, $studentid);
+                $row = mysqli_fetch_assoc($resultstudentid);
+                $studentid = $row['studentid'];
+
+                $query3 = "UPDATE parent SET ChildId = $studentid WHERE ParentId = $parentID";
+                mysqli_query($conn, $query3);
+
+                // Insert into addresses table
+                $query2 = "INSERT INTO address (title, area, street, city, zip, userid) VALUES ('$titleparent', '$areaparent', '$streetparent', '$cityparent', '$zipparent', '$parentID')";
+                $result2 = mysqli_query($conn, $query2);
+
+                if ($result2) {
+                    echo "<script> alert('Parent Added') </script>";
+                } else {
+                    echo "<script> alert('Address not Added') </script>";
+                }
+            } else {
+                echo "<script> alert('Student not Added') </script>";
+            }
         } else {
-            echo "<script> alert('Address not Added') </script>";
+            echo "<script> alert('Unable to retrieve parent ID') </script>";
         }
     } else {
-        echo "<script> alert('Student not Added') </script>";
+        echo "<script> alert('Parent not Added') </script>";
     }
 } elseif (isset($_POST['student'])) {
     $fnamestudent = $_POST['fnamestudent'];
@@ -77,22 +102,28 @@ if (isset($_POST['user'])) {
     $result = mysqli_query($conn, $query);
     if ($result) {
         // Retrieve the student ID
-        $studentID = mysqli_insert_id($conn);
-
-        // Insert into students table
-        $query = "INSERT INTO students (name, dob, email, school, grade, parentid) VALUES ('$fnamestudent', '$dobstudent', '$emailstudent', '$schoolstudent', '$gradestudent', '$studentID')";
+        $query = "SELECT id FROM usersclass WHERE email = '$emailstudent'";
         $result = mysqli_query($conn, $query);
 
-        // Insert into addresses table
-        $query2 = "INSERT INTO addresses (title, area, street, city, zip, userid) VALUES ('$titlestudent', '$areastudent', '$streetstudent', '$citystudent', '$zipstudent', '$studentID')";
-        $result2 = mysqli_query($conn, $query2);
-        if ($result2) {
-            echo "<script> alert('Student Added') </script>";
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $studentid = $row['id']; // Retrieve the parent ID
+
+            // Insert into students table
+            $query = "INSERT INTO student (studentname, dob, studentemail, school_id, grade, studentid) VALUES ('" . $fnamestudent . " " . $lnamestudent . "', '$dobstudent', '$emailstudent', '$schoolstudent', '$gradestudent', '$studentid')";
+            $result = mysqli_query($conn, $query);
+
+            // Insert into addresses table
+            $query2 = "INSERT INTO address (title, area, street, city, zip, userid) VALUES ('$titlestudent', '$areastudent', '$streetstudent', '$citystudent', '$zipstudent', '$studentid')";
+            $result2 = mysqli_query($conn, $query2);
+            if ($result2) {
+                echo "<script> alert('Student Added') </script>";
+            } else {
+                echo "<script> alert('Address not Added') </script>";
+            }
         } else {
-            echo "<script> alert('Address not Added') </script>";
+            echo "<script> alert('Student not Added') </script>";
         }
-    } else {
-        echo "<script> alert('Student not Added') </script>";
     }
 }
 ?>
@@ -182,10 +213,10 @@ if (isset($_POST['user'])) {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input type='text' name='fnameparent' class="form-control"></td>
-                                        <td> <input name='lnameparent' type='text' class="form-control"></td>
-                                        <td><input name='emailparent' type='email' class="form-control"></td>
-                                        <td> <input name='pwdparent' type='text' class="form-control"></td>
+                                        <td><input type='text' name='fnameparent' class="form-control" required></td>
+                                        <td> <input name='lnameparent' type='text' class="form-control" required></td>
+                                        <td><input name='emailparent' type='email' class="form-control" required></td>
+                                        <td> <input name='pwdparent' type='text' class="form-control" required></td>
                                         <td><input name='phoneparent' type='text' class="form-control"></td>
                                     </tr>
                                 </tbody>
@@ -201,28 +232,36 @@ if (isset($_POST['user'])) {
                                 <tbody>
                                     <tr>
                                         <td><input type='text' name='namechild' class="form-control"></td>
-                                        <td> <input name='dobchild' type='text' class="form-control"></td>
+                                        <td> <input name='dobchild' type='date' class="form-control"></td>
                                         <td><input name='emailchild' type='email' class="form-control"></td>
                                         <td>
-                                            <select name="schoolchild" class="form-control-select">
+                                            <select name="schoolchild" class="form-select">
+                                                <option value="">No school selected</option>
                                                 <?php
-                                                // Retrieve schools from the database
                                                 $query = "SELECT * FROM school";
                                                 $result = mysqli_query($conn, $query);
 
                                                 if ($result && mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        // Output each school as an option
                                                         echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                                                     }
-                                                } else {
-                                                    echo "<option value=''>No schools found</option>";
                                                 }
                                                 ?>
                                             </select>
                                         </td>
+                                        <td><select name="gradechild" class="form-select">
+                                                <option value="">No grade selected</option>
+                                                <?php
+                                                $query = "SELECT * FROM grade";
+                                                $result = mysqli_query($conn, $query);
 
-                                        <td><input name='gradechild' type='text' class="form-control"></td>
+                                                if ($result && mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                                    }
+                                                }
+                                                ?>
+                                            </select></td>
                                     </tr>
                                 </tbody>
                                 <thead>
@@ -238,7 +277,7 @@ if (isset($_POST['user'])) {
                                     <tr>
                                         <td><input type='text' name='titleparent' class="form-control"></td>
                                         <td> <input name='areaparent' type='text' class="form-control"></td>
-                                        <td><input name='streetparent' type='email' class="form-control"></td>
+                                        <td><input name='streetparent' type='text' class="form-control"></td>
                                         <td> <input name='cityparent' type='text' class="form-control"></td>
                                         <td><input name='zipparent' type='text' class="form-control"></td>
                                     </tr>
@@ -274,10 +313,10 @@ if (isset($_POST['user'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input type='text' name='fnamestudent' class="form-control"></td>
-                                    <td> <input name='lnamestudent' type='text' class="form-control"></td>
-                                    <td><input name='emailstudent' type='email' class="form-control"></td>
-                                    <td> <input name='pwdstudent' type='text' class="form-control"></td>
+                                    <td><input type='text' name='fnamestudent' class="form-control" required></td>
+                                    <td> <input name='lnamestudent' type='text' class="form-control" required></td>
+                                    <td><input name='emailstudent' type='email' class="form-control" required></td>
+                                    <td> <input name='pwdstudent' type='text' class="form-control" required></td>
                                     <td><input name='phonestudent' type='text' class="form-control"></td>
                                 </tr>
                             </tbody>
@@ -291,10 +330,36 @@ if (isset($_POST['user'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td> <input name='dobstudent' type='text' class="form-control"></td>
+                                    <td> <input name='dobstudent' type='date' class="form-control"></td>
                                     <td><input name='emailstudent' type='email' class="form-control"></td>
-                                    <td> <input name='schoolstudent' type='text' class="form-control"></td>
-                                    <td><input name='gradestudent' type='text' class="form-control"></td>
+                                    <td>
+                                        <select name="schoolstudent" class="form-select">
+                                            <option value="">No school selected</option>
+                                            <?php
+                                            $query = "SELECT * FROM school";
+                                            $result = mysqli_query($conn, $query);
+
+                                            if ($result && mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </td>
+                                    <td><select name="gradestudent" class="form-select">
+                                            <option value="">No grade selected</option>
+                                            <?php
+                                            $query = "SELECT * FROM grade";
+                                            $result = mysqli_query($conn, $query);
+
+                                            if ($result && mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                                }
+                                            }
+                                            ?>
+                                        </select></td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -310,7 +375,7 @@ if (isset($_POST['user'])) {
                                 <tr>
                                     <td><input type='text' name='titlestudent' class="form-control"></td>
                                     <td> <input name='areastudent' type='text' class="form-control"></td>
-                                    <td><input name='streetstudent' type='email' class="form-control"></td>
+                                    <td><input name='streetstudent' type='text' class="form-control"></td>
                                     <td> <input name='citystudent' type='text' class="form-control"></td>
                                     <td><input name='zipstudent' type='text' class="form-control"></td>
                                 </tr>
