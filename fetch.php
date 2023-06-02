@@ -50,22 +50,21 @@
       background-color: gray;
     }
 
-    #btnn
-    {
-      background-color:white;
+    #btnn {
+      background-color: white;
       border: 3px solid black;
       width: 80%;
-      
+
     }
-    .card-img-top
-    {
+
+    .card-img-top {
       height: 300px;
     }
   </style>
 
 </body>
-</html>
 
+</html>
 
 <?php
 require_once("connect.php");
@@ -99,18 +98,17 @@ if (mysqli_num_rows($result) > 0) {
               </div>
             </div>
             <br>";
-            echo "<a href='addProductToCart.php?varname=$row[id]' class='btn' style='width:100%;' id='btnn'>Add to cart</a>";
-            echo "<br><br><a href='productdetails.php'>Details</a>";
-      echo "</div>";
-      echo "</div>";
-      echo "</div>";
-
-    }
+    echo "<a href='addProductToCart.php?varname=$row[id]' class='btn' style='width:100%;' id='btnn'>Add to cart</a>";
+    echo "<br><br><a href='productdetails.php'>Details</a>";
     echo "</div>";
-  } else {
-    echo 'Data Not Found';
+    echo "</div>";
+    echo "</div>";
   }
-  ?>
+  echo "</div>";
+} else {
+  echo 'Data Not Found';
+}
+?>
 <script>
   var barData = [{
       value: 0

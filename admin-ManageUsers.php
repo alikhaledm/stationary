@@ -119,8 +119,8 @@ if (isset($_POST['update'])) {
                                             $rowOrders = mysqli_fetch_assoc($resultOrders);
                                             echo "<tr>";
                                             echo "<td><button class='btn btn-primary'><img width='20' src='images/account/person-lines-fill.svg'></button></td>";
-                                            echo "<td><input type='text' name='fname[]' size='9' value='" . $row['fname'] . "' disabled>&nbsp;&nbsp;";
-                                            echo "<input name='lname[]' type='text' size='9' value='" . $row['lname'] . "' disabled></td>";
+                                            echo "<td><input type='text' name='fname[]' size='8' value='" . $row['fname'] . "' disabled>&nbsp;&nbsp;";
+                                            echo "<input name='lname[]' type='text' size='8' value='" . $row['lname'] . "' disabled></td>";
                                             echo "<td><input name='email[]' type='email' value='" . $row['email'] . "' disabled></td>";
                                             echo "<td>
                                                 <select name='acctype[]' disabled style='height:30px; width:100px;'>
