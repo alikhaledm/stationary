@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2023 at 02:11 PM
+-- Generation Time: May 30, 2023 at 08:30 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -63,8 +63,6 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `userid`, `productid`, `quantity`) VALUES
-(38, 1, 4, 4),
-(39, 1, 7, 1),
 (42, 8, 3, 1),
 (43, 9, 1, 6),
 (46, 12, 3, 4),
@@ -75,7 +73,8 @@ INSERT INTO `cart` (`id`, `userid`, `productid`, `quantity`) VALUES
 (51, 6, 6, 5),
 (52, 6, 4, 5),
 (53, 6, 7, 1),
-(54, 6, 1, 3);
+(54, 6, 1, 3),
+(55, 54, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -98,7 +97,8 @@ CREATE TABLE `creditcard` (
 
 INSERT INTO `creditcard` (`cardid`, `cardholdername`, `expirydate`, `cardnumber`, `cvv`, `userid`) VALUES
 (28, 'asdddddddddddddddddddddddddd', '02/32', '6666666666666666', 0, 6),
-(29, 'asdasdaw', '09/33', '1111111111111111', 111, 6);
+(29, 'asdasdaw', '09/33', '1111111111111111', 111, 6),
+(30, 'sfasassdsadadada', '08/30', '1121222222222222', 111, 6);
 
 -- --------------------------------------------------------
 
@@ -113,6 +113,35 @@ CREATE TABLE `excess` (
   `product_photo` varchar(255) NOT NULL,
   `pickup_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grade`
+--
+
+CREATE TABLE `grade` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grade`
+--
+
+INSERT INTO `grade` (`id`, `name`) VALUES
+(1, '1st grade'),
+(2, '2nd grade'),
+(3, '3rd grade'),
+(4, '4th grade'),
+(5, '5th grade'),
+(6, '6th grade'),
+(7, '7th grade'),
+(8, '8th grade'),
+(9, '9th grade'),
+(10, '10th grade'),
+(11, '11th grade'),
+(12, '12th grade');
 
 -- --------------------------------------------------------
 
@@ -138,8 +167,19 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `parent` (
   `ParentId` int(11) NOT NULL,
-  `ChildId` int(11) DEFAULT NULL
+  `ChildId` int(11) DEFAULT NULL,
+  `childname` varchar(255) DEFAULT NULL,
+  `childage` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `parent`
+--
+
+INSERT INTO `parent` (`ParentId`, `ChildId`, `childname`, `childage`) VALUES
+(54, NULL, NULL, '2023-05-09'),
+(55, NULL, NULL, NULL),
+(56, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -183,6 +223,13 @@ CREATE TABLE `school` (
   `address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `school`
+--
+
+INSERT INTO `school` (`id`, `name`, `address`) VALUES
+(1, 'New Generation', 'Obour');
+
 -- --------------------------------------------------------
 
 --
@@ -191,10 +238,24 @@ CREATE TABLE `school` (
 
 CREATE TABLE `student` (
   `studentid` int(11) NOT NULL,
+  `studentname` varchar(255) DEFAULT NULL,
+  `studentemail` varchar(255) NOT NULL,
+  `dob` date DEFAULT NULL,
+  `photo` varchar(255) NOT NULL,
   `school_id` int(11) DEFAULT NULL,
   `grade` int(11) DEFAULT NULL,
   `ParentId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `photo`, `school_id`, `grade`, `ParentId`) VALUES
+(1, '', '', NULL, '', 1, 6, NULL),
+(55, NULL, '', NULL, 'profile.png', NULL, NULL, 55),
+(56, 'ali khaled', 'alikhaled@newgeneration.edu', '2000-12-23', '', 1, 10, 56),
+(57, NULL, '', NULL, '', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -225,26 +286,19 @@ CREATE TABLE `usersclass` (
   `lname` varchar(255) NOT NULL,
   `phone` int(11) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL
+  `registerdate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `usersclass`
 --
 
-INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`, `phone`, `address`, `dob`, `photo`) VALUES
-(1, 'User', 'stud@gmail.com', '', 'mohamed', '', 0, NULL, '0000-00-00', NULL),
-(3, 'Student', 'stud@gmail.com', '12345678', 'student', 'student', 123, NULL, NULL, NULL),
-(4, 'Student', 'aasd@gmail.com', '12345678', 'ali', 'khaled', 123, NULL, NULL, NULL),
-(5, 'Student', 'lolo@gmail.com', '12345678', 'mohamed', 'khaled', 2134152, NULL, '2023-05-24', NULL),
-(6, 'Parent', 'alikhaled@gmail.com', '12345678', 'lol', 'lolo', 12314, NULL, NULL, NULL),
-(7, 'Student', 'nour@gmail.com', '12345678', 'nour', 'khaled', 1234, NULL, NULL, NULL),
-(8, 'Parent', 'eee@gmail.com', '12345678', 'sadad', 'khaled', 123, NULL, '2023-05-25', 'notebook.jpg'),
-(9, 'User', 'asd@gmail.com', '12345678', 'adsd', 'asd', 1111, NULL, NULL, NULL),
-(10, 'User', 'asd@gmail.com', '12345678', 'adsd', 'asd', 1111, NULL, NULL, NULL),
-(11, 'User', 'asd@gmail.com', '12345678', 'adsd', 'asd', 1111, NULL, NULL, NULL),
-(12, 'Parent', 'jenny@gmail.com', '12345678', 'ali', 'khaled', 1111, NULL, NULL, NULL);
+INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`, `phone`, `address`, `registerdate`) VALUES
+(1, 'Student', 'ali@gmail.com', '12345678', 'ali', 'khaled', 12345678, NULL, NULL),
+(54, 'Parent', 'parent@gmail.com', '12345678', 'ali', 'khaled', 12345678, NULL, NULL),
+(55, 'Parent', 'parentemail@gmail.com', '12345678', 'parent', 'parent', 12345678, NULL, NULL),
+(56, 'Parent', '1232313@gmail.com', '12345r46735', 'second', 'parent', 123124124, NULL, NULL),
+(57, 'Student', '3elwa@gmail.com', '12345678', '3elwa', 'khaled', 11234567, NULL, '2023-05-30');
 
 --
 -- Indexes for dumped tables
@@ -279,6 +333,12 @@ ALTER TABLE `excess`
   ADD PRIMARY KEY (`excessid`);
 
 --
+-- Indexes for table `grade`
+--
+ALTER TABLE `grade`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -309,7 +369,8 @@ ALTER TABLE `school`
 ALTER TABLE `student`
   ADD PRIMARY KEY (`studentid`),
   ADD KEY `school_id` (`school_id`),
-  ADD KEY `ParentId` (`ParentId`);
+  ADD KEY `student_ibfk_3` (`ParentId`),
+  ADD KEY `grade` (`grade`);
 
 --
 -- Indexes for table `supplies_list`
@@ -339,19 +400,25 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `creditcard`
 --
 ALTER TABLE `creditcard`
-  MODIFY `cardid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `cardid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `excess`
 --
 ALTER TABLE `excess`
   MODIFY `excessid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grade`
+--
+ALTER TABLE `grade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -363,7 +430,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -375,13 +442,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `supplies_list`
@@ -393,7 +460,7 @@ ALTER TABLE `supplies_list`
 -- AUTO_INCREMENT for table `usersclass`
 --
 ALTER TABLE `usersclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- Constraints for dumped tables
@@ -431,7 +498,8 @@ ALTER TABLE `parent`
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `school` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`studentid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`ParentId`) REFERENCES `parent` (`ParentId`);
+  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`ParentId`) REFERENCES `parent` (`ParentId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_ibfk_4` FOREIGN KEY (`grade`) REFERENCES `grade` (`id`);
 
 --
 -- Constraints for table `supplies_list`

@@ -1,11 +1,9 @@
-<?php
-include("navbar.php")
-?>
 <html>
 
 <head>
   <title>Shop</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,50 +123,8 @@ include("navbar.php")
     font-family: Arial, Helvetica, sans-serif;
   }
 
-  .flip-card {
-    background-color: transparent;
-    border-radius: 5px;
-    margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    width: 400px;
-    height: 400px;
-    perspective: 1000px;
-  }
 
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  }
 
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .flip-card-front,
-  .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-
-  .flip-card-front {
-    background-color: #white;
-    color: black;
-  }
-
-  .flip-card-back {
-    background-color: LightGray;
-    color: white;
-    transform: rotateY(180deg);
-  }
 
   .blurry-container {
   background-image: url('your-image-url.jpg');
@@ -202,19 +158,10 @@ include("navbar.php")
 </style>
 
 <body>
+  <?php
+  include("navbarnew.php")
+    ?>
   <img width="100%" height="300" src="images/Shop/hugesale.png" alt="">
-  <hr id="hr-banner">
-  <div class="banner-container">
-    <div class="moving-text">
-      <h3>
-        <p>Free Shipping On All <span style="color: yellow;">Cairo</span> Orders Over <span style="color: red;">1000 EGP</span></p>
-      </h3>
-    </div>
-  </div>
-  <hr id="hr-banner">
-  <br>
-  <br>
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center" style="padding-top: 50;">
@@ -228,36 +175,42 @@ include("navbar.php")
 
     
     <center>
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="images/shop/shop1.jpg" alt="" width=100%; height=100%;>
-          </div>
-          <div class="flip-card-back">
-            <h1></h1>
-            <br><br><br><br><br><br>
-            <a href="products.php"><button class=" btn-lg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SCHOOL SUPPLY LIST </button></a>
-            <br><br><br><br><br>
-            <p>We are here to help you</p>
-          </div>
+      <div class="row">
+        <div class="col-lg-6 sm-6">
+          <img src="images/shop/shop1.jpg" alt="" width=100%; height=100%;>
         </div>
-      </div>
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <div class="flip-card-back">
 
-      <div class="flip-card" style="position: relative">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="flip-card-text" style="position: absolute; top:50%; left:50%; background-color:white">School supply list</div>
-            <img src="images/shop/shop2.jpg" alt="" width=100%; height=100%;>
-          </div>
-          <div class="flip-card-back" style="text-align:center;">
-            <br><br><br><br><br><br>
-            <button class=" btn-lg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SHOP ALL STATIONERY </button>
-            <br><br><br><br><br>
-            <p>We are here to help you</p>
+
+          <a href="products.php"><button class=" btn-lg"
+              style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SCHOOL SUPPLY
+              LIST
+            </button></a>
+
+          <p>We are here to help you</p>
+
+        </div>
+        <div class="col-lg-6 sm-6">
+          <div class="flip-card" style="position: relative">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="flip-card-text" style="position: absolute; top:50%; left:50%; background-color:white">
+                  School
+                  supply list</div>
+                <img src="images/shop/shop2.jpg" alt="" width=100%; height=100%;>
+              </div>
+              <div class="flip-card-back" style="text-align:center;">
+                <br><br><br><br><br><br>
+                <button class=" btn-lg"
+                  style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                  SHOP ALL STATIONERY </button>
+                <br><br><br><br><br>
+                <p>We are here to help you</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+
     </center>
 
     <div class="container-fluid">
@@ -311,8 +264,13 @@ include("navbar.php")
             <img src="images/shop/folders.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Binders & Folders</h5>
+<<<<<<< Updated upstream
               <hr>
               <p class="card-text">Binders, Folders, Dividers, and Sheet Protectors for organizing and Storing Papers.s</p>
+=======
+              <p class="card-text">Binders, Folders, Dividers, and Sheet Protectors for organizing and Storing Papers.s
+              </p>
+>>>>>>> Stashed changes
             </div>
           </div>
         </div>
@@ -321,8 +279,13 @@ include("navbar.php")
             <img src="images/shop/math.png" class="card-img-top" alt="..." height="350">
             <div class="card-body">
               <h5 class="card-title">Math & Scientific Tools</h5>
+<<<<<<< Updated upstream
               <hr>
               <p class="card-text">Geometry Tools, compass, protractor, ruler, math workbooks and worksheets and scientific calculators</p>
+=======
+              <p class="card-text">Geometry Tools, compass, protractor, ruler, math workbooks and worksheets and
+                scientific calculators</p>
+>>>>>>> Stashed changes
             </div>
           </div>
         </div>
@@ -342,6 +305,6 @@ include("navbar.php")
 </body>
 <?php
 include("footer.php")
-?>
+  ?>
 
 </html>

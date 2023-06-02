@@ -119,18 +119,6 @@ html {
   color: black;
 }
 
-.custombtn2 {
-  background-color: rgb(255, 255, 255, 0.8);
-  border-radius: 8px;
-  width: 35%;
-  height: 25%;
-  border: 0;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.custombtn2:hover {
-  background-color: rgb(255, 255, 255, 1);
-}
 
 .line {
   border-top: 1px solid black;

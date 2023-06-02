@@ -15,33 +15,33 @@
         <footer class="bg-white text-black">
             <div class="container py-5">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-12 mb-4">
-                        <h5>OUR NEWSLETTER</h5>
+                    <div class="col-lg-12 col-sm-12 mb-4">
+                        <h2>OUR NEWSLETTER</h2>
                         <p>Subscribe to our newsletter to receive special offers and updates on new products</p>
                         <form class="form-inline">
                             <div class="form-group mr-2">
-                                <input type="email" class="form-control" placeholder="Email">
-
-                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                                <input style="width:30%;" type="email" class="form-control" placeholder="Email">
+                                <br>
+                                <button style="width:20%;" type="submit" class="btn btn-primary">Subscribe</button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-3 col-sm-12  mb-4">
-                        <h5>SHOP</h5>
+                    <div class="col-lg-4 col-sm-4  mb-4">
+                        <h2>SHOP</h2>
                         <ul class="list-unstyled">
                             <li><a href="shop.php">Shop Here</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-sm-12  mb-4">
-                        <h5>QUICK LINKS</h5>
+                    <div class="col-lg-4 col-sm-4  mb-4">
+                        <h2>QUICK LINKS</h2>
                         <ul class="list-unstyled">
                             <li><a href="contact.php">Contact Us</a></li>
                             <li><a href="about.php">Our Story</a></li>
                             <li><a href="excess.php">Excess Supplies</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-sm-12 mb-4">
-                        <h5>CONTACT</h5>
+                    <div class="col-lg-4 col-sm-4 mb-4">
+                        <h2>CONTACT</h2>
                         <p>Sheraton Heliopolis
                             <br>Cairo, Egypt<br>01288998854
                         </p>
