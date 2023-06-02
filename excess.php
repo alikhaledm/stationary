@@ -49,9 +49,14 @@ include("navbar.php");
             <p class="text-muted mb-4">
               By donating your used stationary supplies, you empower education and inspire creativity. Every item you give helps students in need and promotes sustainable practices. Join the movement, make a positive impact.
             </p>
-            <button class="btn shadow" type="button">
+            <button onclick="goToPage()" class="btn shadow" type="button">
               Donate Here
             </button>
+            <script>
+    function goToPage() {
+      window.location.href = "selling.php";
+    }
+  </script>
           </div>
         </div>
       </div>
@@ -64,9 +69,14 @@ include("navbar.php");
             <h5 class="fw-bold">Sell Supplies&nbsp;</h5>
             <p class="text-muted mb-4">
               Do you have supplies you bought but never used? don't waste them! Sell them to us. Your supplies can find new owners who will benefit from them while allowing you to recoup your investment. It's a win-win reducing waste and helping others. Join us in creating a sustainable future and makeing a difference. </p>
-            <button class="btn shadow" type="button">
+            <button onclick="goToPage()" class="btn shadow" type="button">
               Start Selling
             </button>
+            <script>
+    function goToPage() {
+      window.location.href = "selling.php";
+    }
+  </script>
           </div>
         </div>
       </div>

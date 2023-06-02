@@ -1,3 +1,5 @@
+<?php
+require_once("connect.php") ?>
 <html>
 <?php
 require_once("connect.php");
@@ -59,177 +61,6 @@ require_once("connect.php");
       width: 100%;
     }
   }
-
-  @media (max-width:999px) {
-    .card {
-      display: none;
-    }
-  }
-
-
-
-
-  @media (max-width:1640px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 40%;
-      width: 35%;
-
-    }
-  }
-
-  @media (min-width:1550px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 40%;
-      width: 30%;
-
-    }
-  }
-
-  @media (max-width:1379px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 40%;
-      width: 40%;
-
-    }
-  }
-
-  @media (max-width:1208px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 40%;
-      width: 46%;
-
-    }
-  }
-
-  @media (max-width:1132px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 40%;
-      width: 50%;
-
-    }
-  }
-
-
-
-
-
-  @media (min-height:1200px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 40%;
-
-      height: 40%;
-    }
-  }
-
-
-  @media (max-height:1201px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 30%;
-      width: 50%;
-      height: 45%;
-    }
-  }
-
-  @media (max-height:1015px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 30%;
-      width: 30%;
-      height: 50%;
-    }
-  }
-
-  @media (max-height:830px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 20%;
-
-      height: 60%;
-    }
-  }
-
-  @media (max-height:740px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 20%;
-      height: 65%;
-    }
-  }
-
-  @media (max-height:700px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 20%;
-      height: 70%;
-    }
-  }
-
-  @media (max-height:650px) {
-    .card {
-      opacity: 95%;
-      background-color: white;
-      left: 10%;
-      top: 20%;
-      height: 75%;
-    }
-  }
-
-
-
-
-
-
-
-
-  .cardmobile {
-    width: 100%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    display: flex;
-    background-color: white;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .cardmobile2 {
-    opacity: 95%;
-    background-color: white;
-    left: 50%;
-    top: 50%;
-    height: 30%;
-    width: 65%;
-  }
-
 
   .btnstart {
     background-color: #FBD53E;
@@ -436,6 +267,7 @@ require_once("connect.php");
 
   .containerfluidcustom {
     width: 100%;
+
   }
 
   body {
@@ -446,6 +278,16 @@ require_once("connect.php");
     font-size: 20px;
     border: none;
     background-color: transparent;
+
+  }
+
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: #fff;
   }
 
   .carouselfont1 {
@@ -465,9 +307,93 @@ require_once("connect.php");
     color: black;
     font-weight: bolder;
   }
+
+
+  .containerbody {
+
+    padding-bottom: 20px;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    /* Adjust the maximum width as desired */
+  }
+
+
+
+
+  .image-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .image-wrapper img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .content-overlay {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(10%, -50%);
+
+    /* Adjust the padding as desired */
+    /* Adjust the background color and opacity as desired */
+  }
+
+  .content-overlay h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .content-overlay p {
+    font-size: 16px;
+  }
+
+  .custombtn2 {
+    background-color: transparent;
+    font-size: 20px;
+    height: 35px;
+    color: black;
+
+    border: none;
+  }
+
+  .custombtn3 {
+    background-color: transparent;
+    font-size: 20px;
+    height: 35px;
+    color: black;
+
+    border: none;
+  }
+
+
+  .bodyfont1 {
+    font-size: 35;
+    color: #2F4668;
+    font-weight: bolder;
+  }
+
+  .bodyfont2 {
+    font-size: 30px;
+    color: #2F4668;
+    font-weight: bold;
+  }
+
+  .bodyfont3 {
+    font-size: 35;
+    color: #2F4668;
+    font-weight: bolder;
+  }
 </style>
 
+
 <body>
+
+
   <?php
   include("navbar.php");
   ?>
@@ -475,32 +401,37 @@ require_once("connect.php");
   <div class="containerfluidcustom">
     <div class="row">
       <div class="col-lg-12">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" style="width:100%; height:100%;" data-bs-ride="carousel">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" style="width:100%; height:100%;"
+          data-bs-ride="carousel">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="5000">
               <div class="carousel-background" style="background-color:orange;">
-                <img width="100%" height="500px" src="images/supplieslist1.jpg" alt="">
+                <img width="100%" height="600px" src="images/supplieslist1.png" alt="">
               </div>
-              <div class="carousel-caption d-md-block" style="top: 41%;">
+              <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">Select School, Get Supplies</div>
                 <div class="carouselfont2">
-                  Explore our One-Click Solution for All Your School Supply Needs</div><br>
-                <button class="carouselbtn carouselfont3">Start Now <img width="20" height="20" src="images/forward.svg"> </button>
+                  Explore our One-Click Solution<br> for All Your School Supply Needs</div><br>
+                <button class="carouselbtn carouselfont3">Start Now <img width="20" height="20"
+                    src="images/forward.svg"> </button>
               </div>
             </div>
 
             <div class="carousel-item" data-bs-interval="5000">
               <div class="carousel-background" style="background-color:black;">
-                <img width="100%" height="500px" src="images/test.jpg" alt="">
+                <img width="100%" height="600px" src="images/carousel2.png" alt="">
               </div>
-              <div class="carousel-caption d-md-block" style="top: 41%;">
+              <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">School Supplies Made Easy</div>
-                <div class="carouselfont2">Get Your School Supplies in Minutes: Select, Order, and Relax</div>
+                <div class="carouselfont2">Get Your School Supplies in Minutes:<br> Select, Order, and Relax</div>
                 <br><button class="carouselbtn carouselfont3">
                   Start Now <img width="20" height="20" src="images/forward.svg"></button>
               </div>
@@ -508,20 +439,24 @@ require_once("connect.php");
 
             <div class="carousel-item" data-bs-interval="5000">
               <div class="carousel-background" style="background-color:black;">
-                <img width="100%" height="500px" src="images/sup.jpg" alt="">
+                <img width="100%" height="600px" src="images/carousel3.png" alt="">
               </div>
-              <div class="carousel-caption d-md-block" style="top: 41%;">
+              <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">Wide Range Of Products</div>
-                <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div><br>
-                <button class="carouselbtn carouselfont3">Start Now<img width="20" height="20" src="images/forward.svg"></button>
+                <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div>
+                <br>
+                <button class="carouselbtn carouselfont3">Start Now<img width="20" height="20"
+                    src="images/forward.svg"></button>
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -529,133 +464,151 @@ require_once("connect.php");
       </div>
     </div>
   </div>
-  <center>
-    <div class="containernew" style="padding-top:20;">
-      <div class="row">
-        <div class="col-lg-6 col-sm-12">
-          <div style="position:relative;">
-            <div class="zoom-in-container">
-              <img width="640" height="300px" style="max-width: 100%; padding-bottom:20;" src="images/supplies-list-1.jpg" alt="">
-              <button class="custombtn2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size:25;">Shop
-                Stationery</button>
+
+
+
+
+
+
+
+
+
+
+  <div class="containerbody">
+    <div class="row">
+
+      <div class="col-lg-6 col-sm-12" style="padding-top:20;">
+
+        <div class="image-wrapper">
+          <img style="width:100%;" src="images/card1.png" alt="Image">
+          <div class="content-overlay">
+            <div></div>
+            <div class="bodyfont3">Discover Your Gathered<br> Supplies List
+            </div>
+            <div class="bodyfont2" style="padding-top:17px;">Get Your Supplies List Now!
+            </div>
+            <div style="padding-top:24px;">
+              <a href="startnowintro.php"><button class="custombtn3"> Grab Your List <img width="15" height="15"
+                    src="images/forward.svg"></button></a>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-lg-6 col-sm-12">
-          <div style="position: relative;">
-            <div class="zoom-in-container2">
-              <img width="638" height="300px" style="max-width:100%; padding-bottom:20; " src="images/supplies-list-2.jpg" alt="">
-              <button class="custombtn2" style="position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); font-size:25;">Fulfill
-                School
-                Supplies
-                List</button>
+      <div class="col-lg-6 col-sm-12" style="padding-top:20;">
+
+        <div class="image-wrapper">
+          <img style="width:100%;" src="images/card4.png" alt="Image">
+          <div class="content-overlay">
+            <div class="bodyfont1">Explore Our Stationery<br> Shop
             </div>
+            <div class="bodyfont2" style="padding-top:17px;">Shop Stationery Now!
+            </div>
+
+            <div style="padding-top:24px;"><a href="startnowintro.php"><button class="custombtn2"> Shop Stationery<img
+                    width="15" height="15" src="images/forward.svg">
+                </button></a></div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+  <center>
+    <div class="containernew servicebody" style="padding-top:20;">
+      <div class="row" style=" padding-bottom:100px;">
+        <div class="col-md-12" style="font-size:40px; color:#FBD53E;">
+          <center>OUR SERVICES</center><br>
+        </div>
+        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+
+          <div class="servicecard" style="font-size:32;">
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%;"><img width="100"
+                height="100" src="images/services/supplies.svg" alt=""></div>
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
+              Supplies List
+            </div>
+
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+              Select Your School And<br> Grade With Few<br> Clicks Now!
+
+            </div>
+            <div class="centered"><button class="carouselbtn">Learn
+                More</button></div>
+
+
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+
+          <div class="servicecard" style="font-size:32;">
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%;"><img width="100"
+                height="100" src="images/services/stationery.svg" alt=""></div>
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
+              Excess Selling
+            </div>
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+              Make a change by selling<br> extra inventory for a<br> worthwhile cause
+
+            </div>
+
+            <div class="centered"><button class=" carouselbtn">Learn
+                More</button></div>
+
+
+
+
+
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+
+          <div class="servicecard" style="font-size:32;">
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%; "><img width="100"
+                height="100" src="images/services/donate.svg" alt=""></div>
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
+              Donations
+            </div>
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+              Make a shift by contributing<br> your excess paper goods <br>to our mission
+            </div>
+            <div class="centered"><button class="carouselbtn">Learn
+                More</button></div>
+
+
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+
+          <div class="servicecard" style="font-size:32;">
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%; "><img width="100"
+                height="100" src="images/services/shop.svg" alt=""></div>
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
+              Stationery Shop
+            </div>
+            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
+              Explore perfection in school<br> supplies at our hub Get<br> what you need!
+
+
+            </div>
+            <div class="centered"><button class="carouselbtn">Learn
+                More</button></div>
+
+
           </div>
         </div>
       </div>
     </div>
   </center>
-
-  <script>
-    $(document).ready(function() {
-      function adjustColumnWidth() {
-        if ($(window).width() <= 999) {
-          $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
-        } else {
-          $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
-        }
-      }
-
-      // Adjust column width on initial page load
-      adjustColumnWidth();
-
-      // Adjust column width on window resize
-      $(window).resize(function() {
-        adjustColumnWidth();
-      });
-    });
-  </script>
-
-
-  <div class="containernew servicebody" style="padding-top:20;">
-    <div class="row" style=" padding-bottom:100px;">
-      <div class="col-md-12" style="font-size:40px; color:#FBD53E;">
-        <center>OUR SERVICES</center><br>
-      </div>
-      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
-
-        <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/supplies.svg" alt=""></div><br>
-          <div style="display:flex; justify-content:center; align-items:center; padding-left:20; font-size: 32; color: #2F4668;">
-            Supplies List
-          </div>
-
-          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-            Select Your School<br> And Grade With<br> Few Clicks Now! <br>
-
-          </div>
-          <div class="centered" style="padding-top:20;"><button class="carouselbtn">Learn
-              More</button></div>
-
-
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
-
-        <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/stationery.svg" alt=""></div><br>
-          <div style="display:flex; justify-content:center; align-items:center; font-size: 35; color: #2F4668;">
-            Excess Selling
-          </div>
-          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-            Sell Your Excess<br> Supplies Easily!<br>
-          </div>
-
-          <div class="centered" style="padding-top:45;"><button class="carouselbtn">Learn
-              More</button></div>
-
-
-
-
-
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
-
-        <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/donate.svg" alt=""></div><br>
-          <div style="display:flex; justify-content:center; align-items:center; font-size: 32; color: #2F4668;">
-            Donations
-          </div>
-          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-            Conveniently browse and shop for<br> stationery essentials<br>
-          </div>
-          <div class="centered" style="padding-top:50;"><button class="carouselbtn">Learn
-              More</button></div>
-
-
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-12" style="padding-top:50;">
-
-        <div class="servicecard" style="font-size:32;">
-          <div style="display:flex; justify-content:center; align-items:center; "><img width="80" height="80" src="images/services/shop.svg" alt=""></div><br>
-          <div style="display:flex; justify-content:center; align-items:center; font-size: 32; color: #2F4668;">
-            Stationery Shop
-          </div>
-          <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-            Conveniently browse and shop<br> for stationery essentials<br> effortlessly.<br>
-          </div>
-          <div class="centered" style="padding-top:20;"><button class="carouselbtn">Learn
-              More</button></div>
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-
   <center>
     <div class="container">
       <div class="row">
@@ -671,28 +624,30 @@ require_once("connect.php");
   <div class="containerfluid" style="padding-bottom: 100px;">
 
     <div class="row bordered-row centered">
-      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school1.jpg" alt=""></div>
-      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school2.jpg" alt=""></div>
-      <div class="col-lg-3 col-sm-6 text-center"><img width="80" src="images/Schools/school3.jpg" alt=""></div>
-      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school4.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school1.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school2.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-12 text-center"><img width="80" src="images/Schools/school3.jpg" alt=""></div>
+      <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school4.jpg" alt=""></div>
     </div>
-    <div class="row bordered-row centered">
-      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school5.jpg" alt=""></div>
-      <div class="col-lg-3 col-sm-6 text-center"><img width="80" src="images/Schools/school6.jpg" alt=""></div>
-      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school7.jpg" alt=""></div>
-      <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school8.jpg" alt=""></div>
+    <div class="containerschoolshidden">
+      <div class="row bordered-row centered">
+        <div class="col-lg-3 col-sm-0 text-center"><img width="120" src="images/Schools/school5.jpg" alt=""></div>
+        <div class="col-lg-3 col-sm-0 text-center"><img width="80" src="images/Schools/school6.jpg" alt=""></div>
+        <div class="col-lg-3 col-sm-0 text-center"><img width="120" src="images/Schools/school7.jpg" alt=""></div>
+        <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school8.jpg" alt=""></div>
+      </div>
     </div>
   </div>
 
 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       if ($(window).width() <= 999) {
         $('.mobile').removeClass('hidden').addClass('visible');
       }
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
       function adjustColumnWidth() {
         if ($(window).width() <= 999) {
           $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
@@ -705,13 +660,13 @@ require_once("connect.php");
       adjustColumnWidth();
 
       // Adjust column width on window resize
-      $(window).resize(function() {
+      $(window).resize(function () {
         adjustColumnWidth();
       });
     });
 
-    $(window).scroll(function() {
-      $('.bordered-row').each(function() {
+    $(window).scroll(function () {
+      $('.bordered-row').each(function () {
         var bottom_of_object = $(this).offset().top + $(this).outerHeight();
         var bottom_of_window = $(window).scrollTop() + $(window).height();
         if (bottom_of_window > bottom_of_object) {
@@ -722,7 +677,7 @@ require_once("connect.php");
       });
     });
 
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
       var element = document.querySelector(".zoom-in-container");
       var position = element.getBoundingClientRect().top;
       var windowHeight = window.innerHeight;
@@ -734,7 +689,7 @@ require_once("connect.php");
       }
     });
 
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
       var element = document.querySelector(".zoom-in-container2");
       var position = element.getBoundingClientRect().top;
       var windowHeight = window.innerHeight;
@@ -750,20 +705,7 @@ require_once("connect.php");
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <?php
   include("footer.php")
-  ?>
+    ?>
 </body>
 
 </html>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script>
-  // Initialize Bootstrap dropdown
-  $(document).ready(function() {
-    $('.dropdown-toggle').dropdown();
-  });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>

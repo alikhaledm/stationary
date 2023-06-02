@@ -1,99 +1,91 @@
-<html>
+<style>
+    .navbarcustomedits {
+        background-color: white;
+    }
 
-<head>
-    <style>
-        .customnav {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-left: 165px;
-            padding-right: 165px;
-            height: 15%;
-            width: 100%;
-            background-color: white;
-        }
+    .navcontainer {
+        width: 75%;
+    }
 
-        .nav-item {
-            display: flex;
-            padding: 4px;
-            text-decoration: none;
-            color: #000;
-            font-size: 18;
-        }
+    .brand {
+        font-size: 25px;
+        font-weight: bold;
+    }
 
-        .nav-link {
-            color: black;
-        }
+    .btncustom {
+        border-color: black;
+        border: 0.5px solid #000;
+        background-color: white;
+        height: 40px;
+        width: 120px;
+    }
 
-        .navbar-brand {
-            color: black;
-        }
+    .btncustom:hover {
+        border-color: gold;
+    }
 
-        .navbar-brand:hover {
-            color: gold;
-        }
+    .cartcount {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        border-radius: 50%;
+        padding: 3px 6px;
+        font-size: 12px;
+    }
 
-        .nav-link:hover {
-            color: gold;
-        }
+    .navfont {
+        font-size: 15px;
+    }
 
-        .btncustom {
-            border-color: black;
-            border: 0.5px solid #000;
-            background-color: white;
-            height: 40px;
-            width: 120px;
-        }
+    .nav-link:hover {
+        color: gold;
+    }
 
+    .activee {
+        color: gold;
+    }
+</style>
 
-        .btncustom:hover {
-            border-color: gold;
-        }
-
-        .cartcount {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            border-radius: 50%;
-            padding: 3px 6px;
-            font-size: 12px;
-        }
-    </style>
-</head>
-<nav class="customnav navbar navbar-expand-lg opacity-100 sticky-top">
-    <div class="my-container d-flex" style="padding-bottom: 30px; padding-top: 30px;">
-        <a class="navbar-brand" href="index.php">
-            <img src="images/logo.jpg" alt="Logo" width="75" height="75" class="d-inline-block align-text-top me-2">
-            <h1 class="d-inline-block align-text-top align-items-center" style="padding-left:20px; padding-top:10;">
-                SUPPLIES HUB
-            </h1>
-        </a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-3"><span class="navbar-toggler-icon text-left"></span><span class="sr-only"></span></button>
-        <div class="collapse navbar-collapse justify-content-end" id="navcol-3">
-            <ul class="navbar-nav" style="font-size: 20px;">
+<nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
+    <div class="container-fluid navcontainer">
+        <a class="navbar-brand" href="#"> <img src="images/logo.jpg" alt="Logo" width="75" height="75"
+                class="d-inline-block align-text-top me-2"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link brand" href="#">SUPPLIES HUB</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="shop.php">Shop</a>
-                </li>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    echo '
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfont">
+                    <li class="nav-item">
+                        <a class="nav-link activee" aria-current="page" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop</a>
+                    </li>
+                    <?php
+                    if (isset($_SESSION['id'])) {
+                        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="excess.php">Excess Supplies</a>
                     </li>';
-                } ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.php">About</a>
-                </li>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    echo '<li class="nav-item">
+                    } ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">About</a>
+                    </li>
+                    <?php
+                    if (isset($_SESSION['id'])) {
+                        echo '<li class="nav-item">
                     <a class="nav-link" href="cart.php">
                         <div class="position-relative">
                             <div class="cartcount">25</div>
@@ -103,9 +95,9 @@
                         </div>
                     </a>
                 </li>';
-                } ?>
-                <?php if (isset($_SESSION['id'])) {
-                    echo '
+                    } ?>
+                    <?php if (isset($_SESSION['id'])) {
+                        echo '
                 <li id="dropdown" class="nav-item">
                     <div class="dropdown">
                         <button class="btncustom dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -120,22 +112,17 @@
                         </div>
                     </div>
                 </li>';
-                } else {
-                    echo '<li class="nav-item">
+                    } else {
+                        echo '<li class="nav-item">
                     <a href="signup.php">
                         <button class="btncustom" type="button">
                             Sign Up
                         </button>
                     </a>';
-                } ?>
+                    } ?>
+
+                </ul>
             </ul>
         </div>
     </div>
 </nav>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-
-</html>
