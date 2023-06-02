@@ -395,7 +395,7 @@ require_once("connect.php");
 
 
   <?php
-  include("navbarnew.php");
+  include("navbar.php");
   ?>
 
   <div class="containerfluidcustom">
