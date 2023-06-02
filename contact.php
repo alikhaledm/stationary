@@ -61,7 +61,7 @@ include("navbar.php");
     <div id="contact">
 
       <div id="contactImage">
-        <img src="images/123.jpg" >
+        <img src="images/qq2.png" >
 
         <div id="contContent">
           <h1  style="margin-bottom: -3%;"class="">Contact Us</h1>
