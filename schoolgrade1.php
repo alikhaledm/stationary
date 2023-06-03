@@ -134,7 +134,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 style="padding-top:50px;">Step 1: What School Do You Attend?</h1>
-                            <img src="images/account/profile.png" alt="">
                         </div>
                         <div class="col-md-12" style="padding-top:20px;">
                             Select Student's School

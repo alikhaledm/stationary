@@ -22,10 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['lname'] = $row["lname"];
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
-            $_SESSION['dob'] = $row["dob"];
-            $_SESSION['photo'] = $row["photo"];
             $_SESSION['acctype'] = $row["acctype"];
-
+            if ($_SESSION['acctype'] == 'Student') {
+                $_SESSION['dob'] = $row["dob"];
+            }
             if ($_SESSION['acctype'] == "admin") {
                 header("Location: admin-panel.php");
             } elseif ($_SESSION['acctype'] == "Student" || $_SESSION['acctype'] == "Parent" || $_SESSION['acctype'] == "User") {
