@@ -40,9 +40,24 @@
     color: white;
   }
 
-  .btncontact:hover {
-    background-color: orange;
-    color: black;
+  ::-moz-scrollbar-thumb {
+    background-color: #888;
+  }
+
+  /* For Internet Explorer and Microsoft Edge */
+  /* Note: Microsoft Edge supports the -ms-overflow-style property */
+  /* to customize the scroll bar, but it's not widely supported */
+  /* in other versions of IE. */
+  /* Therefore, this code may not work in all IE versions. */
+  /* It's recommended to test it in your target browsers. */
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
+
+  svg {
+    width: 25px;
+
   }
 </style>
 
@@ -51,27 +66,56 @@
   include("navbar.php")
     ?>
 
-  <section class="py-5">
-    <div class="container containercontact py-5">
-      <div class="row mb-5">
-        <div class="col-md-8 col-xl-6 text-center mx-auto">
-          <p class="fw-bold mb-2 contactsalpha">Contacts</p>
-          <h2 class="fw-bold contactsbeta">How you can reach us</h2>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-6 col-xl-4">
-          <div>
-            <form class="p-3 p-xl-4" method="post">
-              <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Name">
-              </div>
-              <div class="mb-3"><input class="form-control" type="email" id="email-1" name="email" placeholder="Email">
-              </div>
-              <div class="mb-3"><textarea class="form-control" id="message-1" name="message" rows="6"
-                  placeholder="Message"></textarea></div>
-              <div><button class="btn btncontact shadow d-block w-100" type="submit">Send </button></div>
-            </form>
-          </div>
+  <div id="contactImage">
+    <img src="images/qq2.png">
+
+    <div id="contContent">
+      <h1 style="margin-bottom: -3%;" class="">Contact Us</h1>
+      <p style=" font-size:17px; margin-right: 20%"> At Supplies Hub, we believe in the power of connection.
+        <br> Whether you have a question, a partnership proposal, or simply want to say hello, we're all ears! <br>
+        Get in touch through any of the channels below, and Contact Our Team!<br>
+        <b>Email Address:</b> supplieshub@gmail.com <br>
+        <b>Phone Number: </b> +201000086123
+      </p>
+
+      <a href="https://www.facebook.com/profile.php?id=100093119778869&mibextid=LQQJ4d">
+        <svg style="margin-left: 100px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
+        </svg>
+      </a>
+      <a href="https://instagram.com/supplies_hub1?igshid=OGQ5ZDc2ODk2ZA==">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  </div>
+
+  </div>
+
+
+  </div>
+
+  <!--END CONTACT-->
+
+
+  <!--start CONTACTFORM-->
+
+  <div id="contactForm" class="bg-light">
+    <div class="container" id="">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Contact details</h2>
+          <p>Sheraton Heliopolis </p>
+          <p>Cairo, Egypt</p>
+          <p>+201000086123</p>
+          <p>supplieshub@gmail.com</p>
         </div>
         <div class="col-md-4 col-xl-4 d-flex justify-content-center justify-content-xl-start">
           <div class="d-flex flex-wrap flex-md-column justify-content-md-start align-items-md-start h-100">
@@ -124,24 +168,22 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <div class="container-fluid mb-5">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="google-map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.9563763313276!2d31.371153475087887!3d30.095435674897956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458161683934e59%3A0x4567a95d150917ef!2sArab%20Academy%20for%20Science%2C%20Technology%20%26%20Maritime%20Transport%20-%20Engineering%20Building%20B%2C%20Sheraton%20Al%20Matar%2C%20El%20Nozha%2C%20Cairo%20Governorate%204471314!5e0!3m2!1sen!2seg!4v1683561867960!5m2!1sen!2seg"
-            width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="container-fluid mb-5">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="google-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.9563763313276!2d31.371153475087887!3d30.095435674897956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458161683934e59%3A0x4567a95d150917ef!2sArab%20Academy%20for%20Science%2C%20Technology%20%26%20Maritime%20Transport%20-%20Engineering%20Building%20B%2C%20Sheraton%20Al%20Matar%2C%20El%20Nozha%2C%20Cairo%20Governorate%204471314!5e0!3m2!1sen!2seg!4v1683561867960!5m2!1sen!2seg"
+              width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <?php [include "footer.php"] ?>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/bold-and-bright.js"></script>
+
 </body>
 
 </html>

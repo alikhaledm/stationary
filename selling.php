@@ -80,7 +80,7 @@ include("navbar.php")
   </div>
   
   <div class="cr">
-    <form>
+    <form action="thankyou.php" method="post">
       <h2>Fill This Form</h2>
       
       <label for="name"class="sell">Name:</label>
@@ -131,7 +131,8 @@ include("navbar.php")
       padding: 10px 20px;
       border: none;
       border-radius: 4px;
-      cursor: pointer;">
+      cursor: pointer;
+      width:500px;" >
     </form>
   </div>
   <script src="contactassets/java script/bootstrap.bundle.min.js"></script>

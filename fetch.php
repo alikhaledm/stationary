@@ -67,7 +67,6 @@
 
 </html>
 
-
 <?php
 session_start();
 require_once("connect.php");
@@ -106,7 +105,6 @@ if (mysqli_num_rows($result) > 0) {
     echo "</div>";
     echo "</div>";
     echo "</div>";
-
   }
   echo "</div>";
 } else {
