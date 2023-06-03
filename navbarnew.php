@@ -65,10 +65,10 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfont">
                     <li class="nav-item">
-                        <a class="nav-link activee" aria-current="page" href="#">HOME</a>
+                        <a class="nav-link activee" aria-current="page" href="index.php">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Shop</a>
+                        <a class="nav-link" href="shop.php">Shop</a>
                     </li>
                     <?php
                     if (isset($_SESSION['id'])) {

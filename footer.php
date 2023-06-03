@@ -43,7 +43,7 @@
                     <div class="col-lg-4 col-sm-4 mb-4">
                         <h2>CONTACT</h2>
                         <p>Sheraton Heliopolis
-                            <br>Cairo, Egypt<br>01288998854
+                            <br>Cairo, Egypt<br>+201000086123
                         </p>
                         <p>supplieshub@gmail.com</p>
                     </div>
