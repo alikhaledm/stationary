@@ -1,16 +1,23 @@
     <html>
     <?php
     require_once("connect.php");
-    session_start();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $school = $_POST['schools'];
         $grade = $_POST['grades'];
-        $studentid = $_SESSION['id'];
+        if ($_SESSION['acctype'] == 'Student') {
+            $studentid = $_SESSION['id'];
 
+            $sql = "UPDATE student SET school_id='$school', grade='$grade' WHERE studentid='$studentid'";
+            $resultstudent = mysqli_query($conn, $sql);
+        } elseif ($_SESSION['acctype'] == 'Parent') {
+            $studentid = $_SESSION['childid'];
+            $parentid = $_SESSION['id'];
+
+            $sql = "UPDATE student SET school_id='$school', grade='$grade' WHERE ParentId ='$parentid'";
+            $resultstudent = mysqli_query($conn, $sql);
+        }
         // Update the student table with the school ID and grade
-        $sql = "UPDATE student SET school_id='$school', grade='$grade' WHERE studentid='$studentid'";
-        $resultstudent = mysqli_query($conn, $sql);
 
         if ($resultstudent) {
             // Redirect to packages.php
@@ -20,7 +27,12 @@
             // Print error message
             echo "Error: " . mysqli_error($conn);
         }
+        if ((empty($_SESSION['acctype'])) || ($_SESSION['acctype'] == 'User')) {
+            error_reporting(0);
+            header("Location: packages.php");
+        }
     }
+
     ?>
 
     <head>
