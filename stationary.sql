@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2023 at 08:30 PM
+-- Generation Time: Jun 01, 2023 at 06:38 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -74,7 +74,7 @@ INSERT INTO `cart` (`id`, `userid`, `productid`, `quantity`) VALUES
 (52, 6, 4, 5),
 (53, 6, 7, 1),
 (54, 6, 1, 3),
-(55, 54, 3, 1);
+(61, 58, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -108,6 +108,7 @@ INSERT INTO `creditcard` (`cardid`, `cardholdername`, `expirydate`, `cardnumber`
 
 CREATE TABLE `excess` (
   `excessid` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `prod_desc` varchar(255) NOT NULL,
   `product_photo` varchar(255) NOT NULL,
@@ -177,9 +178,7 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`ParentId`, `ChildId`, `childname`, `childage`) VALUES
-(54, NULL, NULL, '2023-05-09'),
-(55, NULL, NULL, NULL),
-(56, NULL, NULL, NULL);
+(58, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -252,10 +251,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `photo`, `school_id`, `grade`, `ParentId`) VALUES
-(1, '', '', NULL, '', 1, 6, NULL),
-(55, NULL, '', NULL, 'profile.png', NULL, NULL, 55),
-(56, 'ali khaled', 'alikhaled@newgeneration.edu', '2000-12-23', '', 1, 10, 56),
-(57, NULL, '', NULL, '', NULL, NULL, NULL);
+(57, NULL, '', NULL, '', NULL, NULL, NULL),
+(58, NULL, '', NULL, '', NULL, NULL, 58);
 
 -- --------------------------------------------------------
 
@@ -294,11 +291,8 @@ CREATE TABLE `usersclass` (
 --
 
 INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`, `phone`, `address`, `registerdate`) VALUES
-(1, 'Student', 'ali@gmail.com', '12345678', 'ali', 'khaled', 12345678, NULL, NULL),
-(54, 'Parent', 'parent@gmail.com', '12345678', 'ali', 'khaled', 12345678, NULL, NULL),
-(55, 'Parent', 'parentemail@gmail.com', '12345678', 'parent', 'parent', 12345678, NULL, NULL),
-(56, 'Parent', '1232313@gmail.com', '12345r46735', 'second', 'parent', 123124124, NULL, NULL),
-(57, 'Student', '3elwa@gmail.com', '12345678', '3elwa', 'khaled', 11234567, NULL, '2023-05-30');
+(57, 'Student', 'ali@gmail.com', '12345678', 'ali', 'khaled', 123123, NULL, '2023-05-30'),
+(58, 'Parent', 'aliii@gmail.com', '12345678', 'ali', 'awdaw', 12345, NULL, '2023-06-01');
 
 --
 -- Indexes for dumped tables
@@ -400,7 +394,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `creditcard`
@@ -430,7 +424,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -448,7 +442,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `supplies_list`
@@ -460,7 +454,7 @@ ALTER TABLE `supplies_list`
 -- AUTO_INCREMENT for table `usersclass`
 --
 ALTER TABLE `usersclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- Constraints for dumped tables

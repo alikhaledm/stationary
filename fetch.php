@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -50,24 +51,25 @@
       background-color: gray;
     }
 
-    #btnn
-    {
-      background-color:white;
+    #btnn {
+      background-color: white;
       border: 3px solid black;
       width: 80%;
-      
+
     }
-    .card-img-top
-    {
+
+    .card-img-top {
       height: 300px;
     }
   </style>
 
 </body>
+
 </html>
 
 
 <?php
+session_start();
 require_once("connect.php");
 
 if (isset($_POST["query"])) {
@@ -99,28 +101,28 @@ if (mysqli_num_rows($result) > 0) {
               </div>
             </div>
             <br>";
-            echo "<a href='addProductToCart.php?varname=$row[id]' class='btn' style='width:100%;' id='btnn'>Add to cart</a>";
-            echo "<br><br><a href='productdetails.php'>Details</a>";
-      echo "</div>";
-      echo "</div>";
-      echo "</div>";
-
-    }
+    echo "<a href='addProductToCart.php?varname=$row[id]' class='btn' style='width:100%;' id='btnn'>Add to cart</a>";
+    echo "<br><br><a href='productdetails.php'>Details</a>";
     echo "</div>";
-  } else {
-    echo 'Data Not Found';
+    echo "</div>";
+    echo "</div>";
+
   }
-  ?>
+  echo "</div>";
+} else {
+  echo 'Data Not Found';
+}
+?>
 <script>
   var barData = [{
-      value: 0
-    },
-    {
-      value: 0
-    },
-    {
-      value: 0
-    }
+    value: 0
+  },
+  {
+    value: 0
+  },
+  {
+    value: 0
+  }
   ];
 
   function increase(index) {

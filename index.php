@@ -480,7 +480,7 @@ require_once("connect.php");
       <div class="col-lg-6 col-sm-12" style="padding-top:20;">
 
         <div class="image-wrapper">
-          <img style="width:100%;" src="images/card1.png" alt="Image">
+          <img style="width:100%;" src="images/card2.png" alt="Image">
           <div class="content-overlay">
             <div></div>
             <div class="bodyfont3">Discover Your Gathered<br> Supplies List

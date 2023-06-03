@@ -48,9 +48,15 @@ require_once("connect.php") ?>
 
   .shopmainbtn {
     background-color: white;
-    border-color: black;
+    border: none;
     height: 80px;
     width: 260px;
+    opacity: 0.9;
+    border-radius: 5px;
+  }
+
+  .shopmainbtn:hover {
+    opacity: 1;
   }
 
   .shopbetafont {
@@ -59,7 +65,7 @@ require_once("connect.php") ?>
   }
 
   .shopsmallfont {
-    font-size: 14px;
+    font-size: 22px;
   }
 
   .formcontrol {
@@ -75,11 +81,15 @@ require_once("connect.php") ?>
   }
 
   .formbtn {
-    width: 250px;
+    width: 185px;
     height: 30px;
     border: none;
     background-color: #FBD334;
     color: white;
+  }
+
+  .formbtn:hover {
+    background-color: orange;
   }
 </style>
 
@@ -107,13 +117,17 @@ require_once("connect.php") ?>
       <div class="col-lg-6" style="padding-top:70;">
         <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
             src="images/shop/shop1.jpg" alt="">
-          <div style="position:absolute;"><button class="shopmainbtn"> SHOP ALL STATIONERY</button></div>
+          <div style="position:absolute;">
+            <a href="products.php"><button class="shopmainbtn"> SHOP ALL STATIONERY</button>
+          </div>
+          </a>
         </div>
       </div>
       <div class="col-lg-6" style="padding-top:70;">
         <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
             src="images/shop/shop2.jpg" alt="">
-          <div style="position:absolute;"><button class="shopmainbtn"> SHOP ALL STATIONERY</button></div>
+          <div style="position:absolute;"> <a href="products.php"><button class="shopmainbtn"> SHOP ALL
+                STATIONERY</button></div></a>
         </div>
       </div>
     </div>
@@ -197,7 +211,7 @@ require_once("connect.php") ?>
   </div>
 
 
-  <div class="container centered formcontrol">
+  <div class="container centered formcontrol" style="padding-bottom:115px;">
     <div class="row">
       <div class="col-lg-12 centered" style="padding-top:100px">
         <div class="shopbetafont">Can't Find What You're Looking For?</div>
@@ -206,9 +220,10 @@ require_once("connect.php") ?>
         <div class="line3"></div>
       </div>
       <div class="col-lg-12 centered" style="padding-top:30px">
-        <div class="shopsmallfont">Send us a message and we`ll do our best to stock all your<br>
-          <div class="centered"> stationary
-            needs!</div>
+        <div class="shopsmallfont">Send us a message and we`ll do our best <div class="centered">to stock all your
+            stationery needs!
+          </div>
+
         </div>
       </div>
 
@@ -242,12 +257,13 @@ require_once("connect.php") ?>
       <div class="col-lg-8 col-sm-12" style="padding-top: 30px;">
         <div class="shopinput">
           <div class="shopsmallfont" style="padding-bottom:10px">Description</div>
-          <input style="width:500px;" type="text" name="" id="">
+          <input type="text" name="" id="">
         </div>
       </div>
 
       <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-        <div class="shopinput">
+        <div class="shopinput" style="padding-top:5;">
+
           <div class="shopsmallfont" style="padding-bottom:30px"></div>
           <button class="formbtn">Send</button>
 
