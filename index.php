@@ -413,15 +413,15 @@ require_once("connect.php");
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="5000">
-              <div class="carousel-background" style="background-color:orange;">
+              <div class="carousel-background">
                 <img width="100%" height="600px" src="images/supplieslist1.png" alt="">
               </div>
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">Select School, Get Supplies</div>
                 <div class="carouselfont2">
                   Explore our One-Click Solution<br> for All Your School Supply Needs</div><br>
-                <button class="carouselbtn carouselfont3">Start Now <img width="20" height="20"
-                    src="images/forward.svg"> </button>
+                <a href="startnowintro.php"><button class="carouselbtn carouselfont3">Start Now <img width="20"
+                      height="20" src="images/forward.svg"> </button></a>
               </div>
             </div>
 
@@ -432,8 +432,8 @@ require_once("connect.php");
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">School Supplies Made Easy</div>
                 <div class="carouselfont2">Get Your School Supplies in Minutes:<br> Select, Order, and Relax</div>
-                <br><button class="carouselbtn carouselfont3">
-                  Start Now <img width="20" height="20" src="images/forward.svg"></button>
+                <br><a href="startnowintro.php"><button class="carouselbtn carouselfont3">Start Now <img width="20"
+                      height="20" src="images/forward.svg"> </button></a>
               </div>
             </div>
 
@@ -445,8 +445,8 @@ require_once("connect.php");
                 <div class="carouselfont1">Wide Range Of Products</div>
                 <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div>
                 <br>
-                <button class="carouselbtn carouselfont3">Start Now<img width="20" height="20"
-                    src="images/forward.svg"></button>
+                <a href="startnowintro.php"><button class="carouselbtn carouselfont3">Start Now <img width="20"
+                      height="20" src="images/forward.svg"> </button></a>
               </div>
             </div>
           </div>
