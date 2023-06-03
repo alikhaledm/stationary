@@ -116,6 +116,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
             $_SESSION['acctype'] = $row["acctype"];
+            if ($_SESSION['acctype'] == 'Student') {
+                $_SESSION['dob'] = $row["dob"];
+            }
 
             echo '<script>window.location.href = "index.php";</script>';
 

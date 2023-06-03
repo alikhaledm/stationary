@@ -1,15 +1,13 @@
 <?php
 include("navbar.php")
-  ?>
+?>
 <html>
 <title>About Us</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 
 <head>
   <style>
-   
     p {
       max-width: 700px;
 
@@ -74,10 +72,10 @@ include("navbar.php")
       margin: 0 auto;
       padding: 20px;
       font-size: 20px;">
-      Welcome to  Supplies Hub! <br>
-      We are not your typical store for school supplies,  We are a platform that believes in sustainability and giving
+      Welcome to Supplies Hub! <br>
+      We are not your typical store for school supplies, We are a platform that believes in sustainability and giving
       back to the community.
-       Our Company is committed to reducing waste and promoting reuse. At the end of each school year, we collect
+      Our Company is committed to reducing waste and promoting reuse. At the end of each school year, we collect
       used items from parents, carefully inspecting, cleaning, and reselling them. Any unsold items are donated to
       charitable organizations, ensuring a positive impact. Join us in making education sustainable and accessible for
       all.
@@ -115,7 +113,7 @@ include("navbar.php")
   </div>
 
 
-  
+
   <h2 style="text-align: center;
       font-size: 40px;">What We Do</h2>
   <hr style="height: 3px;
@@ -124,28 +122,28 @@ include("navbar.php")
         border: none;
         margin: 20px auto;
         margin-bottom:0;">
-<br><br>
-  
-    <h3 style="text-align: center;">Provide Everything You Need for School</h3>
-     <div style=" justify-content: center; display: inline-block;
+  <br><br>
+
+  <h3 style="text-align: center;">Provide Everything You Need for School</h3>
+  <div style=" justify-content: center; display: inline-block;
        text-align: center; display: flex; font-size: 100%;">
-       <p style="font-size: 19px;">
+    <p style="font-size: 19px;">
       From pencils and notebooks to backpacks and calculators,
       we offer a wide range of school supplies to meet all your academic needs.
       Our goal is to ensure that students have access to high-quality,
       reliable, and affordable supplies for a successful learning experience.
     </p>
   </div>
-  
-   
+
+
   </div>
-</div>
+  </div>
 
   <br> <br>
   <hr>
 </body>
 <?php
 include("footer.php")
-  ?>
+?>
 
 </html>

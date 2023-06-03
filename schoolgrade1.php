@@ -129,8 +129,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include("startvideo.php");
-    ?>
     <center>
         <form method="POST">
             <div class="container">
