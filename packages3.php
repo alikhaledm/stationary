@@ -66,32 +66,6 @@ input[type="text"], input[type="email"], textarea {
   align-items: center;
 }
 
-.left-column {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.right-column {
-  flex: 1;
-  padding-left: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label, input, textarea {
-  margin-bottom: 10px;
-}
-
-input[type="text"], input[type="email"], textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 select {
   padding: 5px;
   border: 1px solid #ccc;
@@ -131,6 +105,15 @@ option {
   color:black;
 }
 
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: lightgray;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 </style>
 <body>
 <div class="video-container">
@@ -149,13 +132,6 @@ option {
     <form>
       <label for="name"><h5>Name:</h5></label>
       <input type="text" id="name" name="name">
-<label for="grade"><h5>Gender:</h5></label>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  <label class="form-check-label-boy" for="flexRadioDefault2"id="boy"><h5>BOY</h5></label> 
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-  <label class="form-check-label" for="flexRadioDefault2" id="girl"><h5>GIRL</h5></label>
-</div>
       <label for="email"><h5>Email:</h5></label>
       <input type="email" id="email" name="email">
       <label for="schools"><h5>Choose Your School:</h5></label>
@@ -186,6 +162,9 @@ option {
   <option value="11">Grade 11</option>
   <option value="12">Grade 12</option>
 </select>
+<button onclick="scrollToBottom()">Step two</button>
+
+<div id="bottom"></div>
     </form>
   </div>
 </div>
@@ -295,13 +274,6 @@ option {
   margin-top: 20px;
 }
 
-#boy{
-  color:blue;
-}
-#girl{
-  color:pink;
-}
-
 .btn-circle.btn-xl {
             width: 70%;
             height: 35%;
@@ -336,6 +308,10 @@ option {
         closeModal();
       }
     });
+
+    function scrollToBottom() {
+  window.scrollBy(0, 5);
+}
   </script>
   
   </div>
