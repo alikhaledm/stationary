@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -187,7 +188,7 @@
 
     <script>
         // Add the fade-in class to the video container after a delay
-        setTimeout(function() {
+        setTimeout(function () {
             var videoContainer = document.querySelector('.video-container');
             videoContainer.classList.add('fade-in');
         }, 6000); // Delay in milliseconds before adding the fade-in class
@@ -224,55 +225,14 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mt-3 centered2">
-                    <a href="schoolgrade.php"><button id="nextBtn" class="btncustom3">Next Step</button></a>
+                    <a href="schoolgrade.php"><button onclick="loadContent()" id="nextBtn" class="btncustom3">Next
+                            Step</button></a>
                 </div>
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                var currentPage = 1;
 
-                function showCurrentPage() {
-                    $('.content').hide(); // Hide all content
 
-                    if (currentPage === 1) {
-                        $('#content1').fadeIn();
-                    } else {
-                        var contentId = "#content" + currentPage;
-                        $(contentId).load(getPageURL(currentPage), function() {
-                            $(contentId).fadeIn();
-                        });
-                    }
-                }
-
-                function getPageURL(page) {
-                    // Return the appropriate URL for each page
-                    if (page === 2) {
-                        return "schoolgrade.php";
-                    } else if (page === 3) {
-                        return "schoolgrade1.php";
-                    } else if (page === 4) {
-                        return "schoolgrade2.php";
-                    }
-                }
-
-                function showNextPage() {
-                    if (currentPage < 4) {
-                        currentPage++;
-                        showCurrentPage();
-                    }
-                }
-
-                $('').click(function() {
-                    showNextPage();
-                });
-
-                // Show the first page initially
-                showCurrentPage();
-            });
-        </script>
         </div>
     </body>
 

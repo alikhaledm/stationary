@@ -16,11 +16,6 @@
   text-overflow: ellipsis;
 }
 
-/* move $productPrice to the right */
-.quantity-input {
-  display: flex;
-  align-items: center;
-}
 
 .quantity-input .quantity-input-button {
   border: none;
@@ -41,18 +36,9 @@
 }
 
 .quantity-input .quantity {
-  width: 50px;
   border: none;
-  text-align: center;
   font-size: 1rem;
   font-weight: bold;
-}
-
-.quantity-input input {
-  width: 50px;
-  margin-right: 10px;
-  margin-bottom: 0px;
-  text-align: center;
 }
 
 .update-button {
@@ -118,42 +104,10 @@
   width: 100%;
 }
 
-a {
-  padding: 0 1vh;
-}
-
-.back-to-shop {
-  margin-top: 4.5rem;
-}
-
-h5 {
-  margin-top: 4vh;
-}
-
-hr {
-  margin-top: 1.25rem;
-}
-
-form {
-  padding: 2vh 0;
-}
-
-select {
-  border: 1px solid rgba(0, 0, 0, 0.137);
-  border-radius: 5px;
-  padding: 1.5vh 1vh;
-  margin-bottom: 4vh;
-  outline: none;
-  width: 100%;
-  background-color: rgb(247, 247, 247);
-}
-
 input {
   border: 1px solid rgba(0, 0, 0, 0.137);
-  padding: 1vh;
   margin-bottom: 4vh;
   outline: none;
-  width: 100%;
   background-color: rgb(247, 247, 247);
 }
 
@@ -182,15 +136,6 @@ input:focus::-webkit-input-placeholder {
 
 .btn:hover {
   color: white;
-}
-
-a {
-  color: black;
-}
-
-a:hover {
-  color: black;
-  text-decoration: none;
 }
 
 #code {

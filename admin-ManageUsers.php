@@ -9,174 +9,191 @@ $result = mysqli_query($conn, $sql);
 if (!$result) {
     die("Query execution failed: " . mysqli_error($conn));
 }
+
+if (isset($_POST['update'])) {
+    $userids = $_POST['userid']; // Add this line to retrieve the userids array
+
+    // Retrieve the form input arrays
+    $emails = isset($_POST['email']) ? $_POST['email'] : array();
+    $fnames = isset($_POST['fname']) ? $_POST['fname'] : array();
+    $lnames = isset($_POST['lname']) ? $_POST['lname'] : array();
+    $acctypes = isset($_POST['acctype']) ? $_POST['acctype'] : array();
+    $phones = isset($_POST['phone']) ? $_POST['phone'] : array();
+
+    $changesMade = false; // Flag to check if any changes were made
+
+    foreach ($userids as $key => $userid) {
+        $email = isset($emails[$key]) ? $emails[$key] : '';
+        $fname = isset($fnames[$key]) ? $fnames[$key] : '';
+        $lname = isset($lnames[$key]) ? $lnames[$key] : '';
+        $acctype = isset($acctypes[$key]) ? $acctypes[$key] : '';
+        $phone = isset($phones[$key]) ? $phones[$key] : '';
+
+        // Check if any changes were made
+        if ($email != '' || $fname != '' || $lname != '' || $acctype != '' || $phone != '') {
+            $changesMade = true;
+
+            // Update the record in the database
+            $sql = "UPDATE usersclass SET fname='$fname', lname='$lname', acctype='$acctype', email='$email', phone='$phone' WHERE id='$userid'";
+            if ($conn->query($sql) !== TRUE) {
+                echo "Error updating record: " . $conn->error;
+            }
+        }
+    }
+
+    if (!$changesMade) {
+        echo "No changes were made.";
+    }
+} elseif (isset($_POST['delete'])) {
+    $userids = $_POST['userid'];
+
+    foreach ($_POST['delete'] as $key => $delete) {
+        $userid = $userids[$key];
+        $sql = "DELETE FROM usersclass WHERE id='$userid'";
+        if ($conn->query($sql) !== TRUE) {
+            echo "Error deleting record: " . $conn->error;
+        }
+    }
+}
 ?>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Table - Brand</title>
+    <title>Database Records - Users</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <style>
+        .centered {
+            justify-content: center;
+            align-content: center;
+            display: flex;
+            border: none;
+        }
+    </style>
 </head>
 
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
-                </a>
-                <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="admin-dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-profile.php"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="admin-ViewUsers.php"><i class="fas fa-table"></i><span>Table</span></a></li>
-                </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
-            </div>
-        </nav>
+        <?php include("admin-sidebar.php"); ?>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
-                        </form>
-                        <ul class="navbar-nav flex-nowrap ms-auto">
-                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
-                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
-                                    <form class="me-auto navbar-search w-100">
-                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                                <p>$290.29 has been deposited into your account!</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
-                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
-                            </li>
-                            <div class="d-none d-sm-block topbar-divider"></div>
-                            <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <?php include("admin-topbar.php"); ?>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4">Registered Users</h3>
+                    <h3 class="text-dark mb-4 text-center">Registered Users</h3>
                     <div class="card shadow">
-                        <div class="card-header py-3 text:nowrap">
-                            <p class="text-primary m-0 fw-bold">User Info</p><a href="admin-ManageUsers.php" style="justify-content: end; display:flex;"><button class="btn btn-danger">Manage</button></a>
+                        <div class="card-header py-3 text-nowrap d-flex justify-content-between align-items-center">
+                            <p class="text-primary m-0 fw-bold">User Info</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
-                                                <option value="10" selected="">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>&nbsp;</label></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                                <div class="col-md text-nowrap d-flex justify-content-between align-items-center">
+                                    <div class="text-md-end dataTables_filter px-2" id="dataTable_filter">
+                                        <label class="form-label"><input type="search" size="25" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label>
+                                    </div>
+                                    <div class="px-2">
+                                        <form method="POST">
+                                            <input type="submit" name="update" class="btn btn-success text-white" value="Save Changes">
+                                    </div>
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
                                             <th>Email</th>
                                             <th>Account Type</th>
                                             <th>Phone</th>
-                                            <th>Register Date</th>
+                                            <th>Reg Date</th>
                                             <th>Orders</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<td><img class='rounded-circle me-2' width='30' height='30' src='images/account/profile.jpg'>" . $row['fname'] . " " . $row['lname'] . "</td>";
-                                            echo "<td>" . $row['email'] . "</td>";
-                                            echo "<td>" . $row['acctype'] . "</td>";
-                                            echo "<td>" . $row['phone'] . "</td>";
-                                            echo "<td>" . $row['registerdate'] . "</td>";
-
-                                            // select number of orders made by this user
                                             $sqlOrders = "SELECT COUNT(*) AS ordersmade FROM orders WHERE userid = " . $row['id'];
                                             $resultOrders = mysqli_query($conn, $sqlOrders);
                                             $rowOrders = mysqli_fetch_assoc($resultOrders);
-                                            echo "<td>" . $rowOrders['ordersmade'] . "</td>";
+                                            echo "<tr>";
+                                            echo "<td><input type='text' name='fname[]' class='form-control' style='width:300px' value='" . $row['fname'] . "' disabled>&nbsp;&nbsp;</td>";
+                                            echo "<td><input name='lname[]' type='text' class='form-control' style='width:300px' value='" . $row['lname'] . "' disabled></td>";
+                                            echo "<td><input name='email[]' class='form-control' type='email' style='width:400px' value='" . $row['email'] . "' disabled></td>";
+                                            echo "<td>
+                                                <select name='acctype[]' class='form-select'  disabled>
+                                                <option value='Student'" . ($row['acctype'] == 'Student' ? 'selected' : '') . ">Student</option>
+                                                <option value='Parent'" . ($row['acctype'] == 'Parent' ? 'selected' : '') . ">Parent</option>
+                                                <option value='User'" . ($row['acctype'] == 'User' ? 'selected' : '') . ">User</option>
+                                                </select></td>";
+                                            echo "<td><input class='form-control' name='phone[]' type='text' value='" . $row['phone'] . "' disabled></td>";
+                                            echo "<td class='pt-3'>" . $row['registerdate'] . "</td>";
+                                            echo "<td class='centered pt-3'>" . $rowOrders['ordersmade'] . "</td>";
+                                            echo "<td><input type='text' name='userid[]' value='" . $row['id'] . "' hidden></td>";
+                                            echo "<td>";
+                                            echo "<button type='button' class='btn btn-primary' onclick='enableEdit(this)'>";
+                                            echo "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>";
+                                            echo "<path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>";
+                                            echo "<path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/>";
+                                            echo "</svg>";
+                                            echo "</button>";
+                                            echo "&nbsp;&nbsp;
+                                                <button type='submit' class='btn btn-danger' name='delete[]'>
+                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' fill='currentColor' class='bi bi-person-dash' viewBox='0 0 16 16'>
+                                                <path d='M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1Zm0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z'/>
+                                                <path d='M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z'/>
+                                                </svg>
+                                                </button>";
+                                            echo "</td>";
                                             echo "</tr>";
                                         }
                                         ?>
                                     </tbody>
                                 </table>
+                                </form>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 align-self-center">
-                                    <!-- count the number of rows from the query and input it into variable -->
+                            <div class="row justify-content-between">
+                                <div class="col">
                                     <?php
                                     $sqlCount = "SELECT COUNT(*) AS total FROM usersclass";
                                     $resultCount = mysqli_query($conn, $sqlCount);
                                     $rowCount = mysqli_fetch_assoc($resultCount);
                                     ?>
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing <?php echo $rowCount['total']; ?> entries</p>
+                                    <p>Showing <B style="color:blue"><?php echo $rowCount['total']; ?></B> Users</p>
                                 </div>
-                                <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    </nav>
+                                <div class="col-auto">
+                                    <a href="admin-AddUser.php"><button class="btn btn-primary text-white mx-2">Add New User</button></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2023</span></div>
-                </div>
-            </footer>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
+            <div class="container" id="userForm" style="display: none;">
+                <h4>Add New User</h4>
+                <form method="POST">
+                    <input type="text">
+                    <button type="submit" class="btn btn-primary">Save User</button>
+                </form>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="assets/js/bs-init.js"></script>
+            <script src="assets/js/theme.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                function enableEdit(button) {
+                    var row = button.parentNode.parentNode;
+                    var inputs = row.getElementsByTagName('input');
+                    var select = row.querySelector('select');
+
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].disabled = false;
+                    }
+
+                    select.disabled = false;
+                }
+            </script>
 </body>
 
 </html>

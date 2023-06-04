@@ -16,7 +16,6 @@ if ($_SESSION['acctype'] == "Student") {
         if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $age = $row['dob'];
-                $photo = $row['photo'];
                 $studentemail = $row['studentemail'];
                 $school = $row['school_id'];
                 $grade = $row['grade'];
@@ -31,7 +30,6 @@ if ($_SESSION['acctype'] == "Student") {
         while ($row = mysqli_fetch_assoc($result)) {
             $studentname = $row['studentname'];
             $age = $row['dob'];
-            $photo = $row['photo'];
             $studentemail = $row['studentemail'];
             $school = $row['school_id'];
             $grade = $row['grade'];
@@ -52,6 +50,9 @@ $result = mysqli_query($conn, $sql);
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $gradename = $row['name'];
+}
+if ((empty($_SESSION['acctype'])) || ($_SESSION['acctype'] == 'User')) {
+    error_reporting(0);
 }
 ?>
 
@@ -214,19 +215,18 @@ if ($result && mysqli_num_rows($result) > 0) {
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
+                <div class="row left-row">';
 
-                <!-- Content for left-side column -->
-                <?php
-                echo '<img src="images/account/' . $photo . '" alt="">
-                    <div class="row left-row">';
-                if ($_SESSION['acctype'] == "Student") {
-                    echo '
+                    <!-- Content for left-side column -->
+                    <?php
+                    if ($_SESSION['acctype'] == "Student") {
+                        echo '
                     <div class="col-lg-12">
                         <b>Student Name: </b>' . $name . '
                     </div>
                     ';
-                } else {
-                    echo '
+                    } else {
+                        echo '
                         <div class="col-lg-12">
                         <b>Student Name: </b>' . $studentname . '
                     </div>
@@ -246,116 +246,117 @@ if ($result && mysqli_num_rows($result) > 0) {
                         <b>Supplies Availability: </b>Yes
                     </div>
                     ';
-                } ?>
-            </div>
-        </div>
-
-        <div class="col-lg-9">
-            <!-- Right-side columns -->
-            <div class="row">
-                <div class="col-lg-12 card mt-3">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <div class="text-left">
-                                Notebooks
-                            </div>
-                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body expandable-content">
-
-
-                        <div class="checkbox-container">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="black-notebook" name="notebook" value="black" checked>
-                                <label class="form-check-label" for="black-notebook">
-                                    Black Notebook
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="checkbox-container">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="white-notebook" name="notebook" value="white" checked>
-                                <label class="form-check-label" for="white-notebook">
-                                    White Notebook
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="checkbox-container">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="red-notebook" name="notebook" value="red" checked>
-                                <label class="form-check-label" for="red-notebook">
-                                    Red Notebook
-                                </label>
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
-                </div>
-
-                <div class="col-lg-12 card mt-3">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <div class="text-left">
-                                This card can be expanded
-                            </div>
-                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body expandable-content">
-                        Right-side Content 1
-                    </div>
-                </div>
-                <div class="col-lg-12 card mt-3">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <div class="text-left">
-                                This card can be expanded
-                            </div>
-                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body expandable-content">
-                        Right-side Content 1
-                    </div>
-                </div>
-                <div class="col-lg-12 card mt-3">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <div class="text-left">
-                                This card can be expanded
-                            </div>
-                            <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body expandable-content">
-                        Right-side Content 1
-                    </div>
-
-
-                </div>
-
-                <div class="col-lg-12 mt-3">
-
-                    <a href="signup2.php"> <button class="btn">ADD TO CART</button></a>
-
+                    }
+                    ?>
                 </div>
             </div>
+
+            <div class="col-lg-9">
+                <!-- Right-side columns -->
+                <div class="row">
+                    <div class="col-lg-12 card mt-3">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <div class="text-left">
+                                    Notebooks
+                                </div>
+                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body expandable-content">
+
+
+                            <div class="checkbox-container">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="black-notebook" name="notebook" value="black" checked>
+                                    <label class="form-check-label" for="black-notebook">
+                                        Black Notebook
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-container">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="white-notebook" name="notebook" value="white" checked>
+                                    <label class="form-check-label" for="white-notebook">
+                                        White Notebook
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-container">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="red-notebook" name="notebook" value="red" checked>
+                                    <label class="form-check-label" for="red-notebook">
+                                        Red Notebook
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 card mt-3">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <div class="text-left">
+                                    This card can be expanded
+                                </div>
+                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body expandable-content">
+                            Right-side Content 1
+                        </div>
+                    </div>
+                    <div class="col-lg-12 card mt-3">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <div class="text-left">
+                                    This card can be expanded
+                                </div>
+                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body expandable-content">
+                            Right-side Content 1
+                        </div>
+                    </div>
+                    <div class="col-lg-12 card mt-3">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <div class="text-left">
+                                    This card can be expanded
+                                </div>
+                                <div class="arrow-toggle ml-auto" onclick="toggleExpansion(this)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body expandable-content">
+                            Right-side Content 1
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-lg-12 mt-3">
+
+                        <a href="signup2.php"> <button class="btn">ADD TO CART</button></a>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     </div>
     </div>
     </div>
@@ -371,12 +372,6 @@ if ($result && mysqli_num_rows($result) > 0) {
             $(element).parent().parent().siblings(".card-body.expandable-content").slideToggle();
         }
     </script>
-
-
-
-
-
-
 </body>
 
 

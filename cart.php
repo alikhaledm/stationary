@@ -1,10 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
 require_once("connect.php");
 include("navbar.php");
 
 $userid = $_SESSION['id'];
 if (isset($_POST["query"])) {
-    $userid = $_SESSION['id'];
+  $userid = $_SESSION['id'];
 }
 
 $total = 0;
@@ -14,157 +16,146 @@ $result = mysqli_query($conn, $getotal);
 $tagID = mysqli_fetch_assoc($result);
 
 if ($result) {
-    $total = $tagID['total_price'];
+  $total = $tagID['total_price'];
 }
 
 if (isset($_POST['update_quantity'])) {
-    $productId = $_POST['product_id'];
-    $newQuantity = $_POST['quantity'];
+  $productId = $_POST['product_id'];
+  $newQuantity = $_POST['quantity'];
 
-    $updateQuery = "UPDATE cart SET quantity = $newQuantity WHERE userid = $userid AND productid = $productId";
-    $updateResult = mysqli_query($conn, $updateQuery);
+  $updateQuery = "UPDATE cart SET quantity = $newQuantity WHERE userid = $userid AND productid = $productId";
+  $updateResult = mysqli_query($conn, $updateQuery);
 
-    header("location: cart.php");
+  header("location: cart.php");
 }
 
 ?>
 
-<html>
-
 <head>
-    <title>Shopping Cart</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="cartstyles.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-        // AJAX request to update quantity
-        function updateQuantity(productId, newQuantity) {
-            $.ajax({
-                type: "POST",
-                url: "update_quantity.php",
-                data: {
-                    update_quantity: true,
-                    product_id: productId,
-                    quantity: newQuantity
-                },
-                success: function(response) {
-                    console.log(response);
-                    // You can update the UI here if needed
-                }
-            });
-        }
-
-        // Event listener for the checkbox
-        const updateButtons = document.getElementsByClassName('update-button');
-        const quantityInputs = document.getElementsByClassName('quantity');
-
-        for (let i = 0; i < checkers.length; i++) {
-            const checker = checkers[i];
-            const quantityInput = quantityInputs[i];
-
-            updateButton.addEventListener('click', function(e) {
-                const productId = quantityInput.dataset.productId;
-                const newQuantity = this.checked ? quantityInput.value : 1;
-                updateQuantity(productId, newQuantity);
-            });
-        }
-    </script>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Shopping Cart - Brand</title>
+  <link rel="stylesheet" href="cartstyles.css">
+  <link rel="stylesheet" href="cartassets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="card">
-        <div class="row">
-            <div class="col-md-8 cart">
-                <div class="title" style="margin-bottom: 20; padding-bottom:0%;">
-                    <div class="row">
-                        <div class="col">
-                            <h4 style="margin-bottom: 0; padding-bottom:0%;"><b>Shopping Cart</b></h4>
-                        </div>
-                        <div class="col align-self-center text-right text-muted"> 3 items</div>
-                    </div>
+  <section class="py-5">
+    <div class="container py-5">
+      <div class="row mx-auto">
+        <div class="col">
+          <div data-reflow-type="shopping-cart">
+            <div class="reflow-shopping-cart" style="display: block">
+              <div class="ref-loading-overlay"></div>
+              <div class="ref-message" style="display: none"></div>
+              <div class="ref-cart" style="display: block">
+                <div class="ref-heading">Shopping Cart</div>
+                <div class="ref-th">
+                  <div class="ref-product-col">Product</div>
+                  <div class="ref-price-col">Price</div>
+                  <div class="ref-quantity-col">Quantity</div>
+                  <div class="ref-total-col">Total</div>
                 </div>
+                <div class="ref-cart-table">
+                  <?php
 
-                <?php
-
-                $getProducts = "SELECT * FROM cart WHERE userid = $userid";
-                $result2 = mysqli_query($conn, $getProducts);
-                if ($result2) {
+                  $getProducts = "SELECT * FROM cart WHERE userid = $userid";
+                  $result2 = mysqli_query($conn, $getProducts);
+                  if ($result2) {
                     while ($rowData = mysqli_fetch_assoc($result2)) {
-                        $productId = $rowData['productid'];
-                        $selectProducts = "SELECT * FROM products WHERE id = $productId";
-                        $result3 = mysqli_query($conn, $selectProducts);
-                        if ($result3) {
-                            while ($rowData2 = mysqli_fetch_assoc($result3)) {
-                                $cartId = $rowData['id'];
-                                $quantity = $rowData['quantity'];
-                                $productPrice = $rowData2['price'];
+                      $productId = $rowData['productid'];
+                      $selectProducts = "SELECT * FROM products WHERE id = $productId";
+                      $result3 = mysqli_query($conn, $selectProducts);
+                      if ($result3) {
+                        while ($rowData2 = mysqli_fetch_assoc($result3)) {
+                          $cartId = $rowData['id'];
+                          $quantity = $rowData['quantity'];
+                          $productPrice = $rowData2['price'];
 
-                                // Truncate product name if more than 15 characters
-                                $productName = strlen($rowData2['pname']) > 25 ? substr($rowData2['pname'], 0, 25) . ".." : $rowData2['pname'];
+                          $prodtotal = $productPrice * $quantity;
 
-                                echo '
-    <div class="row border-top border-bottom">
-        <div class="row main align-items-center" style="padding: 0;">
-            <div class="col-2"><img class="img-fluid" src="images/Shop/products/' . $rowData2['photo'] . '"></div>
-            <div class="col-4" >
-                <div class="row product-name">' . $productName . '</div>
-            </div>
-                <div class="col-2">
-                    <form action="" method="POST" class="update-form" style="margin-bottom:0;">
-                        <input type="hidden" name="product_id" value="' . $productId . '">
-                        <div class="quantity-input">
-                            <input type="number" name="quantity" class="quantity" min="1" value="' . $quantity . '" data-product-id="' . $productId . '">
-                            <button type="submit" name="update_quantity" class="update-button"><i class="fa fa-check checker" style="color:black; width:0"></i></button>
-                        </div>
-                    </form>
-            </div>
-            <div class="col-3" style="text-align:right; padding-right:0;">$' . number_format($productPrice, 2) . ' <b>x' . $quantity . '</b></div>
-            <div class="col-1"><a href="removeCart.php?varname=' . $productId . '"><span>&#10005;</span></a></div>
-        </div>
-    </div>';
-                            }
+                          // Truncate product name if more than 15 characters
+                          $productName = strlen($rowData2['pname']) > 25 ? substr($rowData2['pname'], 0, 25) . ".." : $rowData2['pname'];
+                          echo '
+                          <div class="ref-product" data-id="1065684752" data-quantity="2">
+                            <div class="ref-product-col">
+                              <div class="ref-product-wrapper">
+                                <img class="ref-product-photo" src="images/Shop/products/' . $rowData2['photo'] . '" alt="Vintage Clock" />
+                                <div class="ref-product-data">
+                                  <div class="ref-product-info">
+                                    <div>
+                                      <div class="ref-product-name">' . $productName . '</div>
+                                      <div class="ref-product-category">Tech</div>
+                                      <div class="ref-product-variants"></div>
+                                      <div class="ref-product-personalization-holder"></div>
+                                    </div>
+                                    <div class="ref-product-price ref-mobile-product-price">' . number_format($productPrice, 2) . '</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="ref-price-col">
+                              <div class="ref-product-price">' . number_format($productPrice, 2) . '</div>
+                            </div>
+                            <div class="ref-quantity-col">
+                                <form action="" method="POST" class="update-form">
+                                <input type="hidden" name="product_id" value="' . $productId . '">
+                                <div class="quantity-input">
+                                <input type="number" name="quantity" class="quantity" min="1" value="' . $quantity . '" data-product-id="' . $productId . '">
+                                <button type="submit" name="update_quantity" class="update-button"><i class="fa fa-check checker" style="color:black; width:0"></i></button>
+                            </div>
+                            </form>
+                            </div>
+                            <div class="ref-total-col">
+                              <div class="ref-product-total">
+                                <div class="ref-product-total-sum">$18.98</div>
+                              </div>
+                            </div>
+                          </div>';
                         }
+                      }
                     }
-                }
-                ?>
-
-                <div class="back-to-shop"><a href="products.php">&leftarrow;<span class="text-muted">Back to
-                            shop</span></a></div>
-            </div>
-            <div class="col-md-4 summary">
-                <div>
-                    <h5><b>Summary</b></h5>
-                </div>
-                <hr>
-                <div class="row" style="margin: 0; padding:0%;">
-                    <form>
-                        <p>SHIPPING</p>
-                        <select>
-                            <option class="text-muted">In Egypt Delivery - EGP50.00</option>
-                            <option class="text-muted">International Shipping - EGP350.00</option>
-                        </select>
-                        <p>GIVE CODE</p>
-                        <input id="code" placeholder="Enter your code">
-                    </form>
-                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                        <div class="col">TOTAL PRICE</div>
-                        <div class="col text-right">$<?php echo number_format($total, 2); ?>
-                        </div>
+                  }
+                  ?>
+                  <div class="ref-footer">
+                    <div class="ref-links">
+                      <a href="https://google.com" target="_blank">Terms &amp; Conditions</a><a href="https://google.com" target="_blank">Privacy Policy</a><a href="https://google.com" target="_blank">Refund Policy</a>
                     </div>
-                    <a href="checkout.php"><button class="btn">CHECKOUT</button></a>
+                    <div class="ref-totals">
+                      <div class="ref-subtotal">Subtotal: $<?php echo number_format($total, 2); ?></div>
+                      <div class="ref-button ref-standard-checkout-button">
+                        <a href="checkout.php" style="color:white"> Checkout </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <?php include("footer.php"); ?>
+              </div>
+              <script>
+                // AJAX request to update quantity
+                function updateQuantity(productId, newQuantity) {
+                  $.ajax({
+                    type: "POST",
+                    url: "update_quantity.php",
+                    data: {
+                      update_quantity: true,
+                      product_id: productId,
+                      quantity: newQuantity
+                    },
+                    success: function(response) {
+                      console.log(response);
+                      // You can update the UI here if needed
+                    }
+                  });
+                }
+              </script>
+              </script>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+              <script src="https://cdn.reflowhq.com/v2/toolkit.min.js"></script>
+              <script src="assets/js/bs-init.js"></script>
+              <script src="assets/js/bold-and-bright.js"></script>
 </body>
 
 </html>
