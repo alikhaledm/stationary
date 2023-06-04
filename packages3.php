@@ -1,10 +1,64 @@
 <?php
 require_once("connect.php");
 include("navbar.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $studentemail = $_POST['email'];
+  $studentdob = $_POST['dob'];
+  $school = $_POST['schools'];
+  $grade = $_POST['grades'];
+
+  if ($_SESSION['acctype'] == 'Student') {
+    $studentid = $_SESSION['id'];
+
+    $sql = "UPDATE student SET studentemail='$studentemail', dob='$studentdob', school_id='$school', grade='$grade' WHERE studentid='$studentid'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+      echo '<script>alert("Student updated successfully.");</script>';
+    } else {
+      echo '<script>alert("Failed to update student.");</script>';
+    }
+  } elseif ($_SESSION['acctype'] == 'Parent') {
+    $parentid = $_SESSION['id'];
+    $childName = $_POST['childname'];
+
+    $sql = "UPDATE student SET studentname='$childName', dob='$studentdob', studentemail='$studentemail', school_id='$school', grade='$grade' WHERE ParentId='$parentid'";
+    $resultParent = mysqli_query($conn, $sql);
+    $_SESSION['childname'] = $childName;
+    $_SESSION['childdob'] = $studentdob;
+    $_SESSION['childemail'] = $studentemail;
+    $_SESSION['childschool'] = $school;
+    $_SESSION['childgrade'] = $grade;
+
+    $sql = "SELECT studentid FROM student WHERE ParentId = '$parentid'";
+    $resultChild = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($resultChild);
+    $_SESSION['childid'] = $row['studentid'];
+
+    if (!$resultParent) {
+      echo '<script>alert("Failed to update student.");</script>';
+    } else {
+      echo '<script>alert("Student updated successfully.");</script>';
+
+      $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
+      $result = mysqli_query($conn, $sql);
+      $row = mysqli_fetch_assoc($result);
+      $_SESSION['childlistid'] = $row['id'];
+      $_SESSION['listname'] = $row['listname'];
+      $_SESSION['listprice'] = $row['total_price'];
+      $_SESSION['listpdf'] = $row['pdf'];
+    }
+  }
+}
 ?>
+
+
 <html>
 <title>packages</title>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 </head>
@@ -103,7 +157,6 @@ include("navbar.php");
   .first-btn {
     height: 80%;
     font-size: 20px;
-    background-color: ;
     color: black;
   }
 
@@ -120,7 +173,7 @@ include("navbar.php");
 
 <body>
   <div class="video-container">
-    <video autoplay loop muted preload="auto" controlsList="nodownload" id="myVideo" onclick="startVideo()">
+    <video id="myVideo" onclick="startVideo()">
       <source src="images/packages/steps.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -133,48 +186,64 @@ include("navbar.php");
       <img src="images/packages/step1.png" alt="Image" width="110%">
     </div>
     <div class="right-column">
-      <form>
+      <form method="POST">
+        <?php
+        if ($_SESSION['acctype'] == "Parent") {
+          echo '
         <label for="name">
-          <h5>Name:</h5>
+          <h5>Enter Student`s Name:</h5>
         </label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="childname" required>';
+        }
+        if ($_SESSION['acctype'] == "Student") {
+          echo '<h5>Welcome, ' . $_SESSION["fname"] . $_SESSION["lname"] . '!</5>';
+        } ?>
         <label for="email">
-          <h5>Email:</h5>
+          <h5>Enter Student`s Email Provided By Their School:</h5>
         </label>
         <input type="email" id="email" name="email">
-        <label for="schools">
-          <h5>Choose Your School:</h5>
+        <label>
+          <h5>Enter Student`s Date Of Birth:</h5>
         </label>
-        <select id="Schools" name="schools">
-          <option value="Choose Your sachool">Choose Your School</option>
-          <option value="Malvern College">Malvern College</option>
-          <option value="Eternity Schools of egypt">Eternity Schools of egypt</option>
-          <option value="New Generation">New Generation</option>
-          <option value="Cairo English School">Cairo English School</option>
-          <option value="New Horizon">New Horizon</option>
-          <option value="British And American">British And American</option>
-          <option value="ETHOS">ETHOS</option>
+        <input type="date" name="dob">
+        <label for="schools">
+          <h5>Choose Their School:</h5>
+        </label>
+        <select id="Schools" name="schools" required>
+          <?php
+          $query = "SELECT * FROM school";
+          $result = mysqli_query($conn, $query);
+
+          if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+              $id = $row['id'];
+              $name = $row['name'];
+
+              echo '<option value="' . $id . '">' . $name . '</option>';
+            }
+          }
+          ?>
         </select>
         <br>
         <label for="grade">
-          <h5>Grade year:</h5>
+          <h5>Their Grade year:</h5>
         </label>
-        <select id="grade" name="grade">
+        <select id="grade" name="grades" required>
           <option value="grade">Choose Your Grade level</option>
-          <option value="1">Grade 1</option>
-          <option value="2">Grade 2</option>
-          <option value="3">Grade 3</option>
-          <option value="4">Grade 4</option>
-          <option value="5">Grade 5</option>
-          <option value="6">Grade 6</option>
-          <option value="7">Grade 7</option>
-          <option value="8">Grade 8</option>
-          <option value="9">Grade 9</option>
-          <option value="10">Grade 10</option>
-          <option value="11">Grade 11</option>
-          <option value="12">Grade 12</option>
+          <?php
+          $sqlgrade = "SELECT * FROM grade";
+          $resultgrade = mysqli_query($conn, $sqlgrade);
+
+          if (mysqli_num_rows($resultgrade) > 0) {
+            while ($row = mysqli_fetch_assoc($resultgrade)) {
+              $gradeid = $row['id'];
+              $gradename = $row['name'];
+              echo '<option value="' . $gradeid . '">' . $gradename . '</option>';
+            }
+          }
+          ?>
         </select>
-        <button onclick="scrollToBottom()">Step two</button>
+        <input type="submit" value="Save Details" onclick="scrollToBottom()">
 
         <div id="bottom"></div>
       </form>
@@ -201,45 +270,54 @@ include("navbar.php");
           <button class="close-button" aria-label="Close" onclick="closeModal()">&#x2716;</button>
           <main>
             <section class="supplies-list">
-              <h2 style="color:#ebbf2f;">Supply List</h2><br>
+              <h2 style="color:#ebbf2f;">Supply List</h2> Code: <?php echo $_SESSION['listname'] ?>
               <hr>
               <ul>
-                <li>
-                  <h3><img src="..." class="img-thumbnail" alt="..."> Ballpoint Pens</h3>
-                  <p>Black ink, pack of 12</p>
-                  <p class="price">400 EGP</p>
-                  <hr>
-                </li>
-                <li>
-                  <h3><img src="..." class="img-thumbnail" alt="..."> Highlighters</h3>
-                  <p>Assorted colors, pack of 6</p>
-                  <p class="price">350 EGP</p>
-                  <hr>
-                </li>
-                <li>
-                  <h3><img src="..." class="img-thumbnail" alt="..."> Notebooks</h3>
-                  <p>Wide-ruled, 80 sheets</p>
-                  <p class="price">1000 EGP</p>
-                  <hr>
-                </li>
-                <li>
-                  <h3><img src="..." class="img-thumbnail" alt="..."> Stapler</h3>
-                  <p>Includes 1000 staples</p>
-                  <p class="price">760 EGP</p>
-                  <hr>
-                </li>
-                <li>
-                  <h3><img src="..." class="img-thumbnail" alt="..."> Notebooks</h3>
-                  <p>Wide-ruled, 80 sheets</p>
-                  <p class="price">1000 EGP</p>
-                  <hr>
-                </li>
+                <?php
+                $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                $result = mysqli_query($conn, $sql);
+
+                if ($result) {
+                  $groupedProducts = array(); // Associative array to store products grouped by category
+
+                  while ($rowdata = mysqli_fetch_assoc($result)) {
+                    $category = $rowdata['prodcategory'];
+                    $productName = $rowdata['pname'];
+
+                    // Check if the category exists in the array
+                    if (!array_key_exists($category, $groupedProducts)) {
+                      // If category does not exist, create an empty array for the category
+                      $groupedProducts[$category] = array();
+                    }
+
+                    // Add the product to the respective category array
+                    $groupedProducts[$category][] = $productName;
+                  }
+
+                  // Display the grouped products
+                  foreach ($groupedProducts as $category => $products) {
+                    echo '<li>';
+                    echo '<h3>' . $category . '</h3>';
+                    echo '<ol>';
+
+                    foreach ($products as $product) {
+                      echo '<li><p>' . $product . '</p></li>';
+                      echo '<hr>';
+                    }
+
+                    echo '</ol>';
+                    echo '</li>';
+                  }
+                }
+                ?>
+
               </ul>
               <div class="total">
-                <h5>Total Price: 22</h5>
+                <h5>Total Price: <?php echo $_SESSION['listprice']; ?> EGP</h5>
               </div>
             </section>
           </main>
+
         </div>
       </div>
       <hr>
@@ -322,7 +400,7 @@ include("navbar.php");
         openButton.addEventListener("click", openModal);
 
         var modal = document.getElementById("modal");
-        modal.addEventListener("click", function (event) {
+        modal.addEventListener("click", function(event) {
           if (event.target === modal) {
             closeModal();
           }
@@ -350,8 +428,8 @@ include("navbar.php");
           <center>Take a look at the Checkout to Receive your Package with the Best Quality and Price</center>
         </h2><br>
         <div class="container">
-          <a href="checkout.php" class="btn btn-circle btn-xl" data-bs-toggle="button">
-            <button type="submit" name="checkout" style="background-color:transparent;">Checkout</button>
+          <a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="button">
+            <p>Checkout</p>
           </a>
         </div>
       </form>
@@ -366,6 +444,6 @@ include("navbar.php");
 </body>
 <?php
 include("footer.php")
-  ?>
+?>
 
 </html>
