@@ -78,7 +78,6 @@ if (isset($_POST['update_quantity'])) {
                           $prodtotal = $productPrice * $quantity;
 
                           // Truncate product name if more than 15 characters
-                          $productName = strlen($rowData2['pname']) > 25 ? substr($rowData2['pname'], 0, 25) . ".." : $rowData2['pname'];
                           echo '
                           <div class="ref-product" data-id="1065684752" data-quantity="2">
                             <div class="ref-product-col">
@@ -87,7 +86,7 @@ if (isset($_POST['update_quantity'])) {
                                 <div class="ref-product-data">
                                   <div class="ref-product-info">
                                     <div>
-                                      <div class="ref-product-name">' . $productName . '</div>
+                                      <div class="ref-product-name">' . $rowData2['pname'] . '</div>
                                       <div class="ref-product-category">Tech</div>
                                       <div class="ref-product-variants"></div>
                                       <div class="ref-product-personalization-holder"></div>
@@ -104,14 +103,16 @@ if (isset($_POST['update_quantity'])) {
                                 <form action="" method="POST" class="update-form">
                                 <input type="hidden" name="product_id" value="' . $productId . '">
                                 <div class="quantity-input">
-                                <input type="number" name="quantity" class="quantity" min="1" value="' . $quantity . '" data-product-id="' . $productId . '">
+                                <input type="number" style="width:20%;" name="quantity" class="quantity mt-2 px-2" min="1" value="' . $quantity . '" data-product-id="' . $productId . '">
                                 <button type="submit" name="update_quantity" class="update-button"><i class="fa fa-check checker" style="color:black; width:0"></i></button>
                             </div>
                             </form>
                             </div>
                             <div class="ref-total-col">
                               <div class="ref-product-total">
-                                <div class="ref-product-total-sum">$18.98</div>
+                                <div class="ref-product-total-sum">
+                                  ' . number_format($prodtotal, 2) . ' EGP
+                                </div>
                               </div>
                             </div>
                           </div>';
@@ -125,7 +126,7 @@ if (isset($_POST['update_quantity'])) {
                       <a href="https://google.com" target="_blank">Terms &amp; Conditions</a><a href="https://google.com" target="_blank">Privacy Policy</a><a href="https://google.com" target="_blank">Refund Policy</a>
                     </div>
                     <div class="ref-totals">
-                      <div class="ref-subtotal">Subtotal: $<?php echo number_format($total, 2); ?></div>
+                      <div class="ref-subtotal">Subtotal: <?php echo number_format($total, 2); ?> EGP</div>
                       <div class="ref-button ref-standard-checkout-button">
                         <a href="checkout.php" style="color:white"> Checkout </a>
                       </div>

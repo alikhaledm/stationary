@@ -32,7 +32,6 @@ include("navbar.php");
 
   .text-box {
     flex-basis: 50%;
-    margin: ;
     padding: 150px;
     color: black;
     animation-name: move;

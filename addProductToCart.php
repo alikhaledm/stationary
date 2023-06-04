@@ -23,7 +23,7 @@ if (mysqli_num_rows($resultCart) > 0) {
     }
 } else {
     // Product does not exist in the cart, add a new entry
-    $queryInsert = "INSERT INTO cart (userid, productid, quantity) VALUES ('$userid', '$var_value', 1)";
+    $queryInsert = "INSERT INTO cart (userid, productid, quantity) VALUES ('$userid', '$var_value', 1 )";
     $resultInsert = mysqli_query($conn, $queryInsert);
 
     if ($resultInsert) {
