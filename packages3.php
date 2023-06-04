@@ -428,8 +428,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <center>Take a look at the Checkout to Receive your Package with the Best Quality and Price</center>
         </h2><br>
         <div class="container">
-          <a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="button">
-            <p>Checkout</p>
+          <a href="checkout.php" class="btn btn-circle btn-xl" data-bs-toggle="button">
+            <button type="submit" name="checkout" style="background-color:transparent;">Checkout</button>
           </a>
         </div>
       </form>

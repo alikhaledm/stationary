@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 06:38 PM
+-- Generation Time: Jun 04, 2023 at 08:08 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -55,6 +55,7 @@ CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
+  `isPackage?` tinyint(1) NOT NULL,
   `quantity` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -62,19 +63,9 @@ CREATE TABLE `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`id`, `userid`, `productid`, `quantity`) VALUES
-(42, 8, 3, 1),
-(43, 9, 1, 6),
-(46, 12, 3, 4),
-(47, 12, 7, 1),
-(48, 9, 3, 1),
-(49, 9, 4, 4),
-(50, 6, 3, 3),
-(51, 6, 6, 5),
-(52, 6, 4, 5),
-(53, 6, 7, 1),
-(54, 6, 1, 3),
-(61, 58, 3, 2);
+INSERT INTO `cart` (`id`, `userid`, `productid`, `isPackage?`, `quantity`) VALUES
+(66, 59, 1, 0, 2),
+(67, 64, 2, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -98,7 +89,9 @@ CREATE TABLE `creditcard` (
 INSERT INTO `creditcard` (`cardid`, `cardholdername`, `expirydate`, `cardnumber`, `cvv`, `userid`) VALUES
 (28, 'asdddddddddddddddddddddddddd', '02/32', '6666666666666666', 0, 6),
 (29, 'asdasdaw', '09/33', '1111111111111111', 111, 6),
-(30, 'sfasassdsadadada', '08/30', '1121222222222222', 111, 6);
+(30, 'sfasassdsadadada', '08/30', '1121222222222222', 111, 6),
+(31, 'alikhaled', '08/31', '1111111111111111', 111, 59),
+(32, 'alikhaled', '08/31', '1111111111111111', 111, 59);
 
 -- --------------------------------------------------------
 
@@ -178,7 +171,11 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`ParentId`, `ChildId`, `childname`, `childage`) VALUES
-(58, NULL, NULL, NULL);
+(58, NULL, NULL, NULL),
+(61, NULL, NULL, NULL),
+(63, 64, NULL, NULL),
+(64, NULL, NULL, NULL),
+(65, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -200,15 +197,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `pname`, `pdesc`, `price`, `photo`, `category`) VALUES
-(1, 'Notebook', 'A spiral-bound notebook with lined pages', '6.00', 'notebook.jpeg', ''),
-(3, 'faber castel colors', 'color markers collection', '400.00', 'pencils.jpg', ''),
-(4, 'Blue Pen', 'A blue ballpoint pen', '2.99', 'blue_pen.jpg', 'Stationery'),
-(5, 'Notebook', 'A ruled notebook with 100 pages', '4.99', 'notebook.jpg', 'Stationery'),
-(6, 'Highlighter Set', 'A set of 4 highlighter markers', '6.99', 'highlighter_set.jpg', 'Stationery'),
-(7, 'Calculator', 'A basic calculator for calculations', '8.99', 'calculator.jpg', 'Electronics'),
-(8, 'Wireless Mouse', 'A wireless optical mouse', '12.99', 'wireless_mouse.jpg', 'Electronics'),
-(9, 'Water Bottle', 'A stainless steel water bottle', '9.99', 'water_bottle.jpg', 'Accessories'),
-(10, 'Travel Backpack', 'A durable backpack for travel', '29.99', 'travel_backpack.jpg', 'Accessories');
+(1, 'Hand Sanitizer 70% Alcohol', 'Hand Sanitizer 70% Alcohol', '35.00', 'hand sanitizer.png', 'Other'),
+(2, 'Pack of A4 loose-leaf paper', 'The Yassin Lined Papers Pack is a product that offers a pack of 100 sheets of lined papers. It is designed for various writing purposes, such as note-taking, journaling, or general writing tasks. The sheets are likely to have predefined horizontal lines t', '40.00', 'a4 pack.jpg', 'Notebooks & Paper'),
+(3, 'English Dictionary', 'The Paperback Oxford English Dictionary is a comprehensive English dictionary that provides definitions, explanations, and meanings for a wide range of words and their usage. It is likely a paperback edition, which makes it portable and easy to carry. The', '200.00', 'english dictionary.png', 'Notebooks & Paper'),
+(4, 'Wipes', 'Clinell Antibacterial Hand Wipes clean and disinfect hands in one easy step. They work from 10 seconds, killing at least 99.99% of germs. A mix of biocides prevent bacterial resistance and superbug formation. Clinell Antibacterial Hand Wipes are dermatolo', '35.00', 'wipes.png', 'Other'),
+(5, 'Ring Binder With Plastic Sleeves', 'There is no better way than choosing from a variety of colourful ring binders to help keep things neat, tidy and in order.', '25.00', 'ringbinder.png', 'Binders & Folders');
 
 -- --------------------------------------------------------
 
@@ -238,9 +231,8 @@ INSERT INTO `school` (`id`, `name`, `address`) VALUES
 CREATE TABLE `student` (
   `studentid` int(11) NOT NULL,
   `studentname` varchar(255) DEFAULT NULL,
-  `studentemail` varchar(255) NOT NULL,
+  `studentemail` varchar(255) DEFAULT NULL,
   `dob` date DEFAULT NULL,
-  `photo` varchar(255) NOT NULL,
   `school_id` int(11) DEFAULT NULL,
   `grade` int(11) DEFAULT NULL,
   `ParentId` int(11) DEFAULT NULL
@@ -250,9 +242,14 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `photo`, `school_id`, `grade`, `ParentId`) VALUES
-(57, NULL, '', NULL, '', NULL, NULL, NULL),
-(58, NULL, '', NULL, '', NULL, NULL, 58);
+INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `school_id`, `grade`, `ParentId`) VALUES
+(57, NULL, 'assdadas', '0000-00-00', 1, 6, NULL),
+(59, NULL, NULL, '0000-00-00', 1, 8, NULL),
+(60, NULL, '', '0000-00-00', NULL, NULL, NULL),
+(62, NULL, NULL, NULL, NULL, NULL, NULL),
+(64, 'mohamed awdawd', 'alikhaledm399@gmail.com', '2023-06-07', 1, 1, 63),
+(65, 'mayar', 'asd@gmail.com', '2023-06-08', 1, 1, 64),
+(66, 'Ali Khaled child', 'alikhaled@gmail.com', '2023-06-12', 1, 1, 65);
 
 -- --------------------------------------------------------
 
@@ -262,11 +259,44 @@ INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `photo
 
 CREATE TABLE `supplies_list` (
   `id` int(11) NOT NULL,
-  `school_id` int(11) NOT NULL,
-  `grade` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `total_price` varchar(255) NOT NULL
+  `listname` varchar(255) DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `grade` int(11) DEFAULT NULL,
+  `total_price` varchar(255) DEFAULT NULL,
+  `pdf` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `supplies_list`
+--
+
+INSERT INTO `supplies_list` (`id`, `listname`, `school_id`, `grade`, `total_price`, `pdf`) VALUES
+(31, 'NGIS-1', 1, 1, '2500', 'supplies_list.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplylistitems`
+--
+
+CREATE TABLE `supplylistitems` (
+  `id` int(11) NOT NULL,
+  `supplylistid` int(11) NOT NULL,
+  `productid` int(11) DEFAULT NULL,
+  `prodcategory` varchar(255) NOT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `supplylistitems`
+--
+
+INSERT INTO `supplylistitems` (`id`, `supplylistid`, `productid`, `prodcategory`, `quantity`) VALUES
+(28, 31, 1, 'Health & Hygiene Kit', 2),
+(29, 31, 3, 'English', 1),
+(30, 31, 2, 'General', 1),
+(31, 31, 5, 'General', 12),
+(32, 31, 4, 'Health & Hygiene Kit', 1);
 
 -- --------------------------------------------------------
 
@@ -282,7 +312,6 @@ CREATE TABLE `usersclass` (
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `phone` int(11) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
   `registerdate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -290,9 +319,15 @@ CREATE TABLE `usersclass` (
 -- Dumping data for table `usersclass`
 --
 
-INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`, `phone`, `address`, `registerdate`) VALUES
-(57, 'Student', 'ali@gmail.com', '12345678', 'ali', 'khaled', 123123, NULL, '2023-05-30'),
-(58, 'Parent', 'aliii@gmail.com', '12345678', 'ali', 'awdaw', 12345, NULL, '2023-06-01');
+INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`, `phone`, `registerdate`) VALUES
+(57, 'Student', 'ali@gmail.com', '12345678', 'jjhkhj', 'mohanmed', 11111111, '2023-05-30'),
+(58, 'Parent', 'aliii@gmail.com', '12345678', 'ali', 'awdaw', 12345, '2023-06-01'),
+(59, 'Parent', 'alikhaledm399@gmail.com', '12345678', 'ali', 'khaled', 1111, '2023-06-03'),
+(60, 'Student', 'aliali@gmail.com', '12345678', 'ali', 'khaled', 111111, '2023-06-03'),
+(61, 'Parent', 'asd@gmail.comasd', 'd123123231', 'ali', 'khaled', 123231123, '2023-06-03'),
+(63, 'Parent', 'mayar@gmail.com', '12345678', 'mayar', 'mayar', 111, '2023-06-04'),
+(64, 'Parent', 'asd@gmail.com', '12211231313', 'ali', 'mohanmed', 2147483647, '2023-06-04'),
+(65, 'Parent', 'parent@gmail.com', '12345678', 'Ali', 'Khaled', 11111, '2023-06-04');
 
 --
 -- Indexes for dumped tables
@@ -336,7 +371,10 @@ ALTER TABLE `grade`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `productid` (`productid`),
+  ADD KEY `addressid` (`addressid`);
 
 --
 -- Indexes for table `parent`
@@ -371,8 +409,16 @@ ALTER TABLE `student`
 --
 ALTER TABLE `supplies_list`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `school_id` (`school_id`);
+  ADD KEY `school_id` (`school_id`),
+  ADD KEY `supplies_list_ibfk_3` (`grade`);
+
+--
+-- Indexes for table `supplylistitems`
+--
+ALTER TABLE `supplylistitems`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `supplylistitems_ibfk_1` (`productid`),
+  ADD KEY `supplylistid` (`supplylistid`);
 
 --
 -- Indexes for table `usersclass`
@@ -394,13 +440,13 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `creditcard`
 --
 ALTER TABLE `creditcard`
-  MODIFY `cardid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `cardid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `excess`
@@ -424,13 +470,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `school`
@@ -442,65 +488,71 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `supplies_list`
 --
 ALTER TABLE `supplies_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `supplylistitems`
+--
+ALTER TABLE `supplylistitems`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `usersclass`
 --
 ALTER TABLE `usersclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `address`
---
-ALTER TABLE `address`
-  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `productid` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `creditcard`
+-- Constraints for table `orders`
 --
-ALTER TABLE `creditcard`
-  ADD CONSTRAINT `creditcard_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `usersclass` (`id`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`addressid`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `parent`
 --
 ALTER TABLE `parent`
-  ADD CONSTRAINT `parent_ibfk_1` FOREIGN KEY (`ParentId`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `parent_ibfk_2` FOREIGN KEY (`ChildId`) REFERENCES `student` (`studentid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `parent_ibfk_1` FOREIGN KEY (`ChildId`) REFERENCES `student` (`studentid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `school` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`studentid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`ParentId`) REFERENCES `parent` (`ParentId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_ibfk_4` FOREIGN KEY (`grade`) REFERENCES `grade` (`id`);
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`ParentId`) REFERENCES `parent` (`ParentId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`grade`) REFERENCES `grade` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `supplies_list`
 --
 ALTER TABLE `supplies_list`
-  ADD CONSTRAINT `supplies_list_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `supplies_list_ibfk_2` FOREIGN KEY (`school_id`) REFERENCES `school` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `supplies_list_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `school` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `supplies_list_ibfk_3` FOREIGN KEY (`grade`) REFERENCES `grade` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `supplylistitems`
+--
+ALTER TABLE `supplylistitems`
+  ADD CONSTRAINT `supplylistitems_ibfk_1` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `supplylistitems_ibfk_2` FOREIGN KEY (`supplylistid`) REFERENCES `supplies_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
