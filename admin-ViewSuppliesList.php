@@ -41,7 +41,7 @@ if (!$resultProducts) {
                     <div class="card shadow">
                         <div class="card-header py-3 text-nowrap d-flex justify-content-between align-items-center">
                             <p class="text-primary m-0 fw-bold">Product Info</p>
-                            <a href="admin-ManageProducts.php" style="display:flex; text-decoration: none;">
+                            <a href="admin-ManageSuppliesList.php" style="display:flex; text-decoration: none;">
                                 <button class="btn btn-danger">Manage</button>
                             </a>
                         </div>
