@@ -11,8 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $products = $_POST['product'];
     $categories = $_POST['category'];
     $quantities = $_POST['quantity'];
+    $pdf = $_POST['pdf'];
 
-    $query = "INSERT INTO supplies_list (listname, school_id, grade, total_price) VALUES ('$lname', '$school', '$grade', '$price')";
+    $query = "INSERT INTO supplies_list (listname, school_id, grade, total_price, pdf) VALUES ('$lname', '$school', '$grade', '$price', '$pdf')";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
@@ -121,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                         ?>
                                                     </select></td>
                                                 <td> <input name='price' type='text' class="form-control" required></td>
-                                                <td><input type="file" name="upload" accept="application/pdf,application/vnd.ms-excel" class="form-control"></td>
+                                                <td><input type="text" name="pdf" class="form-control"></td>
                                             </tr>
                                         </tbody>
                                         <thead>

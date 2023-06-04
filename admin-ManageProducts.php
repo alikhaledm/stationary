@@ -114,17 +114,17 @@
                                                 <?php
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo "<tr>";
-                                                    echo "<td><input type='text' name='pname[]' size='40' value='" . $row['pname'] . "' disabled></td>";
-                                                    echo "<td><input name='pdesc[]' type='text' size='80' value='" . $row['pdesc'] . "' disabled></td>";
-                                                    echo "<td><input name='photo[]' type='text' value='" . $row['photo'] . "' disabled></td>";
+                                                    echo "<td><input type='text' class='form-control' name='pname[]' size='40' value='" . $row['pname'] . "' disabled></td>";
+                                                    echo "<td><input name='pdesc[]' type='text' class='form-control' size='70' value='" . $row['pdesc'] . "' disabled></td>";
+                                                    echo "<td><input name='photo[]' type='text' class='form-control' value='" . $row['photo'] . "' disabled></td>";
                                                     echo "<td>
-                                                <select name='category[]' disabled style='height:30px; width:200px;'>
+                                                <select name='category[]' class='form-select' disabled style='width:200px;'>
                                                 <option value='Notebooks & Paper'" . ($row['category'] == 'Notebooks & Paper' ? 'selected' : '') . ">Notebooks & Paper</option>
                                                 <option value='Writing Tools'" . ($row['category'] == 'Writing Tools' ? 'selected' : '') . ">Writing Tools</option>
                                                 <option value='Art Supplies'" . ($row['category'] == 'Art Supplies' ? 'selected' : '') . ">Art Supplies</option>
                                                 </select>
                                                 </td>";
-                                                    echo "<td><input size='5' name='price[]' type='text' value='" . $row['price'] . "' disabled></td>";
+                                                    echo "<td><input size='5' class='form-control' name='price[]' type='text' value='" . $row['price'] . "' disabled></td>";
                                                     echo "<td><input type='text' name='pid[]' value='" . $row['id'] . "' hidden></td>";
                                                     echo "<td>";
                                                     echo "<button type='button' class='btn btn-primary' onclick='enableEdit(this)'>";
