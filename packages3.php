@@ -173,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
   <div class="video-container">
-    <video id="myVideo" onclick="startVideo()">
+    <video autoplay loop muted preload="auto" controlsList="nodownload" id="myVideo" onclick="startVideo()">
       <source src="images/packages/steps.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
