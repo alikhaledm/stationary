@@ -378,6 +378,12 @@ require_once("connect.php");
     color: #2F4668;
     font-weight: bolder;
   }
+
+  .servicecard {
+    border: none;
+    transition-duration: 2s;
+    cursor: pointer;
+  }
 </style>
 
 
