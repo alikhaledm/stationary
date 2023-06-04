@@ -49,6 +49,11 @@
     .plus-sign:hover {
       background-color: gray;
     }
+
+    .move-right {
+  position: relative;
+  right: 50px; /* Change the value to adjust the distance the div moves */
+}
   </style>
 
 </body>
@@ -73,6 +78,7 @@ if (mysqli_num_rows($result) > 0) {
   while ($row = $result->fetch_assoc()) {
     $imageURL = 'images/Shop/products/' . $row["photo"];
     echo "<div style='margin-top: 3%' class='col-lg-4'>";
+    echo "";
     echo "<div class='card' style='width: 18rem;'>";
     echo "<a href='productdetails.php'><img src='" . $imageURL . " ' class='card-img-top' alt='...'><a/>";
     echo "</div>";
