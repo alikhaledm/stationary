@@ -94,7 +94,7 @@ require_once("connect.php") ?>
                 <img width="100%" height="300px" src="images/supplies-list-2.jpg" alt="">
             </div>
             <div class="col-lg-12">
-                <div class="shoptitle">Lets Find What Your Looking For</div>
+                <div class="shoptitle">Let's Find What You're Looking For</div>
             </div>
             <div class="col-lg-12" style="padding-top:50;">
                 <div class="line"></div>
