@@ -66,8 +66,13 @@ p {
   </div>
   <div class="text-box">
     <h2>HURRY AND GET YOUR PACKAGE NOW</h2>
+<<<<<<< Updated upstream
     <a href="packages3.php" class="btn" role="button" data-bs-toggle="button">
     <p>Start Now &nbsp; <img width="20" height="20" src="images/forward.svg"></p></a>
+=======
+    <a href="#" class="btn" role="button" data-bs-toggle="button">
+    <p>Start Now &nbsp;<img width="20" height="20" src="images/forward.svg"></p></a>
+>>>>>>> Stashed changes
   </div>
 </div>
 
