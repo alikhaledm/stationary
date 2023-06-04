@@ -101,9 +101,9 @@ if (isset($_POST['update'])) {
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
-                                        <tr class="text-center">
-                                            <th>Details</th>
-                                            <th>First Name - Last Name</th>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
                                             <th>Email</th>
                                             <th>Account Type</th>
                                             <th>Phone</th>
@@ -118,17 +118,16 @@ if (isset($_POST['update'])) {
                                             $resultOrders = mysqli_query($conn, $sqlOrders);
                                             $rowOrders = mysqli_fetch_assoc($resultOrders);
                                             echo "<tr>";
-                                            echo "<td><button class='btn btn-primary'><img width='20' src='images/account/person-lines-fill.svg'></button></td>";
-                                            echo "<td><input type='text' name='fname[]' size='8' value='" . $row['fname'] . "' disabled>&nbsp;&nbsp;";
-                                            echo "<input name='lname[]' type='text' size='8' value='" . $row['lname'] . "' disabled></td>";
-                                            echo "<td><input name='email[]' type='email' value='" . $row['email'] . "' disabled></td>";
+                                            echo "<td><input type='text' name='fname[]' class='form-control' style='width:300px' value='" . $row['fname'] . "' disabled>&nbsp;&nbsp;</td>";
+                                            echo "<td><input name='lname[]' type='text' class='form-control' style='width:300px' value='" . $row['lname'] . "' disabled></td>";
+                                            echo "<td><input name='email[]' class='form-control' type='email' style='width:400px' value='" . $row['email'] . "' disabled></td>";
                                             echo "<td>
-                                                <select name='acctype[]' disabled style='height:30px; width:100px;'>
+                                                <select name='acctype[]' class='form-select'  disabled>
                                                 <option value='Student'" . ($row['acctype'] == 'Student' ? 'selected' : '') . ">Student</option>
                                                 <option value='Parent'" . ($row['acctype'] == 'Parent' ? 'selected' : '') . ">Parent</option>
                                                 <option value='User'" . ($row['acctype'] == 'User' ? 'selected' : '') . ">User</option>
                                                 </select></td>";
-                                            echo "<td><input size='10' name='phone[]' type='text' value='" . $row['phone'] . "' disabled></td>";
+                                            echo "<td><input class='form-control' name='phone[]' type='text' value='" . $row['phone'] . "' disabled></td>";
                                             echo "<td class='pt-3'>" . $row['registerdate'] . "</td>";
                                             echo "<td class='centered pt-3'>" . $rowOrders['ordersmade'] . "</td>";
                                             echo "<td><input type='text' name='userid[]' value='" . $row['id'] . "' hidden></td>";

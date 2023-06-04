@@ -111,9 +111,6 @@ include("navbar.php")
       parents valuable time and effort.
     </p>
   </div>
-
-
-
   <h2 style="text-align: center;
       font-size: 40px;">What We Do</h2>
   <hr style="height: 3px;
@@ -123,7 +120,6 @@ include("navbar.php")
         margin: 20px auto;
         margin-bottom:0;">
   <br><br>
-
   <h3 style="text-align: center;">Provide Everything You Need for School</h3>
   <div style=" justify-content: center; display: inline-block;
        text-align: center; display: flex; font-size: 100%;">

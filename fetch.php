@@ -54,6 +54,7 @@
       background-color: white;
       border: 3px solid black;
       width: 80%;
+      border-radius: 0%;
 
     }
 
@@ -80,12 +81,12 @@ if (mysqli_num_rows($result) > 0) {
   echo "<div class='row myprods'>";
   while ($row = $result->fetch_assoc()) {
     $imageURL = 'images/Shop/products/' . $row["photo"];
-    echo "<div class='col-md-4'>";
-    echo "<div class='card mb-4' style='height: 100%;'>";
+    echo "<div class='col-md-3'>";
+    echo "<div class='card mb-4 border-0' style='height: 100%;'>";
     echo "<a href='productdetails.php'><img src='" . $imageURL . " ' class='card-img-top' style='height: 200px; object-fit: cover;' alt='...'><a/>";
     echo "<div class='card-body'>";
     echo "<center><h5 class='card-title'>" . $row['pname'] . "</h5></center>";
-    echo "<center><p class='card-text'>$ " . $row['price'] . "</p></center>";
+    echo "<center><p class='card-text pb-2'>" . $row['price'] . " EGP</p></center>";
     echo "<div class='rectangular-bar' style='width:100%;'>
               <div class='left-side'>
                 <span class='minus-sign' onclick='decrease(0)'>-</span>
@@ -99,7 +100,7 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             <br>";
     echo "<a href='addProductToCart.php?varname=$row[id]' class='btn' style='width:100%;' id='btnn'>Add to cart</a>";
-    echo "<br><br><a href='productdetails.php'>Details</a>";
+    echo "<br><br><center><a style='font-size:18px; font-weight: bolder;' href='productdetails.php'>More Details</a></center>";
     echo "</div>";
     echo "</div>";
     echo "</div>";
