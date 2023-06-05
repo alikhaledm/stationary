@@ -26,6 +26,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } elseif ($acctype == 0) {
             $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
                     VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Parent','$registerdate')";
+
+            // Start a transaction
+            mysqli_begin_transaction($conn);
+
+            try {
+                // Insert user information into usersclass table
+                if (mysqli_query($conn, $sql)) {
+                    $parentid = mysqli_insert_id($conn);
+
+                    // Retrieve the id from usersclass table based on the email
+                    $selectIdQuery = "SELECT id FROM usersclass WHERE email = '$email' FOR UPDATE";
+                    $selectIdResult = mysqli_query($conn, $selectIdQuery);
+
+                    // Commit the transaction
+                    mysqli_commit($conn);
+                } else {
+                    // Rollback the transaction if there was an error
+                    mysqli_rollback($conn);
+                    echo "Error: " . mysqli_error($conn);
+                }
+            } catch (Exception $e) {
+                // Rollback the transaction in case of exception
+                mysqli_rollback($conn);
+                echo "Error: " . $e->getMessage();
+            }
         } elseif ($acctype == 1) {
             $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
                     VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Student', '$registerdate')";
@@ -45,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $userid = $row['id'];
 
                         // Insert the user id into the ParentId column of the parent table
-                        $sqlStudent = "INSERT INTO student (userid) VALUES ('$userid')";
+                        $sqlStudent = "INSERT INTO student (studentid) VALUES ('$userid')";
                         mysqli_query($conn, $sqlStudent);
                     }
 
@@ -78,6 +103,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
             $_SESSION['acctype'] = $row["acctype"];
+            if ($_SESSION['acctype'] == 'Student') {
+                $_SESSION['dob'] = $row["dob"];
+            }
 
             echo '<script>window.location.href = "index.php";</script>';
 

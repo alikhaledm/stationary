@@ -13,34 +13,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM usersclass WHERE email ='$email'";
     $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
+    if ($result) {
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
 
-        if ($row["password"] == $password) {
-            $_SESSION['id'] = $row["id"];
-            $_SESSION['fname'] = $row["fname"];
-            $_SESSION['lname'] = $row["lname"];
-            $_SESSION['email'] = $row["email"];
-            $_SESSION['phone'] = $row["phone"];
-            $_SESSION['acctype'] = $row["acctype"];
+            if ($row["password"] == $password) {
+                $_SESSION['id'] = $row["id"];
+                $_SESSION['fname'] = $row["fname"];
+                $_SESSION['lname'] = $row["lname"];
+                $_SESSION['email'] = $row["email"];
+                $_SESSION['phone'] = $row["phone"];
+                $_SESSION['acctype'] = $row["acctype"];
+
+                if ($_SESSION['acctype'] == 'Student') {
+                    $_SESSION['dob'] = $row["dob"];
+                } elseif ($_SESSION['acctype'] == "admin") {
+                    header("Location: admin-panel.php");
+                    exit(); // Terminate the script after redirection
+                } else {
+                    // Redirect to index.php for other user types
+                    header("Location: index.php");
+                    exit(); // Terminate the script after redirection
+                }
+            } else {
+                error_reporting(0);
+                echo "<script>alert('Invalid email or password')</script>";
+            }
         } else {
             error_reporting(0);
             echo "<script>alert('Invalid email or password')</script>";
         }
-        if ($_SESSION['acctype'] == 'Student') {
-            $_SESSION['dob'] = $row["dob"];
-        } elseif ($_SESSION['acctype'] == "admin") {
-            header("Location: admin-panel.php");
-        } else {
-            // Redirect to index.php for other user types
-            echo '<script>window.location.href = "index.php";</script>';
-        }
     } else {
-        error_reporting(0);
-        echo "<script>alert('Invalid email or password')</script>";
+        // Query error occurred
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
