@@ -4,8 +4,7 @@ include("navbar.php");
 ?>
 <html>
 <title>packages</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="styles.css">
@@ -84,7 +83,7 @@ include("navbar.php");
     </div>
     <div class="text-box">
       <h2>HURRY AND GET YOUR PACKAGE NOW</h2>
-      <a href="packages3.php" class="btn" role="button" data-bs-toggle="button">
+      <a href="packages3.php" class="btn">
         <p>Start Now &nbsp; <img width="20" height="20" src="images/forward.svg"></p>
       </a>
     </div>

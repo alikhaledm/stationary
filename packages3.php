@@ -20,6 +20,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo '<script>alert("Failed to update student.");</script>';
     }
   } elseif ($_SESSION['acctype'] == 'Parent') {
+    // add second student
+    if (!empty($_SESSION['childname'])) {
+      // make $_SESSION['childid'] an array
+      if (!is_array($_SESSION['childname'])) {
+        $_SESSION['childname'] = array($_SESSION['childname']);
+      }
+
+      $childName = $_POST['childname'];
+      $parentid = $_SESSION['id'];
+
+      $sql = "INSERT INTO student (studentname, ParentId, studentemail, dob, school_id, grade) VALUES ('$childName', '$parentid', '$studentemail', '$studentdob', '$school', '$grade')";
+      $result = mysqli_query($conn, $sql);
+
+      if ($result) {
+        $_SESSION['childname'][] = $childName;
+        echo '<script>alert("Student added successfully.");</script>';
+      } else {
+        echo '<script>alert("Failed to add student.");</script>';
+      }
+    }
+
     $parentid = $_SESSION['id'];
     $childName = $_POST['childname'];
 
@@ -37,18 +58,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['childid'] = $row['studentid'];
 
     if (!$resultParent) {
-      echo '<script>alert("Failed to update student.");</script>';
-    } else {
       echo '<script>alert("Student updated successfully.");</script>';
-
-      $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
-      $result = mysqli_query($conn, $sql);
-      $row = mysqli_fetch_assoc($result);
-      $_SESSION['childlistid'] = $row['id'];
-      $_SESSION['listname'] = $row['listname'];
-      $_SESSION['listprice'] = $row['total_price'];
-      $_SESSION['listpdf'] = $row['pdf'];
     }
+
+    $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['childlistid'] = $row['id'];
+    $_SESSION['listname'] = $row['listname'];
+    $_SESSION['listprice'] = $row['total_price'];
+    $_SESSION['listpdf'] = $row['pdf'];
   }
 }
 ?>
@@ -173,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
   <div class="video-container">
-    <video autoplay loop muted preload="auto" controlsList="nodownload" id="myVideo" onclick="startVideo()">
+    <video id="myVideo" onclick="startVideo()">
       <source src="images/packages/steps.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -189,62 +208,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <form method="POST">
         <?php
         if ($_SESSION['acctype'] == "Parent") {
-          echo '
-        <label for="name">
-          <h5>Enter Student`s Name:</h5>
-        </label>
-        <input type="text" id="name" name="childname" required>';
+          if (empty($_SESSION['childname'])) {
+            include("packagesform.php");
+          } elseif (!is_array($_SESSION['childname'])) {
+            echo '<h5>Are You Looking For ' . $_SESSION['childname'] . '`s Supply list?</h5>
+                <span class="pointer" style="color:black;" class="bg-transparent">&bull;&nbsp;Yes</span>
+                <span class="pointer" onclick="toggleDropdown()">&bull;&nbsp;No i want to add a new student</span>
+            <div id="dropdownContainer" class="dropdown-container">
+            ';
+            include("packagesform.php");
+            echo '</div>';
+          }
+        } else {
+          include("MoreThan1Student.php");
         }
-        if ($_SESSION['acctype'] == "Student") {
-          echo '<h5>Welcome, ' . $_SESSION["fname"] . $_SESSION["lname"] . '!</5>';
-        } ?>
-        <label for="email">
-          <h5>Enter Student`s Email Provided By Their School:</h5>
-        </label>
-        <input type="email" id="email" name="email">
-        <label>
-          <h5>Enter Student`s Date Of Birth:</h5>
-        </label>
-        <input type="date" name="dob">
-        <label for="schools">
-          <h5>Choose Their School:</h5>
-        </label>
-        <select id="Schools" name="schools" required>
-          <?php
-          $query = "SELECT * FROM school";
-          $result = mysqli_query($conn, $query);
-
-          if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              $id = $row['id'];
-              $name = $row['name'];
-
-              echo '<option value="' . $id . '">' . $name . '</option>';
-            }
-          }
-          ?>
-        </select>
-        <br>
-        <label for="grade">
-          <h5>Their Grade year:</h5>
-        </label>
-        <select id="grade" name="grades" required>
-          <option value="grade">Choose Your Grade level</option>
-          <?php
-          $sqlgrade = "SELECT * FROM grade";
-          $resultgrade = mysqli_query($conn, $sqlgrade);
-
-          if (mysqli_num_rows($resultgrade) > 0) {
-            while ($row = mysqli_fetch_assoc($resultgrade)) {
-              $gradeid = $row['id'];
-              $gradename = $row['name'];
-              echo '<option value="' . $gradeid . '">' . $gradename . '</option>';
-            }
-          }
-          ?>
-        </select>
-        <input type="submit" value="Save Details" onclick="scrollToBottom()">
-
+        ?>
         <div id="bottom"></div>
       </form>
     </div>
@@ -270,10 +248,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <button class="close-button" aria-label="Close" onclick="closeModal()">&#x2716;</button>
           <main>
             <section class="supplies-list">
-              <h2 style="color:#ebbf2f;">Supply List</h2> Code: <?php echo $_SESSION['listname'] ?>
+              <?php
+              if (empty($_SESSION['childlistid'])) {
+                error_reporting(0);
+                ini_set('display_errors', FALSE);
+
+                echo "<h2 style='background-color:transparent; text-align:center;'>Please Enter Student Details To Display Their Assigned Supply List</h2>";
+              } else {
+                echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code:<?' . $_SESSION["listname"] . ' ?>
               <hr>
-              <ul>
-                <?php
+              <ul>';
                 $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
                 $result = mysqli_query($conn, $sql);
 
@@ -301,20 +285,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<ol>';
 
                     foreach ($products as $product) {
-                      echo '<li><p>' . $product . '</p></li>';
+                      echo '<li>
+                      <p>' . $product . '</p>
+                    </li>';
                       echo '<hr>';
                     }
 
-                    echo '</ol>';
-                    echo '</li>';
-                  }
-                }
-                ?>
+                    echo '
+                  </ol>';
+                    echo '</li>
 
               </ul>
+              ';
+                  }
+                }
+                echo '
               <div class="total">
-                <h5>Total Price: <?php echo $_SESSION['listprice']; ?> EGP</h5>
+                <h5>Total Price: ' . $_SESSION['listprice'] . ' EGP</h5>
               </div>
+              ';
+              }
+              ?>
             </section>
           </main>
 
@@ -324,6 +315,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <!-- Second Step CSS -->
       <style>
+        .dropdown-container {
+          display: none;
+        }
+
+        .pointer {
+          cursor: pointer;
+        }
+
         .modal-overlay {
           position: fixed;
           top: 30%;
@@ -386,6 +385,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <!-- Second Step JS -->
       <script>
+        function toggleDropdown() {
+          var dropdownContainer = document.getElementById("dropdownContainer");
+          if (dropdownContainer.style.display === "none") {
+            dropdownContainer.style.display = "block";
+          } else {
+            dropdownContainer.style.display = "none";
+          }
+        }
+
         function openModal() {
           var modal = document.getElementById("modal");
           modal.style.display = "flex";
@@ -442,6 +450,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   </script>
 </body>
+
 <?php
 include("footer.php")
 ?>
