@@ -26,49 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } elseif ($acctype == 0) {
             $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
                     VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Parent','$registerdate')";
-
-            // Start a transaction
-            mysqli_begin_transaction($conn);
-
-            try {
-                // Insert user information into usersclass table
-                if (mysqli_query($conn, $sql)) {
-                    $parentid = mysqli_insert_id($conn);
-
-                    // Retrieve the id from usersclass table based on the email
-                    $selectIdQuery = "SELECT id FROM usersclass WHERE email = '$email' FOR UPDATE";
-                    $selectIdResult = mysqli_query($conn, $selectIdQuery);
-
-                    if (mysqli_num_rows($selectIdResult) > 0) {
-                        $row = mysqli_fetch_assoc($selectIdResult);
-                        $userid = $row['id'];
-
-                        // Insert the user id into the ParentId column of the parent table
-                        $sqlParent = "INSERT INTO parent (ParentId) VALUES ('$userid')";
-                        mysqli_query($conn, $sqlParent);
-
-                        // Insert the user id into the parentid column of the student table
-                        $sqlStudent = "INSERT INTO student (parentid) VALUES ('$parentid')";
-                        mysqli_query($conn, $sqlStudent);
-
-                        // Retrieve id from student and update ChildId in parent where parentid
-                        $selectStudentIdQuery = "UPDATE parent SET ChildId=(SELECT studentid FROM student WHERE ParentId = '$parentid') WHERE ParentId=$parentid";
-                        $selectStudentIdResult = mysqli_query($conn, $selectStudentIdQuery);
-                        $_SESSION['childid'] = $selectStudentIdResult;
-                    }
-
-                    // Commit the transaction
-                    mysqli_commit($conn);
-                } else {
-                    // Rollback the transaction if there was an error
-                    mysqli_rollback($conn);
-                    echo "Error: " . mysqli_error($conn);
-                }
-            } catch (Exception $e) {
-                // Rollback the transaction in case of exception
-                mysqli_rollback($conn);
-                echo "Error: " . $e->getMessage();
-            }
         } elseif ($acctype == 1) {
             $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
                     VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Student', '$registerdate')";
@@ -88,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $userid = $row['id'];
 
                         // Insert the user id into the ParentId column of the parent table
-                        $sqlStudent = "INSERT INTO student (studentid) VALUES ('$userid')";
+                        $sqlStudent = "INSERT INTO student (userid) VALUES ('$userid')";
                         mysqli_query($conn, $sqlStudent);
                     }
 
@@ -121,9 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
             $_SESSION['acctype'] = $row["acctype"];
-            if ($_SESSION['acctype'] == 'Student') {
-                $_SESSION['dob'] = $row["dob"];
-            }
 
             echo '<script>window.location.href = "index.php";</script>';
 
