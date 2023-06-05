@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2023 at 08:08 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jun 05, 2023 at 07:13 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `address`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+--
 
 CREATE TABLE `address` (
   `id` int(11) NOT NULL,
@@ -35,7 +37,11 @@ CREATE TABLE `address` (
   `city` varchar(255) NOT NULL,
   `zip` int(11) NOT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `address`:
+--
 
 --
 -- Dumping data for table `address`
@@ -50,6 +56,9 @@ INSERT INTO `address` (`id`, `title`, `area`, `street`, `city`, `zip`, `userid`)
 --
 -- Table structure for table `cart`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+-- Last update: Jun 04, 2023 at 09:25 PM
+--
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
@@ -57,20 +66,20 @@ CREATE TABLE `cart` (
   `productid` int(11) NOT NULL,
   `isPackage?` tinyint(1) NOT NULL,
   `quantity` int(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cart`
+-- RELATIONSHIPS FOR TABLE `cart`:
+--   `productid`
+--       `products` -> `id`
 --
-
-INSERT INTO `cart` (`id`, `userid`, `productid`, `isPackage?`, `quantity`) VALUES
-(66, 59, 1, 0, 2),
-(67, 64, 2, 0, 3);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `creditcard`
+--
+-- Creation: Jun 04, 2023 at 09:12 PM
 --
 
 CREATE TABLE `creditcard` (
@@ -80,7 +89,11 @@ CREATE TABLE `creditcard` (
   `cardnumber` varchar(255) NOT NULL,
   `cvv` int(11) NOT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `creditcard`:
+--
 
 --
 -- Dumping data for table `creditcard`
@@ -98,6 +111,8 @@ INSERT INTO `creditcard` (`cardid`, `cardholdername`, `expirydate`, `cardnumber`
 --
 -- Table structure for table `excess`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+--
 
 CREATE TABLE `excess` (
   `excessid` int(11) NOT NULL,
@@ -106,18 +121,28 @@ CREATE TABLE `excess` (
   `prod_desc` varchar(255) NOT NULL,
   `product_photo` varchar(255) NOT NULL,
   `pickup_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `excess`:
+--
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `grade`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+--
 
 CREATE TABLE `grade` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `grade`:
+--
 
 --
 -- Dumping data for table `grade`
@@ -142,6 +167,8 @@ INSERT INTO `grade` (`id`, `name`) VALUES
 --
 -- Table structure for table `orders`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+--
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
@@ -151,36 +178,65 @@ CREATE TABLE `orders` (
   `addressid` int(11) NOT NULL,
   `date` date NOT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `orders`:
+--   `userid`
+--       `usersclass` -> `id`
+--   `productid`
+--       `products` -> `id`
+--   `addressid`
+--       `address` -> `id`
+--
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `parent`
 --
+-- Creation: Jun 05, 2023 at 05:03 AM
+-- Last update: Jun 05, 2023 at 05:03 AM
+--
 
 CREATE TABLE `parent` (
   `ParentId` int(11) NOT NULL,
-  `ChildId` int(11) DEFAULT NULL,
-  `childname` varchar(255) DEFAULT NULL,
-  `childage` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ChildId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `parent`:
+--   `ChildId`
+--       `student` -> `studentid`
+--
 
 --
 -- Dumping data for table `parent`
 --
 
-INSERT INTO `parent` (`ParentId`, `ChildId`, `childname`, `childage`) VALUES
-(58, NULL, NULL, NULL),
-(61, NULL, NULL, NULL),
-(63, 64, NULL, NULL),
-(64, NULL, NULL, NULL),
-(65, NULL, NULL, NULL);
+INSERT INTO `parent` (`ParentId`, `ChildId`) VALUES
+(73, NULL),
+(58, 73),
+(61, 73),
+(63, 73),
+(64, 73),
+(65, 73),
+(66, 73),
+(67, 73),
+(68, 73),
+(69, 73),
+(71, 73),
+(72, 73),
+(74, 75),
+(75, 76);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `products`
+--
+-- Creation: Jun 04, 2023 at 09:12 PM
+-- Last update: Jun 04, 2023 at 09:25 PM
 --
 
 CREATE TABLE `products` (
@@ -190,30 +246,38 @@ CREATE TABLE `products` (
   `price` decimal(10,2) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `products`:
+--
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `pname`, `pdesc`, `price`, `photo`, `category`) VALUES
-(1, 'Hand Sanitizer 70% Alcohol', 'Hand Sanitizer 70% Alcohol', '35.00', 'hand sanitizer.png', 'Other'),
-(2, 'Pack of A4 loose-leaf paper', 'The Yassin Lined Papers Pack is a product that offers a pack of 100 sheets of lined papers. It is designed for various writing purposes, such as note-taking, journaling, or general writing tasks. The sheets are likely to have predefined horizontal lines t', '40.00', 'a4 pack.jpg', 'Notebooks & Paper'),
-(3, 'English Dictionary', 'The Paperback Oxford English Dictionary is a comprehensive English dictionary that provides definitions, explanations, and meanings for a wide range of words and their usage. It is likely a paperback edition, which makes it portable and easy to carry. The', '200.00', 'english dictionary.png', 'Notebooks & Paper'),
-(4, 'Wipes', 'Clinell Antibacterial Hand Wipes clean and disinfect hands in one easy step. They work from 10 seconds, killing at least 99.99% of germs. A mix of biocides prevent bacterial resistance and superbug formation. Clinell Antibacterial Hand Wipes are dermatolo', '35.00', 'wipes.png', 'Other'),
-(5, 'Ring Binder With Plastic Sleeves', 'There is no better way than choosing from a variety of colourful ring binders to help keep things neat, tidy and in order.', '25.00', 'ringbinder.png', 'Binders & Folders');
+(3, 'English Dictionary', 'The Paperback Oxford English Dictionary is a comprehensive English dictionary that provides definitions, explanations, and meanings for a wide range of words and their usage. It is likely a paperback edition, which makes it portable and easy to carry. The', 200.00, 'english dictionary.png', 'Notebooks & Paper'),
+(4, 'Wipes', 'Clinell Antibacterial Hand Wipes clean and disinfect hands in one easy step. They work from 10 seconds, killing at least 99.99% of germs. A mix of biocides prevent bacterial resistance and superbug formation. Clinell Antibacterial Hand Wipes are dermatolo', 35.00, 'wipes.png', 'Other'),
+(5, 'Ring Binder With Plastic Sleeves', 'There is no better way than choosing from a variety of colourful ring binders to help keep things neat, tidy and in order.', 25.00, 'ringbinder.png', 'Binders & Folders');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `school`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+--
 
 CREATE TABLE `school` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `school`:
+--
 
 --
 -- Dumping data for table `school`
@@ -227,6 +291,9 @@ INSERT INTO `school` (`id`, `name`, `address`) VALUES
 --
 -- Table structure for table `student`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+-- Last update: Jun 05, 2023 at 04:55 AM
+--
 
 CREATE TABLE `student` (
   `studentid` int(11) NOT NULL,
@@ -236,7 +303,17 @@ CREATE TABLE `student` (
   `school_id` int(11) DEFAULT NULL,
   `grade` int(11) DEFAULT NULL,
   `ParentId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `student`:
+--   `school_id`
+--       `school` -> `id`
+--   `ParentId`
+--       `parent` -> `ParentId`
+--   `grade`
+--       `grade` -> `id`
+--
 
 --
 -- Dumping data for table `student`
@@ -249,12 +326,33 @@ INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `schoo
 (62, NULL, NULL, NULL, NULL, NULL, NULL),
 (64, 'mohamed awdawd', 'alikhaledm399@gmail.com', '2023-06-07', 1, 1, 63),
 (65, 'mayar', 'asd@gmail.com', '2023-06-08', 1, 1, 64),
-(66, 'Ali Khaled child', 'alikhaled@gmail.com', '2023-06-12', 1, 1, 65);
+(66, 'Ali Khaled child', 'alikhaled@gmail.com', '2023-06-12', 1, 1, 65),
+(67, 'mohamed', 'asd@gmail.com', '2023-06-15', 1, 6, 66),
+(68, NULL, NULL, NULL, NULL, NULL, 67),
+(69, NULL, NULL, NULL, NULL, NULL, 68),
+(70, NULL, NULL, NULL, NULL, NULL, 69),
+(72, NULL, NULL, NULL, NULL, NULL, 71),
+(73, NULL, NULL, NULL, NULL, NULL, 72),
+(74, NULL, NULL, NULL, NULL, NULL, 73),
+(75, 'ali', 'awdawd@gmail.com', '2023-06-08', 1, 1, 74),
+(76, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(77, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(78, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(79, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(80, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(81, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(82, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(83, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(84, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(85, 'ali2', 'ali2@gmail.com', '2023-06-07', 1, 1, 75),
+(86, 'mohamedahmed', 'moa', NULL, NULL, NULL, 75);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `supplies_list`
+--
+-- Creation: Jun 04, 2023 at 09:12 PM
 --
 
 CREATE TABLE `supplies_list` (
@@ -264,7 +362,15 @@ CREATE TABLE `supplies_list` (
   `grade` int(11) DEFAULT NULL,
   `total_price` varchar(255) DEFAULT NULL,
   `pdf` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `supplies_list`:
+--   `school_id`
+--       `school` -> `id`
+--   `grade`
+--       `grade` -> `id`
+--
 
 --
 -- Dumping data for table `supplies_list`
@@ -278,6 +384,9 @@ INSERT INTO `supplies_list` (`id`, `listname`, `school_id`, `grade`, `total_pric
 --
 -- Table structure for table `supplylistitems`
 --
+-- Creation: Jun 04, 2023 at 09:12 PM
+-- Last update: Jun 04, 2023 at 09:25 PM
+--
 
 CREATE TABLE `supplylistitems` (
   `id` int(11) NOT NULL,
@@ -285,16 +394,22 @@ CREATE TABLE `supplylistitems` (
   `productid` int(11) DEFAULT NULL,
   `prodcategory` varchar(255) NOT NULL,
   `quantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `supplylistitems`:
+--   `productid`
+--       `products` -> `id`
+--   `supplylistid`
+--       `supplies_list` -> `id`
+--
 
 --
 -- Dumping data for table `supplylistitems`
 --
 
 INSERT INTO `supplylistitems` (`id`, `supplylistid`, `productid`, `prodcategory`, `quantity`) VALUES
-(28, 31, 1, 'Health & Hygiene Kit', 2),
 (29, 31, 3, 'English', 1),
-(30, 31, 2, 'General', 1),
 (31, 31, 5, 'General', 12),
 (32, 31, 4, 'Health & Hygiene Kit', 1);
 
@@ -302,6 +417,9 @@ INSERT INTO `supplylistitems` (`id`, `supplylistid`, `productid`, `prodcategory`
 
 --
 -- Table structure for table `usersclass`
+--
+-- Creation: Jun 04, 2023 at 09:12 PM
+-- Last update: Jun 05, 2023 at 01:14 AM
 --
 
 CREATE TABLE `usersclass` (
@@ -313,7 +431,11 @@ CREATE TABLE `usersclass` (
   `lname` varchar(255) NOT NULL,
   `phone` int(11) DEFAULT NULL,
   `registerdate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELATIONSHIPS FOR TABLE `usersclass`:
+--
 
 --
 -- Dumping data for table `usersclass`
@@ -327,7 +449,16 @@ INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`
 (61, 'Parent', 'asd@gmail.comasd', 'd123123231', 'ali', 'khaled', 123231123, '2023-06-03'),
 (63, 'Parent', 'mayar@gmail.com', '12345678', 'mayar', 'mayar', 111, '2023-06-04'),
 (64, 'Parent', 'asd@gmail.com', '12211231313', 'ali', 'mohanmed', 2147483647, '2023-06-04'),
-(65, 'Parent', 'parent@gmail.com', '12345678', 'Ali', 'Khaled', 11111, '2023-06-04');
+(65, 'Parent', 'parent@gmail.com', '12345678', 'Ali', 'Khaled', 11111, '2023-06-04'),
+(66, 'Parent', 'fiky@gmail.com', '12345678', 'fiky', 'fiky', 1111, '2023-06-04'),
+(67, 'Parent', 'aaa@gmail.com', '12345678', 'aaa', 'aaa', 11111, '2023-06-04'),
+(68, 'Parent', 'llll@gmail.com', '12312123', 'llll', 'llll', 123132, '2023-06-04'),
+(69, 'Parent', 'adaswd@gmail.com', '1231d1d1ed1ddc', 'asdaasd', 'aawdawd', 1231313, '2023-06-05'),
+(71, 'Parent', '12asdawd@gmail.com', '123312123', 'ali', 'awdawd', 123123123, '2023-06-05'),
+(72, 'Parent', 'dawwdaw@gmail.com', '12312312312dadwdaw', 'ali', '12123', 12313123, '2023-06-05'),
+(73, 'Parent', 'adwda@gmail.com', '1231231313', 'awdawd', 'dawdad', 1231232123, '2023-06-05'),
+(74, 'Parent', 'khalawdawded@gmail.com', '12312313', 'adawawd', 'adwwwad', 13312124, '2023-06-05'),
+(75, 'Parent', 'asdd@gmail.com', '12345678', 'ali', 'fiky', 11111, '2023-06-05');
 
 --
 -- Indexes for dumped tables
@@ -470,7 +601,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `ParentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -488,7 +619,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `supplies_list`
@@ -506,7 +637,7 @@ ALTER TABLE `supplylistitems`
 -- AUTO_INCREMENT for table `usersclass`
 --
 ALTER TABLE `usersclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Constraints for dumped tables
