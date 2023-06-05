@@ -177,7 +177,7 @@ require_once("connect.php") ?>
             <div class="col-lg-4 col-sm-6" style="padding-top:70;">
                 <div class="centered card"><img style="width:100%; height: 400px;" src="images/shop/math.png" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Math & Scientific Tools</h5>
+                        <h5 class="card-title">Maths & Scientific Tools</h5>
                         <p class="card-text">Geometry Tools, compass, protractor, ruler, math workbooks and worksheets
                             and
                             scientific calculators</p>
