@@ -93,7 +93,7 @@ require_once("connect.php") ?>
 <body>
   <?php
   include("navbar.php")
-    ?>
+  ?>
 
   <div class="container-fluid">
     <div class="row">
@@ -112,8 +112,7 @@ require_once("connect.php") ?>
   <div class="container">
     <div class="row">
       <div class="col-lg-6" style="padding-top:70;">
-        <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
-            src="images/shop/shop1.jpg" alt="">
+        <div style="position:relative;" class="centered"><img style="width:100%; height:600px;" src="images/shop/shop1.jpg" alt="">
           <div style="position:absolute;">
             <a href="products.php"><button class="shopmainbtn"> SHOP ALL STATIONERY</button>
           </div>
@@ -121,8 +120,7 @@ require_once("connect.php") ?>
         </div>
       </div>
       <div class="col-lg-6" style="padding-top:70;">
-        <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
-            src="images/shop/shop2.jpg" alt="">
+        <div style="position:relative;" class="centered"><img style="width:100%; height:600px;" src="images/shop/shop2.jpg" alt="">
           <div style="position:absolute;"> <a href="products.php"><button class="shopmainbtn"> SHOP ALL
                 STATIONERY</button></div></a>
         </div>
@@ -240,7 +238,7 @@ require_once("connect.php") ?>
         <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
           <div class="shopinput">
             <div class="shopsmallfont" style="padding-bottom:10px">Category</div>
-            <select style="width:50% justify-content:center; display:flex;" class="shopdropdown">
+            <select style="width:50%; justify-content:center; display:flex;" class="shopdropdown">
               <option value="math">Math</option>
               <option value="art">Art</option>
               <option value="musical">Musical</option>
@@ -250,7 +248,6 @@ require_once("connect.php") ?>
 
           </div>
         </div>
-
         <div class="col-lg-8 col-sm-12" style="padding-top: 30px;">
           <div class="shopinput">
             <div class="shopsmallfont" style="padding-bottom:10px">Description</div>
@@ -280,6 +277,6 @@ require_once("connect.php") ?>
 </body>
 <?php
 include("footer.php")
-  ?>
+?>
 
 </html>

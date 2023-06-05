@@ -1,6 +1,6 @@
 <?php
 include("navbar.php")
-  ?>
+?>
 <html>
 <title>Excess</title>
 <title>Sell Excess Supplies</title>
@@ -59,8 +59,7 @@ include("navbar.php")
       margin-top: 50px;
       font-weight: bold;
       color: #333;">Sell/Donate Excess Supplies</h1>
-  <div
-    style="text-align: center; font-size: 100%; display: flex; justify-content: center; max-width: 700px; margin: 0 auto; padding: 20px;">
+  <div style="text-align: center; font-size: 100%; display: flex; justify-content: center; max-width: 700px; margin: 0 auto; padding: 20px;">
     <p>
       At Supplies Hub, we offer a unique opportunity for customers to sell their excess school supplies
       that they no longer need. This is a great way to recoup some of the costs of purchasing school
@@ -138,13 +137,11 @@ include("navbar.php")
   <script src="contactassets/java script/bootstrap.bundle.min.js"></script>
   <script src="contactassets/java script/all.min.js"></script>
   <script src="contactassets/java script/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
 
 <?php
 include("footer.php")
-  ?>
+?>

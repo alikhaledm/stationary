@@ -4,6 +4,7 @@ include("navbar.php");
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -129,6 +130,9 @@ include("navbar.php");
         </div>
         <br />
         <div id="result"></div>
+        <?php
+        include("fetch.php");
+        ?>
       </div>
 </body>
 
@@ -136,19 +140,6 @@ include("navbar.php");
 <script>
   $(document).ready(function() {
     load_data();
-
-    function load_data(query) {
-      $.ajax({
-        url: "fetch.php",
-        method: "POST",
-        data: {
-          query: query
-        },
-        success: function(data) {
-          $('#result').html(data);
-        }
-      });
-    }
 
     $('#search_text').keyup(function() {
       var search = $(this).val();
