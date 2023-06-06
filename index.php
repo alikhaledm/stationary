@@ -507,7 +507,7 @@ require_once("connect.php");
   <center>
     <div class="containernew servicebody" style="padding-top:20;">
       <div class="row" style=" padding-bottom:100px;">
-        <div class="col-md-12" style="font-size:40px; color:#FBD53E;">
+        <div class="col-md-12" style="font-size:40px; color:black;">
           <center>OUR SERVICES</center><br>
         </div>
         <div class="col-lg-3 col-sm-12" style="padding-top:50;">
