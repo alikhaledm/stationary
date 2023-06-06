@@ -1,69 +1,110 @@
 <?php
-require_once("connect.php");
-include("navbar.php");
-?>
+require_once("connect.php");?>
 <html>
-
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="stylesacc.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <title>My Address</title>
+    <link rel="stylesheet" href="stylesacc.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
 </head>
+    <style>
+        svg {
+            cursor: pointer;
+        }
+
+        .acclink {
+            text-decoration: none;
+            color: black;
+        }
+
+        .customa {
+            color: black;
+            text-decoration: none;
+            font-size:20px;
+            font-weight :bold;
+        }
+
+        .customa:hover {
+            color: #ebbf2f;
+        }
+
+        .customa:active {
+            color: red;
+        }
+        
+        
+    </style>
 
 <body>
-  <form method="post" enctype="multipart/form-data">
+    <?php
+    include("navbar.php");
+    ?>
+    
     <div class="container-account" id="fade-container">
-      <div class="row">
-        <div class="col-md-12">
-          <img width="100%" height="300" src="images/account/background.jpg" alt="">
-          <div class="small-image" style="position: absolute; top: 50%; left: 5%;">
-            <b style="padding-left:10; font-size:23;">
-              <?php
-              echo ucfirst($_SESSION['fname']);
-              echo "&nbsp;" . ucfirst($_SESSION['lname']);
-              ?>
-            </b>
-          </div>
+        <div class="row">
+            <div class="col-md-12">
+            <div id="content">
+            <div class="card text-bg-dark">
+  <img src="images/account/1c.png" class="card-img" alt="..." >
+  <div class="card-img-overlay">
+   
+  </div>
+</div>
+     <div>
+     </div>
+            <b style="font-size:25px; color:#ebbf2f;">
+            <?php
+                echo ucfirst($_SESSION['fname']);
+                echo "&nbsp;" . ucfirst($_SESSION['lname']);
+                ?>
+                </div>
+                </b>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="container-account" id="fade-container2">
-      <div class="row">
-        <div class="col-md-3"><b style="font-size:18;">My
-            Account</b></div>
-        <div class="col-md-3"><b style="font-size:18;">My
-            Addresses</b></div>
-        <div class="col-md-3"><b style="font-size:18;">My
-            Wallet</b></div>
-        <div class="col-md-3"><b style="font-size:18;">My
-            My Orders</b></div>
-        <div class="col-md-3"><b style="font-size:18;">My
-          </b>My Students</div>
-      </div>
-      <div class="container mt-5 me-5">
 
-        <div class="comp2">
-          <h2>My orders</h2>
-          <p>view your order history or check the status of a recent order.</p>
 
-        </div>
-        <hr>
-
-        <div id="comp3">
-          <div id="startBrowse" class="text-center">
-
-            <p> you haven't placed any order yet.</p>
-            <button class="btn btn-warning">add new address</button>
-
-          </div>
+    <div class="container-account" id="fade-container">
+        <div class="row">
+            <div class="col-md-12">
+            <div id="content">
+      <i class="fa-solid fa-camera"></i>
+      <img src="images/" alt="">
+      <p class="text-white">
+                </div>
+                </b>
+            </div>
         </div>
 
+        <hr style="height: 2px solid black">
+        <div class="col-12 centercontainer">
+          
+        <a href="orders.php" class="customa">My Orders</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <a href="address.php" style="color:#ebbf2f" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <a href="wallet.php" class="customa">My Wallet</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <a href="wishlist.php" class="customa">My Wishlist</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <a href="subscription.php" class="customa">My Subscriptions</a>
+            </div>
         <hr>
+    </div>
 
-      </div>
+    <div class="container-account pt-3">
+        <div class="row">
+            <div class="col-md-6"><b style="font-size:20;">My orders</b></div>
+        </div>
+    </div>
+    <div class="container-account" style="padding-bottom:100px;">
+        <div class="row">
+            <div class="col-md-12">View your order history or check the status of a recent order.</div>
+            <br><br><hr>
 
 
 
-      <!--END  component 2-->
+      </body>
+</html>
+
+<?php
+include("footer.php")
+?>

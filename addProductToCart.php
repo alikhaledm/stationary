@@ -11,7 +11,7 @@ $resultCart = mysqli_query($conn, $queryCart);
 
 if (mysqli_num_rows($resultCart) > 0) {
     // Product already exists in the cart, update the quantity
-    $queryUpdate = "UPDATE cart SET quantity = quantity + 1 WHERE userid = $userid AND productid = $var_value";
+    $queryUpdate = "UPDATE cart SET quantity = quantity + 1, WHERE userid = $userid AND productid = $var_value";
     $resultUpdate = mysqli_query($conn, $queryUpdate);
 
     if ($resultUpdate) {

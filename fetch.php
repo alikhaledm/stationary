@@ -81,9 +81,9 @@ if (mysqli_num_rows($result) > 0) {
   echo "<div class='row myprods'>";
   while ($row = $result->fetch_assoc()) {
     $imageURL = 'images/Shop/products/' . $row["photo"];
-    echo "<div class='col-md-3'>";
+    echo "<div class='col-md-4'>";
     echo "<div class='card mb-4 border-0' style='height: 100%;'>";
-    echo "<a href='productdetails.php'><img src='" . $imageURL . " ' class='card-img-top' style='height: 200px; object-fit: cover;' alt='...'><a/>";
+    echo "<a href='productdetails.php'><img src='" . $imageURL . " ' class='card-img-top' style='height: 450px; background-color:lightgrey; object-fit: cover;' alt='...'><a/>";
     echo "<div class='card-body'>";
     echo "<center><h5 class='card-title'>" . $row['pname'] . "</h5></center>";
     echo "<center><p class='card-text pb-2'>" . $row['price'] . " EGP</p></center>";
