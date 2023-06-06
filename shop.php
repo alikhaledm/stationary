@@ -2,17 +2,8 @@
 require_once("connect.php") ?>
 <html>
 
-<title>shop</title>
-<link rel="stylesheet" href="styles.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<title>School Supplies List</title>
+
 
 <style>
   .shoptitle {
@@ -32,7 +23,7 @@ require_once("connect.php") ?>
 
   .line2 {
     border-top: 1px solid black;
-    width: 85%;
+    width: 70%;
   }
 
   .line3 {
@@ -68,13 +59,6 @@ require_once("connect.php") ?>
     font-size: 22px;
   }
 
-  .formcontrol {
-    width: 40%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
   .shopdropdown {
     width: 185;
     height: 30px;
@@ -91,6 +75,19 @@ require_once("connect.php") ?>
   .formbtn:hover {
     background-color: orange;
   }
+
+  .containershop {
+    width: 50%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  .formcenter {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
 </style>
 
 <body>
@@ -101,10 +98,10 @@ require_once("connect.php") ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <img width="100%" height="300px" src="images/shopp.jpg" alt="">
+        <img width="100%" height="300px" src="images/supplies-list-2.jpg" alt="">
       </div>
       <div class="col-lg-12">
-        <div class="shoptitle">Lets Find What Your Looking For</div>
+        <div class="shoptitle">Let's Find What You're Looking For</div>
       </div>
       <div class="col-lg-12" style="padding-top:50;">
         <div class="line"></div>
@@ -118,7 +115,7 @@ require_once("connect.php") ?>
         <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
             src="images/shop/shop1.jpg" alt="">
           <div style="position:absolute;">
-            <a href="products.php"><button class="shopmainbtn"> SCHOOL SUPPLY LIST</button>
+            <a href="products.php"><button class="shopmainbtn"> SHOP ALL STATIONERY</button>
           </div>
           </a>
         </div>
@@ -126,7 +123,8 @@ require_once("connect.php") ?>
       <div class="col-lg-6" style="padding-top:70;">
         <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
             src="images/shop/shop2.jpg" alt="">
-          <div style="position:absolute;"> <a href="products.php"><button class="shopmainbtn"> SHOP ALL STATIONERY</button></div></a>
+          <div style="position:absolute;"> <a href="products.php"><button class="shopmainbtn"> SHOP ALL
+                STATIONERY</button></div></a>
         </div>
       </div>
     </div>
@@ -138,7 +136,7 @@ require_once("connect.php") ?>
 
 
   <div class="col-lg-12 centered" style="padding-top:30px">
-    <div class="shopbetafont">SHOP BY CATEGORIE</div>
+    <div class="shopbetafont">Shop By Category</div>
   </div>
 
 
@@ -209,72 +207,73 @@ require_once("connect.php") ?>
     </div>
   </div>
 
+  <form class="formcenter" action="">
+    <div class="containershop" style="padding-bottom:115px;">
+      <div class="row">
+        <div class="col-lg-12 centered" style="padding-top:100px">
+          <div class="shopbetafont">Can't Find What You're Looking For?</div>
+        </div>
+        <div class="col-lg-12 centered" style="padding-top:10px">
+          <div class="line3"></div>
+        </div>
+        <div class="col-lg-12 centered" style="padding-top:30px">
+          <div class="shopsmallfont">Send us a message and we`ll do our best <div class="centered">to stock all your
+              stationery needs!
+            </div>
 
-  <div class="container centered formcontrol" style="padding-bottom:115px;">
-    <div class="row">
-      <div class="col-lg-12 centered" style="padding-top:100px">
-        <div class="shopbetafont">Can't Find What You're Looking For?</div>
-      </div>
-      <div class="col-lg-12 centered" style="padding-top:10px">
-        <div class="line3"></div>
-      </div>
-      <div class="col-lg-12 centered" style="padding-top:30px">
-        <div class="shopsmallfont">Send us a message and we`ll do our best <div class="centered">to stock all your
-            stationery needs!
           </div>
-
         </div>
-      </div>
 
 
-      <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-        <div class="shopinput">
-          <div class="shopsmallfont" style="padding-bottom:10px">Name</div>
-          <input type="text" name="" id="">
+        <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
+          <div class="shopinput">
+            <div class="shopsmallfont" style="padding-bottom:10px">Name</div>
+            <input style="width:100%;" type="text" name="" id="">
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-        <div class="shopinput">
-          <div class="shopsmallfont" style="padding-bottom:10px">Email</div>
-          <input type="text" name="" id="">
+        <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
+          <div class="shopinput">
+            <div class="shopsmallfont" style="padding-bottom:10px">Email</div>
+            <input style="width:100%;" type="text" name="" id="">
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-        <div class="shopinput">
-          <div class="shopsmallfont" style="padding-bottom:10px">Category</div>
-          <select class="shopdropdown">
-            <option value="math">Math</option>
-            <option value="art">Art</option>
-            <option value="musical">Musical</option>
-            <option value="writing">Writing</option>
-            <option value="notebooks">Notebooks</option>
-          </select>
+        <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
+          <div class="shopinput">
+            <div class="shopsmallfont" style="padding-bottom:10px">Category</div>
+            <select style="width:50% justify-content:center; display:flex;" class="shopdropdown">
+              <option value="math">Math</option>
+              <option value="art">Art</option>
+              <option value="musical">Musical</option>
+              <option value="writing">Writing</option>
+              <option value="notebooks">Notebooks</option>
+            </select>
 
+          </div>
         </div>
-      </div>
 
-      <div class="col-lg-8 col-sm-12" style="padding-top: 30px;">
-        <div class="shopinput">
-          <div class="shopsmallfont" style="padding-bottom:10px">Description</div>
-          <input type="text" name="" id="">
+        <div class="col-lg-8 col-sm-12" style="padding-top: 30px;">
+          <div class="shopinput">
+            <div class="shopsmallfont" style="padding-bottom:10px">Description</div>
+            <input style="width:100%;" type="text" name="" id="">
+          </div>
         </div>
-      </div>
 
-      <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-        <div class="shopinput" style="padding-top:5;">
+        <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
+          <div class="shopinput" style="padding-top:5;">
 
-          <div class="shopsmallfont" style="padding-bottom:30px"></div>
-          <button class="formbtn">Send</button>
+            <div class="shopsmallfont" style="padding-bottom:37px"></div>
+            <button style="width:50%" class="formbtn">Send</button>
 
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
 
 
 
-  </div>
-
+    </div>
+  </form>
 
 
 

@@ -122,8 +122,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
@@ -205,6 +207,143 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
+
+
+
+
+
+
+    <style>
+        .navbarcustomedits {
+            background-color: white;
+        }
+
+        .navcontainer {
+            width: 75%;
+        }
+
+        .brand2 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .btncustom {
+            border-color: black;
+            border: 0.5px solid #000;
+            background-color: white;
+            height: 40px;
+            width: 120px;
+        }
+
+        .btncustom:hover {
+            border-color: gold;
+        }
+
+        .cartcount {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+        }
+
+        .navfont {
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            color: gold;
+        }
+
+        .activee {
+            color: gold;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
+        <div class="container-fluid navcontainer">
+            <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="20%" height="80px"
+                    class="d-inline-block align-text-top me-2"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link brand2" href="index.php">SUPPLIES HUB</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfont">
+                        <li class="nav-item">
+                            <a class="nav-link activee" aria-current="page" href="index.php">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.php">Shop</a>
+                        </li>
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            echo '
+                    <li class="nav-item">
+                        <a class="nav-link" href="excess.php">Excess Supplies</a>
+                    </li>';
+                        } ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.php">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.php">About</a>
+                        </li>
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            echo '<li class="nav-item">
+                    <a class="nav-link" href="cart.php">
+                        <div class="position-relative">
+                            <div class="cartcount">25</div>
+                            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                            </svg>
+                        </div>
+                    </a>
+                </li>';
+                        } ?>
+                        <?php if (isset($_SESSION['id'])) {
+                            echo '
+                <li id="dropdown" class="nav-item">
+                    <div class="dropdown">
+                        <button class="btncustom dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ' . $_SESSION['fname'] . '
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="account.php">My Account</a>
+                            <a class="dropdown-item" href="page2.html">Page 2</a>
+                            <a class="dropdown-item" href="page3.html">Page 3</a>
+                            <hr style="width:75%">
+                            <a class="dropdown-item" href="logout.php">Logout</a>
+                        </div>
+                    </div>
+                </li>';
+                        } else {
+                            echo '<li class="nav-item">
+                    <a href="signin.php">
+                        <button class="btncustom" type="button">
+                            Sign In
+                        </button>
+                    </a>';
+                        } ?>
+
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
     <div class="container mb-20 mt-20">
         <div class=" max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
             <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
@@ -223,7 +362,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </p>
                     <div class="w-full flex-1 mt-8">
                         <div class="mb-10 border-b text-center">
-                            <div class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                            <div
+                                class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                                 Are You A?
                             </div>
                         </div>
@@ -233,45 +373,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="row">
                                         <div class="col centered">
                                             <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-                                                <label class="btn btn-warning px-8 py-2 border border-gray-200 bg-gray-200 font-semibold hover:bg-warning transition-all duration-300 ease-in-out">
-                                                    <input type="radio" name="acctype" autocomplete="off" value="0" required style="margin-left:20;">
+                                                <label
+                                                    class="btn btn-warning px-8 py-2 border border-gray-200 bg-gray-200 font-semibold hover:bg-warning transition-all duration-300 ease-in-out">
+                                                    <input type="radio" name="acctype" autocomplete="off" value="0"
+                                                        required style="margin-left:20;">
                                                     Parent
                                                 </label>
-                                                <label class="btn btn-warning px-8 py-2 border border-gray-200 bg-gray-200 font-semibold hover:bg-warning transition-all duration-300 ease-in-out">
-                                                    <input type="radio" name="acctype" autocomplete="off" value="1" required> Student
+                                                <label
+                                                    class="btn btn-warning px-8 py-2 border border-gray-200 bg-gray-200 font-semibold hover:bg-warning transition-all duration-300 ease-in-out">
+                                                    <input type="radio" name="acctype" autocomplete="off" value="1"
+                                                        required> Student
                                                 </label>
-                                                <label class="btn btn-warning px-8 py-2 border border-gray-200 bg-gray-200 font-semibold hover:bg-warning transition-all duration-300 ease-in-out">
-                                                    <input type="radio" name="acctype" autocomplete="off" value="2" required> Neither
+                                                <label
+                                                    class="btn btn-warning px-8 py-2 border border-gray-200 bg-gray-200 font-semibold hover:bg-warning transition-all duration-300 ease-in-out">
+                                                    <input type="radio" name="acctype" autocomplete="off" value="2"
+                                                        required> Neither
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <input class="w-full mb-4 px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" name="fname" placeholder="First Name" required />
+                                            <input
+                                                class="w-full mb-4 px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                                name="fname" placeholder="First Name" required />
                                         </div>
                                         <div class="col-6">
-                                            <input class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" name="lname" placeholder="Last Name" required />
+                                            <input
+                                                class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                                name="lname" placeholder="Last Name" required />
                                         </div>
                                         <div class="col-12">
-                                            <input class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" name="email" placeholder="Email" required />
+                                            <input
+                                                class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                                name="email" placeholder="Email" required />
                                         </div>
                                         <div class="col-12">
-                                            <input class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4" id="passwordInput" name="pwd" minlength="8" maxlength="30" placeholder="Password" type="password" required />
+                                            <input
+                                                class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4"
+                                                id="passwordInput" name="pwd" minlength="8" maxlength="30"
+                                                placeholder="Password" type="password" required />
                                             <div class="password-input-container">
                                                 <div class="show-password-icon" onclick="togglePasswordVisibility()">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
-                                                        <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
-                                                        <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
-                                                        <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                        fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
+                                                        <path
+                                                            d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
+                                                        <path
+                                                            d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
                                                     </svg>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
-                                            <input class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-0" name="phone" placeholder="Phone Number" required />
+                                            <input
+                                                class="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-0"
+                                                name="phone" placeholder="Phone Number" required />
                                         </div>
                                         <div class="col-12">
-                                            <input type="submit" value="Sign Up" class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                            <input type="submit" value="Sign Up"
+                                                class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                         </form>
                     </div>
                 </div>
@@ -299,7 +461,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <script>
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('DOMContentLoaded', function () {
             var body = document.querySelector('body');
             body.classList.add('fade-in');
         });
@@ -317,10 +479,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 
 </body>
 
 </html>
+
+<?php
+include("footer.php")
+    ?>

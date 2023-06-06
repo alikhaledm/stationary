@@ -65,9 +65,7 @@ $resultorder = mysqli_query($conn, $getAddress);
 </style>
 
 <body>
-    <?php
-    include("navbar.php");
-    ?>
+
 
     <div class="container-account" id="fade-container">
         <div class="row">

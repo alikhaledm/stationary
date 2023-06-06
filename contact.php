@@ -22,9 +22,7 @@
     color: black;
   }
 
-  .containercontact {
-    background-color: darkcyan;
-  }
+  .containercontact {}
 
 
 
