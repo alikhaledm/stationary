@@ -173,8 +173,8 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-sm"><a href="orders.php" class="acclink"><b>My Orders</b></a></div>
             <div class="col-sm"><a href="address.php" class="acclink"><b>My Addresses</b></a></div>
             <div class="col-sm"><a href="wallet.php" class="acclink"><b>My Wallet</b></a></div>
-            <div class="col-sm"><a href="wishlist.php" class="acclink"><b>My Wishlist</b></a></div>
             <div class="col-sm"><a href="subscription.php" class="acclink"><b>My Subscriptions</b></a></div>
+            <div class="col-sm"> <a href="mystudents.php" class="acclink"><b>My Students</b></a></div>
         </div>
         <hr>
     </div>
