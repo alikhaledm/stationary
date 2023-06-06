@@ -12,23 +12,26 @@
 <style>
   .contactsalpha {
     font-size: 30px;
-    color: gold;
-    font-style: italic;
+    color: #f5d142;
+
   }
 
   .contactsbeta {
-    font-style: italic;
+
     font-size: 40px;
     color: black;
   }
 
-  .containercontact {}
+  .containercontact {
+    background-color: #f5f7fa;
+
+  }
 
 
 
   .contactssmall {
-    font-style: italic;
-    color: gold;
+
+    color: #f5d142;
   }
 
   .btncontact {
@@ -41,6 +44,13 @@
     background-color: orange;
     color: black;
   }
+
+  .centered {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+  }
 </style>
 
 <body>
@@ -50,27 +60,16 @@
 
   <section class="py-5">
     <div class="container-fluid imagecontainer containercontact py-5">
-      <div class="row mb-5">
-        <div class="col-md-8 col-xl-6 text-center mx-auto">
+      <div class="row mb-5 centered">
+        <div class="col-md-6 col-xl-6 ">
           <p class="fw-bold mb-2 contactsalpha">Contacts</p>
-          <h2 class="fw-bold contactsbeta">How you can reach us</h2>
+          <h2 class="fw-bold contactsbeta">How You Can Reach Us</h2>
         </div>
       </div>
       <div class="row d-flex justify-content-center">
-        <div class="col-md-6 col-xl-4">
-          <div>
-            <form class="p-3 p-xl-4" method="post">
-              <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Name">
-              </div>
-              <div class="mb-3"><input class="form-control" type="email" id="email-1" name="email" placeholder="Email">
-              </div>
-              <div class="mb-3"><textarea class="form-control" id="message-1" name="message" rows="6"
-                  placeholder="Message"></textarea></div>
-              <div><button class="btn btncontact shadow d-block w-100" type="submit">Send </button></div>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-4 col-xl-4 d-flex justify-content-center justify-content-xl-start">
+
+
+        <div class="col-md-6 d-flex justify-content-center justify-content-xl-start">
           <div class="d-flex flex-wrap flex-md-column justify-content-md-start align-items-md-start h-100">
             <div class="d-flex align-items-center p-3">
               <div
@@ -83,8 +82,8 @@
                 </svg>
               </div>
               <div class="px-2">
-                <h6 class="fw-bold mb-0 contactssmall">Phone</h6>
-                <p class="text-muted mb-0">+123456789</p>
+                <h6 class="fw-bold mb-0 contactssmall">Phone Number</h6>
+                <p class="text-muted mb-0">+201000086123</p>
               </div>
             </div>
             <div class="d-flex align-items-center p-3">
@@ -99,7 +98,7 @@
               </div>
               <div class="px-2">
                 <h6 class="fw-bold mb-0 contactssmall">Email</h6>
-                <p class="text-muted mb-0">info@example.com</p>
+                <p class="text-muted mb-0">supplieshub@gmail.com</p>
               </div>
             </div>
             <div class="d-flex align-items-center p-3">
@@ -114,7 +113,7 @@
               </div>
               <div class="px-2">
                 <h6 class="fw-bold mb-0 contactssmall">Location</h6>
-                <p class="text-muted mb-0">12 Example Street</p>
+                <p class="text-muted mb-0">Sheraton, Heliopolis</p>
               </div>
             </div>
           </div>

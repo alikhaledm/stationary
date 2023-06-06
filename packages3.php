@@ -555,11 +555,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h5>Total Price: ' . $_SESSION['listprice'] . ' EGP</h5>
               </div>
               ';
-                  } elseif ($numStudents == 2) {
-                    echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
+                  } elseif ($numStudents > 1) {
+                    echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"][$numStudents - 1] . '.pdf">' . $_SESSION["listname"][$numStudents - 1] . '</a></b>
                   <hr>
                   <ul>';
-                    $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                    $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid'][$numStudents - 1]}";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
@@ -591,7 +591,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                     echo '
               <div class="total">
-                <h5>Total Price: ' . $_SESSION['listprice'] . ' EGP</h5>
+                <h5>Total Price: ' . $_SESSION['listprice'][$numStudents - 1] . ' EGP</h5>
               </div>
               ';
                   } else {
