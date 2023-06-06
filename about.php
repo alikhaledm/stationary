@@ -3,10 +3,6 @@ include("navbar.php")
   ?>
 <html>
 <title>About Us</title>
-
-
-
-
 <head>
   <style>
     p {

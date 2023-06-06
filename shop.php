@@ -95,7 +95,7 @@ require_once("connect.php") ?>
   include("navbar.php")
     ?>
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <img width="100%" height="300px" src="images/supplies-list-2.jpg" alt="">
