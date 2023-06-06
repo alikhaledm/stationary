@@ -410,7 +410,7 @@ require_once("connect.php");
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="5000">
               <div class="carousel-background">
-                <img width="100%" height="600px" src="images/supplieslist1.png" alt="">
+                <img width="100%" height="600px" src="images/op4.png" alt="">
               </div>
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">Select School, Get Supplies</div>
@@ -423,7 +423,7 @@ require_once("connect.php");
 
             <div class="carousel-item" data-bs-interval="5000">
               <div class="carousel-background" style="background-color:black;">
-                <img width="100%" height="600px" src="images/carousel2.png" alt="">
+                <img width="100%" height="600px" src="images/op1.png" alt="">
               </div>
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">School Supplies Made Easy</div>
@@ -435,7 +435,7 @@ require_once("connect.php");
 
             <div class="carousel-item" data-bs-interval="5000">
               <div class="carousel-background" style="background-color:black;">
-                <img width="100%" height="600px" src="images/carousel3.png" alt="">
+                <img width="100%" height="600px" src="images/op3.png" alt="">
               </div>
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">Wide Range Of Products</div>
