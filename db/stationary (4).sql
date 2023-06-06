@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2023 at 05:21 AM
+-- Generation Time: Jun 06, 2023 at 09:38 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -59,6 +59,14 @@ CREATE TABLE `cart` (
   `quantity` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `userid`, `productid`, `isPackage?`, `quantity`) VALUES
+(68, 59, 6, 0, 1),
+(69, 59, 7, 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -112,7 +120,8 @@ INSERT INTO `excess` (`excessid`, `type`, `product_name`, `prod_desc`, `quantity
 (3, 'donation', 'aaaa', '', NULL, 'project-7.jpg', '2023-06-08', 65),
 (4, 'donation', 'aaaa', '', NULL, 'project-7.jpg', '2023-06-08', 65),
 (5, 'donation', 'aaaa', '', NULL, 'project-7.jpg', '2023-06-08', 65),
-(6, 'donation', 'aaaa', '', NULL, 'project-7.jpg', '2023-06-08', 65);
+(6, 'donation', 'aaaa', '', NULL, 'project-7.jpg', '2023-06-08', 65),
+(7, 'Sale Request', 'aaaa', 'saawd', '12312', 'project-7.jpg', '2023-06-15', 59);
 
 -- --------------------------------------------------------
 
@@ -152,11 +161,10 @@ INSERT INTO `grade` (`id`, `name`) VALUES
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `productid` int(11) NOT NULL,
+  `cartid` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `addressid` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `status` varchar(255) NOT NULL
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -245,7 +253,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `school_id`, `grade`, `userid`) VALUES
-(136, 'mayar', 'alikhaledm399@gmail.com', '2023-06-14', 1, 9, 67);
+(136, 'mayar', 'alikhaledm399@gmail.com', '2023-06-14', 1, 9, 67),
+(137, 'mayar', 'alikhaledm399@gmail.com', '2023-06-15', 1, 1, 59);
 
 -- --------------------------------------------------------
 
@@ -419,7 +428,8 @@ INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`
 (64, 'Parent', 'asd@gmail.com', '12211231313', 'ali', 'mohanmed', 2147483647, '2023-06-04'),
 (65, 'Parent', 'parent@gmail.com', '12345678', 'Ali', 'Khaled', 11111, '2023-06-04'),
 (66, 'Parent', 'adadaw@gmail.com', '123123123123', 'ali', 'fsefsfef', 1212123123, '2023-06-06'),
-(67, 'Parent', 'lolololol@gmail.com', '1233213231', 'ali', 'khaled', 12312312, '2023-06-06');
+(67, 'Parent', 'lolololol@gmail.com', '1233213231', 'ali', 'khaled', 12312312, '2023-06-06'),
+(68, 'Student', 'alikhaled@gmail.com', '12345678', 'Ali', 'Khaled', 11111111, '2023-06-06');
 
 --
 -- Indexes for dumped tables
@@ -466,8 +476,8 @@ ALTER TABLE `grade`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `userid` (`userid`),
-  ADD KEY `productid` (`productid`),
-  ADD KEY `addressid` (`addressid`);
+  ADD KEY `addressid` (`addressid`),
+  ADD KEY `cartid` (`cartid`);
 
 --
 -- Indexes for table `products`
@@ -526,7 +536,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `creditcard`
@@ -538,7 +548,7 @@ ALTER TABLE `creditcard`
 -- AUTO_INCREMENT for table `excess`
 --
 ALTER TABLE `excess`
-  MODIFY `excessid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `excessid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `grade`
@@ -568,7 +578,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `supplies_list`
@@ -586,7 +596,7 @@ ALTER TABLE `supplylistitems`
 -- AUTO_INCREMENT for table `usersclass`
 --
 ALTER TABLE `usersclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- Constraints for dumped tables
@@ -609,8 +619,8 @@ ALTER TABLE `excess`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`addressid`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`addressid`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`cartid`) REFERENCES `cart` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student`

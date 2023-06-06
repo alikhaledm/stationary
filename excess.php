@@ -28,6 +28,13 @@ require_once("connect.php");
 <body>
 
   <?php include("navbar.php");
+  if (isset($_SESSION[''])) {
+    echo '
+        <div class="alert alert-warning alert-dismissible fade show" style="width: fit-content;" role="alert">
+        <strong>Sign in to start selling or donating!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+  }
   ?>
 
   <section class="py-5">
@@ -49,9 +56,17 @@ require_once("connect.php");
               By donating your used stationary supplies, you empower education and inspire creativity. Every item you
               give helps students in need and promotes sustainable practices. Join the movement, make a positive impact.
             </p>
-            <a href="donate.php"><button class="btn shadow" type="button">
-                Donate Here
-              </button></a>
+            <?php
+            if (isset($_SESSION[''])) {
+              echo '<a href="signin.php"><button class="btn shadow" type="button">
+              Donate Here
+            </button></a>';
+            } else {
+              echo '<a href="donate.php"><button class="btn shadow" type="button">
+              Donate Here
+            </button></a>';
+            }
+            ?>
           </div>
         </div>
       </div>
@@ -66,9 +81,18 @@ require_once("connect.php");
               Do you have supplies you bought but never used? don't waste them! Sell them to us. Your supplies can find
               new owners who will benefit from them while allowing you to recoup your investment. It's a win-win
               reducing waste and helping others. Join us in creating a sustainable future and makeing a difference. </p>
-            <a href="selling.php"><button class="btn shadow" type="button">
-                Start Selling
-              </button></a>
+            <?php
+            if (isset($_SESSION[''])) {
+              echo '<a href="signin.php"><button class="btn shadow" type="button">
+              Start Selling
+            </button></a>';
+            } else {
+              echo '<a href="selling.php"><button class="btn shadow" type="button">
+              Start Selling
+            </button></a>';
+            }
+            ?>
+
           </div>
         </div>
       </div>

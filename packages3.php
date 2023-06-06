@@ -17,10 +17,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE student SET studentemail='$studentemail', dob='$studentdob', school_id='$school', grade='$grade' WHERE studentid='$studentid'";
     $result = mysqli_query($conn, $sql);
 
+    $_SESSION['childdob'] = $studentdob;
+    $_SESSION['childemail'] = $studentemail;
+    $_SESSION['childschool'] = $school;
+    $_SESSION['childgrade'] = $grade;
+
     if ($result) {
       echo '<script>alert("Student updated successfully.");</script>';
     } else {
       echo '<script>alert("Failed to update student.");</script>';
+    }
+
+    $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
+    $resultlist = mysqli_query($conn, $sql);
+
+    $_SESSION['childlistid'] = $row['id'];
+    $_SESSION['listname'] = $row['listname'];
+    $_SESSION['listprice'] = $row['total_price'];
+    $_SESSION['listpdf'] = $row['pdf'];
+
+    if (!$resultlist) {
+      echo '<script>alert("Failed to retrieve list.");</script>';
+    } else {
+      echo '<script>alert("List retrieved successfully.");</script>';
     }
   } elseif ($_SESSION['acctype'] == 'Parent') {
     $parentid = $_SESSION['id'];
@@ -183,115 +202,115 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
+  <style>
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left-column {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .right-column {
+      flex: 1;
+      padding-left: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label,
+    input,
+    textarea {
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .container {
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    select {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      font-size: 16px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('down-arrow.png');
+      background-position: right center;
+      background-repeat: no-repeat;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    select:hover,
+    select:focus {
+      border-color: #333;
+    }
+
+    option {
+      padding: 5px;
+    }
+
+    .form-check-label-boy {
+
+      padding-right: 10%;
+    }
+
+    .first-btn {
+      height: 80%;
+      font-size: 20px;
+      color: black;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: lightgray;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<style>
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-  }
-
-  .video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .left-column {
-    flex: 1;
-    padding-right: 20px;
-  }
-
-  .right-column {
-    flex: 1;
-    padding-left: 20px;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  label,
-  input,
-  textarea {
-    margin-bottom: 10px;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .container {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    font-size: 16px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('down-arrow.png');
-    background-position: right center;
-    background-repeat: no-repeat;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  select:hover,
-  select:focus {
-    border-color: #333;
-  }
-
-  option {
-    padding: 5px;
-  }
-
-  .form-check-label-boy {
-
-    padding-right: 10%;
-  }
-
-  .first-btn {
-    height: 80%;
-    font-size: 20px;
-    color: black;
-  }
-
-  button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: lightgray;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-</style>
 
 <body>
   <div class="video-container">
@@ -310,6 +329,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="right-column" id="targetElement">
       <form method="POST" id="bottom">
         <?php
+        if ($_SESSION['acctype'] == 'Student') {
+          include("packstudentform.php");
+        }
         if ($_SESSION['acctype'] == 'Parent') {
           $parentid = $_SESSION['id'];
           // Check if the user has one student ID linked to them
@@ -377,18 +399,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <main>
             <section class="supplies-list">
               <?php
-              if (empty($_SESSION['childlistid'])) {
-                error_reporting(0);
-                ini_set('display_errors', FALSE);
+              if (isset($_SESSION['studentid'])) {
+                $studentId = $_SESSION['studentid'];
 
-                echo "<h2 style='background-color:transparent; text-align:center;'>Please Enter Student Details To Display Their Assigned Supply List</h2>";
-              } else {
-                echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
-              <hr>
-              <ul>';
-                $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                $sql = "SELECT school_id,grade FROM student WHERE studentid=$studentId";
                 $result = mysqli_query($conn, $sql);
 
+                if ($result && mysqli_num_rows($result) > 0) {
+                  $row = mysqli_fetch_assoc($result);
+                  $studentschoolid = $row['school_id'];
+                  $studentgrade = $row['grade'];
+                }
+                $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = (SELECT id FROM supplies_list WHERE school_id=$studentschoolid AND grade=$studentgrade)";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                $listname = $row['listname'];
+              }
+
+              if ($_SESSION['acctype'] == "Parent") {
+                if (empty($_SESSION['childlistid'])) {
+                  error_reporting(0);
+                  ini_set('display_errors', FALSE);
+
+                  echo "<h2 style='background-color:transparent; text-align:center;'>Please fill the form to display assigned supply list</h2>";
+                } else {
+                  echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
+                  <hr>
+                  <ul>';
+                  $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                  $result = mysqli_query($conn, $sql);
+                }
                 if ($result) {
                   $groupedProducts = array(); // Associative array to store products grouped by category
 
