@@ -60,7 +60,7 @@
 
   <section class="py-5">
     <div class="container-fluid imagecontainer containercontact py-5">
-      <div class="row mb-5 centered">
+      <div class="row centered">
         <div class="col-md-6 col-xl-6 ">
           <p class="fw-bold mb-2 contactsalpha">Contacts</p>
           <h2 class="fw-bold contactsbeta">How You Can Reach Us</h2>
@@ -128,7 +128,7 @@
         <div class="google-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.9563763313276!2d31.371153475087887!3d30.095435674897956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458161683934e59%3A0x4567a95d150917ef!2sArab%20Academy%20for%20Science%2C%20Technology%20%26%20Maritime%20Transport%20-%20Engineering%20Building%20B%2C%20Sheraton%20Al%20Matar%2C%20El%20Nozha%2C%20Cairo%20Governorate%204471314!5e0!3m2!1sen!2seg!4v1683561867960!5m2!1sen!2seg"
-            width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy"
+            width="100%" height="400px" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
