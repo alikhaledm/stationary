@@ -1,3 +1,39 @@
+<?php
+require_once("connect.php");
+
+// Retrieve the user ID from the session
+if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+} else {
+    // Redirect the user to the login page or display an error message
+    // if the user is not logged in or authenticated.
+    // Replace "login.php" with the actual login page URL.
+    header("Location: signin.php");
+    exit();
+}
+
+$cartId = $_SESSION['id'];
+
+$total = $_SESSION['id'];
+
+$addressid = $_SESSION['id'];
+// Prepare and execute the SQL query to insert the order into the database
+$query = "INSERT INTO orders (`userid`, `cartid`, `total`, `address`, `date`) VALUES ('$userId', '$cartId', '$total', '$addressid', NOW())";
+$result = $conn->query($query);
+
+
+if ($result) {
+    // Order inserted successfully
+    echo "Order placed successfully.";
+} else {
+    // An error occurred
+    echo "Error: " . $conn->error;
+}
+
+
+?>
+
+
 <html lang="en">
 
 <head>
@@ -21,7 +57,9 @@
     </header>
     <div class="main-content">
         <i class="fa fa-check main-content__checkmark" id="checkmark"></i>
-        <p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. It means a lot to us, just like you do! We really appreciate you giving us a moment of your time today. Thanks for being you.</p>
+        <p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. It means a
+            lot to us, just like you do! We really appreciate you giving us a moment of your time today. Thanks for
+            being you.</p>
     </div>
     <footer class="site-footer" id="footer">
         <p class="site-footer__fineprint" id="fineprint">Copyright ©2014 | All Rights Reserved</p>

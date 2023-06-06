@@ -23,11 +23,10 @@
   }
 
   .containercontact {
-    width: 80%;
-    background-color: #F9F9FF;
-    box-shadow: 10px;
-    border-radius: 10px;
+    background-color: darkcyan;
   }
+
+
 
   .contactssmall {
     font-style: italic;
@@ -52,7 +51,7 @@
     ?>
 
   <section class="py-5">
-    <div class="container containercontact py-5">
+    <div class="container-fluid imagecontainer containercontact py-5">
       <div class="row mb-5">
         <div class="col-md-8 col-xl-6 text-center mx-auto">
           <p class="fw-bold mb-2 contactsalpha">Contacts</p>

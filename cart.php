@@ -26,7 +26,7 @@ if (isset($_POST['update_quantity'])) {
   $updateQuery = "UPDATE cart SET quantity = $newQuantity WHERE userid = $userid AND productid = $productId";
   $updateResult = mysqli_query($conn, $updateQuery);
 
-  header("location: cart.php");
+
 }
 
 ?>
@@ -36,7 +36,7 @@ if (isset($_POST['update_quantity'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
   <title>Shopping Cart - Brand</title>
   <link rel="stylesheet" href="cartstyles.css">
-  <link rel="stylesheet" href="cartassets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -71,7 +71,7 @@ if (isset($_POST['update_quantity'])) {
                       $result3 = mysqli_query($conn, $selectProducts);
                       if ($result3) {
                         while ($rowData2 = mysqli_fetch_assoc($result3)) {
-                          $cartId = $rowData['id'];
+                          $cartid = $rowData['id'];
                           $quantity = $rowData['quantity'];
                           $productPrice = $rowData2['price'];
 
@@ -161,6 +161,14 @@ if (isset($_POST['update_quantity'])) {
               <script src="https://cdn.reflowhq.com/v2/toolkit.min.js"></script>
               <script src="assets/js/bs-init.js"></script>
               <script src="assets/js/bold-and-bright.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 
 </html>
+<?php
+include("footer.php")
+  ?>
