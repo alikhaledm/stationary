@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2023 at 09:30 PM
+-- Generation Time: Jun 06, 2023 at 05:21 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -58,14 +58,6 @@ CREATE TABLE `cart` (
   `isPackage?` tinyint(1) NOT NULL,
   `quantity` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `userid`, `productid`, `isPackage?`, `quantity`) VALUES
-(66, 59, 1, 0, 2),
-(67, 64, 2, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -187,99 +179,31 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `pname`, `pdesc`, `price`, `photo`, `category`) VALUES
-(13, 'Wipes', '200 wipes', '40.00', 'wipes.png', 'Other'),
-(14, 'Ring Binder ', 'Plastic sleeves for all subjects', '70.00', 'ringbinder.png', 'Notebooks & Paper'),
-(15, 'Pack of A4 loose-leaf paper', 'This A4 graph paper is supplied in loose leaf reams. It comes in 5mm squares. Printing is sharp and clear on both.', '25.00', 'a4 pack.jpg', 'Notebooks & Paper'),
-(16, 'Pack of squared paper', '', '35.00', 'ql02540.jpg', 'Notebooks & Paper'),
-(17, 'Plastic sleeves', 'Vault X card sleeves are the first line of defense when it comes to protecting your cards. Put every card inside a sleeve to help protect against dust, dirt and debris that can cause nasty dents and scratches.', '45.00', 'card-sleeves.webp', 'Notebooks & Paper'),
-(18, 'Pack of A4 white paper', 'A4 Copy paper', '170.00', '920505.png', 'Notebooks & Paper'),
-(19, 'Fabercastell copybook', '144 paper', '60.00', 'Faber-Castell-Spiral-Medium-Copybook-144-Sheet-2.png', 'Notebooks & Paper'),
-(20, 'Zipped plastic folder', '', '17.00', 'Zipper.png', 'Notebooks & Paper'),
-(21, 'Geometry set', '', '35.00', 'Mask_Group_219.png', 'Math & Scientfic'),
-(22, 'Casio Calculator', 'Scientific calculator', '450.00', 'Casio.png', 'Math & Scientfic'),
-(23, 'Squared copybook', '40 pages', '25.00', '40_p.png', 'Notebooks & Paper'),
-(24, 'Lab coat', '', '90.00', 'PS_RK_KP72WH_F.png', 'Other'),
-(25, 'Pocket File', '', '15.00', 'Mobile__E7CC643AA637D340F63DB42199D17600__440__es_17325_g-1bb9929e81867082149ddf63b6f16b25.png', 'Binders & Folders'),
-(26, 'Business Dictionary', 'Cambridge', '400.00', 'getSocialImage.png', 'Notebooks & Paper'),
-(27, 'Canson paper', 'A pack of 5', '20.00', 'images-removebg-preview.png', 'Art Supplies'),
-(28, 'Glue stick', '', '25.00', 'images-removebg-preview (1).png', 'Art Supplies'),
-(29, 'Plastic scissors', '', '30.00', 'DEL1607-1_1024x.webp', 'Art Supplies'),
-(30, 'Wireless copybook', '', '60.00', 'Screenshot_20230604-235933_2-removebg-preview.png', 'Notebooks & Paper'),
-(31, 'Al Adwaa', 'Arabic (Grade 9)', '70.00', 'images__1_-removebg-preview.png', 'Other'),
-(32, 'Social Studies Alemtehan', '???????? (???????? ??????????)', '80.00', 'images__3_-removebg-preview~2.png', 'Notebooks & Paper'),
-(33, 'Music notebook', '40 pages', '25.00', 'images__5_-removebg-preview.png', 'Notebooks & Paper'),
-(34, 'Canson Sketch', 'A3', '80.00', 'drawsketch_canson_12sh_3550_wt_1024x1024-removebg-preview.png', 'Art Supplies'),
-(35, 'Faber Castell Pencil Colors', '36 colors', '135.00', 'IMG_6346_58045dd0-8caf-4da0-b550-463e47eb2ddd_1026x1026-removebg-preview.png', 'Notebooks & Paper'),
-(36, 'Hand Sanitizer - Ethyl Alcohol', '70 % Ethyl Alcohol', '35.00', 'hand sanitizer.png', 'Other'),
-(37, 'Acrylic colors', 'pallet ', '250.00', 'shopping-removebg-preview.png', 'Art Supplies'),
-(38, 'Set of oil colors', '12 colors', '180.00', 'images__7_-removebg-preview.png', 'Art Supplies'),
-(39, 'Brushes', '7 brushes', '100.00', 'images__8_-removebg-preview.png', 'Art Supplies'),
-(40, 'Glue gun wax sticks', '6 sticks', '45.00', 'Screenshot_20230605-002539_2-removebg-preview.png', 'Art Supplies'),
-(41, 'Pencil case ', 'Girls', '50.00', 'images__10_-removebg-preview.png', 'Bags & Cases'),
-(42, 'Pencil case', 'Boys ', '50.00', 'images__11_-removebg-preview.png', 'Bags & Cases'),
-(43, 'Turpentine', '100ml', '35.00', 'images__12_-removebg-preview.png', 'Art Supplies'),
-(44, 'My Journal Notebook', '60 pages', '60.00', 'PIN03862_PNG_noshadow.png', 'Notebooks & Paper'),
-(45, 'Wired Copybook', 'With Dividers 120 pages', '55.00', '5_subject-1000x1000-removebg-preview.png', 'Notebooks & Paper'),
-(46, 'Pack of dividers', 'Write and Erase Durable Plastic Dividers with Slash Pocket', '70.00', '1EE79F9EE9CC239D385F5C4D8B4D2CD4430627FD_VAZWD2C7AZMRPRFU594N_feature.png', 'Binders & Folders'),
-(47, 'Index Cards', 'Index Cards Ruled 4x6 Asst 10/pkg', '30.00', '000820_90114_0001_fl.png', 'Notebooks & Paper'),
-(48, 'Internet USB', 'Wireless Adapter Network LAN Card 802.11n', '100.00', 'TL-WN823N-1.png', 'Other'),
-(49, 'Transparent tracing paper', 'A4 Tracing Paper 40gsm Ultra Thin See Through Copy Drawing Calligraphy Trace', '35.00', '51eEgvrSmrL-removebg-preview.png', 'Notebooks & Paper'),
-(50, 'Pack of colored paper', '50 sheets Colored Paper, 80gm 10 assorted color / pack', '120.00', '18x24.png', 'Notebooks & Paper'),
-(51, 'Red Notebook ', '100 Pages', '60.00', 'AUP140749.webp', 'Notebooks & Paper'),
-(52, 'Green Notebook', '100 Pages', '60.00', '197724_3__33789.webp', 'Notebooks & Paper'),
-(53, 'Plastic envelope folder', 'Envelope folder ErichKrause® Glossy Ice Metallic,opaque, A4, assorted colors', '10.00', 'Mobile__7E7DB833504A0332EF3069829BB3258C__1200__630__es_628491-a60ce13815d9bd0223830ede12e2b5f4.webp', 'Binders & Folders'),
-(54, 'Metal Scissors', 'Blue black', '40.00', 'CHL80825_1-removebg-preview.png', 'Art Supplies'),
-(55, 'Faber-Castell Soft Pastel Sticks ', '(Box of 24)', '210.00', '717tNmaL94L._AC_UF1000_1000_QL80_-removebg-preview.png', 'Art Supplies'),
-(56, 'Dong-A Dooly Poster Colors', '15 Ml - Set Of 12', '240.00', '41GQOVs+ckL._SR600_315_PIWhiteStrip_BottomLeft_0_35_SCLZZZZZZZ_FMpng_BG255_255_255-removebg-preview.png', 'Art Supplies'),
-(57, 'Reynolds Ball 045 Pen ', 'pack of 10 - Blue Ink', '20.00', 's-l1600-removebg-preview.png', 'Writing Tools'),
-(58, 'Deli Graphite Pencils', '2.4 mm C004-2B with eraser tip - 12 black pencils', '60.00', '1-removebg-preview.png', 'Writing Tools'),
-(59, 'Faber Castell Highlighter', 'Assorted Colors', '15.00', 'Textliner.png', 'Writing Tools'),
-(60, 'Max Half Strip Japanese Stapler', ' Hd-50f, Black', '240.00', 'Mobile__EA2CE42753EE55E62B1FD243E2856F95__440__ra_23810501-fcddc9b112d7863c2c0f5f006e846572.webp', 'Other'),
-(61, 'Rexel Staples', ' 24/6 Staples - Pack of 1000 Pcs', '30.00', 'Desktop__8A421A580E115EB9E32A13051D8E6A4A__440__rx_6070_v2-5457437ef59f3f7a193551c889be7bde.webp', 'Other'),
-(62, 'Deli Paper Punch ', 'T40020 - 8 Sheets', '60.00', '1E0101-BLU.png', 'Other'),
-(63, 'Aopai B3-1 High Quality Sticky Notes ', '76 * 76mm Set Of 100 Sheets - Mutli Color', '11.00', 'unnamed.png', 'Notebooks & Paper'),
-(64, ' Transparent Cello tape ', 'Size: 2 inch', '20.00', 'cello-tape-manufactures-in-india.png', 'Other'),
-(65, 'Designability Ruler', 'Weighted Ruler', '15.00', 'WeightedRuler_1.png', 'Writing Tools'),
-(66, 'Uniball- Correction Pen', '', '55.00', '71FGMBY9BxL-removebg-preview.png', 'Writing Tools'),
-(67, 'Hikvision Flash Drive', 'M200 4GB USB 2.0', '70.00', 'e6335940-b9f0-437a-97c7-050aa35f94a8.webp', 'Other'),
-(68, 'Fine - Pocket facial tissue', ' 10 sheets x 3 layers, pack of 10 sterilized tissue for germ protection.', '20.00', 'ceec35a0-f433-4703-a458-0dca67a1df9a.__CR0_0_300_300_PT0_SX300_V1___-removebg-preview.png', 'Other'),
-(69, 'Faber Castell  Eraser', 'B384 Plastic Eraser Black', '8.00', '51EEZzT0yCL-removebg-preview.png', 'Writing Tools'),
-(70, 'Sharpener with container', 'Deli School Supplies Pencil Sharpener 520 - Assorted', '10.00', '2_E39768BLU.webp', 'Writing Tools'),
-(71, 'Non-Metal Ruler', 'Keyroad Ruler 30cm', '5.00', 'KR971081-3efbaddb.png', 'Writing Tools'),
-(72, 'White Board Marker', 'Sakura-Set of 4', '30.00', 'white_board_marker_mi.png', 'Writing Tools'),
-(73, 'White Board Eraser', 'Deli 7810 Whiteboard Eraser - Grey', '28.00', '1579267162--DL-E7810_1.png', 'Writing Tools'),
-(74, 'Small White Board', 'Board-White, 30X20 CM', '65.00', 'HTB19JWAXjzuK1RjSsppq6xz0XXaa_adobespark.png', 'Writing Tools'),
-(75, 'Triangular pencil holder', 'Soft Silicone Triangular Pencil Grips (Set of 3)', '30.00', '72161b441fa2c03f6457e2d307dab463-removebg-preview.png', 'Writing Tools'),
-(76, 'Play Dough', 'Wow Play Dough Set, 6 Buckets - 125 gm', '200.00', '41834q94TuL._AC_UF1000_1000_QL80_-removebg-preview.png', 'Art Supplies'),
-(77, 'Notebook with alphabetical tabs', 'Notebook with Alphabetical Tabs, 80 Pages, 6x7 in', '100.00', 'e27b8faf-62a8-4e75-9194-4f795a67e5f8.e17ef5deb3f8989fdcf4dd77d4624a4e-removebg-preview.png', 'Notebooks & Paper'),
-(78, 'Long-sleeved Apron', '', '110.00', 'ULTITEC-4000-DD603-Chemical-Resistant-Disposable-Coat-Apron_1024x1024.webp', 'Other'),
-(79, 'Crayons', ' ', '60.00', 'crayola-jumbo-crayons-16-ct.jpg', 'Art Supplies');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `productsold`
---
-
-CREATE TABLE `productsold` (
-  `id` int(255) NOT NULL,
-  `pname` varchar(255) NOT NULL,
-  `pdesc` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `productsold`
---
-
-INSERT INTO `productsold` (`id`, `pname`, `pdesc`, `price`, `photo`, `category`) VALUES
-(1, 'Hand Sanitizer 70% Alcohol', 'Hand Sanitizer 70% Alcohol', '35.00', 'hand sanitizer.png', 'Other'),
-(2, 'Pack of A4 loose-leaf paper', 'The Yassin Lined Papers Pack is a product that offers a pack of 100 sheets of lined papers. It is designed for various writing purposes, such as note-taking, journaling, or general writing tasks. The sheets are likely to have predefined horizontal lines t', '40.00', 'a4 pack.jpg', 'Notebooks & Paper'),
-(3, 'English Dictionary', 'The Paperback Oxford English Dictionary is a comprehensive English dictionary that provides definitions, explanations, and meanings for a wide range of words and their usage. It is likely a paperback edition, which makes it portable and easy to carry. The', '200.00', 'english dictionary.png', 'Notebooks & Paper'),
-(4, 'Wipes', 'Clinell Antibacterial Hand Wipes clean and disinfect hands in one easy step. They work from 10 seconds, killing at least 99.99% of germs. A mix of biocides prevent bacterial resistance and superbug formation. Clinell Antibacterial Hand Wipes are dermatolo', '35.00', 'wipes.png', 'Other'),
-(5, 'Ring Binder With Plastic Sleeves', 'There is no better way than choosing from a variety of colourful ring binders to help keep things neat, tidy and in order.', '25.00', 'ringbinder.png', 'Binders & Folders');
+(6, 'Wipes', '200 wipes', '40.00', 'wipes.png', 'Other'),
+(7, 'Ring Binder ', 'Plastic sleeves for all subjects', '70.00', 'ringbinder.png', 'Notebooks & Paper'),
+(8, 'Pack of A4 loose-leaf paper', 'This A4 graph paper is supplied in loose leaf reams. It comes in 5mm squares. Printing is sharp and clear on both.', '25.00', 'a4 pack.jpg', 'Notebooks & Paper'),
+(9, 'Pack of squared paper', '', '35.00', 'ql02540.jpg', 'Notebooks & Paper'),
+(10, 'Plastic sleeves', 'Vault X card sleeves are the first line of defense when it comes to protecting your cards. Put every card inside a sleeve to help protect against dust, dirt and debris that can cause nasty dents and scratches.', '45.00', 'card-sleeves.webp', 'Notebooks & Paper'),
+(11, 'Pack of A4 white paper', 'A4 Copy paper', '170.00', '920505.png', 'Notebooks & Paper'),
+(12, 'Fabercastell copybook', '144 paper', '60.00', 'Faber-Castell-Spiral-Medium-Copybook-144-Sheet-2.png', 'Notebooks & Paper'),
+(13, 'Zipped plastic folder', '', '17.00', 'Zipper.png', 'Notebooks & Paper'),
+(14, 'Geometry set', '', '35.00', 'Mask_Group_219.png', 'Math & Scientfic'),
+(15, 'Casio Calculator', 'Scientific calculator', '450.00', 'Casio.png', 'Math & Scientfic'),
+(16, 'Squared copybook', '40 pages', '25.00', '40_p.png', 'Notebooks & Paper'),
+(17, 'Lab coat', '', '90.00', 'PS_RK_KP72WH_F.png', 'Other'),
+(18, 'Pocket File', '', '15.00', 'Mobile__E7CC643AA637D340F63DB42199D17600__440__es_17325_g-1bb9929e81867082149ddf63b6f16b25.png', 'Binders & Folders'),
+(19, 'Business Dictionary', 'Cambridge', '400.00', 'getSocialImage.png', 'Notebooks & Paper'),
+(20, 'Canson paper', 'A pack of 5', '20.00', 'images-removebg-preview.png', 'Art Supplies'),
+(21, 'Glue stick', '', '25.00', 'images-removebg-preview (1).png', 'Art Supplies'),
+(22, 'Plastic scissors', '', '30.00', 'DEL1607-1_1024x.webp', 'Art Supplies'),
+(23, 'Wireless copybook', '', '60.00', 'Screenshot_20230604-235933_2-removebg-preview.png', 'Notebooks & Paper'),
+(24, 'Al Adwaa', 'Arabic (Grade 9)', '70.00', 'images__1_-removebg-preview.png', 'Other'),
+(25, 'Social Studies Alemtehan', '???????? (???????? ??????????)', '80.00', 'images__3_-removebg-preview~2.png', 'Notebooks & Paper'),
+(26, 'Music notebook', '40 pages', '25.00', 'images__5_-removebg-preview.png', 'Notebooks & Paper'),
+(27, 'Canson Sketch', 'A3', '80.00', 'drawsketch_canson_12sh_3550_wt_1024x1024-removebg-preview.png', 'Art Supplies'),
+(28, 'Faber Castell Pencil Colors', '36 colors', '135.00', 'IMG_6346_58045dd0-8caf-4da0-b550-463e47eb2ddd_1026x1026-removebg-preview.png', 'Notebooks & Paper'),
+(29, 'Hand Sanitizer - Ethyl Alcohol', '70 % Ethyl Alcohol', '35.00', 'hand sanitizer.png', 'Other'),
+(30, 'Acrylic colors', 'pallet ', '250.00', 'shopping-removebg-preview.png', 'Art Supplies');
 
 -- --------------------------------------------------------
 
@@ -321,7 +245,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `school_id`, `grade`, `userid`) VALUES
-(95, 'mayar', 'alikhaledm399@gmail.com', '2023-06-01', 1, 1, 65);
+(136, 'mayar', 'alikhaledm399@gmail.com', '2023-06-14', 1, 9, 67);
 
 -- --------------------------------------------------------
 
@@ -343,7 +267,9 @@ CREATE TABLE `supplies_list` (
 --
 
 INSERT INTO `supplies_list` (`id`, `listname`, `school_id`, `grade`, `total_price`, `pdf`) VALUES
-(31, 'NGIS-1', 1, 1, '2500', 'supplies_list.pdf');
+(39, 'NGIS-5', 1, 5, '800', 'NGIS-5.pdf'),
+(41, 'NGIS-6', 1, 6, '1800', 'NGIS-6.pdf'),
+(42, 'NGIS-9', 1, 9, '2200', 'NGIS-9.pdf');
 
 -- --------------------------------------------------------
 
@@ -364,11 +290,103 @@ CREATE TABLE `supplylistitems` (
 --
 
 INSERT INTO `supplylistitems` (`id`, `supplylistid`, `productid`, `prodcategory`, `quantity`) VALUES
-(28, 31, 1, 'Health & Hygiene Kit', 2),
-(29, 31, 3, 'English', 1),
-(30, 31, 2, 'General', 1),
-(31, 31, 5, 'General', 12),
-(32, 31, 4, 'Health & Hygiene Kit', 1);
+(38, 37, 25, 'Social Studies', 1),
+(39, 38, 30, 'English', 1),
+(40, 38, 31, 'English', 1),
+(41, 38, 33, 'English', 1),
+(42, 38, 27, 'English', 1),
+(43, 38, 29, 'English', 2),
+(44, 39, 28, 'Art Supplies', 1),
+(45, 39, 14, 'Academic Kit', 6),
+(46, 39, 50, 'Art Supplies', 1),
+(47, 39, 21, 'Mathematics', 1),
+(48, 39, 33, 'Music', 1),
+(49, 39, 17, 'Science', 4),
+(50, 39, 13, 'Health & Hygiene Kit', 1),
+(51, 39, 24, 'Science', 2),
+(52, 39, 38, 'Art Supplies', 3),
+(53, 39, 45, 'French', 1),
+(54, 39, 51, 'Arabic', 2),
+(55, 39, 44, 'Social Studies', 1),
+(56, 39, 19, 'Science', 2),
+(57, 39, 77, 'English', 2),
+(58, 39, 15, 'Mathematics', 1),
+(59, 40, 28, 'Art Supplies', 1),
+(60, 40, 14, 'Academic Kit', 6),
+(61, 40, 50, 'Art Supplies', 1),
+(62, 40, 21, 'Mathematics', 1),
+(63, 40, 33, 'Music', 1),
+(64, 40, 17, 'Science', 4),
+(65, 40, 13, 'Health & Hygiene Kit', 1),
+(66, 40, 24, 'Science', 2),
+(67, 40, 38, 'Art Supplies', 3),
+(68, 40, 45, 'French', 1),
+(69, 40, 51, 'Arabic', 2),
+(70, 40, 44, 'Social Studies', 1),
+(71, 40, 19, 'Science', 2),
+(72, 40, 77, 'English', 2),
+(73, 40, 15, 'Mathematics', 1),
+(74, 41, 44, 'English', 1),
+(75, 41, 71, 'Academic Kit', 1),
+(76, 41, 13, 'Health & Hygiene Kit', 1),
+(77, 41, 42, 'Academic Kit', 1),
+(78, 41, 40, 'Art Supplies', 2),
+(79, 41, 28, 'Art Supplies', 3),
+(80, 41, 35, 'Art Supplies', 1),
+(81, 41, 29, 'Art Supplies', 1),
+(82, 41, 53, 'French', 1),
+(83, 41, 34, 'Art Supplies', 2),
+(84, 41, 25, 'French', 1),
+(85, 41, 45, 'French', 1),
+(86, 41, 31, 'Arabic', 1),
+(87, 41, 52, 'Arabic', 2),
+(88, 41, 51, 'Arabic', 2),
+(89, 41, 50, 'Social Studies', 1),
+(90, 41, 45, 'Social Studies', 1),
+(91, 41, 14, 'Social Studies', 1),
+(92, 41, 17, 'Science', 3),
+(93, 41, 15, 'Science', 1),
+(94, 41, 24, 'Science', 1),
+(95, 41, 45, 'Science', 1),
+(96, 41, 22, 'Mathematics', 1),
+(97, 41, 17, 'English', 2),
+(98, 41, 14, 'English', 1),
+(99, 41, 48, 'English', 1),
+(100, 41, 23, 'Mathematics', 1),
+(101, 41, 21, 'Mathematics', 1),
+(102, 42, 13, 'Health & Hygiene Kit', 2),
+(103, 42, 41, 'Academic Kit', 1),
+(104, 42, 27, 'Art Supplies', 1),
+(105, 42, 40, 'Art Supplies', 5),
+(106, 42, 39, 'Art Supplies', 3),
+(107, 42, 37, 'Art Supplies', 1),
+(108, 42, 38, 'Art Supplies', 1),
+(109, 42, 35, 'Art Supplies', 1),
+(110, 42, 34, 'Art Supplies', 1),
+(111, 42, 33, 'Music', 1),
+(112, 42, 45, 'French', 1),
+(113, 42, 25, 'French', 1),
+(114, 42, 30, 'Religion', 1),
+(115, 42, 31, 'Arabic', 1),
+(116, 42, 30, 'Arabic', 1),
+(117, 42, 29, 'Electives', 1),
+(118, 42, 28, 'Electives', 1),
+(119, 42, 26, 'Electives', 1),
+(120, 42, 30, 'Electives', 1),
+(121, 42, 14, 'Social Studies', 1),
+(122, 42, 18, 'Social Studies', 1),
+(123, 42, 25, 'Science', 1),
+(124, 42, 24, 'Science', 1),
+(125, 42, 21, 'Mathematics', 1),
+(126, 42, 22, 'Mathematics', 1),
+(127, 42, 16, 'Mathematics', 1),
+(128, 42, 18, 'English', 1),
+(129, 42, 26, 'English', 1),
+(130, 42, 17, 'Academic Kit', 2),
+(131, 42, 16, 'Academic Kit', 1),
+(132, 42, 18, 'Academic Kit', 1),
+(133, 42, 15, 'Academic Kit', 1),
+(134, 42, 36, 'Health & Hygiene Kit', 1);
 
 -- --------------------------------------------------------
 
@@ -399,7 +417,9 @@ INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`
 (61, 'Parent', 'asd@gmail.comasd', 'd123123231', 'ali', 'khaled', 123231123, '2023-06-03'),
 (63, 'Parent', 'mayar@gmail.com', '12345678', 'mayar', 'mayar', 111, '2023-06-04'),
 (64, 'Parent', 'asd@gmail.com', '12211231313', 'ali', 'mohanmed', 2147483647, '2023-06-04'),
-(65, 'Parent', 'parent@gmail.com', '12345678', 'Ali', 'Khaled', 11111, '2023-06-04');
+(65, 'Parent', 'parent@gmail.com', '12345678', 'Ali', 'Khaled', 11111, '2023-06-04'),
+(66, 'Parent', 'adadaw@gmail.com', '123123123123', 'ali', 'fsefsfef', 1212123123, '2023-06-06'),
+(67, 'Parent', 'lolololol@gmail.com', '1233213231', 'ali', 'khaled', 12312312, '2023-06-06');
 
 --
 -- Indexes for dumped tables
@@ -456,12 +476,6 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `productsold`
---
-ALTER TABLE `productsold`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `school`
 --
 ALTER TABLE `school`
@@ -489,7 +503,7 @@ ALTER TABLE `supplies_list`
 --
 ALTER TABLE `supplylistitems`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `supplylistitems_ibfk_1` (`productid`),
+  ADD KEY `productid` (`productid`),
   ADD KEY `supplylistid` (`supplylistid`);
 
 --
@@ -542,13 +556,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
-
---
--- AUTO_INCREMENT for table `productsold`
---
-ALTER TABLE `productsold`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `school`
@@ -560,25 +568,25 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `studentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `supplies_list`
 --
 ALTER TABLE `supplies_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `supplylistitems`
 --
 ALTER TABLE `supplylistitems`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `usersclass`
 --
 ALTER TABLE `usersclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- Constraints for dumped tables
@@ -588,7 +596,7 @@ ALTER TABLE `usersclass`
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`productid`) REFERENCES `productsold` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `excess`
@@ -601,7 +609,7 @@ ALTER TABLE `excess`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `productsold` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`addressid`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -622,7 +630,7 @@ ALTER TABLE `supplies_list`
 -- Constraints for table `supplylistitems`
 --
 ALTER TABLE `supplylistitems`
-  ADD CONSTRAINT `supplylistitems_ibfk_1` FOREIGN KEY (`productid`) REFERENCES `productsold` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `supplylistitems_ibfk_1` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `supplylistitems_ibfk_2` FOREIGN KEY (`supplylistid`) REFERENCES `supplies_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
