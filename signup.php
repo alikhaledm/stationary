@@ -108,7 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             echo '<script>window.location.href = "index.php";</script>';
-
             $conn->close();
         }
     }

@@ -198,24 +198,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = "SELECT * FROM student WHERE studentid=$studentid";
     $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
 
-    $studentName = $row['studentname'];
-    $studentEmail = $row['studentemail'];
-    $studentDOB = $row['dob'];
-    $school = $row['school_id'];
-    $grade = $row['grade'];
+    if (!$result) {
+      echo "Error: " . mysqli_error($conn);
+      // Handle the error appropriately, such as displaying an error message or redirecting the user to an error page.
+    } else {
+      $row = mysqli_fetch_assoc($result);
 
-    $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
-    $resultlist = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($resultlist);
+      if (!$row) {
+        echo "No student record found.";
+        // Handle the case when no student record is found, such as displaying an error message or redirecting the user.
+      } else {
+        $studentName = $row['studentname'];
+        $studentEmail = $row['studentemail'];
+        $studentDOB = $row['dob'];
+        $school = $row['school_id'];
+        $grade = $row['grade'];
 
-    $childlistid = $row['id'];
-    $listname = $row['listname'];
-    $listprice = $row['total_price'];
-    $listpdf = $row['pdf'];
+        $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
+        $resultlist = mysqli_query($conn, $sql);
+
+        if (!$resultlist) {
+          echo "Error: " . mysqli_error($conn);
+          // Handle the error appropriately, such as displaying an error message or redirecting the user to an error page.
+        } else {
+          $row1 = mysqli_fetch_assoc($resultlist);
+
+          if (!$row1) {
+            echo "No supplies list found.";
+            // Handle the case when no supplies list is found, such as displaying an error message or redirecting the user.
+          } else {
+            $childlistid = $row1['id'];
+            $listname = $row1['listname'];
+            $listprice = $row1['total_price'];
+            $listpdf = $row1['pdf'];
+          }
+        }
+      }
+    }
   }
 }
+
 ?>
 
 <head>
@@ -353,21 +376,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <form method="POST" id="bottom">
         <?php
         if ($_SESSION['acctype'] == 'Student') {
-          if ($_SERVER("REQUEST_METHOD") == "POST") {
+          if (empty($school)) {
             include("packstudentform.php");
           } else {
-              echo '
+            echo '
 <label for="name">
 <h5>
     Welcome, ' . $_SESSION['fname'] . ' ' . $_SESSION['lname'] . '!
     </h5>
     <br><b>Student Email: </b>' . $studentemail . '
-    <br><b>Age: </b>' . $studentDOB . '
     <br><b>School: </b>' . $school . '
     <br><b>Grade: </b>' . $grade . '
     <br><b>Supply List: </b>' . $listpdf . '
 </label>';
+          }
         }
+
         if ($_SESSION['acctype'] == 'Parent') {
           $parentid = $_SESSION['id'];
           // Check if the user has one student ID linked to them
@@ -477,12 +501,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       echo '</ol></li></ul>';
                     }
                   }
+                  echo '
+                  <div class="total">
+                    <h5>Total Price: ' . $listprice . ' EGP</h5>
+                  </div>
+                  ';
                 }
-                echo '
-              <div class="total">
-                <h5>Total Price: ' . $listprice . ' EGP</h5>
-              </div>
-              ';
               }
 
               if ($_SESSION['acctype'] == "Parent") {
