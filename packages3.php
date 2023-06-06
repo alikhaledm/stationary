@@ -510,50 +510,130 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               }
 
               if ($_SESSION['acctype'] == "Parent") {
-                if (empty($_SESSION['childlistid'])) {
+                if ($numStudents == 0) {
                   error_reporting(0);
                   ini_set('display_errors', FALSE);
 
                   echo "<h2 style='background-color:transparent; text-align:center;'>Please fill the form to display assigned supply list</h2>";
                 } else {
-                  echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
+                  if ($numStudents == 1) {
+                    echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
                   <hr>
                   <ul>';
-                  $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
-                  $result = mysqli_query($conn, $sql);
-                  if ($result) {
-                    $groupedProducts = array(); // Associative array to store products grouped by category
+                    $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                      $groupedProducts = array(); // Associative array to store products grouped by category
 
-                    while ($rowdata = mysqli_fetch_assoc($result)) {
-                      $category = $rowdata['prodcategory'];
-                      $productName = $rowdata['pname'];
+                      while ($rowdata = mysqli_fetch_assoc($result)) {
+                        $category = $rowdata['prodcategory'];
+                        $productName = $rowdata['pname'];
 
-                      // Check if the category exists in the array
-                      if (!array_key_exists($category, $groupedProducts)) {
-                        // If category does not exist, create an empty array for the category
-                        $groupedProducts[$category] = array();
+                        // Check if the category exists in the array
+                        if (!array_key_exists($category, $groupedProducts)) {
+                          // If category does not exist, create an empty array for the category
+                          $groupedProducts[$category] = array();
+                        }
+
+                        // Add the product to the respective category array
+                        $groupedProducts[$category][] = $productName;
                       }
 
-                      // Add the product to the respective category array
-                      $groupedProducts[$category][] = $productName;
-                    }
-
-                    // Display the grouped products
-                    foreach ($groupedProducts as $category => $products) {
-                      echo '<li><span style="font-size:25px;">' . $category . '</span>';
-                      echo '<ol>';
-                      foreach ($products as $product) {
-                        echo '<li>' . $product . '</li>';
-                        echo '<hr>';
+                      // Display the grouped products
+                      foreach ($groupedProducts as $category => $products) {
+                        echo '<li><span style="font-size:25px;">' . $category . '</span>';
+                        echo '<ol>';
+                        foreach ($products as $product) {
+                          echo '<li>' . $product . '</li>';
+                          echo '<hr>';
+                        }
+                        echo '</ol></li></ul>';
                       }
-                      echo '</ol></li></ul>';
                     }
-                  }
-                  echo '
+                    echo '
               <div class="total">
                 <h5>Total Price: ' . $_SESSION['listprice'] . ' EGP</h5>
               </div>
               ';
+                  } elseif ($numStudents == 2) {
+                    echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
+                  <hr>
+                  <ul>';
+                    $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                      $groupedProducts = array(); // Associative array to store products grouped by category
+
+                      while ($rowdata = mysqli_fetch_assoc($result)) {
+                        $category = $rowdata['prodcategory'];
+                        $productName = $rowdata['pname'];
+
+                        // Check if the category exists in the array
+                        if (!array_key_exists($category, $groupedProducts)) {
+                          // If category does not exist, create an empty array for the category
+                          $groupedProducts[$category] = array();
+                        }
+
+                        // Add the product to the respective category array
+                        $groupedProducts[$category][] = $productName;
+                      }
+
+                      // Display the grouped products
+                      foreach ($groupedProducts as $category => $products) {
+                        echo '<li><span style="font-size:25px;">' . $category . '</span>';
+                        echo '<ol>';
+                        foreach ($products as $product) {
+                          echo '<li>' . $product . '</li>';
+                          echo '<hr>';
+                        }
+                        echo '</ol></li></ul>';
+                      }
+                    }
+                    echo '
+              <div class="total">
+                <h5>Total Price: ' . $_SESSION['listprice'] . ' EGP</h5>
+              </div>
+              ';
+                  } else {
+                    echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
+                  <hr>
+                  <ul>';
+                    $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                      $groupedProducts = array(); // Associative array to store products grouped by category
+
+                      while ($rowdata = mysqli_fetch_assoc($result)) {
+                        $category = $rowdata['prodcategory'];
+                        $productName = $rowdata['pname'];
+
+                        // Check if the category exists in the array
+                        if (!array_key_exists($category, $groupedProducts)) {
+                          // If category does not exist, create an empty array for the category
+                          $groupedProducts[$category] = array();
+                        }
+
+                        // Add the product to the respective category array
+                        $groupedProducts[$category][] = $productName;
+                      }
+
+                      // Display the grouped products
+                      foreach ($groupedProducts as $category => $products) {
+                        echo '<li><span style="font-size:25px;">' . $category . '</span>';
+                        echo '<ol>';
+                        foreach ($products as $product) {
+                          echo '<li>' . $product . '</li>';
+                          echo '<hr>';
+                        }
+                        echo '</ol></li></ul>';
+                      }
+                    }
+                    echo '
+              <div class="total">
+                <h5>Total Price: ' . $_SESSION['listprice'] . ' EGP</h5>
+              </div>
+              ';
+                  }
                 }
               }
               ?>
