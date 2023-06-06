@@ -2,7 +2,7 @@
 require_once("connect.php");?>
 <html>
 <head>
-    <title>My Address</title>
+    <title>orders</title>
     <link rel="stylesheet" href="stylesacc.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -26,14 +26,6 @@ require_once("connect.php");?>
             font-weight :bold;
         }
 
-        .customa:hover {
-            color: #ebbf2f;
-        }
-
-        .customa:active {
-            color: red;
-        }
-        
         
     </style>
 
@@ -77,19 +69,21 @@ require_once("connect.php");?>
                 </b>
             </div>
         </div>
+  
 
+    
         <hr style="height: 2px solid black">
         <div class="col-12 centercontainer">
           
-        <a href="orders.php" class="customa">My Orders</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                <a href="address.php" style="color:#ebbf2f" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        <a href="orders.php" class="customa" style="color:#ebbf2f">My Orders</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <a href="address.php" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 <a href="wallet.php" class="customa">My Wallet</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 <a href="wishlist.php" class="customa">My Wishlist</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 <a href="subscription.php" class="customa">My Subscriptions</a>
+                
             </div>
         <hr>
     </div>
-
     <div class="container-account pt-3">
         <div class="row">
             <div class="col-md-6"><b style="font-size:20;">My orders</b></div>
@@ -99,10 +93,56 @@ require_once("connect.php");?>
         <div class="row">
             <div class="col-md-12">View your order history or check the status of a recent order.</div>
             <br><br><hr>
+   
+            <div class="card border-dark">
+                  <div class="row card-header text-bg-secondary" >
+                  <div class="col-md-6"><h4>Order</h4></div>
+                  <div class="col-md-2">#1</div>
 
+                </div>
+                
+                <div class="card-body bg-transparent ">
+                <div id="text" style="display:none;"> 
+              <h5 class="card-title" >Products Orderd:</h5><hr>
+              <h5 class="card-title" >Products Total Price:</h5><hr>
+              <h5 class="card-title" >Deliverd to:</h5><hr>
+              <p class="card-text">Date: </p>
+              <p class="card-text">Status: </p>
+              </div>
+              <center>
+              <button type="button" id="show-button" class="btn">More Details</button>
+              <br>
+              </center>
+            
+<script>
+  // Get references to the button and text elements
+const showButton = document.getElementById('show-button');
+const text = document.getElementById('text');
 
+// Add click event listener to the button
+showButton.addEventListener('click', () => {
+  // Toggle the display of the text element
+  if (text.style.display === 'none') {
+    text.style.display = 'block';
+    showButton.textContent = 'Hide';
+  } else {
+    text.style.display = 'none';
+    showButton.textContent = 'More Details';
+  }
+});
+</script>
 
-      </body>
+              
+              <center>
+                <br>
+              <div class="card-footer text-body-secondary border-dark  bg-transparent">2 days ago</div>
+              </center>
+             </div>
+      </div>
+      </div>
+    </div>
+
+</body>
 </html>
 
 <?php

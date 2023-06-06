@@ -32,7 +32,7 @@
     }
 
     .btncustom:hover {
-        border-color: gold;
+        border-color: gold;  
     }
 
     .cartcount {
@@ -61,7 +61,7 @@
 
 <nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
     <div class="container-fluid navcontainer">
-        <a class="navbar-brand" href="index.php"> <img src="images/logo.jpg" alt="Logo" width="75" height="75"
+        <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="100%" height="80px"
                 class="d-inline-block align-text-top me-2"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

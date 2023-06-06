@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2023 at 09:38 AM
+-- Generation Time: Jun 06, 2023 at 07:44 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -253,6 +253,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentid`, `studentname`, `studentemail`, `dob`, `school_id`, `grade`, `userid`) VALUES
+(69, NULL, NULL, NULL, NULL, NULL, NULL),
+(70, 'mohanmed . Ali', 'alikhaledm399@gmail.com', '2023-06-14', 1, 5, 70),
 (136, 'mayar', 'alikhaledm399@gmail.com', '2023-06-14', 1, 9, 67),
 (137, 'mayar', 'alikhaledm399@gmail.com', '2023-06-15', 1, 1, 59);
 
@@ -429,7 +431,9 @@ INSERT INTO `usersclass` (`id`, `acctype`, `email`, `password`, `fname`, `lname`
 (65, 'Parent', 'parent@gmail.com', '12345678', 'Ali', 'Khaled', 11111, '2023-06-04'),
 (66, 'Parent', 'adadaw@gmail.com', '123123123123', 'ali', 'fsefsfef', 1212123123, '2023-06-06'),
 (67, 'Parent', 'lolololol@gmail.com', '1233213231', 'ali', 'khaled', 12312312, '2023-06-06'),
-(68, 'Student', 'alikhaled@gmail.com', '12345678', 'Ali', 'Khaled', 11111111, '2023-06-06');
+(68, 'Student', 'alikhaled@gmail.com', '12345678', 'Ali', 'Khaled', 11111111, '2023-06-06'),
+(69, 'Student', 'student@gmail.com', '12345678', 'Ali', 'khaled', 1111111, '2023-06-06'),
+(70, 'Student', 'aasdads@gmail.com', '12231213123', 'Ali', 'mohanmed', 1221323, '2023-06-06');
 
 --
 -- Indexes for dumped tables
@@ -584,7 +588,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `supplies_list`
 --
 ALTER TABLE `supplies_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `supplylistitems`
@@ -596,7 +600,7 @@ ALTER TABLE `supplylistitems`
 -- AUTO_INCREMENT for table `usersclass`
 --
 ALTER TABLE `usersclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- Constraints for dumped tables
@@ -627,7 +631,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `school` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`grade`) REFERENCES `grade` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`grade`) REFERENCES `grade` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_ibfk_4` FOREIGN KEY (`userid`) REFERENCES `usersclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `supplies_list`

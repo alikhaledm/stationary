@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $userid = $row['id'];
 
                         // Insert the user id into the ParentId column of the parent table
-                        $sqlStudent = "INSERT INTO student (studentid) VALUES ('$userid')";
+                        $sqlStudent = "INSERT INTO student (studentid, userid, studentname) VALUES ('$userid','$userid','$fname $lname')";
                         mysqli_query($conn, $sqlStudent);
                     }
 

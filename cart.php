@@ -26,7 +26,7 @@ if (isset($_POST['update_quantity'])) {
   $updateQuery = "UPDATE cart SET quantity = $newQuantity WHERE userid = $userid AND productid = $productId";
   $updateResult = mysqli_query($conn, $updateQuery);
 
-  header("location: cart.php");
+
 }
 
 ?>
@@ -71,7 +71,7 @@ if (isset($_POST['update_quantity'])) {
                       $result3 = mysqli_query($conn, $selectProducts);
                       if ($result3) {
                         while ($rowData2 = mysqli_fetch_assoc($result3)) {
-                          $cartId = $rowData['id'];
+                          $cartid = $rowData['id'];
                           $quantity = $rowData['quantity'];
                           $productPrice = $rowData2['price'];
 
@@ -157,6 +157,14 @@ if (isset($_POST['update_quantity'])) {
               <script src="https://cdn.reflowhq.com/v2/toolkit.min.js"></script>
               <script src="assets/js/bs-init.js"></script>
               <script src="assets/js/bold-and-bright.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 
 </html>
+<?php
+include("footer.php")
+  ?>
