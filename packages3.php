@@ -3,9 +3,8 @@
 require_once("connect.php");
 include("navbar.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Rest of your code...
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $studentemail = $_POST['email'];
   $studentdob = $_POST['dob'];
   $school = $_POST['schools'];
@@ -14,13 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($_SESSION['acctype'] == 'Student') {
     $studentid = $_SESSION['id'];
 
+    $_SESSION['dob'] = $studentdob;
+    $_SESSION['studentemail'] = $studentemail;
+    $_SESSION['school'] = $school;
+    $_SESSION['grade'] = $grade;
+
     $sql = "UPDATE student SET studentemail='$studentemail', dob='$studentdob', school_id='$school', grade='$grade' WHERE studentid='$studentid'";
     $result = mysqli_query($conn, $sql);
-
-    $_SESSION['childdob'] = $studentdob;
-    $_SESSION['childemail'] = $studentemail;
-    $_SESSION['childschool'] = $school;
-    $_SESSION['childgrade'] = $grade;
 
     if ($result) {
       echo '<script>alert("Student updated successfully.");</script>';
@@ -30,11 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
     $resultlist = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($resultlist);
 
-    $_SESSION['childlistid'] = $row['id'];
-    $_SESSION['listname'] = $row['listname'];
-    $_SESSION['listprice'] = $row['total_price'];
-    $_SESSION['listpdf'] = $row['pdf'];
+    $childlistid = $row['id'];
+    $listname = $row['listname'];
+    $listprice = $row['total_price'];
+    $listpdf = $row['pdf'];
 
     if (!$resultlist) {
       echo '<script>alert("Failed to retrieve list.");</script>';
@@ -192,6 +192,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $_SESSION['listpdf'][] = $row['pdf'];
     }
   }
+} else {
+  if ($_SESSION['acctype'] == 'Student') {
+    $studentid = $_SESSION['id'];
+
+    $sql = "SELECT * FROM student WHERE studentid=$studentid";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $studentName = $row['studentname'];
+    $studentEmail = $row['studentemail'];
+    $studentDOB = $row['dob'];
+    $school = $row['school_id'];
+    $grade = $row['grade'];
+
+    $sql = "SELECT * FROM supplies_list WHERE school_id=$school AND grade=$grade";
+    $resultlist = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($resultlist);
+
+    $childlistid = $row['id'];
+    $listname = $row['listname'];
+    $listprice = $row['total_price'];
+    $listpdf = $row['pdf'];
+  }
 }
 ?>
 
@@ -330,7 +353,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <form method="POST" id="bottom">
         <?php
         if ($_SESSION['acctype'] == 'Student') {
-          include("packstudentform.php");
+          if ($_SERVER("REQUEST_METHOD") == "POST") {
+            include("packstudentform.php");
+          } else {
+              echo '
+<label for="name">
+<h5>
+    Welcome, ' . $_SESSION['fname'] . ' ' . $_SESSION['lname'] . '!
+    </h5>
+    <br><b>Student Email: </b>' . $studentemail . '
+    <br><b>Age: </b>' . $studentDOB . '
+    <br><b>School: </b>' . $school . '
+    <br><b>Grade: </b>' . $grade . '
+    <br><b>Supply List: </b>' . $listpdf . '
+</label>';
         }
         if ($_SESSION['acctype'] == 'Parent') {
           $parentid = $_SESSION['id'];
@@ -399,21 +435,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <main>
             <section class="supplies-list">
               <?php
-              if (isset($_SESSION['studentid'])) {
-                $studentId = $_SESSION['studentid'];
+              if ($_SESSION['acctype'] == 'Student') {
+                $studentid = $_SESSION['id'];
 
-                $sql = "SELECT school_id,grade FROM student WHERE studentid=$studentId";
-                $result = mysqli_query($conn, $sql);
+                if (empty($school)) {
+                  error_reporting(0);
+                  ini_set('display_errors', FALSE);
 
-                if ($result && mysqli_num_rows($result) > 0) {
-                  $row = mysqli_fetch_assoc($result);
-                  $studentschoolid = $row['school_id'];
-                  $studentgrade = $row['grade'];
+                  echo "<h2 style='background-color:transparent; text-align:center;'>Please fill the form to display assigned supply list</h2>";
+                } else {
+                  echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $listname . '.pdf">' . $listname . '</a></b>
+                  <hr>
+                  <ul>';
+                  $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = $childlistid";
+                  $result = mysqli_query($conn, $sql);
+                  if ($result) {
+                    $groupedProducts = array(); // Associative array to store products grouped by category
+
+                    while ($rowdata = mysqli_fetch_assoc($result)) {
+                      $category = $rowdata['prodcategory'];
+                      $productName = $rowdata['pname'];
+
+                      // Check if the category exists in the array
+                      if (!array_key_exists($category, $groupedProducts)) {
+                        // If category does not exist, create an empty array for the category
+                        $groupedProducts[$category] = array();
+                      }
+
+                      // Add the product to the respective category array
+                      $groupedProducts[$category][] = $productName;
+                    }
+
+                    // Display the grouped products
+                    foreach ($groupedProducts as $category => $products) {
+                      echo '<li><span style="font-size:25px;">' . $category . '</span>';
+                      echo '<ol>';
+                      foreach ($products as $product) {
+                        echo '<li>' . $product . '</li>';
+                        echo '<hr>';
+                      }
+                      echo '</ol></li></ul>';
+                    }
+                  }
                 }
-                $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = (SELECT id FROM supplies_list WHERE school_id=$studentschoolid AND grade=$studentgrade)";
-                $result = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_assoc($result);
-                $listname = $row['listname'];
+                echo '
+              <div class="total">
+                <h5>Total Price: ' . $listprice . ' EGP</h5>
+              </div>
+              ';
               }
 
               if ($_SESSION['acctype'] == "Parent") {
@@ -428,40 +497,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <ul>';
                   $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
                   $result = mysqli_query($conn, $sql);
-                }
-                if ($result) {
-                  $groupedProducts = array(); // Associative array to store products grouped by category
+                  if ($result) {
+                    $groupedProducts = array(); // Associative array to store products grouped by category
 
-                  while ($rowdata = mysqli_fetch_assoc($result)) {
-                    $category = $rowdata['prodcategory'];
-                    $productName = $rowdata['pname'];
+                    while ($rowdata = mysqli_fetch_assoc($result)) {
+                      $category = $rowdata['prodcategory'];
+                      $productName = $rowdata['pname'];
 
-                    // Check if the category exists in the array
-                    if (!array_key_exists($category, $groupedProducts)) {
-                      // If category does not exist, create an empty array for the category
-                      $groupedProducts[$category] = array();
+                      // Check if the category exists in the array
+                      if (!array_key_exists($category, $groupedProducts)) {
+                        // If category does not exist, create an empty array for the category
+                        $groupedProducts[$category] = array();
+                      }
+
+                      // Add the product to the respective category array
+                      $groupedProducts[$category][] = $productName;
                     }
 
-                    // Add the product to the respective category array
-                    $groupedProducts[$category][] = $productName;
-                  }
-
-                  // Display the grouped products
-                  foreach ($groupedProducts as $category => $products) {
-                    echo '<li><span style="font-size:25px;">' . $category . '</span>';
-                    echo '<ol>';
-                    foreach ($products as $product) {
-                      echo '<li>' . $product . '</li>';
-                      echo '<hr>';
+                    // Display the grouped products
+                    foreach ($groupedProducts as $category => $products) {
+                      echo '<li><span style="font-size:25px;">' . $category . '</span>';
+                      echo '<ol>';
+                      foreach ($products as $product) {
+                        echo '<li>' . $product . '</li>';
+                        echo '<hr>';
+                      }
+                      echo '</ol></li></ul>';
                     }
-                    echo '</ol></li></ul>';
                   }
-                }
-                echo '
+                  echo '
               <div class="total">
                 <h5>Total Price: ' . $_SESSION['listprice'] . ' EGP</h5>
               </div>
               ';
+                }
               }
               ?>
             </section>
