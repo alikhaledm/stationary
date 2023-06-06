@@ -4,6 +4,8 @@ require_once("connect.php");
 include("navbar.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Rest of your code...
+
   $studentemail = $_POST['email'];
   $studentdob = $_POST['dob'];
   $school = $_POST['schools'];
@@ -28,10 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $childName = mysqli_fetch_assoc($result);
 
     if (empty($childName)) {
-      $childdob = implode(',', $_SESSION['childdob']);
-      $childemail = implode(',', $_SESSION['childemail']);
-      $childschool = implode(',', $_SESSION['childschool']);
-      $childgrade = implode(',', $_SESSION['childgrade']);
+      if (is_array($childName)) {
+        $childdob = implode(',', $_SESSION['childdob']);
+        $childemail = implode(',', $_SESSION['childemail']);
+        $childschool = implode(',', $_SESSION['childschool']);
+        $childgrade = implode(',', $_SESSION['childgrade']);
+      }
 
       $childName = $_POST['childname'];
       $_SESSION['childname'] = $childName;
@@ -99,23 +103,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $resultlist = mysqli_query($conn, $sql);
       $row = mysqli_fetch_assoc($resultlist);
 
-      $_SESSION['childlistid'] = $row['id'];
-      $_SESSION['listname'] = $row['listname'];
-      $_SESSION['listprice'] = $row['total_price'];
-      $_SESSION['listpdf'] = $row['pdf'];
+      // makelist items arrays
+      $_SESSION['childlistid'] = array($_SESSION['childlistid']);
+      $_SESSION['listname'] = array($_SESSION['listname']);
+      $_SESSION['listprice'] = array($_SESSION['listprice']);
+      $_SESSION['listpdf'] = array($_SESSION['listpdf']);
+
+      $_SESSION['childlistid'][] = $row['id'];
+      $_SESSION['listname'][] = $row['listname'];
+      $_SESSION['listprice'][] = $row['total_price'];
+      $_SESSION['listpdf'][] = $row['pdf'];
 
       if (!$resultlist) {
         echo '<script>alert("Failed to retrieve list.");</script>';
       } else {
         echo '<script>alert("List retrieved successfully.");</script>';
       }
-    } elseif (is_array($_SESSION['childname'])) {
+    } else {
+      if (isset($_POST['retrieve'])) {
+        $studentId = $_POST['studentId'];
+
+        // Retrieve student's school and grade from the database
+        $sql = "SELECT school_id, grade FROM student WHERE studentid=$studentId";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $schoolId = $row['school_id'];
+        $grade = $row['grade'];
+
+        // Retrieve supply list based on school and grade
+        $sql = "SELECT * FROM supply_list WHERE school_id=$schoolId AND grade=$grade";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        $_SESSION["listname"] = $row["listname"];
+        $_SESSION["listprice"] = $row["total_price"];
+        $_SESSION["listpdf"] = $row["pdf"];
+        $_SESSION["childlistid"] = $row["id"];
+      }
       // Add the new child name to the existing array
       $_SESSION['childname'][] = $_POST['childname'];
+      $_SESSION['childdob'][] = $_POST['dob'];
+      $_SESSION['childemail'][] = $_POST['email'];
+      $_SESSION['childschool'][] = $_POST['schools'];
+      $_SESSION['childgrade'][] = $_POST['grades'];
 
       // Insert the new child into the database
       $childName = $_POST['childname'];
-      $sql = "INSERT INTO student (studentname, userid, studentemail, dob, school_id, grade) VALUES ('$childName', '$parentid', '$studentemail', '$studentdob', '$school', '$grade')";
+      $studentEmail = $_POST['email'];
+      $studentDOB = $_POST['dob'];
+      $school = $_POST['schools'];
+      $grade = $_POST['grades'];
+
+      $sql = "INSERT INTO student (studentname, userid, studentemail, dob, school_id, grade) VALUES ('$childName', '$parentid', '$studentEmail', '$studentDOB', '$school', '$grade')";
       $result = mysqli_query($conn, $sql);
 
       if ($result) {
@@ -124,8 +163,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<script>alert("Failed to add student.");</script>';
       }
 
-      // Rest of the code to handle other session variables and database operations
-      // ...
+      $sql = "SELECT * FROM supplies_list WHERE school_id='$school' AND grade='$grade'";
+      $resultlist = mysqli_query($conn, $sql);
+      $row = mysqli_fetch_assoc($resultlist);
+
+      $_SESSION['childlistid'][] = $row['id'];
+      $_SESSION['listname'][] = $row['listname'];
+      $_SESSION['listprice'][] = $row['total_price'];
+      $_SESSION['listpdf'][] = $row['pdf'];
     }
   }
 }
@@ -262,20 +307,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="left-column">
       <img src="images/packages/step1.png" alt="Image" width="110%">
     </div>
-    <div class="right-column">
+    <div class="right-column" id="targetElement">
       <form method="POST" id="bottom">
         <?php
-        if ($_SESSION['acctype'] == "Parent") {
-          if (empty($childName)) {
+        if ($_SESSION['acctype'] == 'Parent') {
+          $parentid = $_SESSION['id'];
+          // Check if the user has one student ID linked to them
+          $sql = "SELECT COUNT(*) as numStudents FROM student WHERE userid = $parentid";
+          $result = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_assoc($result);
+          $numStudents = $row['numStudents'];
+
+          if ($numStudents == 0) {
             include("packagesform.php");
-          }
-          // if parent has 1 student
-          elseif (!is_array($_SESSION['childname']) && (!empty($_SESSION['childname']))) {
+          } elseif ($numStudents == 1) {
             echo '<h5>Are You Looking For ' . $_SESSION['childname'] . '`s Supply list?</h5>
-            <span class="pointer" style="color:black;" class="bg-transparent" onclick="scrollToElement()">&bull;&nbsp;Yes</span>
-            <span class="pointer" onclick="toggleDropdown()">&bull;&nbsp;No i want to add a new student</span>
-            <div id="dropdownContainer" class="dropdown-container">
-            ';
+              <span class="pointer" style="color:black;" class="bg-transparent" onclick="scrollToElement()">&bull;&nbsp;Yes</span>
+              <span class="pointer" onclick="toggleDropdown()">&bull;&nbsp;No i want to add a new student</span>
+              <div id="dropdownContainer" class="dropdown-container">
+              ';
             include("packagesform.php");
             echo '</div>';
           }
@@ -283,24 +333,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           else {
             $parentid = $_SESSION['id'];
 
-            $sql = "SELECT * FROM student WHERE userid=$parentid"; // Modified query to select all columns
+            $sql = "SELECT * FROM student WHERE userid=$parentid";
             $result = mysqli_query($conn, $sql);
 
             echo '
-            <h5>Select from your students &darr;</h5>
-            <select name="Student">';
+            <h5>Select a student &darr;</h5>
+              <select name="studentId">';
             while ($row = mysqli_fetch_array($result)) {
-              echo '<option value="' . $row['studentid'] . '">' . $row['studentname'] . '</option>'; // Corrected column names
+              echo '<option value="' . $row['studentid'] . '">' . $row['studentname'] . '</option>';
             }
-            echo '</select><br><b>Or,</b><br>
-            <span class="pointer" onclick="toggleDropdown()">&bull;&nbsp; Click Here To Add Student</span>
+            echo '</select>
+              <input type="submit" name="retrieve" value="Retrieve Supply List">
+            <span class="pointer" onclick="toggleDropdown()">&bull;&nbsp;Click Here To Add New Student</span>
             <div id="dropdownContainer" class="dropdown-container">';
             include("packagesform.php");
             echo '</div>';
           }
         }
         ?>
-
         <div></div>
       </form>
     </div>
@@ -315,7 +365,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </h2><br>
         <div class="container">
           <button type="button" class="btn btn-circle btn-xl" id="openModalButton" data-bs-toggle="button">
-            <p id="targetElement">Check Your Package</p>
+            <p>Check Your Package</p>
           </button>
         </div>
       </form>
