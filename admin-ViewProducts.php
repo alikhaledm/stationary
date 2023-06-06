@@ -27,7 +27,6 @@ if (!$result) {
         ?>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <?php include("admin-topbar.php"); ?>
                 <div class="container-fluid">
                     <h3 class="text-dark mb-4 text-center">Products</h3>
                     <div class="card shadow">
