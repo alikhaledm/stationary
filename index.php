@@ -274,21 +274,22 @@ require_once("connect.php");
   .carousel-caption {
     position: absolute;
     top: 50%;
-    left: 30%;
-    transform: translate(-30%, -50%);
+    left: 15%;
+    transform: translate(-15%, -50%);
     width: 100%;
     color: #fff;
   }
 
   .carouselfont1 {
     font-size: 40px;
-    color: #2F4668;
+    color: black;
     font-weight: bolder;
+    
   }
 
   .carouselfont2 {
     font-size: 25px;
-    color: #2F4668;
+    color: black;
     font-weight: bold;
   }
 
@@ -362,21 +363,21 @@ require_once("connect.php");
 
 
   .bodyfont1 {
-    font-size: 35;
-    color: #2F4668;
-    font-weight: bolder;
+    font-size: 30;
+    color: #524E4D;
+    font-weight: bold;
   }
 
   .bodyfont2 {
-    font-size: 30px;
-    color: #2F4668;
+    font-size: 25px;
+    color: #524E4D;
     font-weight: bold;
   }
 
   .bodyfont3 {
-    font-size: 35;
-    color: #2F4668;
-    font-weight: bolder;
+    font-size: 30;
+    color: #524E4D;
+    font-weight: bold;
   }
 
   .servicecard {
@@ -435,7 +436,7 @@ require_once("connect.php");
 
             <div class="carousel-item" data-bs-interval="5000">
               <div class="carousel-background" style="background-color:black;">
-                <img width="100%" height="600px" src="images/op3.png" alt="">
+                <img width="100%" height="600px" src="images/tryit1.png" alt="">
               </div>
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">Wide Range Of Products</div>
