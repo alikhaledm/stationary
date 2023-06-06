@@ -364,19 +364,19 @@ require_once("connect.php");
 
   .bodyfont1 {
     font-size: 30;
-    color: #524E4D;
+    color: white;
     font-weight: bold;
   }
 
   .bodyfont2 {
     font-size: 25px;
-    color: #524E4D;
+    color: white;
     font-weight: bold;
   }
 
   .bodyfont3 {
     font-size: 30;
-    color: #524E4D;
+    color: white;
     font-weight: bold;
   }
 
@@ -417,8 +417,7 @@ require_once("connect.php");
                 <div class="carouselfont1">Select School, Get Supplies</div>
                 <div class="carouselfont2">
                   Explore our One-Click Solution<br> for All Your School Supply Needs</div><br>
-                <a href="startnowintro.php"><button class="carouselbtn carouselfont3">Start Now <img width="20"
-                      height="20" src="images/forward.svg"> </button></a>
+                
               </div>
             </div>
 
@@ -429,8 +428,7 @@ require_once("connect.php");
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">School Supplies Made Easy</div>
                 <div class="carouselfont2">Get Your School Supplies in Minutes:<br> Select, Order, and Relax</div>
-                <br><a href="startnowintro.php"><button class="carouselbtn carouselfont3">Start Now <img width="20"
-                      height="20" src="images/forward.svg"> </button></a>
+                
               </div>
             </div>
 
@@ -442,8 +440,7 @@ require_once("connect.php");
                 <div class="carouselfont1">Wide Range Of Products</div>
                 <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div>
                 <br>
-                <a href="startnowintro.php"><button class="carouselbtn carouselfont3">Start Now <img width="20"
-                      height="20" src="images/forward.svg"> </button></a>
+               
               </div>
             </div>
           </div>
@@ -462,22 +459,13 @@ require_once("connect.php");
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-  <div class="containerbody">
+  <div class="container">
     <div class="row">
 
       <div class="col-lg-6 col-sm-12" style="padding-top:20;">
 
         <div class="image-wrapper">
-          <img style="width:100%;" src="images/card2.png" alt="Image">
+          <img style="width:100%;" src="images/packages/555.png " alt="Image" height="100px">
           <div class="content-overlay">
             <div></div>
             <div class="bodyfont3">Discover Your Gathered<br> Supplies List
@@ -509,21 +497,17 @@ require_once("connect.php");
         </div>
 
       </div>
-
-
-
-
     </div>
 
   </div>
-
+<br><br>
 
 
 
   <center>
     <div class="containernew servicebody" style="padding-top:20;">
       <div class="row" style=" padding-bottom:100px;">
-        <div class="col-md-12" style="font-size:40px; color:#FBD53E;">
+        <div class="col-md-12" style="font-size:40px; color:black;">
           <center>OUR SERVICES</center><br>
         </div>
         <div class="col-lg-3 col-sm-12" style="padding-top:50;">

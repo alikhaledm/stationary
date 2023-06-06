@@ -1,6 +1,6 @@
 <?php
 require_once("connect.php");
-include("navbar.php");
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['id'])) {
@@ -191,12 +191,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     </script>
-    <?php
-    include 'footer.php';
-    ?>
-
-
-
 </body>
 
 </html>
