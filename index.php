@@ -411,7 +411,7 @@ require_once("connect.php");
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="5000">
               <div class="carousel-background">
-                <img width="100%" height="600px" src="images/op4.png" alt="">
+                <img width="100%" height="600px" src="images/packages/8.png" alt="">
               </div>
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">Select School, Get Supplies</div>
