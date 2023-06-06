@@ -1,272 +1,321 @@
 <?php
-require_once("connect.php") ?>
+include("navbar.php")
+?>
 <html>
 
-<title>School Supplies List</title>
-<link rel="stylesheet" href="styles.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-
+<head>
+  <title>School Supplies List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+</head>
 <style>
-    .shoptitle {
-        font-size: 50px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        padding-top: 50px;
-        color: black;
-        font-style: italic;
+  body {
+    overflow-x: hidden;
+  }
+
+  /* For WebKit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: white;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;
+  }
+
+  /* For Firefox */
+  ::-moz-scrollbar {
+    width: 10px;
+  }
+
+  ::-moz-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  ::-moz-scrollbar-thumb {
+    background-color: #888;
+  }
+
+  #hr-banner {
+    border: 2px solid black;
+    font-weight: bold;
+  }
+
+  #hr-2 {
+    border: 1px solid black;
+    font-weight: bold;
+  }
+
+  /* Keyframes for the animation */
+  @keyframes float {
+    from {
+      right: -200px;
     }
 
-    .line {
-        border-top: 1px solid black;
-        width: 15%;
+    to {
+      right: 100%;
+    }
+  }
+
+  /* Keyframes for the moving text */
+  @keyframes move {
+    0% {
+      transform: translateX(0);
     }
 
-    .line2 {
-        border-top: 1px solid black;
-        width: 70%;
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Keyframes for the animation */
+  @keyframes float {
+    from {
+      right: -200px;
     }
 
-    .line3 {
-        border-top: 2px solid black;
-        width: 2%;
+    to {
+      right: 100%;
+    }
+  }
+
+  /* Keyframes for the moving text */
+  @keyframes move {
+    from {
+      transform: translateX(100%);
     }
 
-    .centered {
-        justify-content: center;
-        align-items: center;
-        display: flex;
+    to {
+      transform: translateX(-100%);
     }
+  }
 
-    .shopmainbtn {
-        background-color: white;
-        border-color: black;
-        height: 80px;
-        width: 260px;
-    }
+  /* Styling for the banner */
+  .floating-banner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f5f5f5;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+  }
 
-    .shopbetafont {
-        font-size: 30px;
-        font-weight: bold;
-    }
+  /* Styling for the moving text */
+  .moving-text {
+    position: relative;
+    animation: move 20s linear infinite;
+  }
 
-    .shopsmallfont {
-        font-size: 14px;
-    }
+  /* Styling for the banner text */
+  .floating-banner p {
+    position: absolute;
+    margin: 0;
+    box-sizing: border-box;
+  }
 
-    .formcontrol {
-        width: 40%;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
 
-    .shopdropdown {
-        width: 185;
-        height: 30px;
-    }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-    .formbtn {
-        width: 250px;
-        height: 30px;
-        border: none;
-        background-color: #FBD334;
-        color: white;
-    }
+  .flip-card {
+    background-color: transparent;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-front {
+    background-color: #white;
+    color: black;
+  }
+
+  .flip-card-back {
+    background-color: LightGray;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  /* For Internet Explorer and Microsoft Edge */
+  /* Note: Microsoft Edge supports the -ms-overflow-style property */
+  /* to customize the scroll bar, but it's not widely supported */
+  /* in other versions of IE. */
+  /* Therefore, this code may not work in all IE versions. */
+  /* It's recommended to test it in your target browsers. */
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
 </style>
 
 <body>
-    <?php
-    include("navbarnew.php")
-        ?>
+  <img width="100%" height="300" src="images/Shop/hugesale.png" alt="">
+  <hr id="hr-banner">
+  <div class="banner-container">
+    <div class="moving-text">
+      <h3>
+        <p>Free Shipping On All <span style="color: yellow;">Cairo</span> Orders Over <span style="color: red;">1000 EGP</span></p>
+      </h3>
+    </div>
+  </div>
+  <hr id="hr-banner">
+  <br>
+  <br>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center" style="padding-top: 50;">
+        <h1>
+          Lets Find What Your Looking For
+        </h1>
+        <hr id="hr-2" style="width:45%;text-align:left;margin-center:0">
+      </div>
+    </div>
+    <br>
+
+    <center>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/shop/shop1.jpg" alt="" width=100%; height=100%;>
+          </div>
+          <div class="flip-card-back">
+            <h1></h1>
+            <br><br><br><br><br><br>
+            <button class=" btn-lg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SCHOOL SUPPLY LIST </button>
+            <br><br><br><br><br>
+            <p>We are here to help you</p>
+          </div>
+        </div>
+      </div>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/shop/shop2.jpg" alt="" width=100%; height=100%;>
+          </div>
+          <div class="flip-card-back" style="text-align:center;">
+            <br><br><br><br><br><br>
+            <button class=" btn-lg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> SHOP ALL STATIONERY </button>
+            <br><br><br><br><br>
+            <p>We are here to help you</p>
+          </div>
+        </div>
+      </div>
+    </center>
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <img width="100%" height="300px" src="images/supplies-list-2.jpg" alt="">
-            </div>
-            <div class="col-lg-12">
-                <div class="shoptitle">Let's Find What You're Looking For</div>
-            </div>
-            <div class="col-lg-12" style="padding-top:50;">
-                <div class="line"></div>
-            </div>
+      <div class="row">
+        <div class="lineshop"></div>
+        <div class="col-md-12 text-center" style="padding-bottom: 30;">
+          <hr id="hr-2" style="width:80%;text-align:left;margin-center:0">
+          <h2>SHOP BY CATEGORIES</h2>
+          <hr id="hr-2" style="width:80%;text-align:left;margin-center:0">
         </div>
+        <div class="lineshop"></div>
+      </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6" style="padding-top:70;">
-                <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
-                        src="images/shop/shop1.jpg" alt="">
-                    <div style="position:absolute;"><button class="shopmainbtn"> SHOP ALL STATIONERY</button></div>
-                </div>
+    <div class="custom-div">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="images/shop/note.jpg" class="card-img-top" alt="..." height="350">
+            <div class="card-body">
+              <h5 class="card-title">Notebooks & Paper</h5>
+              <p class="card-text">Notebooks, Graph Papers, Sticky Notes, Printer Papers and Construction Papers</p>
             </div>
-            <div class="col-lg-6" style="padding-top:70;">
-                <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
-                        src="images/shop/shop2.jpg" alt="">
-                    <div style="position:absolute;"><button class="shopmainbtn"> SHOP ALL STATIONERY</button></div>
-                </div>
-            </div>
+          </div>
+          <br><br><br><br>
         </div>
-    </div>
-
-    <div class="col-lg-12 centered" style="padding-top:60px">
-        <div class="line2"></div>
-    </div>
-
-
-    <div class="col-lg-12 centered" style="padding-top:30px">
-        <div class="shopbetafont">Shop By Category</div>
-    </div>
-
-
-    <div class="col-lg-12 centered" style="padding-top:30px">
-        <div class="line2"></div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-sm-6" style="padding-top:70;">
-                <div class="centered card"><img style="width:100%; height: 400px;" src="images/shop/note.jpg" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Notebooks & Paper</h5>
-                        <p class="card-text">Notebooks, Graph Papers, Sticky Notes, Printer Papers and Construction
-                            Papers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6" style="padding-top:70;">
-                <div class="centered card"><img style="width:100%; height: 400px;" src="images/shop/arts.jpg" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Art Supplies</h5>
-                        <p class="card-text">Colored Pencils, Crayons, Paints, Paintbrushes, Sketches, Scissors and Glue
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6" style="padding-top:70;">
-                <div class="centered card"><img style="width:100%; height: 400px;" src="images/shop/Writing Tools.jpg"
-                        alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Writing Tools</h5>
-                        <p class="card-text">Pens, Pencils, Highlighters, Markers, and Erasers &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6" style="padding-top:70;">
-                <div class="centered card"><img style="width:100%; height: 400px;" src="images/shop/folders.jpg" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Binders & Folders</h5>
-                        <p class="card-text">Binders, Folders, Dividers, and Sheet Protectors for organizing and Storing
-                            Papers.s
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6" style="padding-top:70;">
-                <div class="centered card"><img style="width:100%; height: 400px;" src="images/shop/math.png" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Math & Scientific Tools</h5>
-                        <p class="card-text">Geometry Tools, compass, protractor, ruler, math workbooks and worksheets
-                            and
-                            scientific calculators</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6" style="padding-top:70;">
-                <div class="centered card"><img style="width:100%; height: 400px;" src="images/shop/cases.jpg" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Pencil Cases & Bags</h5>
-                        <p class="card-text">Pens, Pencils, Highlighters, Markers, and Erasers </p>&nbsp; &nbsp; &nbsp;
-                        &nbsp;
-                    </div>
-                </div>
+        <div class="col">
+          <div class="card">
+            <img src="images/shop/arts.jpg" class="card-img-top" alt="..." height="350">
+            <div class="card-body">
+              <h5 class="card-title">Art Supplies</h5>
+              <p class="card-text">Colored Pencils, Crayons, Paints, Paintbrushes, Sketches, Scissors and Glue</p>
             </div>
 
+          </div>
         </div>
-    </div>
-
-
-    <div class="container centered formcontrol">
-        <div class="row">
-            <div class="col-lg-12 centered" style="padding-top:100px">
-                <div class="shopbetafont">Can't Find What You're Looking For?</div>
+        <div class="col">
+          <div class="card">
+            <img src="images/shop/Writing Tools.jpg" class="card-img-top" alt="..." height="350">
+            <div class="card-body">
+              <h5 class="card-title">Writing Tools</h5>
+              <p class="card-text">Pens, Pencils, Highlighters, Markers, and Erasers</p>
             </div>
-            <div class="col-lg-12 centered" style="padding-top:10px">
-                <div class="line3"></div>
-            </div>
-            <div class="col-lg-12 centered" style="padding-top:30px">
-                <div class="shopsmallfont">Send us a message and we`ll do our best to stock all your<br>
-                    <div class="centered"> stationary
-                        needs!</div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-                <div class="shopinput">
-                    <div class="shopsmallfont" style="padding-bottom:10px">Name</div>
-                    <input type="text" name="" id="">
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-                <div class="shopinput">
-                    <div class="shopsmallfont" style="padding-bottom:10px">Email</div>
-                    <input type="text" name="" id="">
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-                <div class="shopinput">
-                    <div class="shopsmallfont" style="padding-bottom:10px">Category</div>
-                    <select class="shopdropdown">
-                        <option value="math">Math</option>
-                        <option value="art">Art</option>
-                        <option value="musical">Musical</option>
-                        <option value="writing">Writing</option>
-                        <option value="notebooks">Notebooks</option>
-                    </select>
-
-                </div>
-            </div>
-
-            <div class="col-lg-8 col-sm-12" style="padding-top: 30px;">
-                <div class="shopinput">
-                    <div class="shopsmallfont" style="padding-bottom:10px">Description</div>
-                    <input style="width:500px;" type="text" name="" id="">
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-12" style="padding-top: 30px;">
-                <div class="shopinput">
-                    <div class="shopsmallfont" style="padding-bottom:30px"></div>
-                    <button class="formbtn">Send</button>
-
-                </div>
-            </div>
-
+          </div>
         </div>
+        <div class="col">
+          <div class="card">
+            <img src="images/shop/folders.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Binders & Folders</h5>
+              <p class="card-text">Binders, Folders, Dividers, and Sheet Protectors for organizing and Storing Papers.s</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="images/shop/math.png" class="card-img-top" alt="..." height="350">
+            <div class="card-body">
+              <h5 class="card-title">Math & Scientific Tools</h5>
+              <p class="card-text">Geometry Tools, compass, protractor, ruler, math workbooks and worksheets and scientific calculators</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="images/shop/cases.jpg" class="card-img-top" alt="..." height="350">
+            <div class="card-body">
+              <h5 class="card-title">Pencil Cases & Bags</h5>
+              <p class="card-text">Pens, Pencils, Highlighters, Markers, and Erasers </p>&nbsp; &nbsp; &nbsp; &nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
 
-
-
-    </div>
-
-
-
-
+      <br><br><br><br><br><br>
 </body>
 <?php
 include("footer.php")
-    ?>
+?>
 
 </html>
