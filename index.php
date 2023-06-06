@@ -284,7 +284,7 @@ require_once("connect.php");
     font-size: 40px;
     color: black;
     font-weight: bolder;
-    
+
   }
 
   .carouselfont2 {
@@ -417,7 +417,7 @@ require_once("connect.php");
                 <div class="carouselfont1">Select School, Get Supplies</div>
                 <div class="carouselfont2">
                   Explore our One-Click Solution<br> for All Your School Supply Needs</div><br>
-                
+
               </div>
             </div>
 
@@ -428,7 +428,7 @@ require_once("connect.php");
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">School Supplies Made Easy</div>
                 <div class="carouselfont2">Get Your School Supplies in Minutes:<br> Select, Order, and Relax</div>
-                
+
               </div>
             </div>
 
@@ -440,7 +440,7 @@ require_once("connect.php");
                 <div class="carouselfont1">Wide Range Of Products</div>
                 <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div>
                 <br>
-               
+
               </div>
             </div>
           </div>
@@ -459,13 +459,13 @@ require_once("connect.php");
     </div>
   </div>
 
-  <div class="container">
+  <div class="container-">
     <div class="row">
 
       <div class="col-lg-6 col-sm-12" style="padding-top:20;">
 
         <div class="image-wrapper">
-          <img style="width:100%;" src="images/packages/555.png " alt="Image" height="100px">
+          <img style="width:100%;" src="images/card2.png " alt="Image" height="100px">
           <div class="content-overlay">
             <div></div>
             <div class="bodyfont3">Discover Your Gathered<br> Supplies List
@@ -500,7 +500,7 @@ require_once("connect.php");
     </div>
 
   </div>
-<br><br>
+  <br><br>
 
 
 
