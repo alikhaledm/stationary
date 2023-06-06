@@ -137,9 +137,7 @@ $resultorder = mysqli_query($conn, $getAddress);
 
                         echo '<div class="details__user">
         <div class="row">
-          <div class="col-1">
-            <input type="radio" name="address" value="' . $addressid . '" style="margin-top: 2px;">
-          </div>
+
           <div class="col-9">
             <h6><b>' . $title . '</b></h6>
           </div>
