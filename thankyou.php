@@ -8,30 +8,46 @@ if (isset($_SESSION['id'])) {
     // Redirect the user to the login page or display an error message
     // if the user is not logged in or authenticated.
     // Replace "login.php" with the actual login page URL.
-    header("Location: signin.php");
+    if (basename($_SERVER['PHP_SELF']) != "signin.php") {
+        header("Location: signin.php");
+    }
     exit();
 }
 
-$cartId = $_SESSION['id'];
+// Retrieve the selected address ID from the session or any other source
+$addressid = $_SESSION['selected_addressid']; // Assuming you have stored the selected address ID in the session as 'selected_addressid'
 
-$total = $_SESSION['id'];
+// Check if an order already exists for the user
+$checkOrderQuery = "SELECT * FROM orders WHERE userid = '$userId'";
+$existingOrderResult = $conn->query($checkOrderQuery);
 
-$addressid = $_SESSION['id'];
-// Prepare and execute the SQL query to insert the order into the database
-$query = "INSERT INTO orders (`userid`, `cartid`, `total`, `address`, `date`) VALUES ('$userId', '$cartId', '$total', '$addressid', NOW())";
-$result = $conn->query($query);
+if ($existingOrderResult && $existingOrderResult->num_rows > 0) {
+    // An order already exists for the user, redirect to the thank you page
+    header("Location: thankyou.php");
+    exit();
+}
 
+// Insert the order into the database
+$insertQuery = "INSERT INTO orders (userid, addressid, date) VALUES ('$userId', '$addressid', NOW())";
+$result = $conn->query($insertQuery);
 
 if ($result) {
-    // Order inserted successfully
+    // Order placed successfully
     echo "Order placed successfully.";
+    // Redirect the user to the thank you page
+    header("Location: thankyou.php");
+    exit();
 } else {
     // An error occurred
     echo "Error: " . $conn->error;
 }
 
-
+// Close the database connection
+$conn->close();
 ?>
+
+
+
 
 
 <html lang="en">
