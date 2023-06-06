@@ -2,7 +2,7 @@
 require_once("connect.php");?>
 <html>
 <head>
-    <title>My wishlist</title>
+    <title>My Students</title>
     <link rel="stylesheet" href="stylesacc.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -81,6 +81,49 @@ require_once("connect.php");?>
         height: 40px;
     }
 
+    form {
+  display: flex;
+  flex-direction: column;
+}
+
+label, input, textarea {
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('down-arrow.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+select:hover, select:focus {
+  border-color: #333;
+}
+
+option {
+  padding: 5px;
+}
+
   
     </style>
 
@@ -133,40 +176,75 @@ require_once("connect.php");?>
         <a href="orders.php" class="customa">My Orders</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 <a href="address.php" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 <a href="wallet.php" class="customa" >My Wallet</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                <a href="wishlist.php" class="customa" style="color:#ebbf2f">My Wishlist</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                <a href="subscription.php" class="customa">My Subscriptions</a>
+                <a href="subscription.php" class="customa">My Subscriptions</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <a href="mystudents.php" class="customa" style="color:#ebbf2f">My Students</a>
                 
             </div>
         <hr>
     </div>
     <div class="container-account pt-3">
         <div class="row">
-            <div class="col-md-6"><b style="font-size:20;">My Wishlist</b></div>
+            <div class="col-md-6"><b style="font-size:20;">My Students </b></div>
         </div>
     </div>
     <div class="container-account" style="padding-bottom:100px;">
         <div class="row">
             <div class="col-md-12">View favorite products you've saved to your wishlist.</div>
-            <br><br>
+            <br><br><hr>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+      
+      <div class="card-body">
+        <h5 class="card-title">My Student</h5><hr>
+        <form>
+          <div>
+      <label for="name"><h6>Name:</h6></label>
+      <input type="text" id="name" name="name"><br></div>
+      <div>
+      <label for="email"><h6>Email:</h6></label>
+      <input type="email" id="email" name="email"><br></div>
+      <div>
+      <label for="schools"><h6>Choose Your School:</h6></label>
+<select id="Schools" name="schools">
+<option value="Choose Your sachool">Choose Your School</option>
+  <option value="Malvern College">Malvern College</option>
+  <option value="Eternity Schools of egypt">Eternity Schools of egypt</option>
+  <option value="New Generation">New Generation</option>
+  <option value="Cairo English School">Cairo English School</option>
+  <option value="New Horizon">New Horizon</option>
+  <option value="British And American">British And American</option>
+  <option value="ETHOS">ETHOS</option>
+</select>
+  </div>
+<br>
+<div>
+<label for="grade"><h6>Grade year:</h6></label>
+<select id="grade" name="grade">
+<option value="grade">Choose Your Grade level</option>
+  <option value="1">Grade 1</option>
+  <option value="2">Grade 2</option>
+  <option value="3">Grade 3</option>
+  <option value="4">Grade 4</option>
+  <option value="5">Grade 5</option>
+  <option value="6">Grade 6</option>
+  <option value="7">Grade 7</option>
+  <option value="8">Grade 8</option>
+  <option value="9">Grade 9</option>
+  <option value="10">Grade 10</option>
+  <option value="11">Grade 11</option>
+  <option value="12">Grade 12</option>
+</select>
+  </div>
+<br>
+    </form>
+  </div>
+</div>
 
-            <div class="container" style="padding-bottom:100; padding-top:100;">
-        <div class="row">
-            <div class="col-md-6 centered">
-                <div class="cardd">
-                    <img width="200" height="200" src="images/shop/products/blue_pen.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <b class="bfont"> Blue Pen</b><br>
-                <hr>
 
-                <div class="bsmallerfont">Type: Zebra<br>Durablity: 4,000 words
-                </div> $ 2.99
-                <div style="padding-top:100;">
-                    <br><button class="btnproductdetails">Add to cart</button>
-                </div>
-            </div>
-        </div>
+    </form>
+      
+            
     </div>
     </div>
 
