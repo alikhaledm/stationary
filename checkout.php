@@ -195,7 +195,7 @@ if (isset($_POST['placeorder'])) {
       <div class="col-lg-12">
         <center>
           <h2>Cart Summary</h2>
-          <p>You Have 10 items In Your Cart</p>
+
         </center>
 
       </div>
@@ -229,7 +229,7 @@ if (isset($_POST['placeorder'])) {
           </div>
              
             <div class="col-lg-6 col-sm-12" style="padding-bottom:50; align-items:center; display:flex; padding-left:80;">
-              <h5>$' . number_format($productPrice, 2) . ' x' . $quantity . '</h5>
+              <h5>' . number_format($productPrice, 2) . ' EGP  x' . $quantity . ' </h5>
               
         </div>
          
@@ -250,10 +250,11 @@ if (isset($_POST['placeorder'])) {
         <div class="col-6"><b>TOTAL PRICE</b></div>
       </center>
       <center>
-        <div class="col-6"><b>$
+        <div class="col-6"><b>
 
 
             <?php echo number_format($total, 2); ?>
+            EGP
           </b>
       </center>
 

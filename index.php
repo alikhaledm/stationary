@@ -215,7 +215,7 @@ require_once("connect.php");
 
   .servicebody {
     width: 100%;
-    background-color: #FFF77D;
+    background-color: white;
   }
 
   .servicecard {
@@ -225,7 +225,7 @@ require_once("connect.php");
     height: 310px;
     background-color: white;
     border: 2px solid black;
-    border-radius: 20px;
+    border-radius: 40px;
 
   }
 
@@ -502,10 +502,10 @@ require_once("connect.php");
         <div class="col-md-12" style="font-size:40px; color:black;">
           <center>OUR SERVICES</center><br>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:30;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%;"><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100"
                 height="100" src="images/services/supplies.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Supplies List
@@ -521,10 +521,10 @@ require_once("connect.php");
 
           </div>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:30;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%;"><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100"
                 height="100" src="images/services/stationery.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Excess Selling
@@ -534,7 +534,7 @@ require_once("connect.php");
 
             </div>
 
-            <div class="centered"><button class=" carouselbtn">Learn
+            <div class="centered"><button class="carouselbtn">Learn
                 More</button></div>
 
 
@@ -543,10 +543,10 @@ require_once("connect.php");
 
           </div>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:30;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%; "><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100"
                 height="100" src="images/services/donate.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Donations
@@ -560,10 +560,10 @@ require_once("connect.php");
 
           </div>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:30;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%; "><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100"
                 height="100" src="images/services/shop.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Stationery Shop

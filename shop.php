@@ -11,7 +11,7 @@ require_once("connect.php") ?>
     justify-content: center;
     align-items: center;
     display: flex;
-    padding-top: 50px;
+
     color: black;
     font-style: italic;
   }
@@ -29,6 +29,11 @@ require_once("connect.php") ?>
   .line3 {
     border-top: 2px solid black;
     width: 2%;
+  }
+
+  .line4 {
+    border-top: 1px solid black;
+    width: 100%;
   }
 
   .centered {
@@ -98,31 +103,39 @@ require_once("connect.php") ?>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <img width="100%" height="300px" src="images/supplies-list-2.jpg" alt="">
+        <img width="100%" height="300px" src="images/school-supplies-list.jpg" alt="">
       </div>
-      <div class="col-lg-12">
+      <div class="col-lg-12" style="padding-top:60px">
+        <div class="line4"></div>
+      </div>
+
+
+      <div class="col-lg-12 centered" style="padding-top:30px">
         <div class="shoptitle">Let's Find What You're Looking For</div>
       </div>
-      <div class="col-lg-12" style="padding-top:50;">
-        <div class="line"></div>
+
+
+      <div class="col-lg-12" style="padding-top:30px">
+        <div class="line4"></div>
       </div>
     </div>
+  </div>
   </div>
 
   <div class="container">
     <div class="row">
       <div class="col-lg-6" style="padding-top:70;">
-        <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
-            src="images/shop/shop1.jpg" alt="">
+        <div style="position:relative;" class="centered"><img style="width:100%; height:500px;" src="images/card2.png"
+            alt="">
           <div style="position:absolute;">
-            <a href="products.php"><button class="shopmainbtn"> SHOP ALL STATIONERY</button>
+            <a href="products.php"><button class="shopmainbtn">GET YOUR SUPPLIES LIST </button>
           </div>
           </a>
         </div>
       </div>
       <div class="col-lg-6" style="padding-top:70;">
-        <div style="position:relative;" class="centered"><img style="width:100%; height:600px;"
-            src="images/shop/shop2.jpg" alt="">
+        <div style="position:relative;" class="centered"><img style="width:100%; height:500px;" src="images/card4.png"
+            alt="">
           <div style="position:absolute;"> <a href="products.php"><button class="shopmainbtn"> SHOP ALL
                 STATIONERY</button></div></a>
         </div>
