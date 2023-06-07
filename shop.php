@@ -125,8 +125,7 @@ require_once("connect.php") ?>
   <div class="container">
     <div class="row">
       <div class="col-lg-6" style="padding-top:70;">
-        <div style="position:relative;" class="centered"><img style="width:100%; height:500px;" src="images/card2.png"
-            alt="">
+        <div style="position:relative;" class="centered"><img style="width:100%;" src="images/card2.png" alt="">
           <div style="position:absolute;">
             <a href="products.php"><button class="shopmainbtn">GET YOUR SUPPLIES LIST </button>
           </div>
@@ -134,8 +133,7 @@ require_once("connect.php") ?>
         </div>
       </div>
       <div class="col-lg-6" style="padding-top:70;">
-        <div style="position:relative;" class="centered"><img style="width:100%; height:500px;" src="images/card4.png"
-            alt="">
+        <div style="position:relative;" class="centered"><img style="width:100%;" src="images/card4.png" alt="">
           <div style="position:absolute;"> <a href="products.php"><button class="shopmainbtn"> SHOP ALL
                 STATIONERY</button></div></a>
         </div>
