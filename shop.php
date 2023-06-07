@@ -103,7 +103,7 @@ require_once("connect.php") ?>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <img width="100%" height="300px" src="images/school-supplies-list.jpg" alt="">
+        <img width="100%" height="300px" src="images/shopp.jpg" alt="">
       </div>
       <div class="col-lg-12" style="padding-top:60px">
         <div class="line4"></div>
