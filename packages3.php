@@ -493,12 +493,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Display the grouped products
                     foreach ($groupedProducts as $category => $products) {
                       echo '<li><span style="font-size:25px;">' . $category . '</span>';
-                      echo '<ol>';
+                      echo '<ul>';
                       foreach ($products as $product) {
                         echo '<li>' . $product . '</li>';
                         echo '<hr>';
                       }
-                      echo '</ol></li></ul>';
+                      echo '</ul></li></ul>';
                     }
                   }
                   echo '
