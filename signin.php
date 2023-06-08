@@ -115,6 +115,161 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <body>
+
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+    <style>
+        .navbarcustomedits {
+            background-color: white;
+        }
+
+        .navcontainer {
+            width: 75%;
+        }
+
+        .brand2 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .btncustom {
+            border-color: black;
+            border: 0.5px solid #000;
+            background-color: white;
+            height: 40px;
+            width: 120px;
+        }
+
+        .btncustom:hover {
+            border-color: gold;
+        }
+
+        .cartcount {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+        }
+
+        .navfont {
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            color: gold;
+        }
+
+        .activee {
+            color: gold;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
+        <div class="container-fluid navcontainer">
+            <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="20%" height="80px"
+                    class="d-inline-block align-text-top me-2"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link brand2" href="index.php">SUPPLIES HUB</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfont">
+                        <li class="nav-item">
+                            <a class="nav-link activee" aria-current="page" href="index.php">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.php">Shop</a>
+                        </li>
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            echo '
+                    <li class="nav-item">
+                        <a class="nav-link" href="excess.php">Excess Supplies</a>
+                    </li>';
+                        } ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.php">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.php">About</a>
+                        </li>
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            echo '<li class="nav-item">
+                    <a class="nav-link" href="cart.php">
+                        <div class="position-relative">
+                            <div class="cartcount">25</div>
+                            <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                            </svg>
+                        </div>
+                    </a>
+                </li>';
+                        } ?>
+                        <?php if (isset($_SESSION['id'])) {
+                            echo '
+                <li id="dropdown" class="nav-item">
+                    <div class="dropdown">
+                        <button class="btncustom dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            ' . $_SESSION['fname'] . '
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="account.php">My Account</a>
+                            <a class="dropdown-item" href="page2.html">Page 2</a>
+                            <a class="dropdown-item" href="page3.html">Page 3</a>
+                            <hr style="width:75%">
+                            <a class="dropdown-item" href="logout.php">Logout</a>
+                        </div>
+                    </div>
+                </li>';
+                        } else {
+                            echo '<li class="nav-item">
+                    <a href="signin.php">
+                        <button class="btncustom" type="button">
+                            Sign In
+                        </button>
+                    </a>';
+                        } ?>
+
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="container mb-20 mt-20">
         <div class=" max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
             <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
@@ -128,38 +283,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form method="POST">
                         <div class="w-full flex-1 mt-8">
                             <div class="flex flex-col items-center">
-                                <button class="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-light text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
-                                    <div class="bg-white p-2 rounded-full">
-                                        <svg class="w-4" viewBox="0 0 533.5 544.3">
-                                            <path d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z" fill="#4285f4" />
-                                            <path d="M272.1 544.3c73.4 0 135.3-24.1 180.4-65.7l-87.7-68c-24.4 16.6-55.9 26-92.6 26-71 0-131.2-47.9-152.8-112.3H28.9v70.1c46.2 91.9 140.3 149.9 243.2 149.9z" fill="#34a853" />
-                                            <path d="M119.3 324.3c-11.4-33.8-11.4-70.4 0-104.2V150H28.9c-38.6 76.9-38.6 167.5 0 244.4l90.4-70.1z" fill="#fbbc04" />
-                                            <path d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z" fill="#ea4335" />
-                                        </svg>
-                                    </div>
-                                    <span class="ml-4">
-                                        Continue with Google
-                                    </span>
-                                </button>
+
                             </div>
                             <div class="my-12 border-b text-center">
-                                <div class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                                <div
+                                    class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                                     Or sign in with E-mail
                                 </div>
                             </div>
                             <div class="mx-auto max-w-xs">
-                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" name="email" placeholder="Email" required />
-                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4" id="passwordInput" type="password" name="password" placeholder="Password" required />
+                                <input
+                                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    name="email" placeholder="Email" required />
+                                <input
+                                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4"
+                                    id="passwordInput" type="password" name="password" placeholder="Password"
+                                    required />
                                 <div class="password-input-container">
                                     <div class="show-password-icon" onclick="togglePasswordVisibility()">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
-                                            <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
-                                            <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
-                                            <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor"
+                                            class="bi bi-eye-slash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
+                                            <path
+                                                d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
+                                            <path
+                                                d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
                                         </svg>
                                     </div>
                                 </div>
-                                <input type="submit" value="Sign In" class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <input type="submit" value="Sign In"
+                                    class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     </form>
                     <p class="mt-6 text-xs text-gray-600 text-center">
                         Don't have an account?
@@ -194,3 +348,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+
+<?php
+include("footer.php")
+    ?>

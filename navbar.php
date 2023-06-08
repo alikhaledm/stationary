@@ -32,7 +32,7 @@
     }
 
     .btncustom:hover {
-        border-color: gold;  
+        border-color: gold;
     }
 
     .cartcount {

@@ -3,34 +3,24 @@
 <?php
 require_once("connect.php");
 include("navbar.php");
-
 $userid = $_SESSION['id'];
 if (isset($_POST["query"])) {
   $userid = $_SESSION['id'];
 }
-
 $total = 0;
-
 $getotal = "SELECT SUM(products.price * cart.quantity) AS total_price FROM products INNER JOIN cart ON products.id = cart.productid WHERE cart.userid = $userid";
 $result = mysqli_query($conn, $getotal);
 $tagID = mysqli_fetch_assoc($result);
-
 if ($result) {
   $total = $tagID['total_price'];
 }
-
 if (isset($_POST['update_quantity'])) {
   $productId = $_POST['product_id'];
   $newQuantity = $_POST['quantity'];
-
   $updateQuery = "UPDATE cart SET quantity = $newQuantity WHERE userid = $userid AND productid = $productId";
   $updateResult = mysqli_query($conn, $updateQuery);
-
-
 }
-
 ?>
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
@@ -41,7 +31,6 @@ if (isset($_POST['update_quantity'])) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
   <section class="py-5">
     <div class="container py-5">

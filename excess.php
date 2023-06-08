@@ -3,9 +3,7 @@
 <?php
 require_once("connect.php");
 ?>
-
 <head>
-
   <title>Services - Brand</title>
   <style>
     .btn {
@@ -22,11 +20,8 @@ require_once("connect.php");
       opacity: 80%;
     }
   </style>
-
 </head>
-
 <body>
-
   <?php include("navbar.php");
   if (isset($_SESSION[''])) {
     echo '
@@ -36,7 +31,6 @@ require_once("connect.php");
       </div>';
   }
   ?>
-
   <section class="py-5">
     <div class="container py-5">
       <div class="row mb-4 mb-lg-5">

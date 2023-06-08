@@ -15,19 +15,10 @@ if (isset($_POST["query"])) {
     $userid = $_SESSION['id'];
 }
 
-$total = 0;
-
-$getotal = "SELECT SUM(products.price * cart.quantity) AS total_price FROM products INNER JOIN cart ON products.id = cart.productid WHERE cart.userid = $userid";
-$result = mysqli_query($conn, $getotal);
-$tagID = mysqli_fetch_assoc($result);
-
-if ($result) {
-    $total = $tagID['total_price'];
-}
 
 //get address
-$getAddress = "SELECT * FROM address WHERE userid = $userid";
-$resultorder = mysqli_query($conn, $getAddress);
+$getorders = "SELECT * FROM orders WHERE userid = $userid";
+$resultorder = mysqli_query($conn, $getorders);
 
 
 
@@ -66,9 +57,7 @@ $resultorder = mysqli_query($conn, $getAddress);
 </style>
 
 <body>
-    <?php
-    include("navbar.php");
-    ?>
+
 
     <div class="container-account" id="fade-container">
         <div class="row">
@@ -147,21 +136,29 @@ $resultorder = mysqli_query($conn, $getAddress);
                 <?php
                 if ($resultorder) {
                     while ($rowData3 = mysqli_fetch_assoc($resultorder)) {
-                        $title = $rowData3['title'];
-                        $city = $rowData3['city'];
-                        $area = $rowData3['area'];
-                        $zip = $rowData3['zip'];
-                        $street = $rowData3['street'];
-                        $addressid = $rowData3['id'];
+                        $orderid = $rowData3['id'];
+                        $orderdate = $rowData3['date'];
+                        $addressid = $rowData3['addressid'];
                         $i = 1;
 
-                        echo '<div class="details__user">
+                        echo '<div class="details__user" style="padding-top:20;">
+                        <div class="card-body bg-transparent ">
+                        <div id="text" style="display:none;">
+                            <h5 class="card-title">Products Ordered:</h5> <h6><b>Order ID: ' . $orderid . '</b></h6>
+                            <hr>
+                            <h5 class="card-title">Products Total Price:</h5>
+                            <hr>
+                            <h5 class="card-title">Deliverd to:</h5><h6>Address ID: ' . $addressid . '</h6>
+                            <hr>
+                            <p class="card-text">Date: </p> <h6>' . $orderdate . ' st,</h6>
+                        </div>
+                        <center>
+                            <button type="button" id="show-button" class="btn">More Details</button>
+                            <br>
+                        </center>
         <div class="row">
-          <div class="col-1">
-            <input type="radio" name="address" value="' . $addressid . '" style="margin-top: 2px;">
-          </div>
           <div class="col-9">
-            <h6><b>' . $title . '</b></h6>
+            
           </div>
           <div class="col">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
@@ -169,12 +166,7 @@ $resultorder = mysqli_query($conn, $getAddress);
             </svg>
           </div>
         </div>
-        <div id="myDIV">
-          <h6>' . $area . '</h6>
-          <h6>' . $street . ' st,</h6>
-          <h6>' . $city . '</h6>
-          <h6>' . $zip . '</h6>
-        </div>
+        
       </div>
       <br>';
 
@@ -188,48 +180,34 @@ $resultorder = mysqli_query($conn, $getAddress);
 
 
 
-                <div class="card-body bg-transparent ">
-                    <div id="text" style="display:none;">
-                        <h5 class="card-title">Products Orderd:</h5>
-                        <hr>
-                        <h5 class="card-title">Products Total Price:</h5>
-                        <hr>
-                        <h5 class="card-title">Deliverd to:</h5>
-                        <hr>
-                        <p class="card-text">Date: </p>
-                        <p class="card-text">Status: </p>
-                    </div>
-                    <center>
-                        <button type="button" id="show-button" class="btn">More Details</button>
-                        <br>
-                    </center>
-
-                    <script>
-                        // Get references to the button and text elements
-                        const showButton = document.getElementById('show-button');
-                        const text = document.getElementById('text');
-
-                        // Add click event listener to the button
-                        showButton.addEventListener('click', () => {
-                            // Toggle the display of the text element
-                            if (text.style.display === 'none') {
-                                text.style.display = 'block';
-                                showButton.textContent = 'Hide';
-                            } else {
-                                text.style.display = 'none';
-                                showButton.textContent = 'More Details';
-                            }
-                        });
-                    </script>
 
 
-                    <center>
-                        <br>
-                        <div class="card-footer text-body-secondary border-dark  bg-transparent">2 days ago</div>
-                    </center>
-                </div>
+                <script>
+                    // Get references to the button and text elements
+                    const showButton = document.getElementById('show-button');
+                    const text = document.getElementById('text');
+
+                    // Add click event listener to the button
+                    showButton.addEventListener('click', () => {
+                        // Toggle the display of the text element
+                        if (text.style.display === 'none') {
+                            text.style.display = 'block';
+                            showButton.textContent = 'Hide';
+                        } else {
+                            text.style.display = 'none';
+                            showButton.textContent = 'More Details';
+                        }
+                    });
+                </script>
+
+
+                <center>
+                    <br>
+                    <div class="card-footer text-body-secondary border-dark  bg-transparent">2 days ago</div>
+                </center>
             </div>
         </div>
+    </div>
     </div>
 
 </body>

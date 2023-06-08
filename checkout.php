@@ -57,7 +57,7 @@ if (isset($_POST['savecard'])) {
   $insertCardResult = mysqli_query($conn, $insertCardQuery);
 
   if ($insertCardResult) {
-    header("location: checkout.php");
+    echo "<script>window.location.href = 'checkout.php';</script>";
   } else {
     echo "Error: Unable to save credit card details.";
     // Handle the error appropriately
@@ -195,7 +195,7 @@ if (isset($_POST['placeorder'])) {
       <div class="col-lg-12">
         <center>
           <h2>Cart Summary</h2>
-          <p>You Have 10 items In Your Cart</p>
+
         </center>
 
       </div>
@@ -229,7 +229,7 @@ if (isset($_POST['placeorder'])) {
           </div>
              
             <div class="col-lg-6 col-sm-12" style="padding-bottom:50; align-items:center; display:flex; padding-left:80;">
-              <h5>$' . number_format($productPrice, 2) . ' x' . $quantity . '</h5>
+              <h5>' . number_format($productPrice, 2) . ' EGP  x' . $quantity . ' </h5>
               
         </div>
          
@@ -250,10 +250,11 @@ if (isset($_POST['placeorder'])) {
         <div class="col-6"><b>TOTAL PRICE</b></div>
       </center>
       <center>
-        <div class="col-6"><b>$
+        <div class="col-6"><b>
 
 
             <?php echo number_format($total, 2); ?>
+            EGP
           </b>
       </center>
 
@@ -478,38 +479,34 @@ if (isset($_POST['placeorder'])) {
             $area = $rowData3['area'];
             $zip = $rowData3['zip'];
             $street = $rowData3['street'];
-            $addressid = $rowData3['id'];
             $i = 1;
 
             echo '<div class="details__user">
-        <div class="row">
-          <div class="col-1">
-            <input type="radio" name="address" value="' . $addressid . '" style="margin-top: 2px;">
+            <div class="row">
+              <div class="col-1">
+                <input type="radio" name="address" style="margin-top: 2px;">
+              </div>
+              <div class="col-9">
+                <h6><b>' . $title . '</b></h6>
+              </div>
+              <div class="col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg>
+              </div>
+            </div>
+            <div id="myDIV">
+              <h6>' . $area . '</h6>
+              <h6>' . $street . ' st,</h6>
+              <h6>' . $city . '</h6>
+              <h6>' . $zip . '</h6>
+            </div>
           </div>
-          <div class="col-9">
-            <h6><b>' . $title . '</b></h6>
-          </div>
-          <div class="col">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-            </svg>
-          </div>
-        </div>
-        <div id="myDIV">
-          <h6>' . $area . '</h6>
-          <h6>' . $street . ' st,</h6>
-          <h6>' . $city . '</h6>
-          <h6>' . $zip . '</h6>
-        </div>
-      </div>
-      <br>';
-
-            // Assign the selected addressid to a session variable
-            $_SESSION['selected_addressid'] = $addressid;
+          <br>
+          ';
           }
         }
         ?>
-
 
 
 
@@ -639,7 +636,6 @@ if (isset($_POST['placeorder'])) {
         document.getElementById("addressBoxOverlay").style.display = "none";
       });
     </script>
-
 
 
 

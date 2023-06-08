@@ -79,7 +79,6 @@ if (isset($_POST['update'])) {
         <?php include("admin-sidebar.php"); ?>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <?php include("admin-topbar.php"); ?>
                 <div class="container-fluid">
                     <h3 class="text-dark mb-4 text-center">Registered Users</h3>
                     <div class="card shadow">

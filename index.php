@@ -214,25 +214,23 @@ require_once("connect.php");
   }
 
   .servicebody {
-    width: 75%;
-    background-color: #F9F9FF;
-    box-shadow: 1px;
-    border-radius: 1px;
+    width: 100%;
+    background-color: white;
   }
 
   .servicecard {
-
     margin: 0 auto;
-    /* Add this line to center the container horizontally */
-    background-color: white;
+    border-color: black;
     width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    height: 310px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 40px;
+
   }
 
   .servicecard:hover {
-    background-color: #FBDF73;
+    background-color: FFF77D;
     transition: 2s;
   }
 
@@ -284,7 +282,7 @@ require_once("connect.php");
     font-size: 40px;
     color: black;
     font-weight: bolder;
-    
+
   }
 
   .carouselfont2 {
@@ -379,12 +377,6 @@ require_once("connect.php");
     color: white;
     font-weight: bold;
   }
-
-  .servicecard {
-    border: none;
-    transition-duration: 2s;
-    cursor: pointer;
-  }
 </style>
 
 
@@ -417,7 +409,7 @@ require_once("connect.php");
                 <div class="carouselfont1">Select School, Get Supplies</div>
                 <div class="carouselfont2">
                   Explore our One-Click Solution<br> for All Your School Supply Needs</div><br>
-                
+
               </div>
             </div>
 
@@ -428,7 +420,7 @@ require_once("connect.php");
               <div class="carousel-caption d-md-block">
                 <div class="carouselfont1">School Supplies Made Easy</div>
                 <div class="carouselfont2">Get Your School Supplies in Minutes:<br> Select, Order, and Relax</div>
-                
+
               </div>
             </div>
 
@@ -440,7 +432,7 @@ require_once("connect.php");
                 <div class="carouselfont1">Wide Range Of Products</div>
                 <div class="carouselfont2">Your School Supply Paradise: Everything You Want, All in One Store</div>
                 <br>
-               
+
               </div>
             </div>
           </div>
@@ -459,13 +451,13 @@ require_once("connect.php");
     </div>
   </div>
 
-  <div class="container">
+  <div class="container-">
     <div class="row">
 
       <div class="col-lg-6 col-sm-12" style="padding-top:20;">
 
         <div class="image-wrapper">
-          <img style="width:100%;" src="images/packages/555.png " alt="Image" height="100px">
+          <img style="width:100%;" src="images/card2.png " alt="Image" height="100px">
           <div class="content-overlay">
             <div></div>
             <div class="bodyfont3">Discover Your Gathered<br> Supplies List
@@ -500,7 +492,7 @@ require_once("connect.php");
     </div>
 
   </div>
-<br><br>
+  <br><br>
 
 
 
@@ -510,10 +502,10 @@ require_once("connect.php");
         <div class="col-md-12" style="font-size:40px; color:black;">
           <center>OUR SERVICES</center><br>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%;"><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100"
                 height="100" src="images/services/supplies.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Supplies List
@@ -529,10 +521,10 @@ require_once("connect.php");
 
           </div>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%;"><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100"
                 height="100" src="images/services/stationery.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Excess Selling
@@ -542,7 +534,7 @@ require_once("connect.php");
 
             </div>
 
-            <div class="centered"><button class=" carouselbtn">Learn
+            <div class="centered"><button class="carouselbtn">Learn
                 More</button></div>
 
 
@@ -551,10 +543,10 @@ require_once("connect.php");
 
           </div>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%; "><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100"
                 height="100" src="images/services/donate.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Donations
@@ -568,10 +560,10 @@ require_once("connect.php");
 
           </div>
         </div>
-        <div class="col-lg-3 col-sm-12" style="padding-top:50;">
+        <div class="col-lg-3 col-sm-12">
 
           <div class="servicecard" style="font-size:32;">
-            <div style="display:flex; justify-content:center; align-items:center; padding-top: 10%; "><img width="100"
+            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100"
                 height="100" src="images/services/shop.svg" alt=""></div>
             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
               Stationery Shop
