@@ -4,6 +4,9 @@ require_once("connect.php");
 include("navbar.php");
 
 
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $studentemail = $_POST['email'];
   $studentdob = $_POST['dob'];

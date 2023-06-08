@@ -116,51 +116,50 @@ if (mysqli_num_rows($result) > 0) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    </head>
-    <style>
-        
-        svg {
-            cursor: pointer;
-        }
+</head>
+<style>
+    svg {
+        cursor: pointer;
+    }
 
-        .acclink {
-            text-decoration: none;
-            color: black;
-        }
+    .acclink {
+        text-decoration: none;
+        color: black;
+    }
 
-        a {
-    color: yellow;
-    text-decoration: none;
-  }
-  a:hover {
-    color: #ebbf2f;
-  }
- 
-    </style>
+    a {
+        color: yellow;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ebbf2f;
+    }
+</style>
 
 <body>
     <?php
     include("navbar.php");
     ?>
 
-    
+
     <div class="container-account" id="fade-container">
         <div class="row">
             <div class="col-md-12">
-            <div id="content">
-            <div class="card text-bg-dark">
-  <img src="images/account/1c.png" class="card-img" alt="..." >
-  <div class="card-img-overlay">
-   
-  </div>
-</div>
-     <div>
-     </div>
-            <b style="font-size:25px; color:#ebbf2f;">
-            <?php
-                echo ucfirst($_SESSION['fname']);
-                echo "&nbsp;" . ucfirst($_SESSION['lname']);
-                ?>
+                <div id="content">
+                    <div class="card text-bg-dark">
+                        <img src="images/account/1c.png" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                    <b style="font-size:25px; color:#ebbf2f;">
+                        <?php
+                        echo ucfirst($_SESSION['fname']);
+                        echo "&nbsp;" . ucfirst($_SESSION['lname']);
+                        ?>
                 </div>
                 </b>
             </div>
@@ -173,8 +172,12 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-sm"><a href="orders.php" class="acclink"><b>My Orders</b></a></div>
             <div class="col-sm"><a href="address.php" class="acclink"><b>My Addresses</b></a></div>
             <div class="col-sm"><a href="wallet.php" class="acclink"><b>My Wallet</b></a></div>
-            <div class="col-sm"><a href="subscription.php" class="acclink"><b>My Subscriptions</b></a></div>
+            <?php
+            if ($_SESSION['acctype'] == 'Parent') {
+                echo '
             <div class="col-sm"> <a href="mystudents.php" class="acclink"><b>My Students</b></a></div>
+            ';
+            } ?>
         </div>
         <hr>
     </div>
@@ -226,10 +229,10 @@ if (mysqli_num_rows($result) > 0) {
                 <div style="font-size:20px; padding-top:10px;"><input class="form-control input" type="text" name="phone" placeholder="<?php echo $_SESSION['phone'] ?>"></div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
-            
+
             </div>
             <div style="padding-top:70px;" class="col-md-6">
-            <hr>
+                <hr>
                 <input type="submit" class="btn btn-secondary" value="Save Changes">
                 <input type="submit" class="btn btn-warning" name="delete" value="Delete My Account">
             </div>

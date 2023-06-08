@@ -45,8 +45,10 @@ include("navbar.php");
   }
 
   #hr-3 {
-    border: 1px solid black;
-    font-weight: bold;
+    height: 1px;
+    color: #123455;
+    background-color: #123455;
+    border: none;
   }
 
   /* For Internet Explorer and Microsoft Edge */
@@ -85,29 +87,28 @@ include("navbar.php");
 
 <body>
   <div class="container-fluid">
-    <div class="row">
-      <div class="lineshop" style="padding-top:30;"></div>
-      <div class="col-md-12 text-center" style="padding-bottom: 30;">
-        <hr id="hr-3" style="width:90%;text-align:left;">
-        <h2 style="color: #1f3b2c">
-          PRODUCTS
-        </h2>
-        <hr id="hr-3" style="width:90%;text-align:left;">
-      </div>
-      <div class="lineshop"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-10 mx-auto text-center" style="padding-bottom: 30;">
+      <hr id="hr-3">
+      <h2 style="color: #1f3b2c">
+        PRODUCTS
+      </h2>
+      <hr id="hr-3">
     </div>
+    <div class="col-md-1"></div>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
         <div>
           <h2 class="h2">FILTER BY</h2>
         </div>
-        <hr style="width:70%; margin-left:0">
+        <hr>
         <div>
           <h5> CATEGORY</h5>
         </div>
-        <hr style="width:70%; margin-left:0">
+        <hr>
         <div><a href="">ALL</a></div>
         <div><a href="">Notebooks & Paper</a></div>
         <div><a href="">Art Supplies</a></div>
@@ -115,25 +116,23 @@ include("navbar.php");
         <div><a href="">Binders & Folders</a></div>
         <div><a href="">Math & Scientific Tools</a></div>
         <div><a href="">Pencil Cases & Bags</a></div>
-        <hr style="width:70%; margin-left:0">
+        <hr>
         <div>
           <h5> LEAST PRICE</h5>
         </div>
-        <hr style="width:70%; margin-left:0">
+        <hr>
       </div>
-      <div class="container">
+      <div class="col-md-8">
+        <input type="text" name="search_text" id="search_text" style="border:2px solid black;" placeholder="Search for Product" class="form-control" />
         <br>
-        <div class="form-group">
-          <div class="input-group">
-            <input type="text" name="search_text" id="search_text" placeholder="Search for Product" class="form-control" />
-          </div>
-        </div>
-        <br />
-        <div id="result"></div>
         <?php
         include("fetch.php");
         ?>
       </div>
+    </div>
+    <div class="col-md-1 mx-0 px-0"></div>
+
+  </div>
 </body>
 
 </html>
