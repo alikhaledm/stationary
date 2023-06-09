@@ -273,7 +273,7 @@ require_once("connect.php") ?>
           <div class="shopinput" style="padding-top:5;">
 
             <div class="shopsmallfont" style="padding-bottom:37px"></div>
-            <button style="width:50%" class="formbtn">Send</button>
+            <button style="width:60%" class="formbtn">Send</button>
 
           </div>
         </div>
