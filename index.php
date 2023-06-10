@@ -389,11 +389,15 @@ require_once("connect.php") ?>
     <div class="containerfluidcustom">
         <div class="row">
             <div class="col-lg-12">
-                <div id="carouselExampleDark" class="carousel carousel-dark slide" style="width:100%; height:100%;" data-bs-ride="carousel">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" style="width:100%; height:100%;"
+                    data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="5000">
@@ -433,11 +437,13 @@ require_once("connect.php") ?>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -462,7 +468,8 @@ require_once("connect.php") ?>
                         <div class="bodyfont2" style="padding-top:17px;">Get Your Supplies List Now!
                         </div>
                         <div style="padding-top:24px;">
-                            <a href="startnowintro.php"><button class="custombtn3"> Grab Your List <img width="15" height="15" src="images/forward.svg"></button></a>
+                            <a href="packages2.php"><button class="custombtn3"> Grab Your List <img width="15"
+                                        height="15" src="images/forward.svg"></button></a>
                         </div>
                     </div>
                 </div>
@@ -478,7 +485,8 @@ require_once("connect.php") ?>
                         <div class="bodyfont2" style="padding-top:17px;">Shop Stationery Now!
                         </div>
 
-                        <div style="padding-top:24px;"><a href="startnowintro.php"><button class="custombtn2"> Shop Stationery<img width="15" height="15" src="images/forward.svg">
+                        <div style="padding-top:24px;"><a href="shop.php"><button class="custombtn2"> Shop
+                                    Stationery<img width="15" height="15" src="images/forward.svg">
                                 </button></a></div>
                     </div>
                 </div>
@@ -494,7 +502,9 @@ require_once("connect.php") ?>
                     <div class="col-lg-3 col-sm-12">
 
                         <div class="servicecard" style="font-size:32;">
-                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" style="color:#0c0129" src="images/services/stationary.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><a
+                                    href="packages2.php"><img width="100" height="100" style="color:#0c0129"
+                                        src="images/services/stationary.svg" alt=""></a></div>
                             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
                                 Supplies List
                             </div>
@@ -512,7 +522,10 @@ require_once("connect.php") ?>
                     <div class="col-lg-3 col-sm-12">
 
                         <div class="servicecard" style="font-size:32;">
-                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" style="color:#0c0129" src="images/services/coin.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;">
+                                <a href="selling.php"><img width="100" height="100" style="color:#0c0129"
+                                        src="images/services/coin.svg" alt=""></a>
+                            </div>
                             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
                                 Excess Selling
                             </div>
@@ -533,7 +546,11 @@ require_once("connect.php") ?>
                     <div class="col-lg-3 col-sm-12">
 
                         <div class="servicecard" style="font-size:32;">
-                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/donate.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; ">
+                                <a href="donate.php">
+                                    <img width="100" height="100" src="images/services/donate2.svg" alt="">
+                                </a>
+                            </div>
                             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
                                 Donations
                             </div>
@@ -549,7 +566,11 @@ require_once("connect.php") ?>
                     <div class="col-lg-3 col-sm-12">
 
                         <div class="servicecard" style="font-size:32;">
-                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/shop.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; ">
+                                <a href="shop.php">
+                                    <img width="100" height="100" src="images/services/shop2.svg" alt="">
+                                </a>
+                            </div>
                             <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
                                 Stationery Shop
                             </div>
@@ -582,10 +603,14 @@ require_once("connect.php") ?>
         <div class="containerfluid" style="padding-bottom: 100px;">
 
             <div class="row bordered-row centered" style="border-style:none;">
-                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school1.jpg" alt=""></div>
-                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school2.jpg" alt=""></div>
-                <div class="col-lg-3 col-sm-12 text-center"><img width="80" src="images/Schools/school3.jpg" alt=""></div>
-                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school4.jpg" alt=""></div>
+                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school1.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school2.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-12 text-center"><img width="80" src="images/Schools/school3.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school4.jpg" alt="">
+                </div>
             </div>
             <div class="containerschoolshidden" style="border-style:none;">
                 <div class="row bordered-row centered" style="border-style:none;">
@@ -603,13 +628,13 @@ require_once("connect.php") ?>
 
 
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 if ($(window).width() <= 999) {
                     $('.mobile').removeClass('hidden').addClass('visible');
                 }
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 function adjustColumnWidth() {
                     if ($(window).width() <= 999) {
                         $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
@@ -622,13 +647,13 @@ require_once("connect.php") ?>
                 adjustColumnWidth();
 
                 // Adjust column width on window resize
-                $(window).resize(function() {
+                $(window).resize(function () {
                     adjustColumnWidth();
                 });
             });
 
-            $(window).scroll(function() {
-                $('.bordered-row').each(function() {
+            $(window).scroll(function () {
+                $('.bordered-row').each(function () {
                     var bottom_of_object = $(this).offset().top + $(this).outerHeight();
                     var bottom_of_window = $(window).scrollTop() + $(window).height();
                     if (bottom_of_window > bottom_of_object) {
@@ -639,7 +664,7 @@ require_once("connect.php") ?>
                 });
             });
 
-            window.addEventListener("scroll", function() {
+            window.addEventListener("scroll", function () {
                 var element = document.querySelector(".zoom-in-container");
                 var position = element.getBoundingClientRect().top;
                 var windowHeight = window.innerHeight;
@@ -651,7 +676,7 @@ require_once("connect.php") ?>
                 }
             });
 
-            window.addEventListener("scroll", function() {
+            window.addEventListener("scroll", function () {
                 var element = document.querySelector(".zoom-in-container2");
                 var position = element.getBoundingClientRect().top;
                 var windowHeight = window.innerHeight;
@@ -667,7 +692,7 @@ require_once("connect.php") ?>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <?php
         include("footer.php")
-        ?>
+            ?>
 </body>
 
 </html>

@@ -1,21 +1,32 @@
 <?php
 echo '
+<br><div class="col-lg-12">
 <label for="name">
     <h5>Enter Student`s Name:</h5>
 </label>
-<input type="text" id="name" name="childname" required>
+</div>
+<div class="col-lg-12">
+<input type="text" class="form-control" id="name" name="childname" required>
 <label for="email">
     <h5>Enter Student`s Email Provided By Their School:</h5>
 </label>
-<input type="email" id="email" name="email">
+</div>
+<div class="col-lg-12">
+<input type="email" class="form-control" id="email" name="email">
 <label>
     <h5>Enter Student`s Date Of Birth:</h5>
 </label>
-<input type="date" name="dob">
+</div>
+<div class="col-lg-12">
+<input type="date" class="form-control" name="dob">
+</div>
+<div class="col-lg-12">
 <label for="schools">
     <h5>Choose Their School:</h5>
 </label>
-<select id="Schools" name="schools" required>';
+</div>
+<div class="col-lg-12">
+<select id="Schools" class="form-select" name="schools" required>';
 
 $query = "SELECT * FROM school";
 $result = mysqli_query($conn, $query);
@@ -28,11 +39,14 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 echo '</select>
-<br>
+<br><br></div>
+<div class="col-lg-12">
 <label for="grade">
     <h5>Their Grade year:</h5>
 </label>
-<select id="grade" name="grades" required>
+</div>
+<div class="col-lg-12">
+<select id="grade" name="grades" class="form-select" required>
     <option value="grade">Choose Your Grade level</option>';
 $sqlgrade = "SELECT * FROM grade";
 $resultgrade = mysqli_query($conn, $sqlgrade);
@@ -46,5 +60,7 @@ if (mysqli_num_rows($resultgrade) > 0) {
 }
 echo '
 </select>
-<input type="submit" value="Save Details" onclick="scrollToBottom()">
+</div>
+<div class="col-lg-12"><br>
+<input type="submit" value="Save Details" class="form-control" onclick="scrollToBottom()"></div>
 ';

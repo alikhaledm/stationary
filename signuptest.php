@@ -3,114 +3,120 @@
 <?php
 require_once("connect.php");
 
-if (isset($_POST['signup'])) {
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST["email"];
-        $password = $_POST["pwd"];
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $phoneNum = $_POST["phone"];
-        $acctype = $_POST["acctype"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["pwd"];
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    $phoneNum = $_POST["phone"];
+    $acctype = $_POST["acctype"];
 
-        // find current date and put it in variable register date
-        $registerdate = date("Y-m-d");
+    // find current date and put it in variable register date
+    $registerdate = date("Y-m-d");
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo '<script>alert("Invalid Email Format, Please Try Again!");</script>';
-        } else {
-            $checkEmailQuery = "SELECT * FROM usersclass WHERE email = '$email'";
-            $checkEmailResult = mysqli_query($conn, $checkEmailQuery);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo '<script>alert("Invalid Email Format, Please Try Again!");</script>';
+    } else {
+        $checkEmailQuery = "SELECT * FROM usersclass WHERE email = '$email'";
+        $checkEmailResult = mysqli_query($conn, $checkEmailQuery);
 
-            if (mysqli_num_rows($checkEmailResult) > 0) {
-                echo '<script>alert("Email is already in use!");</script>
-                <script>window.location.href = "signup.php";</script>';
-            } elseif ($acctype == 0) {
-                $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
-                        VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Parent','$registerdate')";
+        if (mysqli_num_rows($checkEmailResult) > 0) {
+            echo '<script>alert("Email is already in use!");</script>
+            <script>window.location.href = "signin.php";</script>';
+        } elseif ($acctype == 0) {
+            $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
+                    VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Parent','$registerdate')";
 
-                // Start a transaction
-                mysqli_begin_transaction($conn);
+            // Start a transaction
+            mysqli_begin_transaction($conn);
 
-                try {
-                    // Insert user information into usersclass table
-                    if (mysqli_query($conn, $sql)) {
-                        $parentid = mysqli_insert_id($conn);
+            try {
+                // Insert user information into usersclass table
+                if (mysqli_query($conn, $sql)) {
+                    $parentid = mysqli_insert_id($conn);
 
-                        // Retrieve the id from usersclass table based on the email
-                        $selectIdQuery = "SELECT id FROM usersclass WHERE email = '$email' FOR UPDATE";
-                        $selectIdResult = mysqli_query($conn, $selectIdQuery);
+                    // Retrieve the id from usersclass table based on the email
+                    $selectIdQuery = "SELECT id FROM usersclass WHERE email = '$email' FOR UPDATE";
+                    $selectIdResult = mysqli_query($conn, $selectIdQuery);
 
-                        // Commit the transaction
-                        mysqli_commit($conn);
-                    } else {
-                        // Rollback the transaction if there was an error
-                        mysqli_rollback($conn);
-                        echo "Error: " . mysqli_error($conn);
-                    }
-                } catch (Exception $e) {
-                    // Rollback the transaction in case of exception
+                    // Commit the transaction
+                    mysqli_commit($conn);
+                } else {
+                    // Rollback the transaction if there was an error
                     mysqli_rollback($conn);
-                    echo "Error: " . $e->getMessage();
+                    echo "Error: " . mysqli_error($conn);
                 }
-            } elseif ($acctype == 1) {
-                $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
-                        VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Student', '$registerdate')";
-                mysqli_begin_transaction($conn);
+            } catch (Exception $e) {
+                // Rollback the transaction in case of exception
+                mysqli_rollback($conn);
+                echo "Error: " . $e->getMessage();
+            }
+        } elseif ($acctype == 1) {
+            $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
+                    VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Student', '$registerdate')";
+            mysqli_begin_transaction($conn);
 
-                try {
-                    // Insert user information into usersclass table
-                    if (mysqli_query($conn, $sql)) {
-                        $studentid = mysqli_insert_id($conn);
+            try {
+                // Insert user information into usersclass table
+                if (mysqli_query($conn, $sql)) {
+                    $studentid = mysqli_insert_id($conn);
 
-                        // Retrieve the id from usersclass table based on the email
-                        $selectIdQuery = "SELECT id FROM usersclass WHERE email = '$email' FOR UPDATE";
-                        $selectIdResult = mysqli_query($conn, $selectIdQuery);
+                    // Retrieve the id from usersclass table based on the email
+                    $selectIdQuery = "SELECT id FROM usersclass WHERE email = '$email' FOR UPDATE";
+                    $selectIdResult = mysqli_query($conn, $selectIdQuery);
 
-                        if (mysqli_num_rows($selectIdResult) > 0) {
-                            $row = mysqli_fetch_assoc($selectIdResult);
-                            $userid = $row['id'];
+                    if (mysqli_num_rows($selectIdResult) > 0) {
+                        $row = mysqli_fetch_assoc($selectIdResult);
+                        $userid = $row['id'];
 
-                            // Insert the user id into the ParentId column of the parent table
-                            $sqlStudent = "INSERT INTO student (studentid, userid, studentname) VALUES ('$userid','$userid','$fname $lname')";
-                            mysqli_query($conn, $sqlStudent);
-                        }
-
-                        // Commit the transaction
-                        mysqli_commit($conn);
-                    } else {
-                        // Rollback the transaction if there was an error
-                        mysqli_rollback($conn);
-                        echo "Error: " . mysqli_error($conn);
+                        // Insert the user id into the ParentId column of the parent table
+                        $sqlStudent = "INSERT INTO student (studentid, userid, studentname) VALUES ('$userid','$userid','$fname $lname')";
+                        mysqli_query($conn, $sqlStudent);
                     }
-                } catch (Exception $e) {
-                    // Rollback the transaction in case of exception
+
+                    // Commit the transaction
+                    mysqli_commit($conn);
+                } else {
+                    // Rollback the transaction if there was an error
                     mysqli_rollback($conn);
-                    echo "Error: " . $e->getMessage();
+                    echo "Error: " . mysqli_error($conn);
                 }
-            } elseif ($acctype == 2) {
+            } catch (Exception $e) {
+                // Rollback the transaction in case of exception
+                mysqli_rollback($conn);
+                echo "Error: " . $e->getMessage();
+            }
+        } elseif ($acctype == 2) {
+            $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
+                    VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'User', $registerdate)";
+            $result = mysqli_query($conn, $sql);
+
+            if ($email == 'admin@gmail.com') {
                 $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
-                        VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'User', $registerdate)";
+                    VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Admin', $registerdate)";
+                $result = mysqli_query($conn, $sql);
+                echo '<script>window.location.href = "admin-dashboard.php";</script>';
             }
+        }
 
-            $sql2 = "SELECT * FROM usersclass WHERE email ='$email'";
-            $result = mysqli_query($conn, $sql2);
+        $sql2 = "SELECT * FROM usersclass WHERE email ='$email'";
+        $result = mysqli_query($conn, $sql2);
 
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
 
-                $_SESSION['id'] = $row["id"];
-                $_SESSION['fname'] = $row["fname"];
-                $_SESSION['lname'] = $row["lname"];
-                $_SESSION['email'] = $row["email"];
-                $_SESSION['phone'] = $row["phone"];
-                $_SESSION['acctype'] = $row["acctype"];
-                if ($_SESSION['acctype'] == 'Student') {
-                    $_SESSION['dob'] = $row["dob"];
-                }
+            $_SESSION['id'] = $row["id"];
+            $_SESSION['fname'] = $row["fname"];
+            $_SESSION['lname'] = $row["lname"];
+            $_SESSION['email'] = $row["email"];
+            $_SESSION['phone'] = $row["phone"];
+            $_SESSION['acctype'] = $row["acctype"];
 
-                echo '<script>window.location.href = "index.php";</script>';
-                $conn->close();
+            if ($_SESSION['acctype'] == 'Student') {
+                $_SESSION['dob'] = $row["dob"];
             }
+            echo '<script>window.location.href = "index.php";</script>';
+            $conn->close();
         }
     }
 } elseif (isset($_POST['signin'])) {
@@ -136,29 +142,26 @@ if (isset($_POST['signup'])) {
                     $_SESSION['email'] = $row["email"];
                     $_SESSION['phone'] = $row["phone"];
                     $_SESSION['acctype'] = $row["acctype"];
-
-                    if ($_SESSION['acctype'] == 'Student') {
-                        $_SESSION['dob'] = $row["dob"];
-                    } elseif ($_SESSION['acctype'] == "admin") {
-                        header("Location: admin-panel.php");
-                        exit(); // Terminate the script after redirection
-                    } else {
-                        // Redirect to index.php for other user types
-                        header("Location: index.php");
-                        exit(); // Terminate the script after redirection
-                    }
+                }
+                if ($row['email'] == "admin@gmail.com") {
+                    header("Location: admin-ViewUsers.php");
+                    exit(); // Terminate the script after redirection
                 } else {
-                    error_reporting(0);
-                    echo "<script>alert('Invalid email or password')</script>";
+                    // Redirect to index.php for other user types
+                    header("Location: index.php");
+                    exit(); // Terminate the script after redirection
                 }
             } else {
                 error_reporting(0);
                 echo "<script>alert('Invalid email or password')</script>";
             }
         } else {
-            // Query error occurred
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            error_reporting(0);
+            echo "<script>alert('Invalid email or password')</script>";
         }
+    } else {
+        // Query error occurred
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
 

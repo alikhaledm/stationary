@@ -330,7 +330,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       color: black;
     }
 
-    button {
+    .buttonpack {
       display: block;
       margin: 20px auto;
       padding: 10px 20px;
@@ -351,7 +351,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include("spinner.php");
   ?>
   <div class="video-container">
-    <video id="myVideo" onclick="startVideo()">
+    <video id="myVideo" autoplay onclick="startVideo()">
       <source src="images/packages/steps.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -438,9 +438,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <center>Your package is ready now you can view and edit it if you want</center>
         </h2><br>
         <div class="container">
-          <button type="button" class="btn btn-circle btn-xl" id="openModalButton" data-bs-toggle="button">
+          <buttonpack type="buttonpack" class="btn btn-circle btn-xl" id="openModalButton" data-bs-toggle="buttonpack">
             <p>Check Your Package</p>
-          </button>
+          </buttonpack>
         </div>
       </form>
       <style>
@@ -454,7 +454,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- Div Displayed in A modal -->
       <div class="modal-overlay" id="modal">
         <div class="modal-content">
-          <button class="close-button" aria-label="Close" onclick="closeModal()">&#x2716;</button>
+          <buttonpack class="close-buttonpack" aria-label="Close" onclick="closeModal()">&#x2716;</buttonpack>
           <main>
             <section class="supplies-list">
               <?php
@@ -673,7 +673,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           overflow-y: auto;
         }
 
-        .close-button {
+        .close-buttonpack {
           position: fixed;
           top: 15%;
           right: 20%;
@@ -688,11 +688,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           border-radius: 5px;
         }
 
-        .close-button:focus {
+        .close-buttonpack:focus {
           outline: none;
         }
 
-        .close-button:hover {
+        .close-buttonpack:hover {
           color: #ebbf3f;
         }
 
@@ -768,13 +768,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>
           <center>Take a look at the Checkout to Receive your Package with the Best Quality and Price</center>
         </h2><br>
-        <div class="container">
+        <div class="container" style="padding-bottom:250px;">
           <?php
           $suppylistname = $_SESSION['listname'];
           $sqllistid = "SELECT id FROM products WHERE pname=$suppylistname";
           $listid = mysqli_query($conn, $sqllistid);
 
-          echo '<a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="button">';
+          echo '<a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="buttonpack">';
           ?>
           <p>Checkout</p>
           </a>

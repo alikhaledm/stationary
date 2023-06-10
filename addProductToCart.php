@@ -15,7 +15,7 @@ if (mysqli_num_rows($resultCart) > 0) {
     $resultUpdate = mysqli_query($conn, $queryUpdate);
 
     if ($resultUpdate) {
-        header('location: cart.php');
+        header('location: products.php');
         exit();
     } else {
         echo "Failed to update the quantity in the cart.";
@@ -27,7 +27,7 @@ if (mysqli_num_rows($resultCart) > 0) {
     $resultInsert = mysqli_query($conn, $queryInsert);
 
     if ($resultInsert) {
-        header('location: cart.php');
+        header('location: products.php');
         exit();
     } else {
         echo "Failed to add the product to the cart." . mysqli_error($conn);
