@@ -65,6 +65,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       border-bottom: 1px solid grey;
       border-radius: 0;
     }
+
+
+    .container2{
+
+
+background-color:#FFFEF4;
+height: 1080px;
+width:1250px;
+
+
+}
+
+
+
+
+
+
+
   </style>
   <script>
     function previewImage(event) {
@@ -80,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body style="font-family: Arial, sans-serif; background-color: white;">
   <div class="container">
+  <div class="container2">
     <div class="row">
       <div class="col-6">
         <div class="cr">
@@ -104,14 +123,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input class="a" type="date" id="quantity" name="pdate" required>
 
             <center>
-              <input type="submit" value="Submit" style="background-color: fbd334;
+              <input type="submit" value="Submit" style="background-color:#EBBF2F;
       color: #fff;
       padding: 10px 0px 10px 0px;
       margin-top: 20px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      width: 600px;">
+      width: 400px;">
             </center>
           </form>
         </div>
@@ -120,6 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <img src="images/excess/Designer.png" alt="">
       </div>
     </div>
+  </div>
   </div>
 
   <script src="contactassets/java script/bootstrap.bundle.min.js"></script>
