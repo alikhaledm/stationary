@@ -1,95 +1,195 @@
 <html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <head>
     <style>
-        #hr-1 {
-            border: 1px solid black;
-            font-weight: bold;
-        }
+    #hr-1 {
+        border: 1px solid black;
+        font-weight: bold;
+    }
 
-        .custombtnfooter {
-            background-color: white;
-            color: black;
-            width: 100%;
-            height: 35px;
-            border-color: black;
+    .custombtnfooter {
+        background-color: white;
+        color: black;
+        width: 100%;
+        height: 35px;
+        border-color: black;
 
-        }
+    }
 
-        .custombtnfooter:hover {
-            background-color: #ebbf2f;
-        }
+    .custombtnfooter:hover {
+        background-color: #ebbf2f;
+    }
     </style>
 </head>
 
 <body>
-    <hr id="hr-1">
-    <center>
-        <footer class="bg-white text-black">
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-12 mb-4">
-                        <h2>OUR NEWSLETTER</h2>
-                        <p>Subscribe to our newsletter to receive special offers and updates on new products</p>
-                        <form class="form-inline">
-                            <div class="form-group mr-2">
-                                <input style="width:100%;" type="email" class="form-control" placeholder="Email">
-                                <br><hr id="hr-1">
-                                <button type="submit" class="custombtnfooter custombtnfooter-lg">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-3 col-sm-12  mb-4">
-                        <h2>SHOP</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="shop.php">Shop Here</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 mb-4">
-                        <h2>QUICK LINKS</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="contact.php">Contact Us</a></li>
-                            <li><a href="about.php">Our Story</a></li>
-                            <li><a href="excess.php">Excess Supplies</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-12 mb-4">
-                        <h2>CONTACT</h2>
-                        <p>Sheraton Heliopolis
-                            <br>Cairo, Egypt<br>+201000086123
-                        </p>
-                        <p>supplieshub@gmail.com</p>
-                    </div>
-                </div>
-                <hr>
-            </div>
-
-
-    </center>
-
-    <div class=" container containerfooter">
-        <footer style="background-color: #ebbf2f; color: black;">
-
+    <!--------------------------------------------- Footer --------------------------------------------------------->
+    <footer class="footer">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-10">
-                    <p>&copy; The Supplies Hub Corporation</p>
+                <div class="footer-col">
+                    <h4>School Supplies</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                    </ul>
                 </div>
-                <div class="col-lg-2">
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Shop Here</a></li>
 
-                    <a style="color: black;"
-                        href="https://www.facebook.com/profile.php?id=100093119778869&mibextid=LQQJ4d">FACEBOOK &nbsp; &nbsp;
-                    </a>
-                    <a style="color: black;" href="https://instagram.com/supplies_hub1?igshid=OGQ5ZDc2ODk2ZA==">
-                        INSTAGRAM </a>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <ul>
+                        <li><a href="#">Supplieshub@gmail.com</a></li>
+                        <li><a href="#">+201000086123</a></li>
 
+                    </ul>
                 </div>
             </div>
-    </div>
+        </div>
     </footer>
 
     <style>
-        a {
-            border: none;
-            text-decoration: none;
+    /* -------------------------------------------Footer-------------------------------------*/
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    .container {
+        max-width: 1170px;
+        margin: auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .footer-col li {
+        color: white;
+        text-align: left;
+        align-items: left;
+    }
+
+    .footer {
+        background-color: #0c0129;
+        padding: 40px 0;
+    }
+
+    .footer-col {
+        width: 25%;
+        text-align: left;
+        align-items: left;
+
+    }
+
+    .footer-col ul {
+        list-style-type: none;
+        text-align: left;
+        align-items: left;
+    }
+
+    .footer-col h4 {
+        font-size: 21px;
+        color: #ebbf2f;
+        text-transform: capitalize;
+        margin-bottom: 35px;
+        font-weight: 500;
+        position: relative;
+    }
+
+    .footer-col li a {
+        color: white;
+        text-align: left;
+        align-items: left;
+
+
+    }
+
+    .footer-col h4::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        background-color: #ebbf2f;
+        height: 2px;
+        box-sizing: border-box;
+        width: 50px;
+    }
+
+    .footer-col ul li:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+        font-size: 18px;
+        text-transform: capitalize;
+        color: white;
+        text-decoration: none;
+        font-weight: 300;
+        display: block;
+        transition: all 0.3s ease;
+
+    }
+
+    .footer-col ul li a:hover {
+        color: #ebbf2f;
+        padding-left: 8px;
+    }
+
+    .footer-col .social-links a {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background-color: white;
+        margin: 0 10px 10px 0;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        color: #493e66;
+        transition: all 0.5s ease;
+    }
+
+    .footer-col .social-links a:hover {
+        color: #493e66;
+        background-color: #ebbf2f;
+    }
+
+    .fab {
+        margin-top: 10px;
+    }
+
+    /*-------------------------------------------------------------------------------------- */
+
+
+    /*------------------------------- responsive Footer -------------------------------------*/
+    @media(max-width: 767px) {
+        .footer-col {
+            width: 50%;
+            margin-bottom: 30px;
         }
+    }
+
+    @media(max-width: 574px) {
+        .footer-col {
+            width: 100%;
+        }
+    }
+
+    /* -------------------------------------------------------------------------------------- */
     </style>
+</body>

@@ -10,53 +10,62 @@
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
 <style>
-    .navbarcustomedits {
-        background-color: white;
-    }
+.navbarcustomedits {
+    background-color: #0c0129;
+    color: white;
+}
 
-    .navcontainer {
-        width: 75%;
-    }
+.navcontainer {
+    width: 75%;
+}
 
-    .brand2 {
-        font-size: 25px;
-        font-weight: bold;
-    }
+.brand2 {
+    font-size: 40px;
+    font-weight: bold;
+}
 
-    .btncustom {
-        border-color: black;
-        border: 0.5px solid #000;
-        background-color: white;
-        height: 40px;
-        width: 120px;
-    }
+.btncustom {
+    border-color: black;
+    border: 0.5px solid #000;
+    background-color: white;
+    height: 40px;
+    width: 120px;
+    margin-left: 80px;
+}
 
-    .btncustom:hover {
-        border-color: gold;
-    }
+.nav-link {
+    color: white;
+    font-size: 18px;
+}
 
-    .cartcount {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        border-radius: 50%;
-        padding: 3px 6px;
-        font-size: 12px;
-    }
+.btncustom:hover {
+    border-color: gold;
+    background-color: #ebbf2f;
+}
 
-    .navfont {
-        font-size: 15px;
-    }
+.cartcount {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+}
 
-    .nav-link:hover {
-        color: gold;
-    }
+.navfont {
+    font-size: 15px;
+}
 
-    .activee {
-        color: gold;
-    }
+.nav-link:hover {
+    color: gold;
+    padding-right: 40px;
+}
+
+.activee {
+    color: gold;
+}
 </style>
 
 <nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
@@ -99,7 +108,7 @@
                         echo '<li class="nav-item">
                     <a class="nav-link" href="cart.php">
                         <div class="position-relative">
-                            <div class="cartcount">25</div>
+                            <div class="cartcount">0</div>
                             <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
                             </svg>
@@ -107,6 +116,13 @@
                     </a>
                 </li>';
                     } ?>
+                    <style>
+                    .cartcount {
+                        color: black;
+                        font-size: 16px;
+                    }
+                    </style>
+
                     <?php if (isset($_SESSION['id'])) {
                         echo '
                 <li id="dropdown" class="nav-item">
