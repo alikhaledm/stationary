@@ -96,26 +96,13 @@ $resultorder = mysqli_query($conn, $getAddress);
     </div>
 
 
-    <div class="container-account" id="fade-container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="content">
-                    <i class="fa-solid fa-camera"></i>
-                    <img src="images/" alt="">
-                    <p class="text-white">
-                </div>
-                </b>
-            </div>
-        </div>
 
+    <div class="container-account centered" id="fade-container2">
         <hr style="height: 2px solid black">
-        <div class="col-12 centercontainer">
-
-            <a href="orders.php" class="customa">My Orders</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="address.php" style="color:#ebbf2f" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp;
-            &nbsp;&nbsp;
-            <a href="wallet.php" class="customa">My Wallet</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-
+        <div class="row text-center" style="font-size:20px;">
+            <div class="col-sm"><a href="account.php" class="acclink" active><b>My Account</b></a></div>
+            <div class="col-sm"><a href="address.php" class="acclink"><b>My Addresses</b></a></div>
+            <div class="col-sm"><a href="wallet.php" class="acclink"><b>My Wallet</b></a></div>
         </div>
         <hr>
     </div>
@@ -174,55 +161,56 @@ $resultorder = mysqli_query($conn, $getAddress);
                         <img width="16px" src="images/address.svg">&nbsp;<u>Add a new address</u>
                     </button>
                 </a>
-
-                <div id="addressBoxOverlay">
+            </div>
+            <div id="addressBoxOverlay">
+                <CENTER>
                     <div id="addressBox">
                         <button id="closeAddressBox">X</button>
-                        <form action="process_address2.php" method="POST">
+                        <form action="address.php" method="POST">
 
                             <div class="row">
 
                                 <div class="col-6">
                                     <div> <label for="title">Address Title</label></div>
-                                    <input type="text" name="address_title" placeholder="Title" required>
+                                    <input type="text" name="address_title" class="form-control" placeholder="Title" required>
                                 </div>
 
                                 <div class="col-6">
                                     <div> <label for="name">Area:</label></div>
-                                    <input type="text" name="area" placeholder="Area" required>
+                                    <input type="text" name="area" class="form-control" placeholder="Area" required>
                                 </div>
 
 
                                 <div class="col-6">
                                     <div><label for="street">Street Address:</label></div>
-                                    <input type="text" name="street" placeholder="Street" required>
+                                    <input type="text" name="street" class="form-control" placeholder="Street" required>
                                 </div>
 
 
                                 <div class="col-6">
                                     <div><label for="city">City:</label></div>
-                                    <input type="text" name="city" placeholder="City" required>
+                                    <input type="text" name="city" class="form-control" placeholder="City" required>
                                 </div>
 
 
                                 <div class="col-6">
                                     <div> <label for="state">State:</label></div>
-                                    <input type="text" name="zip_code" placeholder="Zip Code" required>
+                                    <input type="text" name="zip_code" class="form-control" placeholder="Zip Code" required>
                                 </div>
 
                                 <div class="col-12" style="padding-top:20;">
                                     <div></div>
-                                    <button type="submit" class="addressbtn">Save Address</button>
+                                    <button type="submit" class="addressbtn form-control">Save Address</button>
 
                                 </div>
 
                         </form>
 
                     </div>
-                </div>
             </div>
         </div>
     </div>
+    </CENTER>
 
     <style>
         .checkoutbtn {
@@ -286,12 +274,12 @@ $resultorder = mysqli_query($conn, $getAddress);
     </style>
 
     <script>
-        document.getElementById("openAddressBox").addEventListener("click", function (event) {
+        document.getElementById("openAddressBox").addEventListener("click", function(event) {
             event.preventDefault(); // Prevent default anchor click behavior
             document.getElementById("addressBoxOverlay").style.display = "block";
         });
 
-        document.getElementById("closeAddressBox").addEventListener("click", function () {
+        document.getElementById("closeAddressBox").addEventListener("click", function() {
             document.getElementById("addressBoxOverlay").style.display = "none";
         });
     </script>
@@ -308,4 +296,4 @@ $resultorder = mysqli_query($conn, $getAddress);
 
 <?php
 include("footer.php")
-    ?>
+?>

@@ -103,9 +103,6 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfont">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php">HOME</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="shop.php">Shop</a>
                     </li>
                     <?php
@@ -137,8 +134,8 @@
                     } ?>
                     <style>
                         .cartcount {
-                            color: white;
-                            font-size: 16px;
+                            color: WHITE;
+                            font-size: 0;
                         }
                     </style>
 
@@ -151,9 +148,9 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="account.php">My Account</a>
-                            <a class="dropdown-item" href="page2.html">Page 2</a>
-                            <a class="dropdown-item" href="page3.html">Page 3</a>
-                            <hr style="width:75%">
+                            <a class="dropdown-item" href="address.php">My Addresses</a>
+                            <a class="dropdown-item" href="wallet.php">My Wallet</a>
+                            <hr>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
                     </div>
