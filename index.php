@@ -474,7 +474,7 @@ require_once("connect.php");
                 <div class="image-wrapper">
                     <img style="width:100%;" src="images/shop.png" alt="Image">
                     <div class="content-overlay">
-                        <div class="bodyfont1">Explore Our Stationery<br> Shop
+                        <div class="bodyfont1">Explore Our <br> Stationery
                         </div>
                         <div class="bodyfont2" style="padding-top:17px;">Shop Stationery Now!
                         </div>
@@ -486,295 +486,189 @@ require_once("connect.php");
 
             </div>
         </div>
+        <center>
+            <div class="containernew servicebody" style="padding-top:20;">
+                <div class="row" style=" padding-bottom:100px;">
+                    <div class="col-md-12" style="font-size:40px; color:black;">
+                        <center>OUR SERVICES</center><br>
+                    </div>
+                    <div class="col-lg-3 col-sm-12">
 
-        <div class="container-">
-            <div class="row">
+                        <div class="servicecard" style="font-size:32;">
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" style="color:#0c0129" src="images/services/stationary.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
+                                Supplies List
+                            </div>
 
-                <div class="col-lg-6 col-sm-12" style="padding-top:20;">
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; ">
+                                Select Your School And<br> Grade With Few<br> Clicks Now!
 
-                    <div class="image-wrapper">
-                        <img style="width:100%;" src="images/card2.png " alt="Image" height="100px">
-                        <div class="content-overlay">
-                            <div></div>
-                            <div class="bodyfont3">Discover Your Gathered<br> Supplies List
                             </div>
-                            <div class="bodyfont2" style="padding-top:17px;">Get Your Supplies List Now!
+                            <div class="centered"><button class="carouselbtn">Learn
+                                    More</button></div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-12">
+
+                        <div class="servicecard" style="font-size:32;">
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" style="color:#0c0129" src="images/services/coin.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
+                                Excess Selling
                             </div>
-                            <div style="padding-top:24px;">
-                                <a href="startnowintro.php"><button class="custombtn3"> Grab Your List <img width="15" height="15" src="images/forward.svg"></button></a>
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; ">
+                                Make a change by selling<br> extra inventory for a<br> worthwhile cause
+
                             </div>
+
+                            <div class="centered"><button class="carouselbtn">Learn
+                                    More</button></div>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-12">
+
+                        <div class="servicecard" style="font-size:32;">
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/donate.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
+                                Donations
+                            </div>
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; ">
+                                Make a shift by contributing<br> your excess paper goods <br>to our mission
+                            </div>
+                            <div class="centered"><button class="carouselbtn">Learn
+                                    More</button></div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-12">
+
+                        <div class="servicecard" style="font-size:32;">
+                            <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/shop.svg" alt=""></div>
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 30; ">
+                                Stationery Shop
+                            </div>
+                            <div style="display:flex; justify-content:center; align-items:center; font-size: 18; ">
+                                Explore perfection in school<br> supplies at our hub Get<br> what you need!
+
+
+                            </div>
+                            <div class="centered"><button class="carouselbtn">Learn
+                                    More</button></div>
+
+
                         </div>
                     </div>
                 </div>
-
-                <center>
-                    <div class="containernew servicebody" style="padding-top:20;">
-                        <div class="row" style=" padding-bottom:100px;">
-                            <div class="col-md-12" style="font-size:40px; color:black;">
-                                <center>
-                                    <h1>OUR SERVICES</h1>
-                                </center><br>
-                            </div>
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" src="images/services/supplies.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #0c0129;">
-                                    Supplies List
-                                </div>
-
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #0c0129;">
-                                    Select Your School And<br> Grade With Few<br> Clicks Now!
-
-                                </div>
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" src="images/services/stationery.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #0c0129 ;">
-                                    Excess Selling
-                                </div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #0c0129 ;">
-                                    Make a change by selling<br> extra inventory for a<br> worthwhile cause
-                                </div>
-
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/donate.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #0c0129 ;">
-                                    Donations
-                                </div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #0c0129;">
-                                    Make a shift by contributing<br> your excess paper goods <br>to our mission
-                                </div>
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/shop.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #0c0129;">
-                                    Stationery Shop
-                                </div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #0c0129;">
-                                    Explore perfection in school<br> supplies at our hub Get<br> what you need!
-
-
-                                </div>
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-                            </div>
-                        </div>
-                    </div>
             </div>
-            <br><br>
-
-
-
-            <center>
-                <div class="containernew servicebody" style="padding-top:20;">
-                    <div class="row" style=" padding-bottom:100px;">
-                        <div class="col-md-12" style="font-size:40px; color:black;">
-                            <center>OUR SERVICES</center><br>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" src="images/services/supplies.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
-                                    Supplies List
-                                </div>
-
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-                                    Select Your School And<br> Grade With Few<br> Clicks Now!
-
-                                </div>
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%;"><img width="100" height="100" src="images/services/stationery.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
-                                    Excess Selling
-                                </div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-                                    Make a change by selling<br> extra inventory for a<br> worthwhile cause
-
-                                </div>
-
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/donate.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
-                                    Donations
-                                </div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-                                    Make a shift by contributing<br> your excess paper goods <br>to our mission
-                                </div>
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-
-                            <div class="servicecard" style="font-size:32;">
-                                <div style="display:flex; justify-content:center; align-items:center; padding-top: 5%; "><img width="100" height="100" src="images/services/shop.svg" alt=""></div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 30; color: #2F4668;">
-                                    Stationery Shop
-                                </div>
-                                <div style="display:flex; justify-content:center; align-items:center; font-size: 18; color: #2F4668;">
-                                    Explore perfection in school<br> supplies at our hub Get<br> what you need!
-
-
-                                </div>
-                                <div class="centered"><button class="carouselbtn">Learn
-                                        More</button></div>
-
-
-                            </div>
-                        </div>
+        </center>
+        <center>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>OUR PARTNERS</h1>
+                        <hr><br>
                     </div>
                 </div>
-            </center>
-            <center>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h1>OUR PARTNERS</h1>
-                            <hr><br>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-            </center>
+        </center>
 
-            <div class="containerfluid" style="padding-bottom: 100px;">
+        <div class="containerfluid" style="padding-bottom: 100px;">
 
+            <div class="row bordered-row centered" style="border-style:none;">
+                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school1.jpg" alt=""></div>
+                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school2.jpg" alt=""></div>
+                <div class="col-lg-3 col-sm-12 text-center"><img width="80" src="images/Schools/school3.jpg" alt=""></div>
+                <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school4.jpg" alt=""></div>
+            </div>
+            <div class="containerschoolshidden" style="border-style:none;">
                 <div class="row bordered-row centered" style="border-style:none;">
-                    <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school1.jpg" alt=""></div>
-                    <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school2.jpg" alt=""></div>
-                    <div class="col-lg-3 col-sm-12 text-center"><img width="80" src="images/Schools/school3.jpg" alt=""></div>
-                    <div class="col-lg-3 col-sm-12 text-center"><img width="120" src="images/Schools/school4.jpg" alt=""></div>
-                </div>
-                <div class="containerschoolshidden" style="border-style:none;">
-                    <div class="row bordered-row centered" style="border-style:none;">
-                        <div class="col-lg-3 col-sm-0 text-center"><img width="120" src="images/Schools/school5.jpg" alt="">
-                        </div>
-                        <div class="col-lg-3 col-sm-0 text-center"><img width="80" src="images/Schools/school6.jpg" alt="">
-                        </div>
-                        <div class="col-lg-3 col-sm-0 text-center"><img width="120" src="images/Schools/school7.jpg" alt="">
-                        </div>
-                        <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school8.jpg" alt="">
-                        </div>
+                    <div class="col-lg-3 col-sm-0 text-center"><img width="120" src="images/Schools/school5.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3 col-sm-0 text-center"><img width="80" src="images/Schools/school6.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3 col-sm-0 text-center"><img width="120" src="images/Schools/school7.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3 col-sm-6 text-center"><img width="120" src="images/Schools/school8.jpg" alt="">
                     </div>
                 </div>
             </div>
+        </div>
 
 
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
+                if ($(window).width() <= 999) {
+                    $('.mobile').removeClass('hidden').addClass('visible');
+                }
+            });
+
+            $(document).ready(function() {
+                function adjustColumnWidth() {
                     if ($(window).width() <= 999) {
-                        $('.mobile').removeClass('hidden').addClass('visible');
+                        $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
+                    } else {
+                        $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
                     }
-                });
+                }
 
-                $(document).ready(function() {
-                    function adjustColumnWidth() {
-                        if ($(window).width() <= 999) {
-                            $('.col1, .col2').removeClass('col-md-6').addClass('col-md-12 paddingmobile');
-                        } else {
-                            $('.col1, .col2').removeClass('col-md-12').addClass('col-md-6 paddingmobile');
-                        }
-                    }
+                // Adjust column width on initial page load
+                adjustColumnWidth();
 
-                    // Adjust column width on initial page load
+                // Adjust column width on window resize
+                $(window).resize(function() {
                     adjustColumnWidth();
-
-                    // Adjust column width on window resize
-                    $(window).resize(function() {
-                        adjustColumnWidth();
-                    });
                 });
+            });
 
-                $(window).scroll(function() {
-                    $('.bordered-row').each(function() {
-                        var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-                        var bottom_of_window = $(window).scrollTop() + $(window).height();
-                        if (bottom_of_window > bottom_of_object) {
-                            $(this).animate({
-                                'opacity': '1'
-                            }, 10);
-                        }
-                    });
-                });
-
-                window.addEventListener("scroll", function() {
-                    var element = document.querySelector(".zoom-in-container");
-                    var position = element.getBoundingClientRect().top;
-                    var windowHeight = window.innerHeight;
-
-                    if (position < windowHeight * 0.3) {
-                        element.classList.add("zoom-in");
-                    } else {
-                        element.classList.remove("zoom-in");
+            $(window).scroll(function() {
+                $('.bordered-row').each(function() {
+                    var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                    var bottom_of_window = $(window).scrollTop() + $(window).height();
+                    if (bottom_of_window > bottom_of_object) {
+                        $(this).animate({
+                            'opacity': '1'
+                        }, 10);
                     }
                 });
+            });
 
-                window.addEventListener("scroll", function() {
-                    var element = document.querySelector(".zoom-in-container2");
-                    var position = element.getBoundingClientRect().top;
-                    var windowHeight = window.innerHeight;
+            window.addEventListener("scroll", function() {
+                var element = document.querySelector(".zoom-in-container");
+                var position = element.getBoundingClientRect().top;
+                var windowHeight = window.innerHeight;
 
-                    if (position < windowHeight * 0.3) {
-                        element.classList.add("zoom-in");
-                    } else {
-                        element.classList.remove("zoom-in");
-                    }
-                });
-            </script>
+                if (position < windowHeight * 0.3) {
+                    element.classList.add("zoom-in");
+                } else {
+                    element.classList.remove("zoom-in");
+                }
+            });
 
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <?php
-            include("footer.php")
-            ?>
+            window.addEventListener("scroll", function() {
+                var element = document.querySelector(".zoom-in-container2");
+                var position = element.getBoundingClientRect().top;
+                var windowHeight = window.innerHeight;
+
+                if (position < windowHeight * 0.3) {
+                    element.classList.add("zoom-in");
+                } else {
+                    element.classList.remove("zoom-in");
+                }
+            });
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <?php
+        include("footer.php")
+        ?>
 </body>
 
 </html>
