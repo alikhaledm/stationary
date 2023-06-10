@@ -398,8 +398,8 @@ if (isset($_POST['signup'])) {
     }
 
     .overlay {
-        background: #FF416C;
-        background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+        background: black;
+        background: -webkit-linear-gradient(to right, gold, purple);
         background: linear-gradient(to right, gold, purple);
         background-repeat: no-repeat;
         background-size: cover;
