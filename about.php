@@ -56,7 +56,7 @@ include("navbar.php")
 
     
         .hero-text{
-     position: absolute;
+  position: absolute;
   z-index: 2;
   text-align: center;
   font-size: 1.4em;
@@ -67,9 +67,6 @@ include("navbar.php")
   color:#0c0129 ;
   font-family:'Poppins', sans-serif;
 }
-
-
-
 
 
   </style>
@@ -154,9 +151,6 @@ include("navbar.php")
     </p>
   </div>
   
-
-  
-
   <br> <br>
   <hr>
 </body>

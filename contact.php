@@ -27,8 +27,6 @@
 
   }
 
-
-
   .contactssmall {
 
     color: #f5d142;

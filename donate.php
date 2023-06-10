@@ -77,12 +77,6 @@ width:1250px;
 
 }
 
-
-
-
-
-
-
   </style>
   <script>
     function previewImage(event) {
