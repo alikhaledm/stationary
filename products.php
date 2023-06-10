@@ -14,7 +14,8 @@ include("navbar.php");
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+  </script>
 </head>
 
 <style>
@@ -62,9 +63,6 @@ include("navbar.php");
     scrollbar-color: #888 #f1f1f1;
   }
 
-  .h2 {
-    color: black;
-  }
 
   a {
     text-decoration: none;
@@ -72,7 +70,7 @@ include("navbar.php");
   }
 
   a:hover {
-    color: #ebbf2f;
+    color: #f1ff2d;
     text-decoration: none;
   }
 
@@ -86,7 +84,7 @@ include("navbar.php");
 </style>
 
 <body>
-  <div class="container-fluid">
+  <div class class="container-fluid">
     <div class="col-md-1"></div>
     <div class="col-md-10 mx-auto text-center" style="padding-bottom: 30;">
       <hr id="hr-3">
@@ -108,35 +106,78 @@ include("navbar.php");
         <div>
           <h5> CATEGORY</h5>
         </div>
-        <div><a href="products.php?filter=Notebooks & Paper">Notebooks & Paper</a></div>
-        <div><a href="products.php?filter=Art Supplies">Art Supplies</a></div>
-        <div><a href="products.php?filter=Writing Tools">Writing Tools</a></div>
-        <div><a href="products.php?filter=Binders & Folders">Binders & Folders</a></div>
-        <div><a href="products.php?filter=Math & Scientfic">Math & Scientific Tools</a></div>
-        <div><a href="products.php?filter=Pencil Cases & Bags">Pencil Cases & Bags</a></div>
-        <div><a href="products.php?filter=Other">Other</a></div>
+
+
+        <div><a href="#" class="category-filter" data-filter="Notebooks & Paper">Notebooks & Paper</a></div>
+        <div><a href="#" class="category-filter" data-filter="Art Supplies">Art Supplies</a></div>
+        <!-- <div><a href="#" class="category-filter" data-filter="Writing Tools">Writing Tools</a></div> -->
+        <div><a href="#" class="category-filter" data-filter="Binders & Folders">Binders & Foldersr</a></div>
+        <div><a href="#" class="category-filter" data-filter="Art Supplies">Art Supplies</a></div>
+        <div><a href="#" class="category-filter" data-filter="Math & Scientfic">Math & Scientific Tools</a>
+        </div>
+        <!-- <div><a href="#" class="category-filter" data-filter="Pencil Cases & Bags">Pencil Cases & Bags</a></div> -->
+        <div><a href="#" class="category-filter" data-filter="Other">Other</a></div>
+
         <hr>
         <div>
           <h5>PRICE</h5>
-          <div><a href="products.php?filter=lowestprice">Lowest Prices</a></div>
-          <div><a href="products.php?filter=highestprice">Highest prices</a></div>
+          <div><a href="#" class="category-filter" data-filter="lowestprice">Lowest Prices</a></div>
+          <div><a href="#" class="category-filter" data-filter="highestprice">Highest prices</a></div>
+
+
         </div>
         <hr>
-        <div><a href="products.php" style="color:red">Remove Filter</a></div>
+        <div><a href="products.php" style="color:#ebbf2f">Remove Filter</a></div>
       </div>
       <div class="col-md-8">
         <input type="text" name="search_text" id="search_text" style="border:2px solid black;" placeholder="Search for Product" class="form-control" />
         <br>
         <div id="result"></div>
-        <?php
-        include("fetch.php");
-        ?>
+
       </div>
     </div>
     <div class="col-md-1 mx-0 px-0"></div>
 
   </div>
 </body>
+
+
+<style>
+  .col-md-2 {
+    background-color: #0c0129;
+    color: white;
+    width: 300px;
+    height: 620px;
+  }
+
+  .h2 {
+    font-size: 34px;
+    color: #ebbf2f;
+  }
+
+  h5 {
+    font-size: 19px;
+    color: #ebbf2f;
+  }
+
+  .col-md-2 a {
+    color: white;
+    font-size: 19px;
+  }
+
+  .col-md-2 a:hover {
+    color: #ebbf2f;
+  }
+</style>
+
+
+
+
+
+
+
+
+
 
 </html>
 <script>
@@ -155,6 +196,7 @@ include("navbar.php");
         }
       });
     }
+
     $('#search_text').keyup(function() {
       var search = $(this).val();
       if (search != '') {

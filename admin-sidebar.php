@@ -5,8 +5,6 @@
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
-            <li class="nav-item"><a class="nav-link" href="admin-dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="admin-profile.php"><i class="fas fa-user"></i><span>Profile</span></a></li>
             <li class="nav-item">
                 <button class="nav-link btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#databaseTables" aria-expanded="false" aria-controls="databaseTables">
                     <i class="fas fa-database"></i><span>Database Tables</span>

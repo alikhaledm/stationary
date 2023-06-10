@@ -8,10 +8,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <style>
     .navbarcustomedits {
-        background-color: white;
+        background-color: #0c0129;
+        color: white;
+    }
+
+    .navbarcustomedits {
+        background-color: #0c0129;
+        color: white;
     }
 
     .navcontainer {
@@ -19,8 +25,22 @@
     }
 
     .brand2 {
-        font-size: 25px;
+        font-size: 40px;
         font-weight: bold;
+    }
+
+    .btncustom {
+        border-color: black;
+        border: 0.5px solid #000;
+        background-color: white;
+        height: 40px;
+        width: 120px;
+
+    }
+
+    .nav-link {
+        color: white;
+        font-size: 18px;
     }
 
     .btncustom {
@@ -31,8 +51,14 @@
         width: 120px;
     }
 
+    .nav-link {
+        color: white;
+        font-size: 18px;
+    }
+
     .btncustom:hover {
         border-color: gold;
+        background-color: #ebbf2f;
     }
 
     .cartcount {
@@ -52,6 +78,7 @@
 
     .nav-link:hover {
         color: gold;
+        padding-right: 40px;
     }
 
     .activee {
@@ -76,9 +103,6 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfont">
                     <li class="nav-item">
-                        <a class="nav-link activee" aria-current="page" href="index.php">HOME</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="shop.php">Shop</a>
                     </li>
                     <?php
@@ -99,7 +123,8 @@
                         echo '<li class="nav-item">
                     <a class="nav-link" href="cart.php">
                         <div class="position-relative">
-                            <div class="cartcount">25</div>
+                            <div class="cartcount">0</div>
+                            <div class="cartcount">0</div>
                             <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
                             </svg>
@@ -107,6 +132,13 @@
                     </a>
                 </li>';
                     } ?>
+                    <style>
+                        .cartcount {
+                            color: WHITE;
+                            font-size: 0;
+                        }
+                    </style>
+
                     <?php if (isset($_SESSION['id'])) {
                         echo '
                 <li id="dropdown" class="nav-item">
@@ -116,9 +148,9 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="account.php">My Account</a>
-                            <a class="dropdown-item" href="page2.html">Page 2</a>
-                            <a class="dropdown-item" href="page3.html">Page 3</a>
-                            <hr style="width:75%">
+                            <a class="dropdown-item" href="address.php">My Addresses</a>
+                            <a class="dropdown-item" href="wallet.php">My Wallet</a>
+                            <hr>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
                     </div>

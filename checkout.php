@@ -1,8 +1,9 @@
-<html>
 <?php
 // ini_set('display_errors', 'Off');
+include("spinner.php");
 require_once("connect.php");
 include("navbar.php");
+
 
 $userid = $_SESSION['id'];
 if (isset($_POST["query"])) {
@@ -68,16 +69,11 @@ if (isset($_POST['placeorder'])) {
 }
 
 ?>
+<html>
 
 <head>
   <title>Checkout</title>
-
-
   <link rel="stylesheet" href="checkoutstyles.css">
-
-
-
-
   <style>
     @media (min-width: 1025px) {
       .h-custom {
@@ -102,7 +98,7 @@ if (isset($_POST['placeorder'])) {
     }
 
     .checkoutcart {
-      background-color: #E5E5E5;
+      background-color: white;
       border-radius: 5px;
       width: 40%;
       justify-content: center;
@@ -176,6 +172,29 @@ if (isset($_POST['placeorder'])) {
       border-radius: 5px;
     }
 
+    .window {
+      width: 50%;
+      background: #fff;
+      box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 30px;
+      z-index: 10;
+    }
+
+    .checkmainfont {
+      font-size: 30px;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    .checkmainfont2 {
+      font-size: 27px;
+      font-style: italic;
+    }
+
+    .checkmainfont3 {
+      font-size: 20px;
+    }
+
     /* Additional styling for address form elements can be added here */
   </style>
 </head>
@@ -183,19 +202,16 @@ if (isset($_POST['placeorder'])) {
 <body>
   <div class="col-lg-12">
     <center>
-      <h1><b>Complete Your Purchase</b></h1>
+      <div class="checkmainfont">Complete Your Purchase</div>
       <br><br>
     </center>
   </div>
-
-  <div class="container card checkoutcart">
-
+  <div class="container card checkoutcart window">
     <div class="row">
-
-      <div class="col-lg-12">
-        <center>
-          <h2>Cart Summary</h2>
-
+      <div class="col-lg-12 checkmainfont2">
+        <center style="font-size:27px;">
+          Cart Summary
+          <hr style="width:50%;">
         </center>
 
       </div>
@@ -222,14 +238,14 @@ if (isset($_POST['placeorder'])) {
       
                             <input type="hidden" name="product_id" value="' . $productId . '" >
           
-              <div class="col-lg-6 col-sm-12"style="padding-bottom:50; padding-left:80;">
+              <div class="col-6 checkmainfont3"style="padding-bottom:50; padding-left:80;">
               <img src="images/Shop/products/' . $rowData2['photo'] . '"" alt="Shopping item" style="width: 60px; height: 60px">
-              ' . $productName . '
+              ' . $productName . '<center><hr style="width:200%;"></center>
 
           </div>
              
-            <div class="col-lg-6 col-sm-12" style="padding-bottom:50; align-items:center; display:flex; padding-left:80;">
-              <h5>' . number_format($productPrice, 2) . ' EGP  x' . $quantity . ' </h5>
+            <div class="col-6 checkmainfont3" style="padding-bottom:50; align-items:center; display:flex; padding-left:80;">
+              ' . number_format($productPrice, 2) . ' EGP  x' . $quantity . ' 
               
         </div>
          
@@ -247,34 +263,33 @@ if (isset($_POST['placeorder'])) {
     <div class="container" style="padding-top:10; padding-bottom:30;">
 
       <center>
-        <div class="col-6"><b>TOTAL PRICE</b></div>
+        <div class="col-6 checkmainfont2">TOTAL PRICE</div>
       </center>
       <center>
-        <div class="col-6"><b>
+        <div class="col-6 checkmainfont3">
 
 
-            <?php echo number_format($total, 2); ?>
-            EGP
-          </b>
+          <?php echo number_format($total, 2); ?>
+          EGP
+
+      </center>
+      <center>
+        <hr style="width:50%;">
       </center>
 
     </div>
   </div>
-  </div>
-  </div>
+
   <div class="container">
     <div class="payment">
       <div class="payment__title">
         Payment Method
       </div>
       <div class="row">
-
-
-
-        <div class="col-lg-6 col-sm-12" style="padding-top: 10px;">
+        <div class="col-6" style="padding-top: 10px;">
           <button class="paymentbtn" onclick="toggleActive(this, 'credit-card')">Credit Card</button>
         </div>
-        <div class="col-lg-6 col-sm-12" style="padding-top: 10px;">
+        <div class="col-6" style="padding-top: 10px;">
           <button class="paymentbtn" onclick="toggleActive(this, 'cash-on-delivery')">Cash on Delivery</button>
         </div>
       </div>
@@ -331,12 +346,7 @@ if (isset($_POST['placeorder'])) {
     <div class="payment__info">
       <div class="payment__cc" style="display: none;">
         <div class="payment__title">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" style="padding-bottom: 7px; padding-right: 7px;"
-            fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
-            <path
-              d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
-            <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
-          </svg>
+
           <h4><b> My Saved Cards</b></h4>
         </div>
         <div class="container" style="width: 82.5%; margin-left:0; padding-left:0;">
@@ -386,12 +396,9 @@ if (isset($_POST['placeorder'])) {
           }
           ?>
           <hr>
-          <h4><svg xmlns="http://www.w3.org/2000/svg" width="25" style="margin-right: 8px; margin-bottom:5px;"
-              fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-              <path
-                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-              <path
-                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+          <h4><svg xmlns="http://www.w3.org/2000/svg" width="25" style="margin-right: 8px; margin-bottom:5px;" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
             </svg><b>Add New Card</b> </h4>
         </div>
         <form method="POST">
@@ -399,14 +406,12 @@ if (isset($_POST['placeorder'])) {
             <div class="row">
               <div class="field ">
                 <div class="title">Credit Card Number</div>
-                <input type="text" name="ccn" size="23" minlength="16" maxlength="16" class="input txt text-validated"
-                  placeholder="1234 1234 1234 1234" oninput="validateInput(this)" required />
+                <input type="text" name="ccn" size="23" minlength="16" maxlength="16" class="input txt text-validated" placeholder="1234 1234 1234 1234" oninput="validateInput(this)" required />
               </div>
               <div class="field ">
                 <div class="title">CVV Code
                 </div>
-                <input type="text" name="cvv" class="input txt" size="13" min="3" maxlength="3" placeholder="123"
-                  oninput="validateInput(this)" required />
+                <input type="text" name="cvv" class="input txt" size="13" min="3" maxlength="3" placeholder="123" oninput="validateInput(this)" required />
               </div>
             </div>
             <div class="row">
@@ -414,8 +419,7 @@ if (isset($_POST['placeorder'])) {
                 <div class="title">Name on Card
                 </div>
                 <!-- dont allow number to inputed on chn -->
-                <input type="text" oninput="validatetext(event)" name="chn" size="23" maxlength="35" class="input txt"
-                  placeholder="John Doe" required />
+                <input type="text" oninput="validatetext(event)" name="chn" size="23" maxlength="35" class="input txt" placeholder="John Doe" required />
               </div>
               <div class="field ">
                 <div class="title">Expiry Date
@@ -463,12 +467,6 @@ if (isset($_POST['placeorder'])) {
 
       <div class="payment__shipping" style="display:none;">
         <div class="payment__title">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" style="padding-bottom: 7px; padding-right: 7px;"
-            fill="currentColor" class="bi bi-pin-map-fill" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z" />
-            <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z" />
-          </svg>
           <h4><B>My Saved Addresses</B></h4>
         </div>
         <?php
@@ -518,52 +516,54 @@ if (isset($_POST['placeorder'])) {
         </a>
 
         <div id="addressBoxOverlay">
-          <div id="addressBox">
-            <button id="closeAddressBox">X</button>
-            <form action="process_address.php" method="POST">
+          <CENTER>
+            <div id="addressBox">
+              <button id="closeAddressBox">X</button>
+              <form action="process_address.php" method="POST">
 
-              <div class="row">
+                <div class="row">
 
-                <div class="col-6">
-                  <div> <label for="title">Address Title</label></div>
-                  <input type="text" name="address_title" placeholder="Title" required>
-                </div>
+                  <div class="col-6">
+                    <div> <label for="title">Address Title</label></div>
+                    <input type="text" name="address_title" class="form-control" placeholder="Title" required>
+                  </div>
 
-                <div class="col-6">
-                  <div> <label for="name">Area:</label></div>
-                  <input type="text" name="area" placeholder="Area" required>
-                </div>
-
-
-                <div class="col-6">
-                  <div><label for="street">Street Address:</label></div>
-                  <input type="text" name="street" placeholder="Street" required>
-                </div>
+                  <div class="col-6">
+                    <div> <label for="name">Area:</label></div>
+                    <input type="text" name="area" class="form-control" placeholder="Area" required>
+                  </div>
 
 
-                <div class="col-6">
-                  <div><label for="city">City:</label></div>
-                  <input type="text" name="city" placeholder="City" required>
-                </div>
+                  <div class="col-6">
+                    <div><label for="street">Street Address:</label></div>
+                    <input type="text" name="street" class="form-control" placeholder="Street" required>
+                  </div>
 
 
-                <div class="col-6">
-                  <div> <label for="state">State:</label></div>
-                  <input type="text" name="zip_code" placeholder="Zip Code" required>
-                </div>
+                  <div class="col-6">
+                    <div><label for="city">City:</label></div>
+                    <input type="text" name="city" class="form-control" placeholder="City" required>
+                  </div>
 
-                <div class="col-12" style="padding-top:20;">
-                  <div></div>
-                  <button type="submit" class="addressbtn">Save Address</button>
 
-                </div>
+                  <div class="col-6">
+                    <div> <label for="state">State:</label></div>
+                    <input type="text" name="zip_code" class="form-control" placeholder="Zip Code" required>
+                  </div>
 
-            </form>
+                  <div class="col-12" style="padding-top:20;">
+                    <div></div>
+                    <button type="submit" class="addressbtn form-control">Save Address</button>
 
-          </div>
+                  </div>
+
+              </form>
+
+            </div>
         </div>
       </div>
     </div>
+    </CENTER>
 
     <style>
       .checkoutbtn {
@@ -627,12 +627,12 @@ if (isset($_POST['placeorder'])) {
     </style>
 
     <script>
-      document.getElementById("openAddressBox").addEventListener("click", function (event) {
+      document.getElementById("openAddressBox").addEventListener("click", function(event) {
         event.preventDefault(); // Prevent default anchor click behavior
         document.getElementById("addressBoxOverlay").style.display = "block";
       });
 
-      document.getElementById("closeAddressBox").addEventListener("click", function () {
+      document.getElementById("closeAddressBox").addEventListener("click", function() {
         document.getElementById("addressBoxOverlay").style.display = "none";
       });
     </script>
@@ -645,17 +645,14 @@ if (isset($_POST['placeorder'])) {
   <div class="container">
     <div class="actions">
       <div class="secure" style="margin-bottom: 12px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" fill="currentColor" class="bi bi-file-lock2"
-          viewBox="0 0 16 16">
-          <path
-            d="M8 5a1 1 0 0 1 1 1v1H7V6a1 1 0 0 1 1-1zm2 2.076V6a2 2 0 1 0-4 0v1.076c-.54.166-1 .597-1 1.224v2.4c0 .816.781 1.3 1.5 1.3h3c.719 0 1.5-.484 1.5-1.3V8.3c0-.627-.46-1.058-1-1.224z" />
-          <path
-            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" fill="currentColor" class="bi bi-file-lock2" viewBox="0 0 16 16">
+          <path d="M8 5a1 1 0 0 1 1 1v1H7V6a1 1 0 0 1 1-1zm2 2.076V6a2 2 0 1 0-4 0v1.076c-.54.166-1 .597-1 1.224v2.4c0 .816.781 1.3 1.5 1.3h3c.719 0 1.5-.484 1.5-1.3V8.3c0-.627-.46-1.058-1-1.224z" />
+          <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" />
         </svg>
         <span>Secure Checkout</span>
       </div>
       <a href="thankyou.php">
-        <button id="placeOrderBtn" class="btn action__submit" style="background-color: #fbd334;">Place your
+        <button id="placeOrderBtn paymentErrorMessage" class="btn action__submit" style="background-color: #fbd334;">Place your
           Order</button>
       </a>
 
@@ -669,10 +666,8 @@ if (isset($_POST['placeorder'])) {
       <div id="paymentErrorMessage" style="display: none; color: red; font-weight: bold;">Please select a payment method
         first.</div>
 
-      <a href="cart.php" class="backBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" style="margin-right: 5px;"
-          fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-          <path fill-rule="evenodd"
-            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+      <a href="cart.php" class="backBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" style="margin-right: 5px;" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
         </svg>Back to Cart</a>
 
     </div>
@@ -747,6 +742,6 @@ if (isset($_POST['placeorder'])) {
 </body>
 <?php
 include("footer.php")
-  ?>
+?>
 
 </html>

@@ -1,14 +1,19 @@
+<?php
+require_once("connect.php") ?>
+
+
+<?php
+include("spinner.php");
+?>
+
+<?php
+include("navbar.php")
+  ?>
 <!DOCTYPE html>
+
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Contacts - Brand</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-</head>
+
 <style>
   .contactsalpha {
     font-size: 30px;
@@ -52,9 +57,14 @@
 </style>
 
 <body>
-  <?php
-  include("navbar.php")
-    ?>
+
+
+  <style>
+    .activecontact {
+      color: gold;
+    }
+  </style>
+
 
   <section class="py-5">
     <div class="container-fluid imagecontainer containercontact py-5">
@@ -134,7 +144,7 @@
   </div>
 
   <?php [include "footer.php"] ?>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
   <script src="assets/js/bold-and-bright.js"></script>
 </body>
 

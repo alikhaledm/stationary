@@ -69,22 +69,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       border-radius: 0;
     }
 
-.container2{
+    .container2 {
 
 
-background-color:#FFFEF4;
-height: 1080px;
-width:1250px;
+      background-color: #FFFEF4;
+      height: 1080px;
+      width: 1250px;
 
 
-}
-
-
+    }
   </style>
   <script>
     function previewImage(event) {
       var reader = new FileReader();
-      reader.onload = function() {
+      reader.onload = function () {
         var output = document.getElementById('image-preview');
         output.src = reader.result;
       }
@@ -95,53 +93,54 @@ width:1250px;
 
 <body style="font-family: Arial, sans-serif; background-color: white;">
   <div class="container">
-  <div class="container2">
-    <div class="row">
-      <div class="col-6">
-        <div class="cr">
-         
-          <form method="post" enctype="multipart/form-data">
-            <h2><b>Add Product Details</b></h2>
-            <br>
+    <div class="container2">
+      <div class="row">
+        <div class="col-6">
+          <div class="cr">
 
-            <label for="name" class="sell">Product Name:</label>
-            <input class="a" type="text" id="pname" name="name" required>
+            <form method="post" enctype="multipart/form-data">
+              <h2><b>Add Product Details</b></h2>
+              <br>
 
-            <label for="product" class="sell">Product Description:</label>
-            <textarea class="a" id="product" name="pdesc" required></textarea>
+              <label for="name" class="sell">Product Name:</label>
+              <input class="a" type="text" id="pname" name="name" required>
 
-            <label for="quantity" class="sell">Quantity:</label>
-            <input class="a" type="number" id="quantity" name="quantity" required>
+              <label for="product" class="sell">Product Description:</label>
+              <textarea class="a" id="product" name="pdesc" required></textarea>
 
-            <img id="image-preview" style="max-width: 30%; margin-top: 10px;" />
-            <label for="images" class="sell">Add Image Here:</label>
-            <input type="file" id="images" name="img" accept="image/*" style="margin-top: 5px;" onchange="previewImage(event)">
+              <label for="quantity" class="sell">Quantity:</label>
+              <input class="a" type="number" id="quantity" name="quantity" required>
 
-            <label for="quantity" class="sell">Select Pickup Date:</label>
-            <input class="a" type="date" id="quantity" name="pdate" required>
-            <div class="termss">
-              <h3 style=" margin-bottom: 10px;
+              <img id="image-preview" style="max-width: 30%; margin-top: 10px;" />
+              <label for="images" class="sell">Add Image Here:</label>
+              <input type="file" id="images" name="img" accept="image/*" style="margin-top: 5px;"
+                onchange="previewImage(event)">
+
+              <label for="quantity" class="sell">Select Pickup Date:</label>
+              <input class="a" type="date" id="quantity" name="pdate" required>
+              <div class="termss">
+                <h3 style=" margin-bottom: 10px;
       font-weight: bold;
       color: #333;">Terms and Conditions:</h3>
-              <ul>
+                <ul>
 
-                <li>
-                  <p style="  margin-bottom: 10px;
+                  <li>
+                    <p style="  margin-bottom: 10px;
       color: #555;">I confirm that the product is brand new and unused.</p>
-                </li>
-                <li>
-                  <p style="  margin-bottom: 10px;
+                  </li>
+                  <li>
+                    <p style="  margin-bottom: 10px;
       color: #555;">I confirm that the picture provided is an accurate representation of the product.</p>
-                </li>
-              </ul>
-            </div>
+                  </li>
+                </ul>
+              </div>
 
-            <label class="sell">
-              <input type="checkbox" required>
-              I agree to the terms and conditions
-            </label>
-            <center>
-              <input type="submit" value="Submit" style="background-color:#EBBF2F;
+              <label class="sell">
+                <input type="checkbox" required>
+                I agree to the terms and conditions
+              </label>
+              <center>
+                <input type="submit" value="Submit" style="background-color:#EBBF2F;
       color: #fff;
       padding: 10px 0px 10px 0px;
       margin-top: 20px;
@@ -149,20 +148,24 @@ width:1250px;
       border-radius: 4px;
       cursor: pointer;
       width: 400px;">
-            </center>
-          </form>
+              </center>
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="col-6" style="margin-top: 50;">
-        <img src="images/excess/sell.png" alt="">
+        <div class="col-6" style="margin-top: 50;">
+          <img src="images/excess/sell.png" alt="">
+        </div>
       </div>
     </div>
   </div>
 
+
   <script src="contactassets/java script/bootstrap.bundle.min.js"></script>
   <script src="contactassets/java script/all.min.js"></script>
   <script src="contactassets/java script/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

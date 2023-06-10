@@ -241,7 +241,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
   <title>packages</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -329,7 +330,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       color: black;
     }
 
-    button {
+    .buttonpack {
       display: block;
       margin: 20px auto;
       padding: 10px 20px;
@@ -346,8 +347,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+  <?php
+  include("spinner.php");
+  ?>
   <div class="video-container">
-    <video id="myVideo" onclick="startVideo()">
+    <video id="myVideo" autoplay onclick="startVideo()">
       <source src="images/packages/steps.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -434,27 +438,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <center>Your package is ready now you can view and edit it if you want</center>
         </h2><br>
         <div class="container">
-          <button type="button" class="btn btn-circle btn-xl" id="openModalButton" data-bs-toggle="button">
+          <buttonpack type="buttonpack" class="btn btn-circle btn-xl" id="openModalButton" data-bs-toggle="buttonpack">
             <p>Check Your Package</p>
-          </button>
+          </buttonpack>
         </div>
       </form>
       <style>
         .listli {
-          color: red;
           margin: 0;
           padding: 0;
-        }
-
-        .listul {
-          text-decoration: underline;
-          list-style-type: disc;
+          font-weight: 500;
+          list-style-type: circle;
         }
       </style>
       <!-- Div Displayed in A modal -->
       <div class="modal-overlay" id="modal">
         <div class="modal-content">
-          <button class="close-button" aria-label="Close" onclick="closeModal()">&#x2716;</button>
+          <buttonpack class="close-buttonpack" aria-label="Close" onclick="closeModal()">&#x2716;</buttonpack>
           <main>
             <section class="supplies-list">
               <?php
@@ -472,9 +472,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   ';
                   $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = $childlistid";
                   $result = mysqli_query($conn, $sql);
+
                   if ($result) {
                     $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                     while ($rowdata = mysqli_fetch_assoc($result)) {
                       $category = $rowdata['prodcategory'];
                       $productName = $rowdata['pname'];
@@ -522,7 +523,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                       while ($rowdata = mysqli_fetch_assoc($result)) {
                         $category = $rowdata['prodcategory'];
                         $productName = $rowdata['pname'];
@@ -561,7 +562,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                       while ($rowdata = mysqli_fetch_assoc($result)) {
                         $category = $rowdata['prodcategory'];
                         $productName = $rowdata['pname'];
@@ -600,7 +601,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                       while ($rowdata = mysqli_fetch_assoc($result)) {
                         $category = $rowdata['prodcategory'];
                         $productName = $rowdata['pname'];
@@ -672,7 +673,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           overflow-y: auto;
         }
 
-        .close-button {
+        .close-buttonpack {
           position: fixed;
           top: 15%;
           right: 20%;
@@ -687,11 +688,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           border-radius: 5px;
         }
 
-        .close-button:focus {
+        .close-buttonpack:focus {
           outline: none;
         }
 
-        .close-button:hover {
+        .close-buttonpack:hover {
           color: #ebbf3f;
         }
 
@@ -744,7 +745,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         openButton.addEventListener("click", openModal);
 
         var modal = document.getElementById("modal");
-        modal.addEventListener("click", function(event) {
+        modal.addEventListener("click", function (event) {
           if (event.target === modal) {
             closeModal();
           }
@@ -767,13 +768,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>
           <center>Take a look at the Checkout to Receive your Package with the Best Quality and Price</center>
         </h2><br>
-        <div class="container">
+        <div class="container" style="padding-bottom:250px;">
           <?php
           $suppylistname = $_SESSION['listname'];
           $sqllistid = "SELECT id FROM products WHERE pname=$suppylistname";
           $listid = mysqli_query($conn, $sqllistid);
 
-          echo '<a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="button">';
+          echo '<a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="buttonpack">';
           ?>
           <p>Checkout</p>
           </a>
@@ -791,6 +792,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 include("footer.php")
-?>
+  ?>
 
 </html>

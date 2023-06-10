@@ -57,6 +57,9 @@ $resultorder = mysqli_query($conn, $getorders);
 </style>
 
 <body>
+    <?php
+    include("spinner.php");
+    ?>
 
 
     <div class="container-account" id="fade-container">
@@ -103,9 +106,6 @@ $resultorder = mysqli_query($conn, $getorders);
             <a href="orders.php" class="customa" style="color:#ebbf2f">My Orders</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
             <a href="address.php" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
             <a href="wallet.php" class="customa">My Wallet</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="subscription.php" class="customa">My Subscriptions</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="mystudents.php" class="customa">My Students</a>
-
         </div>
         <hr>
     </div>
@@ -216,4 +216,4 @@ $resultorder = mysqli_query($conn, $getorders);
 
 <?php
 include("footer.php")
-?>
+    ?>

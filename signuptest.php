@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_num_rows($checkEmailResult) > 0) {
             echo '<script>alert("Email is already in use!");</script>
-            <script>window.location.href = "signup.php";</script>';
+            <script>window.location.href = "signin.php";</script>';
         } elseif ($acctype == 0) {
             $sql = "INSERT INTO usersclass (email, password, fname, lname, phone, acctype, registerdate)
                     VALUES ('$email', '$password', '$fname', '$lname', '$phoneNum', 'Parent','$registerdate')";
