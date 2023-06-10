@@ -10,11 +10,14 @@ include("navbar.php");
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
 </head>
 
 <style>
@@ -84,6 +87,9 @@ include("navbar.php");
 </style>
 
 <body>
+  <?php
+  include("spinner.php");
+  ?>
   <div class="container-fluid">
     <div class="row">
       <div class="lineshop" style="padding-top:30;"></div>
@@ -125,7 +131,8 @@ include("navbar.php");
         <br>
         <div class="form-group">
           <div class="input-group">
-            <input type="text" name="search_text" id="search_text" placeholder="Search for Product" class="form-control" />
+            <input type="text" name="search_text" id="search_text" placeholder="Search for Product"
+              class="form-control" />
           </div>
         </div>
         <br />
@@ -138,10 +145,10 @@ include("navbar.php");
 
 </html>
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     load_data();
 
-    $('#search_text').keyup(function() {
+    $('#search_text').keyup(function () {
       var search = $(this).val();
       if (search != '') {
         load_data(search);

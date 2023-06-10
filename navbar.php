@@ -8,10 +8,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <style>
     .navbarcustomedits {
-        background-color: white;
+        background-color: #0c0129;
+        color: white;
     }
 
     .navcontainer {
@@ -19,7 +20,7 @@
     }
 
     .brand2 {
-        font-size: 25px;
+        font-size: 40px;
         font-weight: bold;
     }
 
@@ -29,10 +30,17 @@
         background-color: white;
         height: 40px;
         width: 120px;
+        margin-left: 80px;
+    }
+
+    .nav-link {
+        color: white;
+        font-size: 18px;
     }
 
     .btncustom:hover {
         border-color: gold;
+        background-color: #ebbf2f;
     }
 
     .cartcount {
@@ -52,10 +60,15 @@
 
     .nav-link:hover {
         color: gold;
+        padding-right: 40px;
     }
 
     .activee {
         color: gold;
+    }
+
+    .white-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 </style>
 
@@ -63,8 +76,9 @@
     <div class="container-fluid navcontainer">
         <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="100%" height="80px"
                 class="d-inline-block align-text-top me-2"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler white-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -76,7 +90,7 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfont">
                     <li class="nav-item">
-                        <a class="nav-link activee" aria-current="page" href="index.php">HOME</a>
+                        <a class="nav-link" aria-current="page" href="index.php">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="shop.php">Shop</a>
@@ -99,7 +113,7 @@
                         echo '<li class="nav-item">
                     <a class="nav-link" href="cart.php">
                         <div class="position-relative">
-                            <div class="cartcount">25</div>
+                            <div class="cartcount">0</div>
                             <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="25" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
                             </svg>
@@ -107,6 +121,13 @@
                     </a>
                 </li>';
                     } ?>
+                    <style>
+                        .cartcount {
+                            color: black;
+                            font-size: 16px;
+                        }
+                    </style>
+
                     <?php if (isset($_SESSION['id'])) {
                         echo '
                 <li id="dropdown" class="nav-item">

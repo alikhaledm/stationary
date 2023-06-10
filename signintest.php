@@ -64,6 +64,21 @@ include("navbar.php");
 
         <div class="containersignin" id="container">
 
+            <div class="form-container sign-up-container">
+                <form method="POST">
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <input type="text" placeholder="Name" />
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <button>Sign Up</button>
+                </form>
+            </div>
 
             <div class="form-container sign-in-container">
                 <form method="POST">
@@ -81,8 +96,13 @@ include("navbar.php");
             </div>
             <div class="overlay-container">
                 <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost buttonsignin" id="signIn">Sign In</button>
+                    </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Welcome To Supplies Hub</h1>
+                        <h1>Hello, Friend!</h1>
                         <p>Enter your personal details and start journey with us</p>
                         <button class="ghost buttonsignin" id="signUp">Sign Up</button>
                     </div>
@@ -200,10 +220,13 @@ include("navbar.php");
         z-index: 2;
     }
 
-    .container.right-panel-active .sign-in-container {
+    .containersignin.right-panel-active .sign-in-container {
         transform: translateX(100%);
     }
 
+    .containersignin.right-panel-active .overlay {
+        transform: translateX(50%);
+    }
 
     .overlay-container {
         position: absolute;
@@ -214,6 +237,20 @@ include("navbar.php");
         overflow: hidden;
         transition: transform 0.6s ease-in-out;
         z-index: 100;
+    }
+
+    .sign-up-container {
+        left: 0;
+        width: 50%;
+        opacity: 0;
+        z-index: 1;
+    }
+
+    .containersignin.right-panel-active .sign-up-container {
+        transform: translateX(100%);
+        opacity: 1;
+        z-index: 5;
+        animation: show 0.6s;
     }
 
 
@@ -255,7 +292,7 @@ include("navbar.php");
         transform: translateX(-20%);
     }
 
-    .container.right-panel-active .overlay-left {
+    .containersignin.right-panel-active .overlay-left {
         transform: translateX(0);
     }
 
@@ -270,6 +307,17 @@ include("navbar.php");
         margin: 20px 0;
     }
 </style>
+<script>const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });</script>
 <?php
 include("footer.php")
     ?>

@@ -1,9 +1,8 @@
 <?php
 require_once("connect.php") ?>
+
 <html>
-<?php
-require_once("connect.php");
-?>
+
 <title>School Supplies List</title>
 
 
@@ -377,15 +376,23 @@ require_once("connect.php");
     color: white;
     font-weight: bold;
   }
+
+  .activehome {
+    color: gold;
+  }
 </style>
 
 
 <body>
-
+  <?php
+  include("spinner.php");
+  ?>
 
   <?php
   include("navbar.php");
   ?>
+
+
 
   <div class="containerfluidcustom">
     <div class="row">

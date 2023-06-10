@@ -1,8 +1,17 @@
 <?php
 require_once("connect.php") ?>
-<html>
 
-<title>School Supplies List</title>
+
+<?php
+include("spinner.php");
+?>
+
+<?php
+include("navbar.php")
+  ?>
+<!DOCTYPE html>
+
+<html lang="en">
 
 
 <style>
@@ -93,12 +102,13 @@ require_once("connect.php") ?>
     align-items: center;
     display: flex;
   }
+
+  .activeshop {
+    color: gold;
+  }
 </style>
 
 <body>
-  <?php
-  include("navbar.php")
-    ?>
 
   <div class="container">
     <div class="row">

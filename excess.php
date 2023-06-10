@@ -3,6 +3,16 @@
 <?php
 require_once("connect.php");
 ?>
+<?php include("navbar.php");
+if (isset($_SESSION[''])) {
+  echo '
+        <div class="alert alert-warning alert-dismissible fade show" style="width: fit-content;" role="alert">
+        <strong>Sign in to start selling or donating!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+}
+?>
+
 <head>
   <title>Services - Brand</title>
   <style>
@@ -19,18 +29,18 @@ require_once("connect.php");
       color: black;
       opacity: 80%;
     }
+
+    .activeexcess {
+      color: gold;
+    }
   </style>
 </head>
+
 <body>
-  <?php include("navbar.php");
-  if (isset($_SESSION[''])) {
-    echo '
-        <div class="alert alert-warning alert-dismissible fade show" style="width: fit-content;" role="alert">
-        <strong>Sign in to start selling or donating!</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>';
-  }
+  <?php
+  include("spinner.php");
   ?>
+
   <section class="py-5">
     <div class="container py-5">
       <div class="row mb-4 mb-lg-5">

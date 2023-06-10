@@ -21,6 +21,7 @@ if (isset($_POST['update_quantity'])) {
   $updateResult = mysqli_query($conn, $updateQuery);
 }
 ?>
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
@@ -28,10 +29,15 @@ if (isset($_POST['update_quantity'])) {
   <link rel="stylesheet" href="cartstyles.css">
   <link rel="stylesheet" href="cartassets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
+  <?php
+  include("spinner.php");
+  ?>
   <section class="py-5">
     <div class="container py-5">
       <div class="row mx-auto">
@@ -112,10 +118,14 @@ if (isset($_POST['update_quantity'])) {
                   ?>
                   <div class="ref-footer">
                     <div class="ref-links">
-                      <a href="https://google.com" target="_blank">Terms &amp; Conditions</a><a href="https://google.com" target="_blank">Privacy Policy</a><a href="https://google.com" target="_blank">Refund Policy</a>
+                      <a href="https://google.com" target="_blank">Terms &amp; Conditions</a><a
+                        href="https://google.com" target="_blank">Privacy Policy</a><a href="https://google.com"
+                        target="_blank">Refund Policy</a>
                     </div>
                     <div class="ref-totals">
-                      <div class="ref-subtotal">Subtotal: <?php echo number_format($total, 2); ?> EGP</div>
+                      <div class="ref-subtotal">Subtotal:
+                        <?php echo number_format($total, 2); ?> EGP
+                      </div>
                       <div class="ref-button ref-standard-checkout-button">
                         <a href="checkout.php" style="color:white"> Checkout </a>
                       </div>
@@ -134,7 +144,7 @@ if (isset($_POST['update_quantity'])) {
                       product_id: productId,
                       quantity: newQuantity
                     },
-                    success: function(response) {
+                    success: function (response) {
                       console.log(response);
                       // You can update the UI here if needed
                     }

@@ -1,8 +1,12 @@
 <?php
+require_once("connect.php") ?>
+<?php
 include("navbar.php")
   ?>
+
 <html>
 <title>About Us</title>
+
 <head>
   <style>
     p {
@@ -51,6 +55,9 @@ include("navbar.php")
 </head>
 
 <body>
+  <?php
+  include("spinner.php");
+  ?>
   <h1 style="font-family: Avenir Light, sans-serif;
       font-size: 45px;
       text-align: center;">About Us</h1>
