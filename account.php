@@ -195,10 +195,14 @@ if (mysqli_num_rows($result) > 0) {
                 <form method="post">
             </div>
             <div style="padding-top:10px;" class="col-md-12">
-                <div style="font-size:15px;"><b>Email: </b> <?php echo $_SESSION['email'] ?></div>
+                <div style="font-size:15px;"><b>Email: </b>
+                    <?php echo $_SESSION['email'] ?>
+                </div>
             </div>
             <div style="padding-top:10px;" class="col-md-12">
-                <div style="font-size:15px;"><b>Account Type: </b> <?php echo $_SESSION['acctype'] ?></div>
+                <div style="font-size:15px;"><b>Account Type: </b>
+                    <?php echo $_SESSION['acctype'] ?>
+                </div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
                 <div style="font-size:20px;">First Name</div>
@@ -207,10 +211,12 @@ if (mysqli_num_rows($result) > 0) {
                 <div style="font-size:20px;">Last Name</div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
-                <div style="font-size:20px;"><input class="form-control input" type="text" name="fname" placeholder="<?php echo $_SESSION['fname'] ?>"></div>
+                <div style="font-size:20px;"><input class="form-control input" type="text" name="fname"
+                        placeholder="<?php echo $_SESSION['fname'] ?>"></div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
-                <div style="font-size:20px;"><input class="form-control input" type="text" name="lname" placeholder="<?php echo $_SESSION['lname'] ?>"></div>
+                <div style="font-size:20px;"><input class="form-control input" type="text" name="lname"
+                        placeholder="<?php echo $_SESSION['lname'] ?>"></div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
                 <div style="font-size:20px;">Email</div>
@@ -219,14 +225,17 @@ if (mysqli_num_rows($result) > 0) {
                 <div style="font-size:20px;">Password</div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
-                <div style="font-size:20px;"><input class="form-control input" type="text" name="email" placeholder="<?php echo $_SESSION['email'] ?>"></div>
+                <div style="font-size:20px;"><input class="form-control input" type="text" name="email"
+                        placeholder="<?php echo $_SESSION['email'] ?>"></div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
-                <div style="font-size:20px;"><input class="form-control input" type="password" name="password" placeholder="********"></div>
+                <div style="font-size:20px;"><input class="form-control input" type="password" name="password"
+                        placeholder="********"></div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
                 <div style="font-size:20px;">Phone No.</div>
-                <div style="font-size:20px; padding-top:10px;"><input class="form-control input" type="text" name="phone" placeholder="<?php echo $_SESSION['phone'] ?>"></div>
+                <div style="font-size:20px; padding-top:10px;"><input class="form-control input" type="text"
+                        name="phone" placeholder="<?php echo $_SESSION['phone'] ?>"></div>
             </div>
             <div style="padding-top:10px;" class="col-md-6">
 
@@ -246,4 +255,4 @@ if (mysqli_num_rows($result) > 0) {
 
 <?php
 include("footer.php")
-?>
+    ?>

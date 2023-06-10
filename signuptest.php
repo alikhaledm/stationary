@@ -180,12 +180,18 @@ if (isset($_POST['signup'])) {
                 <form method="POST">
                     <h1>Create Account</h1>
                     <div class="social-container">
-                        <input class="inputsign" type="radio" name="acctype" autocomplete="off" value="0" required
-                            style="margin-left:20;">Parent
-                        <input class="inputsign" type="radio" name="acctype" autocomplete="off" value="1" required>
-                        Student
-                        <input class="inputsign" type="radio" name="acctype" autocomplete="off" value="2" required>
-                        Neither
+                        <input class="inputsign2" id="inputsign2-parent" type="radio" name="acctype" autocomplete="off"
+                            value="0" required style="margin-left:20;">
+                        <label for="inputsign2-parent" class="inputsign2-label">Parent</label>
+
+
+                        <input class="inputsign2" id="inputsign2-student" type="radio" name="acctype" autocomplete="off"
+                            value="1" required>
+                        <label for="inputsign2-student" class="inputsign2-label">Student</label>
+
+                        <input class="inputsign2" id="inputsign2-neither" type="radio" name="acctype" autocomplete="off"
+                            value="2" required>
+                        <label for="inputsign2-neither" class="inputsign2-label">Neither</label>
                     </div>
 
                     <input class="inputsign" name="fname" placeholder="First Name" required />
@@ -200,16 +206,15 @@ if (isset($_POST['signup'])) {
             <div class="form-container sign-in-container">
                 <form method="POST">
                     <h1>Sign in</h1>
-                    <div class="social-container">
-                        <a class="asign" href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a class="asign" href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a class="asign" href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <div>
+                        <div></div>
+
                     </div>
                     <span>or use your account</span>
                     <input class="inputsign" name="email" placeholder="Email" required />
                     <input class="inputsign" id="passwordInput" type="password" name="password" placeholder="Password"
                         required />
-                    <a class="asign" href="#">Already a user?</a>
+                    <a class="asign" href="#">New? Sign Up Now!</a>
                     <button class="buttonsign" name="signin" type="submit" value="Sign In">Sign In</button>
                 </form>
             </div>
@@ -221,8 +226,8 @@ if (isset($_POST['signup'])) {
                         <button class="ghost buttonsign" id="signIn">Sign In</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
+                        <h1>Welcome To Supplies Hub</h1>
+                        <p>Enter your personal details and start your journey with us</p>
                         <button class="ghost buttonsign" id="signUp">Sign Up</button>
                     </div>
                 </div>
@@ -280,8 +285,8 @@ if (isset($_POST['signup'])) {
 
     .buttonsign {
         border-radius: 20px;
-        border: 1px solid #FF4B2B;
-        background-color: #FF4B2B;
+        border: 1px solid white;
+        background-color: #EBBF2F;
         color: #FFFFFF;
         font-size: 12px;
         font-weight: bold;
@@ -321,6 +326,27 @@ if (isset($_POST['signup'])) {
         padding: 12px 15px;
         margin: 8px 0;
         width: 100%;
+    }
+
+    .inputsign2 {
+        display: none;
+        /* Hide the default radio button */
+    }
+
+    .inputsign2-label {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .inputsign2:checked+.inputsign2-label {
+        background-color: #EBBF2F;
+        border-color: white;
+        color: white;
+        transition: 1s;
     }
 
     .containersign {

@@ -35,7 +35,7 @@
         background-color: white;
         height: 40px;
         width: 120px;
-        margin-left: 80px;
+
     }
 
     .nav-link {
@@ -49,7 +49,6 @@
         background-color: white;
         height: 40px;
         width: 120px;
-        margin-left: 80px;
     }
 
     .nav-link {
@@ -89,8 +88,10 @@
 
 <nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
     <div class="container-fluid navcontainer">
-        <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="100%" height="80px" class="d-inline-block align-text-top me-2"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="100%" height="80px"
+                class="d-inline-block align-text-top me-2"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -136,7 +137,7 @@
                     } ?>
                     <style>
                         .cartcount {
-                            color: black;
+                            color: white;
                             font-size: 16px;
                         }
                     </style>
