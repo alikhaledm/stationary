@@ -7,7 +7,7 @@ require_once("connect.php");
   <title>Services - Brand</title>
   <style>
     .btn {
-      background-color: #fbd334;
+      background-color:#EBBF2F;
       border-radius: 0;
       border: 1px solid black;
     }
@@ -19,6 +19,16 @@ require_once("connect.php");
       color: black;
       opacity: 80%;
     }
+.container2{
+
+
+background-color:#FFFEF4;
+height: 1080px;
+width:1000px;
+border-color: #fbd334;
+
+}
+
   </style>
 </head>
 <body>
@@ -31,11 +41,16 @@ require_once("connect.php");
       </div>';
   }
   ?>
+   <center>
+  <div class="container2">
+   
+  
   <section class="py-5">
     <div class="container py-5">
       <div class="row mb-4 mb-lg-5">
         <div class="col-md-8 col-xl-6 text-center mx-auto">
-          <p class="fw-bold text-success mb-2">A Greener Future</p>
+         
+          <p class="fw-bold text-success mb-2" style="color-#0c0129;">A Greener Future</p>
           <h3 class="fw-bold">Join us in promoting sustanibility</h3>
         </div>
       </div>
@@ -47,16 +62,18 @@ require_once("connect.php");
           <div>
             <h5 class="fw-bold">Donate Supplies&nbsp;</h5>
             <p class="text-muted mb-4">
+
+            
               By donating your used stationary supplies, you empower education and inspire creativity. Every item you
               give helps students in need and promotes sustainable practices. Join the movement, make a positive impact.
             </p>
             <?php
             if (isset($_SESSION[''])) {
-              echo '<a href="signin.php"><button class="btn shadow" type="button">
+              echo '<a href="signin.php"><button class="btn shadow" type="button" >
               Donate Here
             </button></a>';
             } else {
-              echo '<a href="donate.php"><button class="btn shadow" type="button">
+              echo '<a href="donate.php"><button class="btn shadow" type="button"  style="background-color:#EBBF2F;" >
               Donate Here
             </button></a>';
             }
@@ -77,11 +94,11 @@ require_once("connect.php");
               reducing waste and helping others. Join us in creating a sustainable future and makeing a difference. </p>
             <?php
             if (isset($_SESSION[''])) {
-              echo '<a href="signin.php"><button class="btn shadow" type="button">
+              echo '<a href="signin.php"><button class="btn shadow" type="button" >
               Start Selling
             </button></a>';
             } else {
-              echo '<a href="selling.php"><button class="btn shadow" type="button">
+              echo '<a href="selling.php"><button class="btn shadow" type="button" style="background-color:#EBBF2F;">
               Start Selling
             </button></a>';
             }
@@ -91,7 +108,11 @@ require_once("connect.php");
         </div>
       </div>
     </div>
+    </div></center>
   </section>
+  
+
+
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/bold-and-bright.js"></script>
 </body>
