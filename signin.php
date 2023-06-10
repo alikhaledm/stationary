@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['acctype'] = $row["acctype"];
             }
             if ($row['email'] == "admin@gmail.com") {
-                header("Location: admin-dashboard.php");
+                header("Location: admin-ViewUsers.php");
                 exit(); // Terminate the script after redirection
             } else {
                 // Redirect to index.php for other user types

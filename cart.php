@@ -27,11 +27,8 @@ if (isset($_POST['update_quantity'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
   <title>Shopping Cart - Brand</title>
   <link rel="stylesheet" href="cartstyles.css">
-  <link rel="stylesheet" href="cartassets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
 </head>
 
 <body>
@@ -53,6 +50,7 @@ if (isset($_POST['update_quantity'])) {
                   <div class="ref-price-col">Price</div>
                   <div class="ref-quantity-col">Quantity</div>
                   <div class="ref-total-col">Total</div>
+                  <div><span><input type="text" size="1" style="border: 0; background-color: transparent;"></span></div>
                 </div>
                 <div class="ref-cart-table">
                   <?php
@@ -69,12 +67,13 @@ if (isset($_POST['update_quantity'])) {
                           $cartid = $rowData['id'];
                           $quantity = $rowData['quantity'];
                           $productPrice = $rowData2['price'];
+                          $category = $rowData2['category'];
 
                           $prodtotal = $productPrice * $quantity;
 
                           // Truncate product name if more than 15 characters
                           echo '
-                          <div class="ref-product" data-id="1065684752" data-quantity="2">
+                          <div class="ref-product" data-id="1065684752" data-quantity="2" style="text-decoration:none;">
                             <div class="ref-product-col">
                               <div class="ref-product-wrapper">
                                 <img class="ref-product-photo" src="images/Shop/products/' . $rowData2['photo'] . '" alt="Vintage Clock" />
@@ -82,7 +81,7 @@ if (isset($_POST['update_quantity'])) {
                                   <div class="ref-product-info">
                                     <div>
                                       <div class="ref-product-name">' . $rowData2['pname'] . '</div>
-                                      <div class="ref-product-category">Tech</div>
+                                      <div class="ref-product-category">' . $rowData2['category'] . '</div>
                                       <div class="ref-product-variants"></div>
                                       <div class="ref-product-personalization-holder"></div>
                                     </div>
@@ -109,7 +108,9 @@ if (isset($_POST['update_quantity'])) {
                                   ' . number_format($prodtotal, 2) . ' EGP
                                 </div>
                               </div>
+                              
                             </div>
+                            <div style="text-decoration:none;"><br><a style="margin-left:20px; text-decoration:none;"  href="removeCart.php?varname=' . $productId . '"><span style="text-decoration:none; color:red;">&#10005;</span></a></div>
                           </div>';
                         }
                       }
@@ -118,52 +119,54 @@ if (isset($_POST['update_quantity'])) {
                   ?>
                   <div class="ref-footer">
                     <div class="ref-links">
-                      <a href="https://google.com" target="_blank">Terms &amp; Conditions</a><a
-                        href="https://google.com" target="_blank">Privacy Policy</a><a href="https://google.com"
-                        target="_blank">Refund Policy</a>
+                      <a href="https://google.com" target="_blank">Terms &amp; Conditions</a><a href="https://google.com" target="_blank">Privacy Policy</a><a href="https://google.com" target="_blank">Refund Policy</a>
                     </div>
                     <div class="ref-totals">
                       <div class="ref-subtotal">Subtotal:
                         <?php echo number_format($total, 2); ?> EGP
                       </div>
-                      <div class="ref-button ref-standard-checkout-button">
-                        <a href="checkout.php" style="color:white"> Checkout </a>
-                      </div>
+                      <a href="checkout.php">
+                        <button class="btn mt-0" style="background-color:#0c0129; color:white;  height: 40px;">Checkout</button>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <script>
-                // AJAX request to update quantity
-                function updateQuantity(productId, newQuantity) {
-                  $.ajax({
-                    type: "POST",
-                    url: "update_quantity.php",
-                    data: {
-                      update_quantity: true,
-                      product_id: productId,
-                      quantity: newQuantity
-                    },
-                    success: function (response) {
-                      console.log(response);
-                      // You can update the UI here if needed
-                    }
-                  });
-                }
-              </script>
-              </script>
-              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-              <script src="https://cdn.reflowhq.com/v2/toolkit.min.js"></script>
-              <script src="assets/js/bs-init.js"></script>
-              <script src="assets/js/bold-and-bright.js"></script>
             </div>
+            <?php
+            $_SESSION['carttotal'] = $total;
+            ?>
+            <script>
+              // AJAX request to update quantity
+              function updateQuantity(productId, newQuantity) {
+                $.ajax({
+                  type: "POST",
+                  url: "update_quantity.php",
+                  data: {
+                    update_quantity: true,
+                    product_id: productId,
+                    quantity: newQuantity
+                  },
+                  success: function(response) {
+                    console.log(response);
+                    // You can update the UI here if needed
+                  }
+                });
+              }
+            </script>
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.reflowhq.com/v2/toolkit.min.js"></script>
+            <script src="assets/js/bs-init.js"></script>
+            <script src="assets/js/bold-and-bright.js"></script>
           </div>
         </div>
       </div>
+    </div>
     </div>
 </body>
 
 </html>
 <?php
 include("footer.php")
-  ?>
+?>

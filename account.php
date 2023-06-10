@@ -169,15 +169,9 @@ if (mysqli_num_rows($result) > 0) {
     <div class="container-account centered" id="fade-container2">
         <hr style="height: 2px solid black">
         <div class="row text-center" style="font-size:20px;">
-            <div class="col-sm"><a href="orders.php" class="acclink"><b>My Orders</b></a></div>
+            <div class="col-sm"><a href="account.php" class="acclink" active><b>My Account</b></a></div>
             <div class="col-sm"><a href="address.php" class="acclink"><b>My Addresses</b></a></div>
             <div class="col-sm"><a href="wallet.php" class="acclink"><b>My Wallet</b></a></div>
-            <?php
-            if ($_SESSION['acctype'] == 'Parent') {
-                echo '
-            <div class="col-sm"> <a href="mystudents.php" class="acclink"><b>My Students</b></a></div>
-            ';
-            } ?>
         </div>
         <hr>
     </div>
