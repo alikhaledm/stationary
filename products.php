@@ -72,12 +72,12 @@ include("navbar.php");
   }
 
   a:hover {
-    color: #f1ff2d;
+    color: #ebbf2f;
     text-decoration: none;
   }
 
   .h2 {
-    color: yellow;
+    color: #ebbf2f;
   }
 
   .col-md-3 {
