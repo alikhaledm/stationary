@@ -1,5 +1,9 @@
 <?php
+include("spinner.php");
+?>
+<?php
 require_once("connect.php"); ?>
+
 <html>
 
 <?php
@@ -67,6 +71,7 @@ $resultorder = mysqli_query($conn, $getAddress);
 <body>
 
 
+
     <div class="container-account" id="fade-container">
         <div class="row">
             <div class="col-md-12">
@@ -110,8 +115,7 @@ $resultorder = mysqli_query($conn, $getAddress);
             <a href="address.php" style="color:#ebbf2f" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp;
             &nbsp;&nbsp;
             <a href="wallet.php" class="customa">My Wallet</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="subscription.php" class="customa">My Subscriptions</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="mystudents.php" class="customa">My Students</a>
+
         </div>
         <hr>
     </div>
@@ -137,9 +141,11 @@ $resultorder = mysqli_query($conn, $getAddress);
 
                         echo '<div class="details__user">
         <div class="row">
-
           <div class="col-9">
             <h6><b>' . $title . '</b></h6>
+          </div>
+          <div class="col">
+            <a href="deleteaddress.php?address_id=' . $addressid . '" class="delete-btn">Delete Address</a>
           </div>
           <div class="col">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
@@ -161,6 +167,7 @@ $resultorder = mysqli_query($conn, $getAddress);
                     }
                 }
                 ?>
+
 
                 <a href="#" id="openAddressBox">
                     <button class="checkoutbtn">
@@ -215,78 +222,79 @@ $resultorder = mysqli_query($conn, $getAddress);
                 </div>
             </div>
         </div>
+    </div>
 
-        <style>
-            .checkoutbtn {
-                border: none;
-                background-color: white;
-                color: black;
-                text-decoration: none;
-            }
+    <style>
+        .checkoutbtn {
+            border: none;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+        }
 
-            .addressbtn {
-                width: 190px;
-                height: 35px;
-                background-color: gold;
-                color: white;
-                border: none;
-            }
+        .addressbtn {
+            width: 190px;
+            height: 35px;
+            background-color: gold;
+            color: white;
+            border: none;
+        }
 
-            .addressbtn:hover {
-                background-color: orange;
-            }
+        .addressbtn:hover {
+            background-color: orange;
+        }
 
-            .addressform {
-                justify-content: center;
-                align-items: center;
-                display: flex;
-            }
+        .addressform {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
 
-            .checkoutbtn:hover {
-                color: gold;
-            }
+        .checkoutbtn:hover {
+            color: gold;
+        }
 
-            #addressBoxOverlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                display: none;
-            }
+        #addressBoxOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
 
-            #addressBox {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: white;
-                padding: 20px;
-                border-radius: 8px;
-            }
+        #addressBox {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
 
-            #closeAddressBox {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                background-color: transparent;
-                border: none;
-                font-size: 20px;
-                cursor: pointer;
-            }
-        </style>
+        #closeAddressBox {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
 
-        <script>
-            document.getElementById("openAddressBox").addEventListener("click", function (event) {
-                event.preventDefault(); // Prevent default anchor click behavior
-                document.getElementById("addressBoxOverlay").style.display = "block";
-            });
+    <script>
+        document.getElementById("openAddressBox").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+            document.getElementById("addressBoxOverlay").style.display = "block";
+        });
 
-            document.getElementById("closeAddressBox").addEventListener("click", function () {
-                document.getElementById("addressBoxOverlay").style.display = "none";
-            });
-        </script>
+        document.getElementById("closeAddressBox").addEventListener("click", function () {
+            document.getElementById("addressBoxOverlay").style.display = "none";
+        });
+    </script>
 
     </div>
     <br><br>

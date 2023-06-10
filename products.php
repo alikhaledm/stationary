@@ -6,171 +6,168 @@ include("navbar.php");
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-    </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+  </script>
 </head>
 
 <style>
-/* For WebKit browsers (Chrome, Safari) */
-::-webkit-scrollbar {
+  /* For WebKit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
     width: 10px;
-}
+  }
 
-::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background-color: white;
-}
+  }
 
-::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background-color: gray;
-}
+  }
 
-/* For Firefox */
-::-moz-scrollbar {
+  /* For Firefox */
+  ::-moz-scrollbar {
     width: 10px;
-}
+  }
 
-::-moz-scrollbar-track {
+  ::-moz-scrollbar-track {
     background-color: #f1f1f1;
-}
+  }
 
-::-moz-scrollbar-thumb {
+  ::-moz-scrollbar-thumb {
     background-color: #888;
-}
+  }
 
-#hr-3 {
+  #hr-3 {
     height: 1px;
     color: #123455;
     background-color: #123455;
     border: none;
-}
+  }
 
-/* For Internet Explorer and Microsoft Edge */
-/* Note: Microsoft Edge supports the -ms-overflow-style property */
-/* to customize the scroll bar, but it's not widely supported */
-/* in other versions of IE. */
-/* Therefore, this code may not work in all IE versions. */
-/* It's recommended to test it in your target browsers. */
-.scrollbar {
+  /* For Internet Explorer and Microsoft Edge */
+  /* Note: Microsoft Edge supports the -ms-overflow-style property */
+  /* to customize the scroll bar, but it's not widely supported */
+  /* in other versions of IE. */
+  /* Therefore, this code may not work in all IE versions. */
+  /* It's recommended to test it in your target browsers. */
+  .scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
-}
+  }
 
 
-a {
+  a {
     text-decoration: none;
     color: black;
-}
+  }
 
-a:hover {
+  a:hover {
     color: #f1ff2d;
     text-decoration: none;
-}
+  }
 
-.h2 {
+  .h2 {
     color: #ebbf2f;
-}
+  }
 
-.col-md-3 {
+  .col-md-3 {
     left: 70px;
-}
+  }
 </style>
 
 <body>
-    <div class class="container-fluid">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 mx-auto text-center" style="padding-bottom: 30;">
-            <hr id="hr-3">
-            <h2 style="color: #1f3b2c">
-                PRODUCTS
-            </h2>
-            <hr id="hr-3">
-        </div>
-        <div class="col-md-1"></div>
+  <div class class="container-fluid">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 mx-auto text-center" style="padding-bottom: 30;">
+      <hr id="hr-3">
+      <h2 style="color: #1f3b2c">
+        PRODUCTS
+      </h2>
+      <hr id="hr-3">
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-2">
-                <div>
-                    <h2 class="h2">FILTER BY</h2>
-                </div>
-                <hr>
-                <div>
-                    <h5> CATEGORY</h5>
-                </div>
-
-
-                <div><a href="#" class="category-filter" data-filter="Notebooks & Paper">Notebooks & Paper</a></div>
-                <div><a href="#" class="category-filter" data-filter="Art Supplies">Art Supplies</a></div>
-                <!-- <div><a href="#" class="category-filter" data-filter="Writing Tools">Writing Tools</a></div> -->
-                <div><a href="#" class="category-filter" data-filter="Binders & Folders">Binders & Foldersr</a></div>
-                <div><a href="#" class="category-filter" data-filter="Art Supplies">Art Supplies</a></div>
-                <div><a href="#" class="category-filter" data-filter="Math & Scientfic">Math & Scientific Tools</a>
-                </div>
-                <!-- <div><a href="#" class="category-filter" data-filter="Pencil Cases & Bags">Pencil Cases & Bags</a></div> -->
-                <div><a href="#" class="category-filter" data-filter="Other">Other</a></div>
-
-                <hr>
-                <div>
-                    <h5>PRICE</h5>
-                    <div><a href="#" class="category-filter" data-filter="lowestprice">Lowest Prices</a></div>
-                    <div><a href="#" class="category-filter" data-filter="highestprice">Highest prices</a></div>
-
-
-                </div>
-                <hr>
-                <div><a href="products.php" style="color:#ebbf2f">Remove Filter</a></div>
-            </div>
-            <div class="col-md-8">
-                <input type="text" name="search_text" id="search_text" style="border:2px solid black;"
-                    placeholder="Search for Product" class="form-control" />
-                <br>
-                <div id="result"></div>
-
-            </div>
+    <div class="col-md-1"></div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+        <div>
+          <h2 class="h2">FILTER BY</h2>
         </div>
-        <div class="col-md-1 mx-0 px-0"></div>
+        <hr>
+        <div>
+          <h5> CATEGORY</h5>
+        </div>
 
+
+        <div><a href="#" class="category-filter" data-filter="Notebooks & Paper">Notebooks & Paper</a></div>
+        <div><a href="#" class="category-filter" data-filter="Art Supplies">Art Supplies</a></div>
+        <!-- <div><a href="#" class="category-filter" data-filter="Writing Tools">Writing Tools</a></div> -->
+        <div><a href="#" class="category-filter" data-filter="Binders & Folders">Binders & Foldersr</a></div>
+        <div><a href="#" class="category-filter" data-filter="Art Supplies">Art Supplies</a></div>
+        <div><a href="#" class="category-filter" data-filter="Math & Scientfic">Math & Scientific Tools</a>
+        </div>
+        <!-- <div><a href="#" class="category-filter" data-filter="Pencil Cases & Bags">Pencil Cases & Bags</a></div> -->
+        <div><a href="#" class="category-filter" data-filter="Other">Other</a></div>
+
+        <hr>
+        <div>
+          <h5>PRICE</h5>
+          <div><a href="#" class="category-filter" data-filter="lowestprice">Lowest Prices</a></div>
+          <div><a href="#" class="category-filter" data-filter="highestprice">Highest prices</a></div>
+
+
+        </div>
+        <hr>
+        <div><a href="products.php" style="color:#ebbf2f">Remove Filter</a></div>
+      </div>
+      <div class="col-md-8">
+        <input type="text" name="search_text" id="search_text" style="border:2px solid black;" placeholder="Search for Product" class="form-control" />
+        <br>
+        <div id="result"></div>
+
+      </div>
     </div>
+    <div class="col-md-1 mx-0 px-0"></div>
+
+  </div>
 </body>
 
 
 <style>
-.col-md-2 {
+  .col-md-2 {
     background-color: #0c0129;
     color: white;
     width: 300px;
     height: 620px;
-}
+  }
 
-.h2 {
+  .h2 {
     font-size: 34px;
     color: #ebbf2f;
-}
+  }
 
-h5 {
+  h5 {
     font-size: 19px;
     color: #ebbf2f;
-}
+  }
 
-.col-md-2 a {
+  .col-md-2 a {
     color: white;
     font-size: 19px;
-}
+  }
 
-.col-md-2 a:hover {
+  .col-md-2 a:hover {
     color: #ebbf2f;
-}
+  }
 </style>
 
 
@@ -184,31 +181,31 @@ h5 {
 
 </html>
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
     load_data();
 
     function load_data(query) {
-        $.ajax({
-            url: "fetch.php",
-            method: "POST",
-            data: {
-                query: query
-            },
-            success: function(data) {
-                $('#result').html(data);
-            }
-        });
+      $.ajax({
+        url: "fetch.php",
+        method: "POST",
+        data: {
+          query: query
+        },
+        success: function(data) {
+          $('#result').html(data);
+        }
+      });
     }
 
     $('#search_text').keyup(function() {
-        var search = $(this).val();
-        if (search != '') {
-            load_data(search);
-        } else {
-            load_data();
-        }
+      var search = $(this).val();
+      if (search != '') {
+        load_data(search);
+      } else {
+        load_data();
+      }
     });
-});
+  });
 </script>
 </div>
 <?php

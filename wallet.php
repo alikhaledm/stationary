@@ -155,9 +155,6 @@ if (isset($_POST['placeorder'])) {
             <a href="orders.php" class="customa">My Orders</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
             <a href="address.php" class="customa">My Addresses</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
             <a href="wallet.php" class="customa" style="color:#ebbf2f">My Wallet</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="subscription.php" class="customa">My Subscriptions</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <a href="mystudents.php" class="customa">My Students</a>
-
         </div>
         <hr>
     </div>

@@ -1,8 +1,11 @@
 <html>
+
 <?php
 // ini_set('display_errors', 'Off');
+include("spinner.php");
 require_once("connect.php");
 include("navbar.php");
+
 
 $userid = $_SESSION['id'];
 if (isset($_POST["query"])) {
@@ -102,7 +105,7 @@ if (isset($_POST['placeorder'])) {
     }
 
     .checkoutcart {
-      background-color: #E5E5E5;
+      background-color: white;
       border-radius: 5px;
       width: 40%;
       justify-content: center;
@@ -176,26 +179,53 @@ if (isset($_POST['placeorder'])) {
       border-radius: 5px;
     }
 
+
+    .window {
+      height: 700px;
+      width: 50%;
+      background: #fff;
+
+      box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 30px;
+      z-index: 10;
+    }
+
+    .checkmainfont {
+      font-size: 30px;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    .checkmainfont2 {
+      font-size: 27px;
+      font-style: italic;
+    }
+
+    .checkmainfont3 {
+      font-size: 20px;
+    }
+
     /* Additional styling for address form elements can be added here */
   </style>
 </head>
 
 <body>
+
   <div class="col-lg-12">
     <center>
-      <h1><b>Complete Your Purchase</b></h1>
+      <div class="checkmainfont">Complete Your Purchase</div>
       <br><br>
     </center>
   </div>
 
-  <div class="container card checkoutcart">
+  <div class="container card checkoutcart window">
 
     <div class="row">
 
-      <div class="col-lg-12">
-        <center>
-          <h2>Cart Summary</h2>
-
+      <div class="col-lg-12 checkmainfont2">
+        <center style="font-size:27px;">
+          Cart Summary
+          <hr style="width:50%;">
         </center>
 
       </div>
@@ -222,14 +252,14 @@ if (isset($_POST['placeorder'])) {
       
                             <input type="hidden" name="product_id" value="' . $productId . '" >
           
-              <div class="col-lg-6 col-sm-12"style="padding-bottom:50; padding-left:80;">
+              <div class="col-6 checkmainfont3"style="padding-bottom:50; padding-left:80;">
               <img src="images/Shop/products/' . $rowData2['photo'] . '"" alt="Shopping item" style="width: 60px; height: 60px">
-              ' . $productName . '
+              ' . $productName . '<center><hr style="width:200%;"></center>
 
           </div>
              
-            <div class="col-lg-6 col-sm-12" style="padding-bottom:50; align-items:center; display:flex; padding-left:80;">
-              <h5>' . number_format($productPrice, 2) . ' EGP  x' . $quantity . ' </h5>
+            <div class="col-6 checkmainfont3" style="padding-bottom:50; align-items:center; display:flex; padding-left:80;">
+              ' . number_format($productPrice, 2) . ' EGP  x' . $quantity . ' 
               
         </div>
          
@@ -247,21 +277,23 @@ if (isset($_POST['placeorder'])) {
     <div class="container" style="padding-top:10; padding-bottom:30;">
 
       <center>
-        <div class="col-6"><b>TOTAL PRICE</b></div>
+        <div class="col-6 checkmainfont2">TOTAL PRICE</div>
       </center>
       <center>
-        <div class="col-6"><b>
+        <div class="col-6 checkmainfont3">
 
 
-            <?php echo number_format($total, 2); ?>
-            EGP
-          </b>
+          <?php echo number_format($total, 2); ?>
+          EGP
+
+      </center>
+      <center>
+        <hr style="width:50%;">
       </center>
 
     </div>
   </div>
-  </div>
-  </div>
+
   <div class="container">
     <div class="payment">
       <div class="payment__title">
@@ -271,10 +303,10 @@ if (isset($_POST['placeorder'])) {
 
 
 
-        <div class="col-lg-6 col-sm-12" style="padding-top: 10px;">
+        <div class="col-6" style="padding-top: 10px;">
           <button class="paymentbtn" onclick="toggleActive(this, 'credit-card')">Credit Card</button>
         </div>
-        <div class="col-lg-6 col-sm-12" style="padding-top: 10px;">
+        <div class="col-6" style="padding-top: 10px;">
           <button class="paymentbtn" onclick="toggleActive(this, 'cash-on-delivery')">Cash on Delivery</button>
         </div>
       </div>
@@ -655,7 +687,8 @@ if (isset($_POST['placeorder'])) {
         <span>Secure Checkout</span>
       </div>
       <a href="thankyou.php">
-        <button id="placeOrderBtn" class="btn action__submit" style="background-color: #fbd334;">Place your
+        <button id="placeOrderBtn paymentErrorMessage" class="btn action__submit"
+          style="background-color: #fbd334;">Place your
           Order</button>
       </a>
 

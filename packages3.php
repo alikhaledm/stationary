@@ -241,7 +241,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
   <title>packages</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -346,6 +347,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+  <?php
+  include("spinner.php");
+  ?>
   <div class="video-container">
     <video id="myVideo" onclick="startVideo()">
       <source src="images/packages/steps.mp4" type="video/mp4">
@@ -471,7 +475,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                   if ($result) {
                     $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                     while ($rowdata = mysqli_fetch_assoc($result)) {
                       $category = $rowdata['prodcategory'];
                       $productName = $rowdata['pname'];
@@ -519,7 +523,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                       while ($rowdata = mysqli_fetch_assoc($result)) {
                         $category = $rowdata['prodcategory'];
                         $productName = $rowdata['pname'];
@@ -558,7 +562,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                       while ($rowdata = mysqli_fetch_assoc($result)) {
                         $category = $rowdata['prodcategory'];
                         $productName = $rowdata['pname'];
@@ -597,7 +601,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
-
+              
                       while ($rowdata = mysqli_fetch_assoc($result)) {
                         $category = $rowdata['prodcategory'];
                         $productName = $rowdata['pname'];
@@ -741,7 +745,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         openButton.addEventListener("click", openModal);
 
         var modal = document.getElementById("modal");
-        modal.addEventListener("click", function(event) {
+        modal.addEventListener("click", function (event) {
           if (event.target === modal) {
             closeModal();
           }
@@ -788,6 +792,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 include("footer.php")
-?>
+  ?>
 
 </html>
