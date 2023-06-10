@@ -470,7 +470,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   echo '<h2 style="color:#ebbf2f;">' . $_SESSION['fname'] . '`s Supply List</h2>Code: <b><a href="pdfs/' . $listname . '.pdf">' . $listname . '</a></b>
     <br>
                   ';
-                  $sql = "SELECT s.prodcategory, p.pname, p.quantity FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = $childlistid";
+                  $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = $childlistid";
                   $result = mysqli_query($conn, $sql);
                   if ($result) {
                     $groupedProducts = array(); // Associative array to store products grouped by category
