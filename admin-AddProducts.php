@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                         <option value='Binders & Folders'>Binders & Folders</option>
                                                         <option value='Math & Scientfic'>Math & Scientfic Tools</option>
                                                         <option value="Bags & Cases">Bags & Cases</option>
+                                                        <option value="Package">Package</option>
                                                         <option value="Other">Other</option>
                                                 </td></select>
                                                 <td><input name=' photo' type='text' class="form-control">

@@ -71,12 +71,12 @@ include("navbar.php")
   <section class="py-5">
     <div class="container-fluid imagecontainer containercontact py-5">
       <div class="row centered">
+      <img src="images/cc.jpg" style="width:400px; height:300px; padding-top:10px"></img>
+
         <div class="col-md-6 col-xl-6 ">
           <p class="fw-bold mb-2 contactsalpha">Contacts</p>
           <h2 class="fw-bold contactsbeta">How You Can Reach Us</h2>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
+        
 
 
         <div class="col-md-6 d-flex justify-content-center justify-content-xl-start">
