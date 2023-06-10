@@ -24,29 +24,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['email'] = $row["email"];
                 $_SESSION['phone'] = $row["phone"];
                 $_SESSION['acctype'] = $row["acctype"];
-
-                if ($_SESSION['acctype'] == 'Student') {
-                    $_SESSION['dob'] = $row["dob"];
-                } elseif ($_SESSION['acctype'] == "admin") {
-                    header("Location: admin-panel.php");
-                    exit(); // Terminate the script after redirection
-                } else {
-                    // Redirect to index.php for other user types
-                    header("Location: index.php");
-                    exit(); // Terminate the script after redirection
-                }
+            }
+            if ($row['email'] == "admin@gmail.com") {
+                header("Location: admin-dashboard.php");
+                exit(); // Terminate the script after redirection
             } else {
-                error_reporting(0);
-                echo "<script>alert('Invalid email or password')</script>";
+                // Redirect to index.php for other user types
+                header("Location: index.php");
+                exit(); // Terminate the script after redirection
             }
         } else {
             error_reporting(0);
             echo "<script>alert('Invalid email or password')</script>";
         }
     } else {
-        // Query error occurred
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        error_reporting(0);
+        echo "<script>alert('Invalid email or password')</script>";
     }
+} else {
+    // Query error occurred
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 ?>
 
@@ -180,11 +177,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
         <div class="container-fluid navcontainer">
-            <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="20%" height="80px"
-                    class="d-inline-block align-text-top me-2"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.php"> <img src="images/logo/1d.png" alt="Logo" width="20%" height="80px" class="d-inline-block align-text-top me-2"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -286,34 +280,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             </div>
                             <div class="my-12 border-b text-center">
-                                <div
-                                    class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                                <div class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                                     Or sign in with E-mail
                                 </div>
                             </div>
                             <div class="mx-auto max-w-xs">
-                                <input
-                                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    name="email" placeholder="Email" required />
-                                <input
-                                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4"
-                                    id="passwordInput" type="password" name="password" placeholder="Password"
-                                    required />
+                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" name="email" placeholder="Email" required />
+                                <input class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4" id="passwordInput" type="password" name="password" placeholder="Password" required />
                                 <div class="password-input-container">
                                     <div class="show-password-icon" onclick="togglePasswordVisibility()">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor"
-                                            class="bi bi-eye-slash" viewBox="0 0 16 16">
-                                            <path
-                                                d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
-                                            <path
-                                                d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
-                                            <path
-                                                d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                                            <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
+                                            <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
+                                            <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
                                         </svg>
                                     </div>
                                 </div>
-                                <input type="submit" value="Sign In"
-                                    class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <input type="submit" value="Sign In" class="mt-4 tracking-wide font-semibold bg-warning text-white w-full py-4 rounded-lg hover:bg-warning transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     </form>
                     <p class="mt-6 text-xs text-gray-600 text-center">
                         Don't have an account?
@@ -351,4 +334,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 include("footer.php")
-    ?>
+?>

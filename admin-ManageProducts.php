@@ -80,9 +80,8 @@
             <?php include("admin-sidebar.php"); ?>
             <div class="d-flex flex-column" id="content-wrapper">
                 <div id="content">
-                    <?php include("admin-topbar.php"); ?>
                     <div class="container-fluid">
-                        <h3 class="text-dark mb-4 text-center">Available Products</h3>
+                        <h3 class="text-dark mt-4 mb-4 text-center">Available Products</h3>
                         <div class="card shadow">
                             <div class="card-header py-3 text-nowrap d-flex justify-content-between align-items-center">
                                 <p class="text-primary m-0 fw-bold">Products Info</p>

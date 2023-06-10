@@ -28,7 +28,7 @@ if (!$result) {
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4 text-center">Registered Users</h3>
+                    <h3 class="text-dark mb-4 text-center mt-5">Registered Users</h3>
                     <div class="card shadow">
                         <div class="card-header py-3 text-nowrap d-flex justify-content-between align-items-center">
                             <p class="text-primary m-0 fw-bold">User Info</p>

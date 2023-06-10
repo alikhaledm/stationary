@@ -11,16 +11,16 @@
                 <button class="nav-link btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#databaseTables" aria-expanded="false" aria-controls="databaseTables">
                     <i class="fas fa-database"></i><span>Database Tables</span>
                 </button>
-                <div class="collapse" id="databaseTables">
-                    <ul class="navbar-nav text-light">
-                        <li class="nav-item"><a class="nav-link active" href="admin-ViewUsers.php"><i class="fas fa-table"></i><span>Users</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" href="admin-ViewSchools.php"><i class="fas fa-table"></i><span>Schools</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" href="admin-ViewProducts.php"><i class="fas fa-table"></i><span>Products</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" href="admin-ViewSuppliesList.php"><i class="fas fa-table"></i><span>Supplies Lists</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" href="admin-ViewOrders.php"><i class="fas fa-table"></i><span>Excess Products</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" href="admin-ViewOrders.php"><i class="fas fa-table"></i><span>Orders</span></a></li>
-                    </ul>
-                </div>
+                <!-- <div class="collapse" id="databaseTables"> -->
+                <ul class="navbar-nav text-light">
+                    <li class="nav-item"><a class="nav-link active" href="admin-ViewUsers.php"><i class="fas fa-table"></i><span>Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin-ViewSchools.php"><i class="fas fa-table"></i><span>Schools</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin-ViewProducts.php"><i class="fas fa-table"></i><span>Products</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin-ViewSuppliesList.php"><i class="fas fa-table"></i><span>Supplies Lists</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin-ViewOrders.php"><i class="fas fa-table"></i><span>Excess Products</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin-ViewOrders.php"><i class="fas fa-table"></i><span>Orders</span></a></li>
+                </ul>
+                <!-- </div> -->
             </li>
         </ul>
         <div class="text-center d-none d-md-inline">

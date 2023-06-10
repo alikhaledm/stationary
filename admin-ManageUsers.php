@@ -101,11 +101,11 @@ if (isset($_POST['update'])) {
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
+                                            <th style="width:10%;">First Name</th>
+                                            <th style="width:10%;">Last Name</th>
                                             <th>Email</th>
                                             <th>Account Type</th>
-                                            <th>Phone</th>
+                                            <th style="width:10%;">Phone</th>
                                             <th>Reg Date</th>
                                             <th>Orders</th>
                                         </tr>
@@ -117,9 +117,9 @@ if (isset($_POST['update'])) {
                                             $resultOrders = mysqli_query($conn, $sqlOrders);
                                             $rowOrders = mysqli_fetch_assoc($resultOrders);
                                             echo "<tr>";
-                                            echo "<td><input type='text' name='fname[]' class='form-control' style='width:300px' value='" . $row['fname'] . "' disabled>&nbsp;&nbsp;</td>";
-                                            echo "<td><input name='lname[]' type='text' class='form-control' style='width:300px' value='" . $row['lname'] . "' disabled></td>";
-                                            echo "<td><input name='email[]' class='form-control' type='email' style='width:400px' value='" . $row['email'] . "' disabled></td>";
+                                            echo "<td><input type='text' name='fname[]' class='form-control' value='" . $row['fname'] . "' disabled>&nbsp;&nbsp;</td>";
+                                            echo "<td><input name='lname[]' type='text' class='form-control' value='" . $row['lname'] . "' disabled></td>";
+                                            echo "<td><input name='email[]' class='form-control' type='email' value='" . $row['email'] . "' disabled></td>";
                                             echo "<td>
                                                 <select name='acctype[]' class='form-select'  disabled>
                                                 <option value='Student'" . ($row['acctype'] == 'Student' ? 'selected' : '') . ">Student</option>
