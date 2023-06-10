@@ -73,9 +73,19 @@ require_once("connect.php");
 if (isset($_POST["query"])) {
   $search = mysqli_real_escape_string($conn, $_POST["query"]);
   $query = "SELECT * FROM products WHERE pname LIKE '%" . $search . "%'";
+} elseif (isset($_GET['filter'])) {
+  $filter = $_GET['filter'];
+  if ($filter == 'lowestprice') {
+    $query = "SELECT * FROM products ORDER BY price ASC";
+  } elseif ($filter == 'highestprice') {
+    $query = "SELECT * FROM products ORDER BY price DESC";
+  } else {
+    $query = "SELECT * FROM products WHERE category='$filter'";
+  }
 } else {
-  $query = "SELECT * FROM products ORDER BY id";
+  $query = "SELECT * FROM products";
 }
+
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
   echo "<div class='row myprods'>";

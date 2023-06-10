@@ -108,23 +108,26 @@ include("navbar.php");
         <div>
           <h5> CATEGORY</h5>
         </div>
-        <hr>
-        <div><a href="">ALL</a></div>
-        <div><a href="">Notebooks & Paper</a></div>
-        <div><a href="">Art Supplies</a></div>
-        <div><a href="">Writing Tools</a></div>
-        <div><a href="">Binders & Folders</a></div>
-        <div><a href="">Math & Scientific Tools</a></div>
-        <div><a href="">Pencil Cases & Bags</a></div>
+        <div><a href="products.php?filter=Notebooks & Paper">Notebooks & Paper</a></div>
+        <div><a href="products.php?filter=Art Supplies">Art Supplies</a></div>
+        <div><a href="products.php?filter=Writing Tools">Writing Tools</a></div>
+        <div><a href="products.php?filter=Binders & Folders">Binders & Folders</a></div>
+        <div><a href="products.php?filter=Math & Scientfic">Math & Scientific Tools</a></div>
+        <div><a href="products.php?filter=Pencil Cases & Bags">Pencil Cases & Bags</a></div>
+        <div><a href="products.php?filter=Other">Other</a></div>
         <hr>
         <div>
-          <h5> LEAST PRICE</h5>
+          <h5>PRICE</h5>
+          <div><a href="products.php?filter=lowestprice">Lowest Prices</a></div>
+          <div><a href="products.php?filter=highestprice">Highest prices</a></div>
         </div>
         <hr>
+        <div><a href="products.php" style="color:red">Remove Filter</a></div>
       </div>
       <div class="col-md-8">
         <input type="text" name="search_text" id="search_text" style="border:2px solid black;" placeholder="Search for Product" class="form-control" />
         <br>
+        <div id="result"></div>
         <?php
         include("fetch.php");
         ?>
@@ -140,6 +143,18 @@ include("navbar.php");
   $(document).ready(function() {
     load_data();
 
+    function load_data(query) {
+      $.ajax({
+        url: "fetch.php",
+        method: "POST",
+        data: {
+          query: query
+        },
+        success: function(data) {
+          $('#result').html(data);
+        }
+      });
+    }
     $('#search_text').keyup(function() {
       var search = $(this).val();
       if (search != '') {

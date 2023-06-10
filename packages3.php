@@ -3,10 +3,6 @@
 require_once("connect.php");
 include("navbar.php");
 
-
-
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $studentemail = $_POST['email'];
   $studentdob = $_POST['dob'];
@@ -209,7 +205,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $row = mysqli_fetch_assoc($result);
 
       if (!$row) {
-        echo "No student record found.";
         // Handle the case when no student record is found, such as displaying an error message or redirecting the user.
       } else {
         $studentName = $row['studentname'];
@@ -252,6 +247,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <style>
+    .ali {
+      font-size: larger;
+      text-decoration: dashed;
+      color: red;
+    }
+
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -294,13 +295,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       margin-bottom: 10px;
     }
 
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+    input,
+    select {
+      padding: 5px;
+      border: 1px solid #0c0129;
+      border-radius: 5px;
     }
 
     .container {
@@ -308,25 +307,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    select {
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background-color: #fff;
-      font-size: 16px;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url('down-arrow.png');
-      background-position: right center;
-      background-repeat: no-repeat;
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
     }
 
     select:hover,
@@ -358,6 +338,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       border: none;
       cursor: pointer;
     }
+
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }
   </style>
 </head>
 
@@ -375,23 +359,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="left-column">
       <img src="images/packages/step1.png" alt="Image" width="110%">
     </div>
-    <div class="right-column" id="targetElement">
-      <form method="POST" id="bottom">
+    <div class="right-column">
+      <form method="POST" id="bottom" class="mx-5">
         <?php
+        $email = 'Student@NGIS.edu';
         if ($_SESSION['acctype'] == 'Student') {
           if (empty($school)) {
             include("packstudentform.php");
           } else {
             echo '
-<label for="name">
-<h5>
-    Welcome, ' . $_SESSION['fname'] . ' ' . $_SESSION['lname'] . '!
-    </h5>
-    <br><b>Student Email: </b>' . $studentemail . '
-    <br><b>School: </b>' . $school . '
-    <br><b>Grade: </b>' . $grade . '
-    <br><b>Supply List: </b>' . $listpdf . '
-</label>';
+<h4 class="text-center">
+    Welcome, <b style="color:#EBBF2F; font-size:130%;">' . $_SESSION['fname'] . ' ' . $_SESSION['lname'] . '</b>!
+    </h4>
+    <div>
+    <b style="font-size:110%;">Student Email: </b><span style="font-weight:bold">' . $email . '</span><br>
+    <b style="font-size:110%">School: </b><span style="font-weight:bold">New Generation International School</span><br>
+    <b style="font-size:110%">Grade: </b><span style="font-weight:bold">' . $grade . '</span><br>
+    <b style="font-size:110%">Supply List: </b><span style="font-weight:bold">' . $listname . '</span><br>  
+</div>';
           }
         }
 
@@ -454,7 +439,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </button>
         </div>
       </form>
+      <style>
+        .listli {
+          color: red;
+          margin: 0;
+          padding: 0;
+        }
 
+        .listul {
+          text-decoration: underline;
+          list-style-type: disc;
+        }
+      </style>
       <!-- Div Displayed in A modal -->
       <div class="modal-overlay" id="modal">
         <div class="modal-content">
@@ -471,9 +467,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                   echo "<h2 style='background-color:transparent; text-align:center;'>Please fill the form to display assigned supply list</h2>";
                 } else {
-                  echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $listname . '.pdf">' . $listname . '</a></b>
-                  <hr>
-                  <ul>';
+                  echo '<h2 style="color:#ebbf2f;">' . $_SESSION['fname'] . '`s Supply List</h2>Code: <b><a href="pdfs/' . $listname . '.pdf">' . $listname . '</a></b>
+    <br>
+                  ';
                   $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = $childlistid";
                   $result = mysqli_query($conn, $sql);
                   if ($result) {
@@ -495,11 +491,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     // Display the grouped products
                     foreach ($groupedProducts as $category => $products) {
-                      echo '<li><span style="font-size:25px;">' . $category . '</span>';
+                      echo '<ul><li class="listul"><span style="font-size:25px;">' . $category . '</span>';
                       echo '<ul>';
                       foreach ($products as $product) {
-                        echo '<li>' . $product . '</li>';
-                        echo '<hr>';
+                        echo '<li class="listli">' . $product . '</li>';
                       }
                       echo '</ul></li></ul>';
                     }
@@ -601,7 +596,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<h2 style="color:#ebbf2f;">Supply List</h2>Code: <b><a href="pdfs/' . $_SESSION["listname"] . '.pdf">' . $_SESSION["listname"] . '</a></b>
                   <hr>
                   <ul>';
-                    $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
+                    $sql = "SELECT s.id s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = {$_SESSION['childlistid']}";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                       $groupedProducts = array(); // Associative array to store products grouped by category
@@ -773,8 +768,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <center>Take a look at the Checkout to Receive your Package with the Best Quality and Price</center>
         </h2><br>
         <div class="container">
-          <a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="button">
-            <p>Checkout</p>
+          <?php
+          $suppylistname = $_SESSION['listname'];
+          $sqllistid = "SELECT id FROM products WHERE pname=$suppylistname";
+          $listid = mysqli_query($conn, $sqllistid);
+
+          echo '<a href="cart.php" class="btn btn-circle btn-xl" data-bs-toggle="button">';
+          ?>
+          <p>Checkout</p>
           </a>
         </div>
       </form>
