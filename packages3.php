@@ -445,14 +445,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
       <style>
         .listli {
-          color: red;
           margin: 0;
           padding: 0;
-        }
-
-        .listul {
-          text-decoration: underline;
-          list-style-type: disc;
+          font-weight: 500;
+          list-style-type: circle;
         }
       </style>
       <!-- Div Displayed in A modal -->
@@ -476,6 +472,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   ';
                   $sql = "SELECT s.prodcategory, p.pname FROM supplylistitems s INNER JOIN products p ON s.productid = p.id WHERE s.supplylistid = $childlistid";
                   $result = mysqli_query($conn, $sql);
+
                   if ($result) {
                     $groupedProducts = array(); // Associative array to store products grouped by category
               

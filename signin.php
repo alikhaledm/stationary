@@ -53,190 +53,127 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Login</title>
 
-                    </div>
-                    <span>Login to Supplies Hub</span>
-                    <input class="inputsignin" name="email" placeholder="Email" required />
-                    <input class="inputsignin" id="passwordInput" type="password" name="password" placeholder="Password"
-                        required />
-                    <a class="asignin" href="#">Already a user? Sign Up</a>
-                    <button class="buttonsignin" type="submit" value="Sign In">Sign In</button>
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-right">
-                        <h1>Welcome To Supplies Hub</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <button class="ghost buttonsignin" id="signUp">Sign Up</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 
-</body>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+</head>
 <style>
-    .bodysignin {
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-family: 'Montserrat', sans-serif;
-        height: 80vh;
-        margin: -20px 0 50px;
-    }
-
-    h1 {
-        font-weight: bold;
-        margin: 0;
-    }
-
-    h2 {
-        text-align: center;
-    }
-
-    p {
-        font-size: 14px;
-        font-weight: 100;
-        line-height: 20px;
-        letter-spacing: 0.5px;
-        margin: 20px 0 30px;
-    }
-
-    span {
-        font-size: 12px;
-    }
-
-    .asignin {
-        color: #333;
-        font-size: 14px;
-        text-decoration: none;
-        margin: 15px 0;
-    }
-
-    .buttonsignin {
-        border-radius: 20px;
-        border: 1px solid #FFFFFF;
-        background-color: #EBBF2F;
-        color: #FFFFFF;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 12px 45px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-    }
-
-    .buttonsignin:active {
-        transform: scale(0.95);
-    }
-
-    .buttonsignin:focus {
-        outline: none;
-    }
-
-    .buttonsignin.ghost {
-        background-color: transparent;
-        border-color: #FFFFFF;
-    }
-
-    form {
-        background-color: #FFFFFF;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 50px;
-        height: 100%;
-        text-align: center;
-        color: #0c0129;
-    }
-
-    .inputsignin {
-        background-color: #eee;
-        border: none;
-        padding: 12px 15px;
-        margin: 8px 0;
-        width: 100%;
-    }
-
-    .containersignin {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
+    .password-input-container {
         position: relative;
-        overflow: hidden;
-        width: 70%;
-        height: 70%;
-        max-width: 100%;
-        min-height: 480px;
-
+        display: inline-block;
     }
 
-
-
-    .sign-in-container {
-        left: 0;
-        width: 50%;
-        z-index: 2;
-    }
-
-    .container.right-panel-active .sign-in-container {
-        transform: translateX(100%);
-    }
-
-
-    .overlay-container {
+    .password-input-container .show-password-icon {
         position: absolute;
-        top: 0;
-        left: 50%;
-        width: 50%;
-        height: 100%;
-        overflow: hidden;
-        transition: transform 0.6s ease-in-out;
-        z-index: 100;
+        left: 280px;
+        transform: translateY(-270%);
+        cursor: pointer;
+        user-select: none;
+
     }
 
-
-
-    .overlay {
-        background: #FF416C;
-        background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-        background: linear-gradient(to right, gold, #EBBF2F);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 0 0;
-        color: #FFFFFF;
-        position: relative;
-        left: -100%;
-        height: 100%;
-        width: 200%;
-        transform: translateX(0);
-        transition: transform 0.6s ease-in-out;
+    .password-input-container .show-password-icon.visible {
+        color: #fbd334;
+        /* Change the color to your preferred icon state */
     }
 
-
-
-    .overlay-panel {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 40px;
-        text-align: center;
-        top: 0;
-        height: 100%;
-        width: 50%;
-        transform: translateX(0);
-        transition: transform 0.6s ease-in-out;
+    /* For WebKit browsers (Chrome, Safari) */
+    ::-webkit-scrollbar {
+        width: 10px;
     }
 
-    .overlay-left {
-        transform: translateX(-20%);
+    ::-webkit-scrollbar-track {
+        background-color: white;
     }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: gray;
+    }
+
+    /* For Firefox */
+    ::-moz-scrollbar {
+        width: 10px;
+    }
+
+    ::-moz-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    ::-moz-scrollbar-thumb {
+        background-color: #888;
+    }
+
+    .scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
+</style>
+
+<body>
+
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+    <style>
+        .navbarcustomedits {
+            background-color: white;
+        }
+
+        .navcontainer {
+            width: 75%;
+        }
+
+        .brand2 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .btncustom {
+            border-color: black;
+            border: 0.5px solid #000;
+            background-color: white;
+            height: 40px;
+            width: 120px;
+        }
+
+        .btncustom:hover {
+            border-color: gold;
+        }
+
+        .cartcount {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+        }
+
+        .navfont {
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            color: gold;
+        }
+
+        .activee {
+            color: gold;
+        }
+    </style>
 
     <nav class="navbar navbar-expand-lg sticky-top navbarcustomedits">
         <div class="container-fluid navcontainer">
@@ -309,10 +246,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </a>';
                         } ?>
 
-    .overlay-right {
-        right: 0;
-        transform: translateX(0);
-    }
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
 
